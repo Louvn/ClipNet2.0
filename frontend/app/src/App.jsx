@@ -1,12 +1,14 @@
-import { Routes, Route, Navigate } from "react-router-dom"
+import { Routes, Route, Navigate, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
-import Test from "./pages/Test"
+import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
+import Article from "./pages/Article"
 
 function App() {
     const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false);
+    
     useEffect(() => {
         const handleStorageChange = (event) => {
             setLoggedIn(event.detail ? true: false);
@@ -17,15 +19,16 @@ function App() {
     }, []);
 
     const ProtectedRoutes = ({children}) => {
+        const location = useLocation();
         if (isLoggedIn) {
             return children
         }
-        return <Navigate to="/login" />
+        return <Navigate to="/login" state={{ redirect: location.pathname + location.search}} />
     }
-
+    
     return <>
         {isLoggedIn && <Navbar />}
-        <main>
+        <main style={{minHeight: "70vh"}}>
             <Routes>
 
                 {/* public Routes */}
@@ -37,7 +40,8 @@ function App() {
                     element={
                         <ProtectedRoutes>
                             <Routes>
-                                <Route path="/" element={<Test />} />
+                                <Route path="/" element={<Home />} />
+                                <Route path="/wiki/:slug" element={<Article />} />
                             </Routes>
                         </ProtectedRoutes>
                     }

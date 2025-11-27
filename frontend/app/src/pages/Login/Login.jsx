@@ -13,7 +13,7 @@ function Login() {
     const [errorMessage, setErrorMessage] = useState("");
 
     if (localStorage.getItem("jwt")) {
-        return <Navigate to="/" />;
+        return <Navigate to={location.state.redirect || "/"} />;
     }
     
     const handleSubmit = async (event) => {
@@ -39,8 +39,8 @@ function Login() {
         
         localStorage.setItem("jwt", data.access_token);
         window.dispatchEvent(new CustomEvent("jwtChange", { detail: localStorage.getItem("jwt") }));
-        const params = new URLSearchParams(location.search);
-        return navigate(params.get("redirect") || "/", {replace: true});
+    
+        return navigate(location.state.redirect || "/", {replace: true});
     }
 
     return <div className={styles.LoginPage}>

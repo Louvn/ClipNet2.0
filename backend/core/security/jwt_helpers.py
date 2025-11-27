@@ -7,7 +7,7 @@ import os, jwt
 SECRET = os.getenv("JWT_SECRET")
 ALGORITHM = os.getenv("JWT_ALGORITHM")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login")
 
 def get_current_user(token: str = Depends(oauth2_scheme), db = Depends(get_db)):
     try:
