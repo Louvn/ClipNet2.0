@@ -12,6 +12,18 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# -- Routes for API --
+from fastapi import APIRouter
+from .routes.auth import router as auth_router
+from .routes.articles import router as articles_router
+
+api = APIRouter(prefix="/api")
+
+api.include_router(auth_router)
+api.include_router(articles_router)
+
+app.include_router(api)
+
 # -- Serve React App --
 import os
 from fastapi import HTTPException
@@ -35,15 +47,3 @@ from . import models
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(bind=engine)
-
-# -- Routes for API --
-from fastapi import APIRouter
-from .routes.auth import router as auth_router
-from .routes.articles import router as articles_router
-
-api = APIRouter(prefix="/api")
-
-api.include_router(auth_router)
-api.include_router(articles_router)
-
-app.include_router(api)
