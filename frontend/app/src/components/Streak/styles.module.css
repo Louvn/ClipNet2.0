@@ -1,0 +1,14 @@
+.Streak  {
+    display: flex;
+    align-items: center;
+    opacity: 0.8;
+}
+
+.Streak img {
+    height: 64px;
+}
+
+.Streak span {
+    font-size: 24px;
+    color: #333;
+}

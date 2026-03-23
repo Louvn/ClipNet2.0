@@ -1,8 +1,7 @@
-import config from "../config.json"
 
 async function apiFetch(url, options={}) {
     const response = await fetch(
-        config.apiUrl + url, {
+        "/api" + url, {
             headers: {
                 ...options.headers,
                 "Authorization": `Bearer ${localStorage.getItem("jwt")}`

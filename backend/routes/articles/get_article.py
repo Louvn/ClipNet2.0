@@ -7,6 +7,7 @@ from backend.models import Article
 
 def get_article(provided_infos = Depends(ArticleGetData), user = Depends(get_current_user), db = Depends(get_db)):
     "You can get the data of an Article via slug or id of the Article"
+    
     if provided_infos.id is not None:
         article = db.query(Article).filter(Article.id == provided_infos.id).first()
     elif provided_infos.slug is not None:

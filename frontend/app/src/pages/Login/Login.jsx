@@ -2,7 +2,6 @@ import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./styles.module.css";
 import Logo from "../../assets/logo-blue.png";
-import config from "../../config.json"
 
 function Login() {
     const location = useLocation();
@@ -13,13 +12,14 @@ function Login() {
     const [errorMessage, setErrorMessage] = useState("");
 
     if (localStorage.getItem("jwt")) {
-        return <Navigate to={location.state.redirect || "/"} />;
+        // using stored redirect
+        return <Navigate to={location.state?.redirect || "/"} />;
     }
     
     const handleSubmit = async (event) => {
         event.preventDefault();
         
-        const response = await fetch(config.apiUrl + "/login", {
+        const response = await fetch("/api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -39,8 +39,9 @@ function Login() {
         
         localStorage.setItem("jwt", data.access_token);
         window.dispatchEvent(new CustomEvent("jwtChange", { detail: localStorage.getItem("jwt") }));
-    
-        return navigate(location.state.redirect || "/", {replace: true});
+        
+        // using stored redirect
+        return navigate(location.state?.redirect || "/", {replace: true});
     }
 
     return <div className={styles.LoginPage}>
@@ -51,7 +52,7 @@ function Login() {
                     <img className={styles.LogoImg} src={Logo} alt="" />
                     <span className={styles.LogoText}>ClipNet</span>
                 </h1>
-                <p>This Website is private</p>
+                <p className={styles.Info}>This Website is private</p>
             </div>
 
             <input 

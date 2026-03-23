@@ -1,0 +1,32 @@
+.InstantSearch {
+    background-color: transparent;
+    border-radius: 4px;
+    min-height: 300px;
+    align-self: baseline;
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+}
+.InstantSearch.Show {
+    background-color: rgba(0,0,0,.2);
+    box-shadow: 0 0 4px var(--shadows);
+}
+
+.InstantSearchResults {
+    background-color: var(--cards);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease-out;
+}
+.InstantSearch.Show > .InstantSearchResults {
+    opacity: 1;
+}
+
+.ShowAll {
+    color: var(--primary-color);
+    font-size: 0.9em;
+}

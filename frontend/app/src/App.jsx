@@ -1,10 +1,13 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom"
-import { useState, useEffect } from "react"
-import Home from "./pages/Home"
-import Login from "./pages/Login"
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import Article from "./pages/Article"
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Article from "./pages/Article";
+import NotFound from "./pages/NotFound";
 
 function App() {
     const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false);
@@ -23,12 +26,14 @@ function App() {
         if (isLoggedIn) {
             return children
         }
+
+        // setting redirect for use after finishing login
         return <Navigate to="/login" state={{ redirect: location.pathname + location.search}} />
     }
     
     return <>
         {isLoggedIn && <Navbar />}
-        <main style={{minHeight: "70vh"}}>
+        <div className="page">
             <Routes>
 
                 {/* public Routes */}
@@ -42,13 +47,15 @@ function App() {
                             <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/wiki/:slug" element={<Article />} />
+
+                                <Route path="*" element={<NotFound />} />
                             </Routes>
                         </ProtectedRoutes>
                     }
                 />
             
             </Routes>
-        </main>
+        </div>
 
         {isLoggedIn && <Footer />}
     </>

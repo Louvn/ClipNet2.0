@@ -1,0 +1,23 @@
+version: '3'
+services:
+    frontend:
+        build: 
+            context: ./frontend
+            dockerfile: Dockerfile.dev
+
+    backend:
+        build: 
+            context: ./backend
+            dockerfile: Dockerfile.dev
+        env_file: 
+            - .env
+
+    reverse_proxy:
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx.dev.conf:/etc/nginx/conf.d/default.conf:ro
+        depends_on:
+            - frontend
+            - backend

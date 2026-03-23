@@ -30,7 +30,7 @@
     height: auto;
     animation: loadingAnimation 5s ease-in infinite;
     border-radius: 50%;
-    border: 4px dotted var(--secondary-color);
+    border: 4px dotted var(--primary-color);
     padding: 10px;
     margin: 20px;
 }

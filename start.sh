@@ -14,7 +14,7 @@ cp -r ./build/* ../../backend/react-build
 cd ../..
 
 echo "ClipNet > Installing Python Requirements..."
-pip install -r ./backend/requirements.txt
+python -m pip install -r ./backend/requirements.txt
 
 echo "ClipNet > Starting FastAPI..."
-uvicorn backend:app
+python -m uvicorn backend:app

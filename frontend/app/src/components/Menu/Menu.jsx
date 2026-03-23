@@ -1,6 +1,6 @@
 import menuImg from "../../assets/icons/menu.png"
 import styles from "./styles.module.css"
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import DarkOverlay from "../DarkOverlay";
 
 function Menu() {

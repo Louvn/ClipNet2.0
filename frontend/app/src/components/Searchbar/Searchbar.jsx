@@ -1,13 +1,41 @@
 import styles from "./styles.module.css"
 import searchImg from "../../assets/icons/search.png";
-import Search from "./Searchbar";
+import deleteSearchImg from "../../assets/icons/delete-query.png";
+import { useState } from "react";
 
-function Searchbar() {
+function Searchbar({onChange, onBlur, onFocus}) {
+
+    const [query, setQuery] = useState("");
+
+    const handleChange = (e) => {
+
+        setQuery(e.target.value);
+
+        onChange(e);
+    }
+
     return <div className={styles.Searchbar}>
-        <input type="text" placeholder="Search ClipNet" className={styles.SearchbarInput}/>
+
         <button className={styles.SearchbarButton}>
-            <img src={searchImg} alt="Search" className={styles.SearchbarButtonImg} />
+            <img src={searchImg} alt="search" className={styles.SearchbarButtonImg} />
         </button>
+
+        <input 
+            type="text" 
+            placeholder="Search" 
+            className={styles.SearchbarInput}
+            value={query}
+            onChange={handleChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            />
+
+        {query.trim() && 
+        <button className={styles.SearchbarButton} onClick={() => setQuery("")}>
+            <img src={deleteSearchImg} alt="cancel search" className={styles.SearchbarButtonImg} />
+        </button>
+        }
+
     </div>
 }
 

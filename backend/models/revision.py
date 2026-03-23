@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 class Revision(Base):
     __tablename__ = "revisions"
     id = Column(Integer, primary_key=True)
-    name = Column(String(50))
+    title = Column(String(50))
     content = Column(Text)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     change_summary = Column(String(255))

@@ -1,8 +1,9 @@
-import {Link} from "react-router-dom"
-import styles from "./styles.module.css"
-import logoImg from "../../assets/logo-white.png"
-import Searchbar from "../Searchbar"
-import Menu from "../Menu"
+import {Link} from "react-router-dom";
+import styles from "./styles.module.css";
+import logoImg from "../../assets/logo-white.png";
+import Menu from "../Menu";
+import Streak from "../Streak";
+import InstantSearch from "../InstantSearch";
 
 function Navbar() {
     return <nav className={styles.Navbar}>
@@ -11,9 +12,12 @@ function Navbar() {
             <h1 className={styles.LogoText}>ClipNet</h1>
         </Link>
 
-        <Searchbar />
+        <InstantSearch />
 
-        <Menu />
+        <div className={styles.RightCorner}>
+            <Streak />
+            <Menu />
+        </div>
     </nav>
 }
 

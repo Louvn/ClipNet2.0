@@ -8,30 +8,31 @@ from sqlalchemy import and_
 
 def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_user), db = Depends(get_db)):
     "Editing an Article will create a new Revision and set it to the current_revision"
+    
     # Find the article to edit
     existing_article_with_id = db.query(Article).filter(Article.id == revision_data.article_id).first()
     if not existing_article_with_id:
         raise HTTPException(status_code=400, detail="There was no article with the provided ID")
     
     # Avoid name conflicts in subwikis
-    existing_article_with_name = (
+    existing_article_with_title = (
         db.query(Article)
         .join(Revision, Article.current_revision)
         .filter(
             and_(
-                Revision.name == revision_data.name,
+                Revision.title == revision_data.title,
                 Article.subwiki_id == existing_article_with_id.subwiki_id,
                 Article.id != revision_data.article_id
             )
         )
         .first()
     )
-    if existing_article_with_name:
-        raise HTTPException(status_code=400, detail="An Article with this name already exists in this SubWiki")
+    if existing_article_with_title:
+        raise HTTPException(status_code=400, detail="An Article with this name already exists")
     
     # Create new Revision
     new_revision = Revision(
-        name = revision_data.name,
+        title = revision_data.title,
         content = revision_data.content,
         change_summary = revision_data.change_summary,
         article = existing_article_with_id,

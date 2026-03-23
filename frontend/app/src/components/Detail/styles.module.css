@@ -1,0 +1,11 @@
+.Detail {
+    display: flex;
+    gap: 4px;
+}
+.DetailIcon {
+    height: 16px;
+}
+.DetailText {
+    color: #444444;
+    font-size: 0.8em;
+}

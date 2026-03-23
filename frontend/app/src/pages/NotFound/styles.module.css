@@ -1,0 +1,24 @@
+.NotFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin: 64px;
+}
+.NotFoundCode {
+    font-size: 10em;
+    color: var(--primary-color);
+    font-weight: 400;
+}
+.NotFoundTitle {
+    font-size: 2em;
+    font-weight: 550;
+    color: var(--secondary-color);
+    color: var(--primary-color);
+}
+.NotFoundQuote {
+    margin: 20px;
+    font-size: 1.3em;
+    color: rgb(54, 47, 47);
+    text-align: center;
+}

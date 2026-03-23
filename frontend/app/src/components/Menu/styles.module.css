@@ -16,7 +16,7 @@
     right: -250px;
     width: 250px;
     height: 100dvh;
-    background-color: var(--primary-color);
+    background-color: var(--bg-color);
     transition: right 0.3s ease-in-out;
     z-index: 110;
     box-shadow: -2px 0 5px var(--shadows);

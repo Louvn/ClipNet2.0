@@ -1,18 +1,14 @@
 :root {
-    --primary-color: #f4f4f4;
-    --secondary-color: #2c61a8;
-    --secondary-color-2: lightslategray;
-    --links: darkblue;
-    --buttons: lightgray;
-    --border-radius: 10px;
+    --bg-color: #f4f4f4;
+    --primary-color: #2c61a8;
     --text-color: #333;
+    --secondary-text-color: #aaa;
     --cards: snow;
-    --searchbar-border: #65778f;
-    --searchbar-bg: #35465e;
     --shadows: rgba(0, 0, 0, 0.25);
     --ui-font: "Exo";
-    --text-font: "Ubuntu";
-    --logo-font: "Orbitron";
+    --text-font: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Roboto, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+    --content-type-article-color: rgba(0, 0, 100, 0.5);
 }
 
 *, *::after, *::before {
@@ -23,11 +19,31 @@
 }
 
 body {
-    background-color: var(--primary-color);
     overflow: hidden;
     overflow-y: scroll;
+    background-color: #f2f2f2;
 }
 
 a {
     text-decoration: none;
+}
+
+hr {
+    color: #ccc;
+}
+
+.page {
+    min-height: 70vh;
+}
+
+.medium {
+    /* css class for divs width max 1100px centered in page */
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px;
+    padding-right: 32px;
 }

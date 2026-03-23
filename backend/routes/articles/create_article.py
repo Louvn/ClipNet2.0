@@ -13,20 +13,20 @@ def create_article(article_data: ArticleCreateData, db = Depends(get_db), user =
     "Creating an Article will create the Article itself and the first Revision."
 
     rev = aliased(Revision)
-    existing_article_with_name = (
+    existing_article_with_title = (
         db.query(Article)
         .join(rev, Article.current_revision)
         .filter(
-            rev.name == article_data.name
+            rev.title == article_data.title
         )
         .first()
     )
-    if existing_article_with_name:
+    if existing_article_with_title:
         raise HTTPException(status_code=400, detail="Article does already exists")
     
     # Create first revision
     new_revision = Revision(
-        name = article_data.name,
+        title = article_data.title,
         content = article_data.content,
         change_summary = "created this article",
         user = user
