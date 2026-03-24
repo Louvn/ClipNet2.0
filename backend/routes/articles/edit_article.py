@@ -28,7 +28,7 @@ def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_u
         .first()
     )
     if existing_article_with_title:
-        raise HTTPException(status_code=400, detail="An Article with this name already exists")
+        raise HTTPException(status_code=400, detail="An Article with this title already exists")
     
     # Create new Revision
     new_revision = Revision(

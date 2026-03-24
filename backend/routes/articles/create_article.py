@@ -45,7 +45,7 @@ def create_article(article_data: ArticleCreateData, db = Depends(get_db), user =
 
     # Generate a slug
     new_article.slug = generate_unique_slug(
-        new_revision.name, 
+        new_revision.title, 
         Article, 
         new_article.id
     )

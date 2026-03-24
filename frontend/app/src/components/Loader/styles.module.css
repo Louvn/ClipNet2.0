@@ -1,36 +1,25 @@
-@keyframes loadingAnimation {
-    10% {
-        transform: rotate(0);
-    }
-    25% {
-        transform: rotate(90deg);
-    }
-    35% {
-        transform: rotate(90deg);
-    }
-    50% {
-        transform: rotate(180deg);
-    }
-    60% {
-        transform: rotate(180deg);
-    }
-    75% {
-        transform: rotate(270deg);
-    }
-    85% {
-        transform: rotate(270deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.Loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid transparent;
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s ease infinite;
+    opacity: 0.7;
+}
+.LoaderDiv {
+    padding: 20px;
+    background-color: var(--cards);
+    border-radius: 4px;
+    box-shadow: 0 0 2px var(--shadows);
+    margin: 64px;
 }
 
-.Loader {
-    width: 100px;
-    height: auto;
-    animation: loadingAnimation 5s ease-in infinite;
-    border-radius: 50%;
-    border: 4px dotted var(--primary-color);
-    padding: 10px;
-    margin: 20px;
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

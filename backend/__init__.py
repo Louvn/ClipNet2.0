@@ -8,7 +8,8 @@ from fastapi import FastAPI
 app = FastAPI(
     title="ClipNet API",
     description="ClipNet is a modern Wiki System built with FastAPI",
-    version="1.0.0"
+    version="1.0.0",
+    root_path="/api"
 )
 
 from .routes.auth import router as auth_router

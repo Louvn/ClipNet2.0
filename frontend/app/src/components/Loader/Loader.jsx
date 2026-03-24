@@ -1,8 +1,9 @@
-import Logo from "../../assets/logo-blue.png"
 import styles from "./styles.module.css"
 
 function Loader() {
-    return <img src={Logo} alt="Loading..." className={styles.Loader} />
+    return <div className={styles.LoaderDiv}>
+        <div className={styles.Loader} />
+    </div>
 }
 
 export default Loader;

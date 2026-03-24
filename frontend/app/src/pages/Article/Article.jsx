@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import apiFetch from "../../utils/ApiFetch";
 import styles from "./styles.module.css";
 
 import ActionButton from "../../components/ActionButton";
 import Detail from "../../components/Detail";
+import Loader from "../../components/Loader";
 
 import likeIcon from "../../assets/icons/like.png";
 import reportIcon from "../../assets/icons/report.png";
@@ -22,22 +23,46 @@ function Article() {
     const { slug } = useParams();
     const [articleData, setArticleData] = useState({});
 
+    // state to control rendering preventing rendering non-existing keys
+    const [gotValidData, setGotValidData] = useState(false);
+
+    const navigate = useNavigate();
+
     // get article data on slug change
     useEffect(() => {
+
         apiFetch(
             `/get-article?${new URLSearchParams({slug: slug})}`,
             {
                 method: "GET"
             }
         )
+        // 404 redirect
+        .then(res => res.ok ? res : navigate("/404", { replace: true }))
+
         .then(response => response.json())
         .then(data => {
+
             setArticleData(data);
+            setGotValidData(true);
         })
+
+        .catch(error => {
+            console.error(error);
+        })
+
     }, [slug]);
 
-    
-    return <div className={`medium ${styles.ArticlePageRoot}`}>
+
+
+    // Loading Animation
+    if (!gotValidData) return <div className="medium">
+        <Loader />
+    </div>;
+
+
+    // Article Page 
+    if (gotValidData) return <div className={`medium ${styles.ArticlePageRoot}`}>
 
         <div className={styles.Sidebar}>
 

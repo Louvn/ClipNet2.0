@@ -3,6 +3,7 @@
     grid-template-columns: 1fr 4fr;
     gap: 32px;
     align-items: start; /* do NOT stretch */
+    padding-right: 64px;
 }
 
 .ArticleMain {

@@ -45,10 +45,14 @@ function App() {
                     element={
                         <ProtectedRoutes>
                             <Routes>
+
                                 <Route path="/" element={<Home />} />
                                 <Route path="/wiki/:slug" element={<Article />} />
 
+                                <Route path="/404" element={<NotFound />} />
+
                                 <Route path="*" element={<NotFound />} />
+
                             </Routes>
                         </ProtectedRoutes>
                     }
