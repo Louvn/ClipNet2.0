@@ -16,7 +16,4 @@ def get_article(provided_infos = Depends(ArticleGetData), user = Depends(get_cur
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
     
-    return {
-        "article": ArticleOutData.model_validate(article, from_attributes=True),
-        "current_revision": RevisionOutData.model_validate(article.current_revision, from_attributes=True)
-    }
+    return ArticleOutData.model_validate(article, from_attributes=True)

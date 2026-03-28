@@ -1,4 +1,5 @@
 from pydantic import BaseModel, constr
+from .content_type import ContentType
 
 class UserCreateData(BaseModel):
     username: str
@@ -6,6 +7,7 @@ class UserCreateData(BaseModel):
     token: str # For Permission-Only Logins
 
 class UserOutData(BaseModel):
+    type: ContentType = ContentType.user
     id: int
     username: str
 

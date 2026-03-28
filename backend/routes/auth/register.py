@@ -1,4 +1,4 @@
-from fastapi import Body, Depends, HTTPException
+from fastapi import Depends, HTTPException
 from backend.database import get_db
 from backend.schematics.user import UserCreateData
 from backend.models import User

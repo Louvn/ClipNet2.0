@@ -1,10 +1,9 @@
 from fastapi import APIRouter
-from fastapi.security import OAuth2PasswordBearer
 from .register import register
 from .login import login
 from backend.schematics.user import UserOutData
 
-router = APIRouter(tags=["authentification", "users"])
+router = APIRouter(tags=["authentification"])
 
 router.add_api_route(
     "/register",

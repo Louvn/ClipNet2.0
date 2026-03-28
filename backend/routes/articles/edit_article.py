@@ -21,7 +21,6 @@ def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_u
         .filter(
             and_(
                 Revision.title == revision_data.title,
-                Article.subwiki_id == existing_article_with_id.subwiki_id,
                 Article.id != revision_data.article_id
             )
         )
