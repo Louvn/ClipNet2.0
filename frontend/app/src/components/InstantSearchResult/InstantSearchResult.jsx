@@ -1,10 +1,15 @@
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
-function InstantSearchResult() {
-    return <div className={styles.InstantSearchResult}>
-        <span className={styles.InstantSearchResultTitle}>Example Content on this Site</span>
-        <span className={styles.InstantSearchResultAuthor}>by Louvn, Henri and Alex</span>
-    </div>
+function InstantSearchResult({type, title, author, link}) {
+
+    let typeClass = "";
+    if (type === "user") typeClass = styles.User;
+
+    return <Link to={link} className={`${styles.InstantSearchResult} ${typeClass}`}>
+        <span className={styles.InstantSearchResultTitle}>{title}</span>
+        <span className={styles.InstantSearchResultAuthor}>{author}</span>
+    </Link>
 }
 
 export default InstantSearchResult;

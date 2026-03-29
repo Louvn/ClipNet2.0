@@ -9,10 +9,20 @@
 }
 .LoaderDiv {
     padding: 20px;
+    width: fit-content;
+    height: fit-content;
     background-color: var(--cards);
     border-radius: 4px;
     box-shadow: 0 0 2px var(--shadows);
     margin: 64px;
+
+    align-self: center;
+    justify-self: center;
+}
+
+.LoaderDiv.Hidden {
+    background: transparent;
+    box-shadow: none;
 }
 
 @keyframes spin {

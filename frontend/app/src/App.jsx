@@ -33,6 +33,7 @@ function App() {
     
     return <>
         {isLoggedIn && <Navbar />}
+
         <div className="page">
             <Routes>
 

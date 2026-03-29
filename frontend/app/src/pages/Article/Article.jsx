@@ -51,7 +51,7 @@ function Article() {
             console.error(error);
         })
 
-    }, [slug]);
+    }, [navigate, slug]);
 
 
 

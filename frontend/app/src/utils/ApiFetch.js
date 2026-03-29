@@ -4,7 +4,8 @@ async function apiFetch(url, options={}) {
         "/api" + url, {
             headers: {
                 ...options.headers,
-                "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                "Authorization": `Bearer ${localStorage.getItem("jwt")}`,
+                "Content-Type": "application/json"
             },
             ...options
         }

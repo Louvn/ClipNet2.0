@@ -16,3 +16,8 @@
     font-size: 0.8em;
     color: var(--secondary-text-color);
 }
+
+
+.InstantSearchResult.User {
+    border-color: var(--content-type-user-color);
+}
