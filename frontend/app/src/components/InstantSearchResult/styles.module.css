@@ -2,6 +2,7 @@
     border-left: 4px solid var(--content-type-article-color);
     padding: 8px;
     transition: all 0.3s ease-out;
+    animation: slideInUp 0.3s ease-out;
 }
 .InstantSearchResult:hover  {
     background-color: rgba(0,0,0,.1);
@@ -20,4 +21,16 @@
 
 .InstantSearchResult.User {
     border-color: var(--content-type-user-color);
+}
+
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -1,7 +1,6 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
-import apiFetch from "../../utils/ApiFetch";
+import { Navigate, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
+import { useArticle } from "../../hooks/useArticle";
 
 import ActionButton from "../../components/ActionButton";
 import Detail from "../../components/Detail";
@@ -20,56 +19,30 @@ import updatedIcon from "../../assets/icons/updated.png";
 
 
 function Article() {
+
     const { slug } = useParams();
-    const [articleData, setArticleData] = useState({});
 
-    // state to control rendering preventing rendering non-existing keys
-    const [gotValidData, setGotValidData] = useState(false);
-
-    const navigate = useNavigate();
-
-    // get article data on slug change
-    useEffect(() => {
-
-        apiFetch(
-            `/get-article?${new URLSearchParams({slug: slug})}`,
-            {
-                method: "GET"
-            }
-        )
-        // 404 redirect
-        .then(res => res.ok ? res : navigate("/404", { replace: true }))
-
-        .then(response => response.json())
-        .then(data => {
-
-            setArticleData(data);
-            setGotValidData(true);
-        })
-
-        .catch(error => {
-            console.error(error);
-        })
-
-    }, [navigate, slug]);
+    const {article, loading, status} = useArticle(slug);
 
 
 
     // Loading Animation
-    if (!gotValidData) return <div className="medium">
+    if (loading) return <div className="medium">
         <Loader />
     </div>;
 
+    if (status === 404) return <Navigate to="/404" />;
+
 
     // Article Page 
-    if (gotValidData) return <div className={`medium ${styles.ArticlePageRoot}`}>
+    if (article) return <div className={`medium ${styles.ArticlePageRoot}`}>
 
         <div className={styles.Sidebar}>
 
             <section className={styles.SidebarSection}>
                 <h2>Details</h2>
 
-                <Detail text={`revision #${articleData.current_revision.id}`} icon={revisionIcon} />
+                <Detail text={`revision #${article.current_revision.id}`} icon={revisionIcon} />
                 <Detail text="created 4 days ago by Louvn" icon={createdIcon} />
                 <Detail text="updated 1 hour ago by Louvn" icon={updatedIcon} />
             </section>
@@ -92,9 +65,9 @@ function Article() {
         </div>
 
         <main className={styles.ArticleMain}>
-            <h1 className={styles.ArticleMainTitle}>{articleData.current_revision.title}</h1>
+            <h1 className={styles.ArticleMainTitle}>{article.current_revision.title}</h1>
             <hr />
-            <div className={styles.ArticleMainContent}>{articleData.current_revision.content}</div>
+            <div className={styles.ArticleMainContent}>{article.current_revision.content}</div>
         </main>
 
         <div className={styles.CommentSection}>

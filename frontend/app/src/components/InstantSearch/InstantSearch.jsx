@@ -1,9 +1,9 @@
 import styles from "./styles.module.css";
 import Searchbar from "../Searchbar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import InstantSearchResult from "../InstantSearchResult";
-import apiFetch from "../../utils/ApiFetch";
+import { useSearch } from "../../hooks/useSearch";
 import Loader from "../Loader";
 
 function InstantSearch() {
@@ -11,32 +11,6 @@ function InstantSearch() {
     const [showInstantSearch, setShowInstantSearch] = useState(false);
 
     const [query, setQuery] = useState("");
-
-    const [results, setResults] = useState([]);
-    const [gotValidData, setGotValidData] = useState(false);
-
-
-    // load results
-    useEffect(() => {
-
-        if (!query) return;
-        
-        // to show loading animation EVERY time
-        setGotValidData(false);
-        
-        apiFetch("/search", { 
-                method: "POST",
-                body: JSON.stringify({ query: query })
-            })
-
-            .then(res => res.json())
-            .then(data => {
-                setResults(data.slice(0, 4));
-
-                setGotValidData(true);
-            })
-
-    }, [query]);
 
 
     // handle changes in search query
@@ -62,6 +36,8 @@ function InstantSearch() {
         }
     }
 
+    // get results via custom hook
+    const { results, loading } = useSearch(query);
 
 
     return <div className={`${styles.InstantSearch} ${showInstantSearch ? styles.Show : ""}`}>
@@ -73,7 +49,7 @@ function InstantSearch() {
 
         <div className={styles.InstantSearchResults}>
 
-            {gotValidData && results.map(result => {
+            {!loading && results?.map(result => {
 
                 if (result.type === "article") return <InstantSearchResult 
                     type={result.type} 
@@ -91,10 +67,9 @@ function InstantSearch() {
             })}
 
     
-            {(results.length === 0 && gotValidData)&& <em className={styles.NothingFound}>Nothing found</em>}
+            {(results?.length === 0 && !loading) && <em className={styles.NothingFound}>Nothing found</em>}
 
-
-            {!gotValidData && <Loader divHidden />}
+            {loading && <Loader divHidden />}
 
             <Link to="#" className={styles.ShowAll}>Show All</Link>
         </div>
