@@ -1,11 +1,13 @@
 :root {
-    --bg-color: #f4f4f4;
-    --primary-color: #2c61a8;
-    --text-color: #333;
+    --bg-color: #eee;
+    --primary-color: #30638E;
+    --secondary-color: #555;
+    --accent-color: #45739a;
+    --text-color: #050315;
     --secondary-text-color: #aaa;
     --cards: snow;
     --shadows: rgba(0, 0, 0, 0.25);
-    --ui-font: "Exo";
+    --ui-font: "Inter";
     --text-font: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Roboto, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
     --content-type-article-color: rgba(0, 0, 100, 0.5);
@@ -22,7 +24,12 @@
 body {
     overflow: hidden;
     overflow-y: scroll;
-    background-color: #f2f2f2;
+    background-color: var(--bg-color);
+}
+
+html {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 64px;
 }
 
 a, Link {
@@ -32,6 +39,7 @@ a, Link {
 
 hr {
     color: #ccc;
+    margin: 8px 0;
 }
 
 

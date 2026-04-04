@@ -8,6 +8,7 @@
     opacity: 0.5;
     min-width: 60%;
     width: fit-content;
+    padding: 4px;
 }
 .ActionButton:hover {
     background-color: rgba(0,0,0,.1);

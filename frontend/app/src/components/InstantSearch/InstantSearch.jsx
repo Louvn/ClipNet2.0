@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import Searchbar from "../Searchbar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import InstantSearchResult from "../InstantSearchResult";
+import InstantSearchResult from "../SearchResult";
 import { useSearch } from "../../hooks/useSearch";
 import Loader from "../Loader";
 
@@ -49,22 +49,10 @@ function InstantSearch() {
 
         <div className={styles.InstantSearchResults}>
 
-            {!loading && results?.map(result => {
+            {!loading && results?.map(result => (
 
-                if (result.type === "article") return <InstantSearchResult 
-                    type={result.type} 
-                    title={result.current_revision.title} 
-                    author={`by ${result.op.username}`} 
-                    link={`/wiki/${result.slug}`} />;
-
-                if (result.type === "user") return <InstantSearchResult 
-                    type={result.type} 
-                    title={`@${result.username}`} 
-                    author="" 
-                    link={`/community/user/`} />;
-
-                return null;
-            })}
+                <InstantSearchResult data={result} key={`${result.type}${result.id}`} />
+            ))}
 
     
             {(results?.length === 0 && !loading) && <em className={styles.NothingFound}>Nothing found</em>}

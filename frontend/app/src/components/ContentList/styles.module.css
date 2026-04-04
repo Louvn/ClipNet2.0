@@ -1,0 +1,21 @@
+.ListCard {
+    background-color: var(--cards);
+    min-height: 400px;
+    box-shadow: 0 0 4px var(--shadows);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.Results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.Title {
+    font-size: 1.4em;
+    font-weight: 400;
+    color: var(--primary-color)
+}

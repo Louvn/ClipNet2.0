@@ -18,7 +18,7 @@
     height: 100dvh;
     background-color: var(--bg-color);
     transition: right 0.3s ease-in-out;
-    z-index: 110;
+    z-index: 11;
     box-shadow: -2px 0 5px var(--shadows);
 }
 .Menu.Open {

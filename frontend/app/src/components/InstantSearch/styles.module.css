@@ -24,9 +24,11 @@
     flex-direction: column;
     gap: 12px;
     transition: all 0.2s ease-out;
+    pointer-events: none;
 }
 .InstantSearch.Show > .InstantSearchResults {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .ShowAll {

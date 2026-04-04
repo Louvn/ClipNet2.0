@@ -1,0 +1,3 @@
+<a href="https://www.freepik.com/free-vector/flat-halloween-cat-illustration_17895725.htm#fromView=search&page=2&position=4&uuid=7479f9e9-a086-4fd0-88eb-986549739272&query=magic+cat">Image by freepik</a>
+
+<a href="https://de.freepik.com/vektoren-kostenlos/suesser-ritter-in-stahlruestung-springt-mit-dem-schwert-zeichentrickfilm-vektor-ikon-illustration-menschen-urlaub-isoliert_416991592.htm#fromView=search&page=1&position=46&uuid=f5d43ab1-bde3-490e-b146-52104b9f2026&query=knight+cartoon+hand+drawn">Bild von catalyststuff auf Freepik</a>
