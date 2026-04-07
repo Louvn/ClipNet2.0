@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import SearchResult from "../SearchResult";
 import Loader from "../Loader";
 
-function ContentList({query, filters, sort, title, showFullContent=false}) {
+function ContentList({query, filters, sort, title, maxResults=4, showFullContent=false}) {
 
     const { results, loading } = useSearch(query);
 
@@ -12,7 +12,7 @@ function ContentList({query, filters, sort, title, showFullContent=false}) {
         <hr />
 
         <div className={styles.Results}>
-            {!loading && results?.map(result => (
+            {!loading && results?.slice(0, maxResults).map(result => (
                 <SearchResult 
                     data={result}
                     key={`${result.type}${result.id}`}

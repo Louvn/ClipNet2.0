@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Article from "./pages/Article";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
     const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false);
@@ -33,6 +34,8 @@ function App() {
     
     return <>
         {isLoggedIn && <Navbar />}
+
+        <ScrollToTop />
 
         <div className="page">
             <Routes>

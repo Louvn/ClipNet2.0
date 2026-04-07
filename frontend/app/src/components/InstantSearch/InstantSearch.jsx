@@ -43,13 +43,13 @@ function InstantSearch() {
     return <div className={`${styles.InstantSearch} ${showInstantSearch ? styles.Show : ""}`}>
         <Searchbar 
             onChange={handleChange}
-            onBlur={() => setShowInstantSearch(false)}
+            onBlur={() => setTimeout(() => setShowInstantSearch(false), 200)}
             onFocus={handleFocus}
             />
 
         <div className={styles.InstantSearchResults}>
 
-            {!loading && results?.map(result => (
+            {!loading && results?.slice(0, 4).map(result => (
 
                 <InstantSearchResult data={result} key={`${result.type}${result.id}`} />
             ))}
