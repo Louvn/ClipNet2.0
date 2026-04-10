@@ -1,6 +1,6 @@
 from .ranking import rank
 from ...schematics.sorting_criteria import SortingCriteria
-from .dynamic_columns import PRIMARY_CONTENT_FOR_RANKING, SECONDARY_CONTENT_FOR_RANKING, CREATED_AT_COLUMN
+from .dynamic_columns import *
 from ...utils.deep_getattr import deep_getattr
 from datetime import datetime
 
@@ -41,6 +41,17 @@ def sort_results(query, results, criteria):
                 results,
                 key=lambda r: deep_getattr(r, CREATED_AT_COLUMN[r.type])
             )
+
+        
+        case SortingCriteria.last_updated_first:
+
+            # sort by datetime of last change (last updated first)
+            sorted_results = sorted(
+                results,
+                key=lambda r: deep_getattr(r, LAST_UPDATED_AT_COLUMN[r.type]),
+                reverse=True
+            )
     
+
 
     return sorted_results

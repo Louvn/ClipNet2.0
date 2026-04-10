@@ -33,8 +33,22 @@ function Home() {
 
         <div className={styles.MainSection} >
 
-            <ContentList query="s" title="Lustige Artikel"/>
-            <ContentList query="s" title="Bessere Artikel" showFullContent />
+            <ContentList 
+                query="" 
+                title="Latest Articles"
+                filters={{ content_types: ["article"] }}
+                sort_by="newest_first" 
+                showFullContent
+                />
+
+            <ContentList 
+                query="" 
+                title="Latest Changes" 
+                filters={{ content_types: ["article"] }}
+                sort_by="last_updated_first" 
+                showFullContent 
+                />
+
         </div>
 
     </div>

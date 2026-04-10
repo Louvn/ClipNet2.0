@@ -10,7 +10,8 @@ router = APIRouter(tags=["articles"])
 router.add_api_route(
     "/create-article",
     create_article,
-    methods=["POST"]
+    methods=["POST"],
+    response_model=ArticleOutData
 )
 
 router.add_api_route(

@@ -35,6 +35,7 @@ def create_article(article_data: ArticleCreateData, db = Depends(get_db), user =
     # Create Article
     new_article = Article(
         current_revision = new_revision,
+        first_revision = new_revision,
         revisions = [new_revision],
         slug = "",
         op = user
@@ -56,7 +57,4 @@ def create_article(article_data: ArticleCreateData, db = Depends(get_db), user =
     db.refresh(new_article)
     db.refresh(new_revision)
     
-    return {
-        "article": ArticleOutData.model_validate(new_article, from_attributes=True), 
-        "current_revision": RevisionOutData.model_validate(new_revision, from_attributes=True)
-    }
+    return new_article

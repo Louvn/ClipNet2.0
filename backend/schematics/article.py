@@ -14,6 +14,7 @@ class ArticleOutData(BaseModel):
     slug: str
     op: UserOutData
     current_revision: RevisionOutData
+    first_revision: RevisionOutData
 
 class ArticleGetData(BaseModel):
     id: Optional[int] = Field(None)

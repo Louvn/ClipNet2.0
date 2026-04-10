@@ -15,11 +15,16 @@ PRIMARY_CONTENT_FOR_RANKING = {
 }
 
 SECONDARY_CONTENT_FOR_RANKING = {
-    ContentType.article: "current_revision.content",
+    ContentType.article: "current_revision.content", 
     ContentType.user: "username" # TODO: Change this to description as soon as I implemented it
 }
 
 CREATED_AT_COLUMN = {
+    ContentType.article: "first_revision.created_at",
+    ContentType.user: "created_at"
+}
+
+LAST_UPDATED_AT_COLUMN = {
     ContentType.article: "current_revision.created_at",
     ContentType.user: "created_at"
 }

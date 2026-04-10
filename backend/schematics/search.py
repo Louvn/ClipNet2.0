@@ -10,6 +10,6 @@ class SearchFilters(BaseModel):
 
 class SearchQueryData(BaseModel):
     
-    query: constr(min_length=1)
+    query: str # can be empty
     filters: SearchFilters = Field(default_factory=SearchFilters)
     sort_by: SortingCriteria = SortingCriteria.relevance
