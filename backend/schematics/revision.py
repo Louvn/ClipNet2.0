@@ -1,4 +1,5 @@
 from pydantic import BaseModel, constr
+from datetime import datetime
 
 class RevisionCreateData(BaseModel):
     title: constr(min_length=1, max_length=50)
@@ -12,3 +13,4 @@ class RevisionOutData(BaseModel):
     content: str
     user_id: int
     change_summary: str
+    created_at: datetime
