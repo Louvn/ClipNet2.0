@@ -24,7 +24,13 @@ function SearchResult({data, showContent=false}) {
     return <Link to={link} className={`${styles.SearchResult} ${styles[data.type]} ${showContent ? styles.showContent : ""}`}>
         <h3 className={styles.SearchResultTitle}>{title}</h3>
         <span className={styles.SearchResultAuthor}>{info}</span>
-        <p className={styles.SearchResultContent}>{content}</p>
+        <p className={styles.SearchResultContent}>
+            {
+                content.split(" ").length > 20
+                ? content.split(" ").slice(0, 20).join(" ") + " ..."
+                : content
+            }
+        </p>
     </Link>
 }
 

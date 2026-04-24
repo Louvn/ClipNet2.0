@@ -82,7 +82,6 @@
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     padding: 32px;
     gap: 20px;
-    scroll-snap-align: start;
 }
 
 @keyframes shapeWorld {

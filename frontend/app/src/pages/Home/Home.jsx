@@ -1,19 +1,26 @@
 import styles from "./styles.module.css";
 import heroSectionIllustration from "../../assets/illustrations/knight.png";
 import ContentList from "../../components/ContentList";
+import { useStats } from "../../hooks/useStats";
+import Loader from "../../components/Loader";
 
 function Home() {
+
+    const {stats, loading} = useStats();
+
+
     return <div className={`medium ${styles.HomePage}`}>
 
+        {!loading &&
         <div className={styles.HeroSection}>
 
             <div className={styles.HeroSectionLeft}>
                 <h1 className={styles.HeroSectionHeading}>
-                    let your <span className={styles.RegularColor}>Creativity</span>
+                    It's <span className={styles.RegularColor}>{stats.articles}</span> Articles
                     <br />
-                    <span className={styles.ItalicTransparent}>flow</span> and shape
+                    Made by <span className={styles.ItalicTransparent}>{stats.users}</span> Users.
                     <br />
-                    this <span className={styles.Underlined}>World</span>
+                    Go <span className={styles.Underlined}>Explore</span> it!
                 </h1>
 
                 <div>
@@ -26,6 +33,9 @@ function Home() {
 
 
         </div>
+        }
+
+        {loading && <Loader />}
 
         <svg viewBox="0 0 1440 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className={styles.Wave}>
             <path d="M0,80 C240,150 480,0 720,80 C960,150 1200,0 1440,80 L1440,150 L0,150 Z" />

@@ -25,6 +25,7 @@
 .SearchResultContent {
     display: none;
     font-size: 0.9em;
+    font-family: var(--text-font);
 }
 
 .SearchResult.showContent > .SearchResultAuthor {

@@ -10,8 +10,8 @@
 .Results {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 16px;
+    gap: 16px;
+    margin-top: 20px;
 }
 
 .Title {

@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import SearchResult from "../SearchResult";
 import Loader from "../Loader";
 
-function ContentList({query, filters, sort_by, title, maxResults=4, showFullContent=false}) {
+function ContentList({query, filters, sort_by, title, maxResults=3, showFullContent=false}) {
 
     const { results, loading } = useSearch(query, filters, sort_by);
 

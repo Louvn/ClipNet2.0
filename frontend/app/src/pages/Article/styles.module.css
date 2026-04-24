@@ -71,6 +71,7 @@
     border: 1px solid #ccc;
     padding: 4px;
     transition: all 0.3s ease-out;
+    color: var(--primary-color);
 }
 .AddCommentButton:hover {
     background-color: var(--cards);

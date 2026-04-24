@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Article from "./pages/Article";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import ArticleEditor from "./pages/ArticleEditor";
 
 function App() {
     const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false);
@@ -52,6 +53,7 @@ function App() {
 
                                 <Route path="/" element={<Home />} />
                                 <Route path="/wiki/:slug" element={<Article />} />
+                                <Route path="/editor/:slug" element={<ArticleEditor />} />
 
                                 <Route path="/404" element={<NotFound />} />
 

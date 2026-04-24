@@ -15,10 +15,12 @@ app = FastAPI(
 from .routes.auth import router as auth_router
 from .routes.articles import router as articles_router
 from .routes.search import router as search_router
+from .routes.statistics import router as stats_router
 
 app.include_router(auth_router)
 app.include_router(articles_router)
 app.include_router(search_router)
+app.include_router(stats_router)
 
 # -- Create db -- 
 from .database import Base, engine
