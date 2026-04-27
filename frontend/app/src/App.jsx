@@ -54,6 +54,7 @@ function App() {
                                 <Route path="/" element={<Home />} />
                                 <Route path="/wiki/:slug" element={<Article />} />
                                 <Route path="/editor/:slug" element={<ArticleEditor />} />
+                                <Route path="/editor" element={<ArticleEditor />} />
 
                                 <Route path="/404" element={<NotFound />} />
 

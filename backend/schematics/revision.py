@@ -4,7 +4,7 @@ from datetime import datetime
 class RevisionCreateData(BaseModel):
     title: constr(min_length=1, max_length=50)
     content: str
-    change_summary: constr(min_length=10, max_length=255)
+    change_summary: constr(max_length=255)
     article_id: int
 
 class RevisionOutData(BaseModel):

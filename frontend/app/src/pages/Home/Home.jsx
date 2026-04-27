@@ -2,7 +2,6 @@ import styles from "./styles.module.css";
 import heroSectionIllustration from "../../assets/illustrations/knight.png";
 import ContentList from "../../components/ContentList";
 import { useStats } from "../../hooks/useStats";
-import Loader from "../../components/Loader";
 
 function Home() {
 

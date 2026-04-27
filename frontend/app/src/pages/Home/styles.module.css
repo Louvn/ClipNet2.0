@@ -1,6 +1,5 @@
 .HomePage {
     padding: 0;
-    padding-top: 64px;
 }
 
 .Wave {
@@ -114,5 +113,6 @@
         box-shadow: 0 0 4px var(--shadows);
         border-radius: 20px;
         overflow: hidden;
+        padding-top: 64px;
     }
 }
