@@ -14,6 +14,14 @@ def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_u
     if not existing_article_with_id:
         raise HTTPException(status_code=400, detail="There was no article with the provided ID")
     
+    # Changes made?
+    if (
+        existing_article_with_id.current_revision.title == revision_data.title 
+        and existing_article_with_id.current_revision.content == revision_data.content
+        ):
+        raise HTTPException(status_code=400, detail="There were no changes made")
+
+    
     # Avoid name conflicts in subwikis
     existing_article_with_title = (
         db.query(Article)

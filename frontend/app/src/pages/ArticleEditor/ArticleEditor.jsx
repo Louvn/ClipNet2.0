@@ -1,4 +1,4 @@
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useArticle } from "../../hooks/useArticle";
 import { useEffect, useState } from "react";
@@ -8,9 +8,10 @@ import Loader from "../../components/Loader";
 
 function ArticleEditor() {
 
+    const navigate = useNavigate();
     const {slug} = useParams();
-    const isEdit = !!slug;
     const {article, loading, status} = useArticle(slug);
+    const isEdit = !!slug;
 
     // states changed by the Editor
     const [content, setContent] = useState("");
@@ -26,6 +27,11 @@ function ArticleEditor() {
     }, [article]);
 
     
+    // redirect after publishing changes
+    const afterPublish = () => {
+        navigate(`/wiki/${slug}`);
+    }
+
     const createArticle = () => {
 
         const data = {
@@ -36,7 +42,7 @@ function ArticleEditor() {
         apiFetch("/create-article", {method: "POST", body: JSON.stringify(data)})
             .then(res => {
                 if (res.ok) {
-                    alert("Published!")
+                    afterPublish();
                 }
             })
     }
@@ -53,7 +59,7 @@ function ArticleEditor() {
         apiFetch("/edit-article", {method: "PUT", body: JSON.stringify(data)})
             .then(res => {
                 if (res.ok) {
-                    alert("Published!")
+                    afterPublish();
                 }
             })
     }
@@ -64,16 +70,16 @@ function ArticleEditor() {
 
 
     // loading animation if editing existing article
-    if (loading && isEdit) return <div className="medium"> 
+    if (loading && isEdit) return <Medium> 
         <Loader />
-    </div>;
+    </Medium>;
 
     // not found
     if (status === 404) return <Navigate to="/404" />;
 
 
     // view after loading
-    return <div className="medium">
+    return <Medium>
         
         <button onClick={publish}>Publish</button>
 
@@ -85,15 +91,20 @@ function ArticleEditor() {
             onTitleChange={(e) => setTitle(e.target.value)}
             />
 
-        <input 
-            type="text" 
-            placeholder="Explain your changes" 
-            maxLength={255} 
-            onChange={(e) => setChangeSummary(e.target.value)}
-            disabled={!isEdit} // no change_summary on first revision
-            />
+        <fieldset>
+            <legend>Change Summary - {changeSummary.length}/255</legend>
 
-    </div>
+            <input 
+                type="text" 
+                placeholder="Explain your changes" 
+                maxLength={255} 
+                onChange={(e) => setChangeSummary(e.target.value)}
+                disabled={!isEdit} // no change_summary on first revision
+                />
+
+        </fieldset>
+
+    </Medium>
 }
 
 export default ArticleEditor;

@@ -8,7 +8,7 @@ function Home() {
     const {stats, loading} = useStats();
 
 
-    return <div className={`medium ${styles.HomePage}`}>
+    return <Medium className={styles.HomePage}>
 
         <div className={styles.HeroSection}>
 
@@ -57,7 +57,7 @@ function Home() {
 
         </div>
 
-    </div>
+    </Medium>
 }
 
 export default Home;

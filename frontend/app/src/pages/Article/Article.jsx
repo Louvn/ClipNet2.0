@@ -1,4 +1,4 @@
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useArticle } from "../../hooks/useArticle";
 
@@ -16,6 +16,7 @@ import permissionsIcon from "../../assets/icons/permissions.png";
 import createdIcon from "../../assets/icons/created.png"
 import revisionIcon from "../../assets/icons/revision.png";
 import updatedIcon from "../../assets/icons/updated.png";
+import Medium from "../../components/Medium";
 
 
 function Article() {
@@ -23,19 +24,19 @@ function Article() {
     const { slug } = useParams();
 
     const {article, loading, status} = useArticle(slug);
-
+    const navigate = useNavigate();
 
 
     // Loading Animation
-    if (loading) return <div className="medium">
+    if (loading) return <Medium>
         <Loader />
-    </div>;
+    </Medium>;
 
     if (status === 404) return <Navigate to="/404" />;
 
 
     // Article Page 
-    if (article) return <div className={`medium ${styles.ArticlePageRoot}`}>
+    if (article) return <Medium className={styles.ArticlePageRoot}>
 
         <div className={styles.Sidebar}>
 
@@ -56,7 +57,7 @@ function Article() {
 
                 <hr />
 
-                <ActionButton text="edit" icon={editIcon} />
+                <ActionButton text="edit" icon={editIcon} onClick={() => navigate(`/editor/${slug}`)} />
                 <ActionButton text="revisions" icon={revisionsIcon} />
                 <ActionButton text="permissions" icon={permissionsIcon} />
 
@@ -83,7 +84,7 @@ function Article() {
 
         </div>
 
-    </div>
+    </Medium>
 }
 
 export default Article;
