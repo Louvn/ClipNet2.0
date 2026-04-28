@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import heroSectionIllustration from "../../assets/illustrations/knight.png";
 import ContentList from "../../components/ContentList";
 import { useStats } from "../../hooks/useStats";
+import Medium from "../../components/Medium";
 
 function Home() {
 
@@ -9,7 +10,7 @@ function Home() {
 
 
     return <Medium className={styles.HomePage}>
-
+        
         <div className={styles.HeroSection}>
 
             <div className={styles.HeroSectionLeft}>

@@ -17,6 +17,7 @@ import createdIcon from "../../assets/icons/created.png"
 import revisionIcon from "../../assets/icons/revision.png";
 import updatedIcon from "../../assets/icons/updated.png";
 import Medium from "../../components/Medium";
+import SimpleButton from "../../components/SimpleButton";
 
 
 function Article() {
@@ -38,7 +39,7 @@ function Article() {
     // Article Page 
     if (article) return <Medium className={styles.ArticlePageRoot}>
 
-        <div className={styles.Sidebar}>
+        <aside className={styles.Sidebar}>
 
             <section className={styles.SidebarSection}>
                 <h2>Details</h2>
@@ -51,19 +52,19 @@ function Article() {
             <section className={`${styles.SidebarSection} ${styles.Actions}`}>
                 <h2>Actions</h2>
 
-                <ActionButton text="2" icon={likeIcon}/>
-                <ActionButton text="share" icon={shareIcon} />
-                <ActionButton text="report" icon={reportIcon} />
+                <ActionButton icon={likeIcon}>2</ActionButton>
+                <ActionButton icon={shareIcon}>share</ActionButton>
+                <ActionButton icon={reportIcon}>report</ActionButton>
 
                 <hr />
 
-                <ActionButton text="edit" icon={editIcon} onClick={() => navigate(`/editor/${slug}`)} />
-                <ActionButton text="revisions" icon={revisionsIcon} />
-                <ActionButton text="permissions" icon={permissionsIcon} />
+                <ActionButton icon={editIcon} onClick={() => navigate(`/editor/${slug}`)}>edit</ActionButton>
+                <ActionButton icon={revisionsIcon}>revisions</ActionButton>
+                <ActionButton icon={permissionsIcon}>permissions</ActionButton>
 
             </section>
 
-        </div>
+        </aside>
 
         <main className={styles.ArticleMain}>
             <h1 className={styles.ArticleMainTitle}>{article.current_revision.title}</h1>
@@ -74,7 +75,7 @@ function Article() {
         <div className={styles.CommentSection}>
             <h2>
                 Comment
-                <button className={styles.AddCommentButton}>Add Comment</button>
+                <SimpleButton>Add Comment</SimpleButton>
             </h2>
             <hr />
 

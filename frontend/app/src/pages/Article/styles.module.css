@@ -66,19 +66,6 @@
     padding: 4px;
 }
 
-.AddCommentButton {
-    background: none;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    padding: 4px;
-    transition: all 0.3s ease-out;
-    color: var(--primary-color);
-}
-.AddCommentButton:hover {
-    background-color: var(--cards);
-    box-shadow: 0 0 2px var(--shadows);
-}
-
 .Comments {
     display: flex;
     flex-direction: column;

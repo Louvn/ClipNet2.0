@@ -20,7 +20,7 @@ function Menu() {
             >Logout</button>
         </menu>
 
-        {isMenuOpen && <DarkOverlay onclick={() => setMenuOpen(false)} />}
+        {isMenuOpen && <DarkOverlay onClick={() => setMenuOpen(false)} />}
     </>
 }
 

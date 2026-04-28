@@ -1,0 +1,23 @@
+.Formatting {
+    display: flex;
+    gap: 48px;
+    border-bottom: 1px #444444 solid;
+    border-top: 1px #444444 solid;
+    padding: 4px 20px;
+}
+.Formatting section {
+    display: flex;
+    gap: 8px;
+}
+
+.FormattingOption {
+    all: unset;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.FormattingOption:hover {
+    background-color: rgba(0,0,0,.05);
+}
+.FormattingOption img {
+    height: 24px;
+}

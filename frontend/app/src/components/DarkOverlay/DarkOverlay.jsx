@@ -1,7 +1,7 @@
 import styles from "./styles.module.css"
 
-function DarkOverlay({ onclick }) {
-    return <div className={styles.Overlay} onClick={onclick}></div>
+function DarkOverlay({ onClick }) {
+    return <div className={styles.Overlay} onClick={onClick}></div>
 }
 
 export default DarkOverlay;

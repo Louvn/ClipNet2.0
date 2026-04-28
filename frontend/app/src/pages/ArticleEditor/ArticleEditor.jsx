@@ -4,7 +4,10 @@ import { useArticle } from "../../hooks/useArticle";
 import { useEffect, useState } from "react";
 import WikiTextEditor from "../../components/WikiTextEditor";
 import apiFetch from "../../utils/ApiFetch";
+import Medium from "../../components/Medium";
 import Loader from "../../components/Loader";
+import PopUp from "../../components/PopUp";
+import SimpleButton from "../../components/SimpleButton";
 
 function ArticleEditor() {
 
@@ -17,6 +20,7 @@ function ArticleEditor() {
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
     const [changeSummary, setChangeSummary] = useState("");
+    const [isPopUpOpen, setPopUpOpen] = useState(false);
 
     // set them after loading complete (in case of creating new they will be: "")
     useEffect(() => {
@@ -29,7 +33,7 @@ function ArticleEditor() {
     
     // redirect after publishing changes
     const afterPublish = () => {
-        navigate(`/wiki/${slug}`);
+        navigate(isEdit ? `/wiki/${slug}` : "/");
     }
 
     const createArticle = () => {
@@ -79,9 +83,25 @@ function ArticleEditor() {
 
 
     // view after loading
-    return <Medium>
+    return <Medium className={styles.EditorPageRoot}>
         
-        <button onClick={publish}>Publish</button>
+        <div className={styles.TopBar}>
+
+            <SimpleButton 
+                onClick={() => navigate(isEdit ? `/wiki/${slug}` : "/")} 
+                className={styles.TopBarButton}
+                >
+                ← Back
+            </SimpleButton>
+
+            <span className={styles.Counters}>{content.length} characters, {content ? content.split(" ").length : 0} words</span>
+
+            <SimpleButton onClick={() => setPopUpOpen(true)} className={styles.TopBarButton}>
+                Publish
+            </SimpleButton>
+
+        </div>
+
 
         <WikiTextEditor 
             // standard WikiTextEditor
@@ -91,18 +111,25 @@ function ArticleEditor() {
             onTitleChange={(e) => setTitle(e.target.value)}
             />
 
-        <fieldset>
-            <legend>Change Summary - {changeSummary.length}/255</legend>
 
-            <input 
-                type="text" 
-                placeholder="Explain your changes" 
-                maxLength={255} 
-                onChange={(e) => setChangeSummary(e.target.value)}
-                disabled={!isEdit} // no change_summary on first revision
-                />
+        {isPopUpOpen && <PopUp className={styles.PublishPopUp} closingMethod={() => setPopUpOpen(false)}>
+            <h2 className={styles.PublishPopUpHeading}>Publish Changes</h2>
 
-        </fieldset>
+            <fieldset className={styles.ChangeSummaryFieldset}>
+                <legend>Change Summary - {changeSummary.length}/255</legend>
+
+                <textarea 
+                    placeholder="Explain your changes" 
+                    maxLength={255}
+                    value={isEdit ? changeSummary : "Created This Article"}
+                    onChange={(e) => setChangeSummary(e.target.value)}
+                    disabled={!isEdit} // no change_summary on first revision
+                    />
+
+            </fieldset>
+
+            <SimpleButton onClick={publish} className={styles.PublishPopUpButton}>Publish</SimpleButton>
+        </PopUp>}
 
     </Medium>
 }
