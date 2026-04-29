@@ -15,6 +15,7 @@ class ArticleOutData(BaseModel):
     op: UserOutData
     current_revision: RevisionOutData
     first_revision: RevisionOutData
+    revision_count: Optional[int] = None
 
 class ArticleGetData(BaseModel):
     id: Optional[int] = Field(None)
