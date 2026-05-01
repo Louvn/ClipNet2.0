@@ -1,0 +1,12 @@
+// avoiding magic strings
+
+export const TOKEN = {
+    TEXT: "TEXT",
+    NEWLINE: "NEWLINE",
+    HASH: "HASH",
+    ASTERISK: "ASTERISK",
+    UNDERSCORE: "UNDERSCORE",
+    AT: "AT",
+    OPENING_BRACKET: "OPENING_BRACKET",
+    CLOSING_BRACKET: "CLOSING_BRACKET"
+}
