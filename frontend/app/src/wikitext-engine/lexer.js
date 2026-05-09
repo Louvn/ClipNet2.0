@@ -1,7 +1,7 @@
 // STEP 1
 // lexing detects potential trigger symbols
 
-import { TOKEN } from "./tokens";
+import { TOKEN } from "./tokens.js";
 
 function tokenize(text) {
 
@@ -21,7 +21,7 @@ function tokenize(text) {
             }
 
             // add trigger to tokens
-            tokens.push({ type: type });
+            tokens.push({ type: type, value: trigger });
             idx += trigger.length;
 
             return true;
@@ -42,6 +42,7 @@ function tokenize(text) {
         if (match("[", TOKEN.OPENING_BRACKET)) continue;
         if (match("]", TOKEN.CLOSING_BRACKET)) continue;
         if (match("@", TOKEN.AT)) continue;
+        if (match("\\", TOKEN.BACKSLASH)) continue;
 
 
         // add current idx to currentText
@@ -49,6 +50,11 @@ function tokenize(text) {
         currentText += text[idx];
         idx++;
 
+    }
+
+
+    if (currentText) {
+        tokens.push({ type: TOKEN.TEXT, value: currentText });
     }
 
     return tokens
