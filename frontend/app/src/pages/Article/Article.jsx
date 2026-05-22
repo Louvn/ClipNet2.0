@@ -6,6 +6,8 @@ import ActionButton from "../../components/ActionButton";
 import Detail from "../../components/Detail";
 import Loader from "../../components/Loader";
 
+import wikitextToJsx from "../../wikitext-engine";
+
 import likeIcon from "../../assets/icons/like.png";
 import reportIcon from "../../assets/icons/report.png";
 import shareIcon from "../../assets/icons/share.png";
@@ -69,7 +71,7 @@ function Article() {
         <main className={styles.ArticleMain}>
             <h1 className={styles.ArticleMainTitle}>{article.current_revision.title}</h1>
             <hr />
-            <div className={styles.ArticleMainContent}>{article.current_revision.content}</div>
+            <div className={styles.ArticleMainContent}>{wikitextToJsx(article.current_revision.content)}</div>
         </main>
 
         <div className={styles.CommentSection}>

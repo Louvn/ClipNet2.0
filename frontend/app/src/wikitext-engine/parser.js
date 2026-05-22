@@ -6,7 +6,7 @@ import { TOKEN } from "./tokens.js";
 
 function parse(tokens) {
 
-    const root =  { type: "root", children: [] };
+    const root =  { type: FORMAT.root, children: [] };
     let stack = [root];
 
     let escaped = false;
@@ -79,6 +79,7 @@ function parse(tokens) {
         // escape next token
         if (token.type === TOKEN.BACKSLASH) {
             escaped = true;
+            continue;
         }
 
 
@@ -138,15 +139,70 @@ function parse(tokens) {
 
             if (findOpenNodeOf(FORMAT.wikilink)) {
                 closeNode(FORMAT.wikilink);
-            }
-
-            if (findOpenNodeOf(FORMAT.userlink)) {
+            } else if (findOpenNodeOf(FORMAT.userlink)) {
                 closeNode(FORMAT.userlink);
+            } else {
+                createTextNode(token.value + tokens[idx+1]?.value);
             }
 
             idx++;
             continue;
         }
+
+        if (token.type === TOKEN.NEWLINE && tokens[idx+1]?.type === TOKEN.HASH) {
+
+            if (tokens[idx+2].type === TOKEN.HASH) {
+
+                openNode(FORMAT.subheading, true);
+
+                idx += 2;
+                continue;
+            }
+
+            openNode(FORMAT.heading, true);
+
+            idx++;
+            continue;
+        }
+
+        if (token.type === TOKEN.HASH && tokens[idx+1]?.type === TOKEN.HASH) {
+            
+            if (findOpenNodeOf(FORMAT.subheading)) {
+                closeNode(FORMAT.subheading);
+            } else if (findOpenNodeOf(FORMAT.heading)) {
+                closeNode(FORMAT.subheading);
+                idx--;
+            } else {
+                createTextNode(token.value + tokens[idx+1]?.value);
+            }
+
+            idx++;
+            continue;
+        }
+
+        if (token.type === TOKEN.HASH) {
+
+            if (findOpenNodeOf(FORMAT.heading)) {
+                closeNode(FORMAT.heading);
+            }
+
+            continue;
+        }
+
+        if (token.type === TOKEN.NEWLINE) {
+
+            if (findOpenNodeOf(FORMAT.heading)) {
+                closeNode(FORMAT.heading);
+            }
+            if (findOpenNodeOf(FORMAT.subheading)) {
+                closeNode(FORMAT.subheading);
+            }
+        }
+
+
+
+        // fallback if no condition is true
+        createTextNode(token.value);
 
     }
 
