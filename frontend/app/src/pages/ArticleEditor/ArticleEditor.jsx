@@ -1,4 +1,4 @@
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useArticle } from "../../hooks/useArticle";
 import { useEffect, useState } from "react";
@@ -10,6 +10,8 @@ import PopUp from "../../components/PopUp";
 import SimpleButton from "../../components/SimpleButton";
 
 function ArticleEditor() {
+
+    const [params] = useSearchParams();
 
     const navigate = useNavigate();
     const {slug} = useParams();
@@ -26,7 +28,7 @@ function ArticleEditor() {
     useEffect(() => {
 
         setContent(article?.current_revision?.content || "");
-        setTitle(article?.current_revision?.title || "");
+        setTitle(article?.current_revision?.title || (params.get("title") || ""));
         
     }, [article]);
 

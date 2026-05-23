@@ -8,6 +8,7 @@
 
     display: flex;
     flex-direction: column;
+    pointer-events: none;
 }
 .InstantSearch.Show {
     background-color: rgba(0,0,0,.2);
@@ -24,9 +25,8 @@
     flex-direction: column;
     gap: 12px;
     transition: all 0.2s ease-out;
-    pointer-events: none;
 }
-.InstantSearch.Show > .InstantSearchResults {
+.InstantSearch.Show {
     opacity: 1;
     pointer-events: auto;
 }

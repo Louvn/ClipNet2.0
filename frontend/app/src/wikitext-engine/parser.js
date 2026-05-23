@@ -197,6 +197,10 @@ function parse(tokens) {
             if (findOpenNodeOf(FORMAT.subheading)) {
                 closeNode(FORMAT.subheading);
             }
+
+            openNode(FORMAT.newline);
+            closeNode(FORMAT.newline);
+            continue;
         }
 
 

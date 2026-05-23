@@ -9,6 +9,7 @@ export const FORMAT = {
     wikilink: "wikilink",
     userlink: "userlink",
     heading: "heading",
-    subheading: "subheading"
+    subheading: "subheading",
+    newline: "newline"
     // TODO: table, later image
 }

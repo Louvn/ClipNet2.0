@@ -18,7 +18,7 @@ function WikiLinkNode({ title }) {
         return <Link to={`/wiki/${foundArticle.slug}`}>{title}</Link>;
     }
 
-    return <Link style={{ color: "red"}} to={`/editor`}>{title}</Link>;
+    return <Link style={{ color: "red"}} to={`/editor?title=${title}`}>{title}</Link>;
 }
 
 
@@ -52,8 +52,10 @@ function render(node) {
             return <h2>{renderedChildren}</h2>;
 
         case FORMAT.subheading:
-            return <h3>{renderedChildren}</h3>
-            
+            return <h3>{renderedChildren}</h3>;
+        
+        case FORMAT.newline:
+            return <br />;
 
 
         default:
