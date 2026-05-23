@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from .create_article import create_article
 from .edit_article import edit_article
 from .get_article import get_article
+from .wiki_index import wiki_index
 from backend.schematics.article import ArticleOutData
 from backend.schematics.revision import RevisionOutData
 
@@ -24,5 +25,11 @@ router.add_api_route(
 router.add_api_route(
     "/get-article",
     get_article,
+    methods=["GET"]
+)
+
+router.add_api_route(
+    "/wiki-index",
+    wiki_index,
     methods=["GET"]
 )

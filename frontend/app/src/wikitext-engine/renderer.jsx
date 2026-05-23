@@ -4,14 +4,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FORMAT } from "./formats.js";
-import { useSearch } from "../hooks/useSearch";
+import { useWikiIndex } from "../context/WikiIndexCache.jsx";
 
 
 function WikiLinkNode({ title }) {
-    // TODO: Would be better to not start a search for every single link [caching!]
-    const foundArticle = useSearch(title, { content_types: ["article"]})?.[0];
 
-    if (foundArticle?.current_revision.title === title) {
+    const wikiIndex = useWikiIndex();
+
+    // get article from cached wikiIndex
+    const foundArticle = wikiIndex.get(title);
+
+    if (foundArticle) {
         return <Link to={`/wiki/${foundArticle.slug}`}>{title}</Link>;
     }
 

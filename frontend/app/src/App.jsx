@@ -10,6 +10,7 @@ import Article from "./pages/Article";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ArticleEditor from "./pages/ArticleEditor";
+import { WikiIndexContextProvider } from "./context/WikiIndexCache";
 
 function App() {
     const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false);
@@ -33,7 +34,8 @@ function App() {
         return <Navigate to="/login" state={{ redirect: location.pathname + location.search}} />
     }
     
-    return <>
+    return <WikiIndexContextProvider>
+
         {isLoggedIn && <Navbar />}
 
         <ScrollToTop />
@@ -69,7 +71,8 @@ function App() {
         </div>
 
         {isLoggedIn && <Footer />}
-    </>
+        
+    </WikiIndexContextProvider>
 }
 
 export default App;
