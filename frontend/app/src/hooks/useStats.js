@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import apiFetch from "../utils/ApiFetch";
+import { useAPI } from "../hooks/useAPI";
 
 export function useStats() {
     
     const [loading, setLoading] = useState(true);
     const [stats, setStats] = useState(null);
     const [error, setError] = useState(null);
+
+    const apiFetch = useAPI();
 
     useEffect(() => {
 
@@ -20,7 +22,7 @@ export function useStats() {
 
             .finally(() => setLoading(false))
 
-    }, []);
+    }, [apiFetch]);
 
     return {stats, loading, error};
 }

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
-import apiFetch from "../utils/ApiFetch";
+import { useAPI } from "../hooks/useAPI";
 
 export function useSearch(query, filters, sort_by) {
 
     const [results, setResults] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    
+    const apiFetch = useAPI();
 
     useEffect(() => {
 
@@ -29,7 +31,7 @@ export function useSearch(query, filters, sort_by) {
             .finally(() => setLoading(false))
 
 
-    }, [query, filters, sort_by]);
+    }, [query, filters, sort_by, apiFetch]);
 
     return {results, loading, error};
 }

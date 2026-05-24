@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import apiFetch from "../utils/ApiFetch";
+import { useAPI } from "../hooks/useAPI";
 
 export function useArticle(slug) {
 
@@ -7,6 +7,8 @@ export function useArticle(slug) {
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
+
+    const apiFetch = useAPI();
 
     useEffect(() => {
 
@@ -27,7 +29,7 @@ export function useArticle(slug) {
 
             .finally(() => setLoading(false))
 
-    }, [slug]);
+    }, [slug, apiFetch]);
 
     return {article, loading, error, status};
 }

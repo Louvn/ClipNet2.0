@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { useArticle } from "../../hooks/useArticle";
 import { useEffect, useState } from "react";
 import WikiTextEditor from "../../components/WikiTextEditor";
-import apiFetch from "../../utils/ApiFetch";
+import { useAPI } from "../../hooks/useAPI";
 import Medium from "../../components/Medium";
 import Loader from "../../components/Loader";
 import PopUp from "../../components/PopUp";
@@ -12,6 +12,8 @@ import SimpleButton from "../../components/SimpleButton";
 function ArticleEditor() {
 
     const [params] = useSearchParams();
+
+    const apiFetch = useAPI();
 
     const navigate = useNavigate();
     const {slug} = useParams();

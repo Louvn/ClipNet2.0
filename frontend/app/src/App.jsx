@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,19 +9,13 @@ import Article from "./pages/Article";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ArticleEditor from "./pages/ArticleEditor";
-import { WikiIndexContextProvider } from "./context/WikiIndexCache";
+
+import { WikiIndexContextProvider } from "./context/WikiIndexContext";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
-    const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false);
     
-    useEffect(() => {
-        const handleStorageChange = (event) => {
-            setLoggedIn(event.detail ? true: false);
-        }
-
-        window.addEventListener("jwtChange", handleStorageChange);
-        return () => window.removeEventListener("jwtChange", handleStorageChange);
-    }, []);
+    const { isLoggedIn } = useAuth();
 
     const ProtectedRoutes = ({children}) => {
         const location = useLocation();

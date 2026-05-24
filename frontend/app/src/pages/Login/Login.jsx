@@ -2,16 +2,19 @@ import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./styles.module.css";
 import Logo from "../../assets/logo-blue.png";
+import { useAuth } from "../../context/AuthContext";
 
 function Login() {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const { isLoggedIn, setJwt } = useAuth();
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    if (localStorage.getItem("jwt")) {
+    if (isLoggedIn) {
         // using stored redirect
         return <Navigate to={location.state?.redirect || "/"} />;
     }
@@ -37,8 +40,7 @@ function Login() {
             return;
         }
         
-        localStorage.setItem("jwt", data.access_token);
-        window.dispatchEvent(new CustomEvent("jwtChange", { detail: localStorage.getItem("jwt") }));
+        setJwt(data.access_token);
         
         // using stored redirect
         return navigate(location.state?.redirect || "/", {replace: true});

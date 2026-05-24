@@ -4,7 +4,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FORMAT } from "./formats.js";
-import { useWikiIndex } from "../context/WikiIndexCache.jsx";
+import { useWikiIndex } from "../context/WikiIndexContext.jsx";
 
 
 function WikiLinkNode({ title }) {
