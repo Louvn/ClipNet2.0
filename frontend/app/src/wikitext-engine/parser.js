@@ -63,7 +63,7 @@ function parse(tokens) {
 
             createTextNode(token.value);
 
-            idx += token.value.length;
+            //idx += token.value.length;
             escaped = false;
             continue;
         }
@@ -77,7 +77,7 @@ function parse(tokens) {
         }
 
         // escape next token
-        if (token.type === TOKEN.BACKSLASH) {
+        if (token.type === TOKEN.BACKSLASH && !current().verbatim) {
             escaped = true;
             continue;
         }

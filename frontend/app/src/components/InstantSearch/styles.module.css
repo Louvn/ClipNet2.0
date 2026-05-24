@@ -13,6 +13,7 @@
 .InstantSearch.Show {
     background-color: rgba(0,0,0,.2);
     box-shadow: 0 0 4px var(--shadows);
+    pointer-events: auto;
 }
 
 .InstantSearchResults {
@@ -26,9 +27,8 @@
     gap: 12px;
     transition: all 0.2s ease-out;
 }
-.InstantSearch.Show {
+.InstantSearch.Show > .InstantSearchResults {
     opacity: 1;
-    pointer-events: auto;
 }
 
 .ShowAll {

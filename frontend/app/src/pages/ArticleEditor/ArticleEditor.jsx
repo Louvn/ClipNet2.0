@@ -30,7 +30,7 @@ function ArticleEditor() {
         setContent(article?.current_revision?.content || "");
         setTitle(article?.current_revision?.title || (params.get("title") || ""));
         
-    }, [article]);
+    }, [article, params]);
 
     
     // redirect after publishing changes
@@ -90,7 +90,7 @@ function ArticleEditor() {
         <div className={styles.TopBar}>
 
             <SimpleButton 
-                onClick={() => navigate(isEdit ? `/wiki/${slug}` : "/")} 
+                onClick={() => navigate(-1)}  // navigate 1 back
                 className={styles.TopBarButton}
                 >
                 ← Back

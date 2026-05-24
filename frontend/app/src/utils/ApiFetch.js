@@ -12,8 +12,6 @@ async function apiFetch(url, options={}) {
     );
 
     if (response.status === 401) {
-        const data = await response.json();
-        alert("You have to login again because of the following reason: " + data.detail);
         localStorage.removeItem("jwt");
         window.dispatchEvent(new CustomEvent("jwtChange", localStorage.getItem("jwt")));
     }
