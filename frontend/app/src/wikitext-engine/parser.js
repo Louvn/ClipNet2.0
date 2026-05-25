@@ -19,12 +19,17 @@ function groupNodesByHeading(rootNode) {
             node.title = node.children[0].value; // has only ONE children because of verbatim = true
             node.children = [];
 
+            // add heading to the new tree
             new_children.push(node);
         } else {
 
-            if (new_children.length === 0) new_children.push(node);
-            if (new_children[new_children.length - 1].type !== FORMAT.heading) continue;
+            // handle if there was not a heading before
+            if (new_children[new_children.length - 1]?.type !== FORMAT.heading) {
+                new_children.push(node);
+                continue;
+            }
 
+            // add node to children of heading
             new_children[new_children.length - 1].children.push(node);
         }
     }

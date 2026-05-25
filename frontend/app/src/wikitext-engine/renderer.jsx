@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { FORMAT } from "./formats.js";
 import { useWikiIndex } from "../context/WikiIndexContext.jsx";
 import { useUserIndex } from "../context/UserIndexContext.jsx";
+import styles from "./styles.module.css";
+import arrowImg from "../assets/icons/arrow.png";
 
 function WikiLinkNode({ title }) {
 
@@ -15,10 +17,10 @@ function WikiLinkNode({ title }) {
     const foundArticle = wikiIndex.get(title);
 
     if (foundArticle) {
-        return <Link to={`/wiki/${foundArticle.slug}`}>{title}</Link>;
+        return <Link className={styles.WikiLink} to={`/wiki/${foundArticle.slug}`}>{title}</Link>;
     }
 
-    return <Link style={{ color: "red"}} to={`/editor?title=${title}`}>{title}</Link>;
+    return <Link className={`${styles.WikiLink} ${styles.RedLink}`} style={{ color: "red"}} to={`/editor?title=${title}`}>{title}</Link>;
 }
 
 function UserLinkNode({ username }) {
@@ -28,22 +30,25 @@ function UserLinkNode({ username }) {
     const foundUser = userIndex.get(username);
 
     if (foundUser) {
-        return <Link to={`/community/user/${username}`}>@{username}</Link>;
+        return <Link className={styles.UserLink} to={`/community/user/${username}`}>@{username}</Link>;
     }
 
-    return <Link style={{ color: "red" }} to={`/404`}>@{username}</Link>;
+    return <Link className={`${styles.UserLink} ${styles.RedLink}`} style={{ color: "red" }} to={`/404`}>@{username}</Link>;
 }
 
 function HeadingNode({ title, children }) {
 
-    return <details>
-        <summary>{title}</summary>
+    return <details className={styles.Section}>
+        <summary className={styles.Heading}>
+            <img src={arrowImg} alt="" />
+            {title}
+            </summary>
         {children}
     </details>;
 }
 
 function SubheadingNode({ children }) {
-    return <h3>{children}</h3>;
+    return <h3 className={styles.Subheading}>{children}</h3>;
 }
 
 function render(node) {
