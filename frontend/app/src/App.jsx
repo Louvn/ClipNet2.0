@@ -10,7 +10,6 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ArticleEditor from "./pages/ArticleEditor";
 
-import { WikiIndexContextProvider } from "./context/WikiIndexContext";
 import { useAuth } from "./context/AuthContext";
 
 function App() {
@@ -27,7 +26,7 @@ function App() {
         return <Navigate to="/login" state={{ redirect: location.pathname + location.search}} />
     }
     
-    return <WikiIndexContextProvider>
+    return <>
 
         {isLoggedIn && <Navbar />}
 
@@ -65,7 +64,7 @@ function App() {
 
         {isLoggedIn && <Footer />}
         
-    </WikiIndexContextProvider>
+    </>
 }
 
 export default App;

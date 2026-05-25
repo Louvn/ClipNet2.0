@@ -4,6 +4,34 @@
 import { FORMAT } from "./formats.js";
 import { TOKEN } from "./tokens.js";
 
+function groupNodesByHeading(rootNode) {
+    // this function should be called at end of parsing
+    // it changes the structure of headings to prepare them for rendering
+
+    const new_children = [];
+
+    for (let idx = 0;idx < rootNode.children.length;idx++) {
+        
+        const node = rootNode.children[idx];
+
+        if (node.type === FORMAT.heading) {
+
+            node.title = node.children[0].value; // has only ONE children because of verbatim = true
+            node.children = [];
+
+            new_children.push(node);
+        } else {
+
+            if (new_children.length === 0) new_children.push(node);
+            if (new_children[new_children.length - 1].type !== FORMAT.heading) continue;
+
+            new_children[new_children.length - 1].children.push(node);
+        }
+    }
+
+    return { type: FORMAT.root, children: new_children };
+}
+
 function parse(tokens) {
 
     const root =  { type: FORMAT.root, children: [] };
@@ -210,7 +238,7 @@ function parse(tokens) {
 
     }
 
-    return stack[0]
+    return groupNodesByHeading(stack[0]);
 }
 
 export default parse;

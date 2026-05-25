@@ -5,7 +5,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FORMAT } from "./formats.js";
 import { useWikiIndex } from "../context/WikiIndexContext.jsx";
-
+import { useUserIndex } from "../context/UserIndexContext.jsx";
 
 function WikiLinkNode({ title }) {
 
@@ -21,6 +21,30 @@ function WikiLinkNode({ title }) {
     return <Link style={{ color: "red"}} to={`/editor?title=${title}`}>{title}</Link>;
 }
 
+function UserLinkNode({ username }) {
+
+    const userIndex = useUserIndex();
+
+    const foundUser = userIndex.get(username);
+
+    if (foundUser) {
+        return <Link to={`/community/user/${username}`}>@{username}</Link>;
+    }
+
+    return <Link style={{ color: "red" }} to={`/404`}>@{username}</Link>;
+}
+
+function HeadingNode({ title, children }) {
+
+    return <details>
+        <summary>{title}</summary>
+        {children}
+    </details>;
+}
+
+function SubheadingNode({ children }) {
+    return <h3>{children}</h3>;
+}
 
 function render(node) {
 
@@ -48,11 +72,14 @@ function render(node) {
         case FORMAT.wikilink:
             return <WikiLinkNode title={node.children[0]?.value} />;
 
+        case FORMAT.userlink:
+            return <UserLinkNode username={node.children[0]?.value} />;
+
         case FORMAT.heading:
-            return <h2>{renderedChildren}</h2>;
+            return <HeadingNode title={node.title}>{renderedChildren}</HeadingNode>;
 
         case FORMAT.subheading:
-            return <h3>{renderedChildren}</h3>;
+            return <SubheadingNode>{renderedChildren}</SubheadingNode>;
         
         case FORMAT.newline:
             return <br />;
