@@ -11,9 +11,35 @@ import mentionIcon from "../../assets/icons/format_mention.png";
 import tableIcon from "../../assets/icons/format_table.png";
 import imageIcon from "../../assets/icons/format_image.png";
 
+function FormattingOptions({ inputRef, textState, changeTextState }) {
 
+    function insertFormat(opening, closing) {
 
-function FormattingOptions() {
+        const inputField = inputRef.current;
+
+        const selecStart = inputField.selectionStart;
+        const selecEnd = inputField.selectionEnd;
+
+        const selection = textState.slice(selecStart, selecEnd);
+
+        const updatedText = 
+            textState.slice(0, selecStart) +
+            opening + 
+            selection +
+            closing +
+            textState.slice(selecEnd);
+
+        changeTextState(updatedText);
+
+        // Why timeout? Because React needs time to update controlled input
+        setTimeout(() => {
+            inputField.focus();
+
+            inputField.selectionStart = selecStart + opening.length;
+            inputField.selectionEnd = selecEnd + opening.length;
+        }, 0); // will be executed after the current running code is done
+    }
+
     return <div className={styles.Formatting}>
                 
         <section>
@@ -27,29 +53,29 @@ function FormattingOptions() {
         </section>
     
         <section>
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={() => insertFormat("#", "#")}>
                 <img src={headingIcon} alt="insert Heading" />
             </button>
     
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={() => insertFormat("##", "##")}>
                 <img src={subheadingIcon} alt="insert Subheading" />
             </button>
         </section>
     
         <section>
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={() => insertFormat("**", "**")}>
                 <img src={boldIcon} alt="insert Bold" />
             </button>
     
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={() => insertFormat("*", "*")}>
                 <img src={italicIcon} alt="insert Italic" />
             </button>
     
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={() => insertFormat("[[", "]]")}>
                 <img src={linkIcon} alt="insert Link" />
             </button>
     
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={() => insertFormat("[[@", "]]")}>
                 <img src={mentionIcon} alt="insert Mention" />
             </button>
         </section>

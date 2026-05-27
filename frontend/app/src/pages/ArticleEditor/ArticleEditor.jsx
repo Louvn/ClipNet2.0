@@ -109,10 +109,10 @@ function ArticleEditor() {
 
         <WikiTextEditor 
             // standard WikiTextEditor
-            initialContent={content} 
-            initialTitle={title}
-            onContentChange={(e) => setContent(e.target.value)}
-            onTitleChange={(e) => setTitle(e.target.value)}
+            content={content} 
+            title={title}
+            setContent={setContent}
+            setTitle={setTitle}
             />
 
 
