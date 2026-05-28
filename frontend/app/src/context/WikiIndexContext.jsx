@@ -24,6 +24,8 @@ export function WikiIndexContextProvider({ children }) {
             const res = await apiFetch("/wiki-index", { method: "GET" });
             const index = await res.json();
 
+            if (res.status) return;
+
             const indexMap = new Map(); // Map is faster than array
 
             index.forEach((a) => {

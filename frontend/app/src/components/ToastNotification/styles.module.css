@@ -1,0 +1,28 @@
+.ToastNotification {
+    position: fixed;
+    top: 72px;
+    right: 16px;
+    z-index: 9;
+    background-color: var(--cards);
+    border-radius: 8px;
+    box-shadow: 0 0 4px var(--shadows);
+    width: 248px;
+    height: 60px;
+    transform: translateX(300px);
+    transition: all 0.8s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 8px darkred solid;
+    color: darkred;
+    padding: 8px;
+    opacity: 0;
+}
+.ToastNotification.Show {
+    transform: translateX(0);
+    opacity: 1;
+}
+.ToastNotification.Success {
+    border-left-color: darkgreen;
+    color: darkgreen;
+}
