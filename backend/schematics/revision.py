@@ -3,7 +3,7 @@ from datetime import datetime
 
 class RevisionCreateData(BaseModel):
     title: constr(min_length=1, max_length=50)
-    content: str
+    content: constr(min_length=1)
     change_summary: constr(max_length=255)
     article_id: int
 

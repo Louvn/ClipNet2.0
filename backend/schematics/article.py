@@ -6,7 +6,7 @@ from .user import UserOutData
 
 class ArticleCreateData(BaseModel):
     title: constr(min_length=1, max_length=50)
-    content: str
+    content: constr(min_length=1)
 
 class ArticleOutData(BaseModel):
     type: ContentType = ContentType.article

@@ -8,12 +8,14 @@ import Medium from "../../components/Medium";
 import Loader from "../../components/Loader";
 import PopUp from "../../components/PopUp";
 import SimpleButton from "../../components/SimpleButton";
+import { useToastNotification } from "../../context/ToastNotificationContext";
 
 function ArticleEditor() {
 
     const [params] = useSearchParams();
 
     const apiFetch = useAPI();
+    const toastNotification  = useToastNotification();
 
     const navigate = useNavigate();
     const {slug} = useParams();
@@ -25,6 +27,7 @@ function ArticleEditor() {
     const [title, setTitle] = useState("");
     const [changeSummary, setChangeSummary] = useState("");
     const [isPopUpOpen, setPopUpOpen] = useState(false);
+    const [isPublishing, setPublishing] = useState(false);
 
     // set them after loading complete (in case of creating new they will be: "")
     useEffect(() => {
@@ -42,6 +45,8 @@ function ArticleEditor() {
 
     const createArticle = () => {
 
+        setPublishing(true);
+
         const data = {
             title: title,
             content: content
@@ -51,11 +56,17 @@ function ArticleEditor() {
             .then(res => {
                 if (res.ok) {
                     afterPublish();
+                } else {
+                    setPublishing(false);
+                    setPopUpOpen(false);
+                    toastNotification("Error while publishing Article");
                 }
             })
     }
 
     const editArticle = () => {
+
+        setPublishing(true);
 
         const data = {
             article_id: article.id,
@@ -68,6 +79,10 @@ function ArticleEditor() {
             .then(res => {
                 if (res.ok) {
                     afterPublish();
+                } else {
+                    setPublishing(false);
+                    setPopUpOpen(false);
+                    toastNotification("Error while publishing Changes");
                 }
             })
     }
@@ -80,6 +95,12 @@ function ArticleEditor() {
     // loading animation if editing existing article
     if (loading && isEdit) return <Medium> 
         <Loader />
+    </Medium>;
+
+    // loading animation while publishing
+    if (isPublishing) return <Medium> 
+        <Loader />
+        <h2 className={styles.PublishingArticle}>Publishing Article</h2>
     </Medium>;
 
     // not found

@@ -37,6 +37,11 @@
     margin-top: auto;
 }
 
+.PublishingArticle {
+    justify-self: center;
+    font-weight: 400;
+}
+
 .ChangeSummaryFieldset textarea {
     all: unset;
     opacity: 0.7;
