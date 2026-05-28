@@ -23,12 +23,11 @@ export function useAPI() {
         );
 
         if (response.status === 401) {
-            toastNotification("You need to login again");
             setJwt(null);
         }
 
         return response;
-    }, [jwt, setJwt, toastNotification])
+    }, [jwt, setJwt])
 
     return apiFetch;
 }

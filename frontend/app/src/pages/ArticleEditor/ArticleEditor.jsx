@@ -36,7 +36,6 @@ function ArticleEditor() {
         setTitle(article?.current_revision?.title || (params.get("title") || ""));
         
     }, [article, params]);
-
     
     // redirect after publishing changes
     const afterPublish = () => {
@@ -53,13 +52,16 @@ function ArticleEditor() {
         }
 
         apiFetch("/create-article", {method: "POST", body: JSON.stringify(data)})
-            .then(res => {
+            .then(async (res) => {
                 if (res.ok) {
                     afterPublish();
                 } else {
+                    const data = await res.json();
+                    const notification = typeof data.detail === "string" ? data.detail : "Article could not be published.";
+
                     setPublishing(false);
                     setPopUpOpen(false);
-                    toastNotification("Error while publishing Article");
+                    toastNotification(notification);
                 }
             })
     }
@@ -76,13 +78,16 @@ function ArticleEditor() {
         };
 
         apiFetch("/edit-article", {method: "PUT", body: JSON.stringify(data)})
-            .then(res => {
+            .then(async (res) => {
                 if (res.ok) {
                     afterPublish();
                 } else {
+                    const data = await res.json();
+                    const notification = typeof data.detail === "string" ? data.detail : "Changes could not be published.";
+
                     setPublishing(false);
                     setPopUpOpen(false);
-                    toastNotification("Error while publishing Changes");
+                    toastNotification(notification);
                 }
             })
     }
