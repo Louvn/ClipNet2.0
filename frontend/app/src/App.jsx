@@ -11,6 +11,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ArticleEditor from "./pages/ArticleEditor";
 
 import { useAuth } from "./context/AuthContext";
+import Search from "./pages/Search";
 
 function App() {
     
@@ -49,6 +50,7 @@ function App() {
                                 <Route path="/wiki/:slug" element={<Article />} />
                                 <Route path="/editor/:slug" element={<ArticleEditor />} />
                                 <Route path="/editor" element={<ArticleEditor />} />
+                                <Route path="/search" element={<Search />} />
 
                                 <Route path="/404" element={<NotFound />} />
 

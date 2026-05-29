@@ -9,15 +9,15 @@ function SearchResult({data, showContent=false}) {
         case "article":
             title = data.current_revision.title;
             info = `by ${data.op.username}`;
-            content = data.current_revision.content;
+            content = data.current_revision?.content;
             link = `/wiki/${data.slug}`;
             break;
 
         case "user":
-            title = data.username;
+            title = "@" + data.username;
             info = "user";
             content = "user";
-            link = `/@${data.username}`;
+            link = `/community/user/${data.username}`;
             break;
     }
 
@@ -26,7 +26,7 @@ function SearchResult({data, showContent=false}) {
         <span className={styles.SearchResultAuthor}>{info}</span>
         <p className={styles.SearchResultContent}>
             {
-                content.split(" ").length > 20
+                content?.split(" ").length > 20
                 ? content.split(" ").slice(0, 20).join(" ") + " ..."
                 : content
             }

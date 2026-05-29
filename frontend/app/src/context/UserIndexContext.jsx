@@ -24,7 +24,7 @@ export function UserIndexContextProvider({ children }) {
             const res = await apiFetch("/user-index", { method: "GET" });
             const index = await res.json();
 
-            if (res.status) return;
+            if (!res.ok) return;
 
             const indexMap = new Map(); // Map is faster than array
 

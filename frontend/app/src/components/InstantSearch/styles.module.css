@@ -1,7 +1,6 @@
 .InstantSearch {
     background-color: transparent;
     border-radius: 4px;
-    min-height: 300px;
     align-self: baseline;
     transition: all 0.3s ease-out;
     overflow: hidden;

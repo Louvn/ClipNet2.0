@@ -1,16 +1,20 @@
 import styles from "./styles.module.css";
 import Searchbar from "../Searchbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import InstantSearchResult from "../SearchResult";
-import { useSearch } from "../../hooks/useSearch";
-import Loader from "../Loader";
+import { useWikiIndex } from "../../context/WikiIndexContext";
+import { useUserIndex } from "../../context/UserIndexContext";
 
 function InstantSearch() {
 
     const [showInstantSearch, setShowInstantSearch] = useState(false);
 
     const [query, setQuery] = useState("");
+    const [results, setResults] = useState(null);
+
+    const wikiIndex = useWikiIndex();
+    const userIndex = useUserIndex();
 
 
     // handle changes in search query
@@ -36,8 +40,28 @@ function InstantSearch() {
         }
     }
 
-    // get results via custom hook
-    const { results, loading } = useSearch(query);
+    // get quick results via wiki and user index
+    useEffect(() => {
+
+        if (!query) return;
+
+        const foundArticles = Array.from(
+            wikiIndex.values()
+        ).filter(
+            a => a.current_revision.title.toLowerCase().includes(query.toLowerCase())
+        ).map(e => ({ ...e, type: "article" }));
+
+        const foundUsers = Array.from(
+            userIndex.values()
+        ).filter(
+            u => u.username.toLowerCase().includes(query.toLowerCase())
+        ).map(e => ({ ...e, type: "user" }));
+
+        setResults(
+            [...foundUsers, ...foundArticles]
+        );
+
+    }, [query, wikiIndex, userIndex])
 
 
     return <div className={`${styles.InstantSearch} ${showInstantSearch ? styles.Show : ""}`}>
@@ -49,17 +73,12 @@ function InstantSearch() {
 
         <div className={styles.InstantSearchResults}>
 
-            {!loading && results?.slice(0, 4).map(result => (
+            {results?.slice(0, 4).map(result => (
 
-                <InstantSearchResult data={result} key={`${result.type}${result.id}`} />
+                <InstantSearchResult data={result} key={`${result.type}${result?.slug || result?.username}`} />
             ))}
 
-    
-            {(results?.length === 0 && !loading) && <em className={styles.NothingFound}>Nothing found</em>}
-
-            {loading && <Loader divHidden />}
-
-            <Link to="#" className={styles.ShowAll}>Show All</Link>
+            <Link to={`/search?query=${query}`} className={styles.ShowAll}>Show all results</Link>
         </div>
 
     </div>

@@ -24,12 +24,12 @@ export function WikiIndexContextProvider({ children }) {
             const res = await apiFetch("/wiki-index", { method: "GET" });
             const index = await res.json();
 
-            if (res.status) return;
+            if (!res.ok) return;
 
             const indexMap = new Map(); // Map is faster than array
 
             index.forEach((a) => {
-                indexMap.set(a.title, a);
+                indexMap.set(a.current_revision.title, a);
             })
 
             setWikiIndex(indexMap);
