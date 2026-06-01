@@ -17,6 +17,7 @@
     color: darkred;
     padding: 8px;
     opacity: 0;
+    overflow: hidden;
 }
 .ToastNotification.Show {
     transform: translateX(0);

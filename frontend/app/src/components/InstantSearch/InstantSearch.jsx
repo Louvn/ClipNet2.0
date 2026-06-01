@@ -75,7 +75,7 @@ function InstantSearch() {
 
             {results?.slice(0, 4).map(result => (
 
-                <InstantSearchResult data={result} key={`${result.type}${result?.slug || result?.username}`} />
+                <InstantSearchResult data={result} key={`${result.type}-${result?.slug || result?.username}`} />
             ))}
 
             <Link to={`/search?query=${query}`} className={styles.ShowAll}>Show all results</Link>

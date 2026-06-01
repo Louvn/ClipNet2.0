@@ -26,7 +26,7 @@ def search(query, filters, sort_by, db):
     # - get results & validate them -
     for type, func in SEARCH_FUNCTIONS.items():
 
-        if type not in filters.content_types:
+        if (type not in filters.content_type) and (filters.content_type != []):
             continue
         
         # get

@@ -25,3 +25,21 @@
     color: darkred;
     text-decoration: none;
 }
+
+
+.FilterOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.FilterOptions fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px #ccc solid;
+    padding: 8px;
+}
+.FilterOptions fieldset label {
+    display: flex;
+    gap: 4px;
+}

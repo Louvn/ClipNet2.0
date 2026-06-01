@@ -43,7 +43,7 @@ function Home() {
             <ContentList 
                 query="" 
                 title="Latest Articles"
-                filters={{ content_types: ["article"] }}
+                filters={{ content_type: ["article"] }}
                 sort_by="newest_first" 
                 showFullContent
                 />
@@ -51,7 +51,7 @@ function Home() {
             <ContentList 
                 query="" 
                 title="Latest Changes" 
-                filters={{ content_types: ["article"] }}
+                filters={{ content_type: ["article"] }}
                 sort_by="last_updated_first" 
                 showFullContent 
                 />
