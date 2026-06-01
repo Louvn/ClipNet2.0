@@ -2,10 +2,12 @@ import styles from "./styles.module.css"
 import searchImg from "../../assets/icons/search.png";
 import deleteSearchImg from "../../assets/icons/delete-query.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Searchbar({onChange, onBlur, onFocus}) {
 
     const [query, setQuery] = useState("");
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
 
@@ -28,6 +30,7 @@ function Searchbar({onChange, onBlur, onFocus}) {
             onChange={handleChange}
             onBlur={onBlur}
             onFocus={onFocus}
+            onKeyDown={(e) => e.key === "Enter" && navigate(`/search?query=${query}`)}
             />
 
         {query.trim() && 

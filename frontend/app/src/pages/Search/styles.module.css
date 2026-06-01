@@ -1,0 +1,27 @@
+.SearchPageRoot {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 32px;
+    align-items: start; /* do NOT stretch */
+}
+
+.SearchResults {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cards);
+    min-height: 70vh;
+    box-shadow: 0 0 4px var(--shadows);
+    border-radius: 8px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.SearchResults h2 {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.CreateArticleLink {
+    color: darkred;
+    text-decoration: none;
+}
