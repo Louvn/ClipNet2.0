@@ -5,7 +5,7 @@ import Loader from "../Loader";
 
 function ContentList({query, filters, sort_by, title, maxResults=3, showFullContent=false}) {
 
-    const { results, loading } = useSearch(query, filters, sort_by);
+    const { results, loading } = useSearch(query, filters, sort_by, 0, maxResults);
 
     return <div className={styles.ListCard}>
         <h2 className={styles.Title}>{title}</h2>

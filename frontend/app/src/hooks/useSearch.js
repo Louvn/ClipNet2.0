@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useAPI } from "../hooks/useAPI";
 
-export function useSearch(query, filters, sort_by) {
+export function useSearch(query, filters, sort_by, offset, length) {
 
     const [results, setResults] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -16,7 +16,9 @@ export function useSearch(query, filters, sort_by) {
         const body = {
             query: query,
             filters: filters,
-            sort_by: sort_by
+            sort_by: sort_by,
+            offset: offset,
+            length: length
         };
 
         apiFetch(
@@ -31,7 +33,7 @@ export function useSearch(query, filters, sort_by) {
             .finally(() => setLoading(false))
 
 
-    }, [query, filters, sort_by, apiFetch]);
+    }, [query, filters, sort_by, offset, length, apiFetch]);
 
     return {results, loading, error};
 }

@@ -19,7 +19,7 @@ VALIDATION_SCHEMATICS = {
 
 
 # -- main search function --
-def search(query, filters, sort_by, db):
+def search(query, filters, sort_by, offset, length, db):
 
     results = []
 
@@ -42,4 +42,4 @@ def search(query, filters, sort_by, db):
     sorted_results = sort_results(query, results, criteria=sort_by)
 
 
-    return sorted_results
+    return sorted_results[offset:offset+length]

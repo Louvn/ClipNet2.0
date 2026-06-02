@@ -10,6 +10,8 @@ def search(searchData: SearchQueryData, db = Depends(get_db), user = Depends(get
         searchData.query,
         searchData.filters,
         searchData.sort_by,
+        searchData.offset,
+        searchData.length,
         db
     )
 

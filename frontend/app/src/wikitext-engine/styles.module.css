@@ -9,10 +9,11 @@
 }
 
 .Section {
-    margin: 20px 0;
+    margin: 24px 0;
 }
 .Heading {
     border-bottom: 4px solid color-mix(in srgb, var(--primary-color) 50%, transparent);
+    border-radius: 4px;
     font-size: 1.7em;
     padding: 4px 12px;
     outline: none;

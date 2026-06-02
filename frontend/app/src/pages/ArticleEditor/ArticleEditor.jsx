@@ -8,7 +8,7 @@ import Medium from "../../components/Medium";
 import Loader from "../../components/Loader";
 import PopUp from "../../components/PopUp";
 import SimpleButton from "../../components/SimpleButton";
-import { useToastNotification } from "../../context/ToastNotificationContext";
+import { useToastNotification, notificationTypeSuccess } from "../../context/ToastNotificationContext";
 
 function ArticleEditor() {
 
@@ -39,7 +39,7 @@ function ArticleEditor() {
     
     // redirect after publishing changes
     const afterPublish = () => {
-        toastNotification("Published successfully");
+        toastNotification("Published successfully", notificationTypeSuccess);
         navigate(isEdit ? `/wiki/${slug}` : "/");
     }
 
