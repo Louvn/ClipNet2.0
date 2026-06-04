@@ -11,7 +11,7 @@ function SearchResult({data, query, showContent=false}) {
         case "article":
             title = data.current_revision.title;
             info = `by ${data.op.username}`;
-            content = data.current_revision?.content;
+            content = renderPreview(data.current_revision?.content || "", query);
             link = `/wiki/${data.slug}`;
             break;
 
@@ -26,7 +26,7 @@ function SearchResult({data, query, showContent=false}) {
     return <Link to={link} className={`${styles.SearchResult} ${styles[data.type]} ${showContent ? styles.showContent : ""}`}>
         <h3 className={styles.SearchResultTitle}>{highlightQuery(title, query)}</h3>
         <span className={styles.SearchResultAuthor}>{info}</span>
-        <p className={styles.SearchResultContent}>{showContent && renderPreview(content, query)}</p>
+        <p className={styles.SearchResultContent}>{content}</p>
     </Link>
 }
 

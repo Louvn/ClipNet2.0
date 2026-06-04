@@ -5,6 +5,10 @@ import tokenize from "./lexer";
 import parse from "./parser";
 import styles from "./styles.module.css";
 
+function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export function extractNormals(node) {
     
     if (node.type === FORMAT.text) {
@@ -24,7 +28,7 @@ export function highlightQuery(txt, query) {
 
     if (!query) return txt;
 
-    const rgx = new RegExp(`(${query})`, "gi");
+    const rgx = new RegExp(`(${escapeRegex(query)})`, "gi");
 
     const splitted = txt.split(rgx); // seperates not matching and matching: ["none matching", "matching", "non matching"]
 
@@ -39,17 +43,17 @@ export function highlightQuery(txt, query) {
 
 export function extractSnippet(txt, query=null, context=130) {
 
-    const rgx = new RegExp(`(${query})`, "gi");
+    const rgx = new RegExp(`(${escapeRegex(query)})`, "gi");
     const firstMatch = txt.search(rgx);
 
     // if there is no match return this
-    if (firstMatch === -1) return txt.slice(0, context * 2);
+    if (firstMatch === -1 || !query) return txt.slice(0, context * 2) + (txt.length > context*2 ? "..." : "");
 
     let start = Math.max(0, firstMatch - context);
     let end = Math.min(txt.length, firstMatch + context);
 
     // adjust start and end to avoid cutting of words
-    while (start >= 0 && txt[start] !== " ") start--;
+    while (start > 0 && txt[start] !== " ") start--;
     while (end < txt.length && txt[end] !== " ") end++;
 
 

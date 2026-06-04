@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSearch } from "../../hooks/useSearch";
 import { useEffect, useState } from "react";
 import SearchResult from "../../components/SearchResult";
@@ -10,25 +10,24 @@ import SimpleButton from "../../components/SimpleButton";
 const resultsLength = 20;
 
 function Search() {
-    const [params] = useSearchParams();
+    const location = useLocation();
 
-    const [query, setQuery] = useState(params.get("query") ?? "");
-    const [filters, setFilters] = useState({});
+    const [query, setQuery] = useState(location.state?.query || "");
+    const [filters, setFilters] = useState(location.state?.filters || {});
     const [offset, setOffset] = useState(0);
 
     const currentPage = (offset / resultsLength) + 1;
 
-    const [selectedContentTypes, setSelectedContentTypes] = useState([]);
-    const [selectedSortBy, setSelectedSortBy] = useState(params.get("sortBy") ?? "relevance");
-
-    const { results, loading } = useSearch(query, filters, selectedSortBy, offset, resultsLength+1); // +1 to check whether there is more
+    const [selectedContentTypes, setSelectedContentTypes] = useState(filters?.content_type || []);
+    const [selectedSortBy, setSelectedSortBy] = useState(location.state?.sort_by || "relevance");
 
     useEffect(() => {
-        setQuery(params.get("query") ?? "");
-        setSelectedSortBy(params.get("sortBy") ?? "relevance");
-    }, [params]);
+        if (query !== location.state?.query) setQuery(location.state.query);
+    }, [location]);
 
     useEffect(() => window.scrollTo(0, 0), [offset]);
+
+    const { results, loading } = useSearch(query, filters, selectedSortBy, offset, resultsLength+1); // +1 to check whether there is more
 
 
     // handle the onChange of the Content Type Checkboxes to change the state
@@ -50,7 +49,7 @@ function Search() {
     const applyFilters = () => {
         setFilters({
             "content_type": selectedContentTypes
-        })
+        });
     }
 
 

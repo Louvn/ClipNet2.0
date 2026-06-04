@@ -78,7 +78,7 @@ function InstantSearch() {
                 <InstantSearchResult data={result} key={`${result.type}-${result?.slug || result?.username}`} />
             ))}
 
-            <Link to={`/search?query=${query}`} className={styles.ShowAll}>Show all results</Link>
+            <Link to={"/search"} state={{ query: query }} className={styles.ShowAll}>Show all results</Link>
         </div>
 
     </div>

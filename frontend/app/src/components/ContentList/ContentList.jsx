@@ -11,7 +11,7 @@ function ContentList({query, filters, sort_by, title, maxResults=3, showFullCont
     return <div className={styles.ListCard}>
         <h2 className={styles.Title}>
             {title}
-            <Link className={styles.SearchLink} to={`/search?query=${query}&sortBy=${sort_by}`}>More</Link>
+            <Link className={styles.SearchLink} to={"/search"} state={{ filters: filters, sort_by: sort_by, query: query}}>More</Link>
         </h2>
         <hr />
 

@@ -30,7 +30,7 @@ function Searchbar({onChange, onBlur, onFocus}) {
             onChange={handleChange}
             onBlur={onBlur}
             onFocus={onFocus}
-            onKeyDown={(e) => e.key === "Enter" && navigate(`/search?query=${query}`)}
+            onKeyDown={(e) => e.key === "Enter" && navigate("/search", { state: { query: query } })}
             />
 
         {query.trim() && 
