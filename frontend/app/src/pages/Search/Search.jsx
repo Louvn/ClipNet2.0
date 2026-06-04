@@ -19,11 +19,15 @@ function Search() {
     const currentPage = (offset / resultsLength) + 1;
 
     const [selectedContentTypes, setSelectedContentTypes] = useState([]);
-    const [selectedSortBy, setSelectedSortBy] = useState("relevance");
+    const [selectedSortBy, setSelectedSortBy] = useState(params.get("sortBy") ?? "relevance");
 
     const { results, loading } = useSearch(query, filters, selectedSortBy, offset, resultsLength+1); // +1 to check whether there is more
 
-    useEffect(() => setQuery(params.get("query") ?? ""), [params]);
+    useEffect(() => {
+        setQuery(params.get("query") ?? "");
+        setSelectedSortBy(params.get("sortBy") ?? "relevance");
+    }, [params]);
+
     useEffect(() => window.scrollTo(0, 0), [offset]);
 
 
@@ -78,6 +82,7 @@ function Search() {
                         <option value="relevance">Relevance</option>
                         <option value="newest_first">Newest first</option>
                         <option value="oldest_first">Oldest first</option>
+                        <option value="last_updated_first">Last updated first</option>
                     </select>
                 </fieldset>
 
@@ -85,7 +90,7 @@ function Search() {
 
             <main className={styles.SearchResults}>
                 <h2>Search Results:</h2>
-                {!loading && results?.slice(0, 20).map(e => <SearchResult showContent data={e} key={`${e.type}-${e?.slug || e?.username}`} />)}
+                {!loading && results?.slice(0, 20).map(e => <SearchResult showContent data={e} query={query} key={`${e.type}-${e?.slug || e?.username}`} />)}
 
                 {loading && <Loader divHidden />}
 

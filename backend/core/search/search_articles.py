@@ -10,6 +10,7 @@ def search_articles(query, filters, db):
     revisions = (
         db.query(Revision)
             .options(
+                # eager loading enhances performance
                 selectinload(Revision.article).selectinload(Article.current_revision),
                 selectinload(Revision.article).selectinload(Article.first_revision),
                 selectinload(Revision.article).selectinload(Article.op),

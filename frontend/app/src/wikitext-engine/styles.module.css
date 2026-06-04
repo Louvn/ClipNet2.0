@@ -35,3 +35,9 @@
     display: inline-block;
     margin-top: 32px;
 }
+
+
+.Mark {
+    background-color: color-mix(in srgb, var(--primary-color) 40%, transparent);
+    padding: 1px;   
+}

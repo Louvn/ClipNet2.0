@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import renderPreview from "../../wikitext-engine/previews";
+import { highlightQuery } from "../../wikitext-engine/previews";
 
-function SearchResult({data, showContent=false}) {
+function SearchResult({data, query, showContent=false}) {
 
     let title, info, content, link;
 
@@ -22,15 +24,9 @@ function SearchResult({data, showContent=false}) {
     }
 
     return <Link to={link} className={`${styles.SearchResult} ${styles[data.type]} ${showContent ? styles.showContent : ""}`}>
-        <h3 className={styles.SearchResultTitle}>{title}</h3>
+        <h3 className={styles.SearchResultTitle}>{highlightQuery(title, query)}</h3>
         <span className={styles.SearchResultAuthor}>{info}</span>
-        <p className={styles.SearchResultContent}>
-            {
-                content?.split(" ").length > 20
-                ? content.split(" ").slice(0, 20).join(" ") + " ..."
-                : content
-            }
-        </p>
+        <p className={styles.SearchResultContent}>{showContent && renderPreview(content, query)}</p>
     </Link>
 }
 
