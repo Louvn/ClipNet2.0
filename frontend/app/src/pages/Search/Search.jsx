@@ -23,7 +23,7 @@ function Search() {
 
     useEffect(() => {
         if (query !== location.state?.query) setQuery(location.state.query);
-    }, [location]);
+    }, [location, query]);
 
     useEffect(() => window.scrollTo(0, 0), [offset]);
 

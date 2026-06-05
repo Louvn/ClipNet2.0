@@ -2,8 +2,8 @@ from fastapi import Depends, HTTPException
 from backend.core.security.jwt_helpers import get_current_user
 from backend.database import get_db
 from backend.schematics.revision import RevisionCreateData
-from backend.models.article import Article
-from backend.models.revision import Revision
+from backend.models import Article, Revision
+from backend.core.security.permissions import is_user_allowed_to_edit
 from sqlalchemy import and_
 
 def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_user), db = Depends(get_db)):
@@ -13,6 +13,8 @@ def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_u
     existing_article_with_id = db.query(Article).filter(Article.id == revision_data.article_id).first()
     if not existing_article_with_id:
         raise HTTPException(status_code=400, detail="There was no article with the provided ID")
+    if not is_user_allowed_to_edit(db, user, existing_article_with_id):
+        raise HTTPException(status_code=403, detail="You are not allowed to edit this article")
     
     # Changes made?
     if (

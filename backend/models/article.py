@@ -2,6 +2,7 @@ from ..database import Base
 from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship
 from .revision import Revision
+from ..schematics.permissions import EditPermission
 
 class Article(Base):
     __tablename__ = "articles"
@@ -10,6 +11,7 @@ class Article(Base):
     current_revision_id = Column(Integer, ForeignKey("revisions.id"))
     first_revision_id = Column(Integer, ForeignKey("revisions.id"))
     op_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    edit_permission = Column(Integer, default=EditPermission.contributors)
 
     revisions = relationship("Revision", foreign_keys=[Revision.article_id], back_populates="article")
     current_revision = relationship("Revision", uselist=False, foreign_keys=[current_revision_id], post_update=True) # post_update=True avoids circular dependency errors

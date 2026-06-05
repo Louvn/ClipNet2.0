@@ -1,4 +1,4 @@
-# ClipNet API
+# ClipNet
 ClipNet: A modern Wiki-System built with FastAPI and React.
 
 ## How to run it

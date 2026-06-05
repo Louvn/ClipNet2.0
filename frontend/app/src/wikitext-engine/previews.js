@@ -6,7 +6,7 @@ import parse from "./parser";
 import styles from "./styles.module.css";
 
 function escapeRegex(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return str ? str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"): str;
 }
 
 export function extractNormals(node) {

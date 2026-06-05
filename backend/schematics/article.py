@@ -1,8 +1,9 @@
 from pydantic import BaseModel, constr, Field
-from typing import Optional
+from typing import Optional, List
 from .content_type import ContentType
 from .revision import RevisionOutData
 from .user import UserOutData
+from .permissions import EditPermission
 
 class ArticleCreateData(BaseModel):
     title: constr(min_length=1, max_length=50)
@@ -20,3 +21,8 @@ class ArticleOutData(BaseModel):
 class ArticleGetData(BaseModel):
     id: Optional[int] = Field(None)
     slug: Optional[str] = Field(None)
+
+class ArticlePermissionsData(BaseModel):
+    id: int
+    edit_permission: EditPermission
+    contributors: List[int]
