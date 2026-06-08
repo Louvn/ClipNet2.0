@@ -8,8 +8,8 @@ from fastapi import FastAPI
 
 app = FastAPI(
     title="ClipNet API",
-    description="ClipNet is a modern Wiki System built with FastAPI. <a href='/'>Go to ClipNet Web</a>",
-    version=os.getenv("VERSION"),
+    description=f"ClipNet is a modern Wiki System built with FastAPI. <a href='{os.getenv("FRONTEND_URL")}'>Go to ClipNet Web</a>",
+    version=os.getenv("REACT_APP_WIKI_VERSION"),
     root_path="/api"
 )
 
