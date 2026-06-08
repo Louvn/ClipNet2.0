@@ -5,12 +5,23 @@ load_dotenv()
 
 # -- API --
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="ClipNet API",
     description=f"ClipNet is a modern Wiki System built with FastAPI. <a href='{os.getenv("FRONTEND_URL")}'>Go to ClipNet Web</a>",
     version=os.getenv("REACT_APP_WIKI_VERSION"),
     root_path="/api"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "*"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 from .routes.auth import router as auth_router
