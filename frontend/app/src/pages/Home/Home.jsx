@@ -3,10 +3,12 @@ import heroSectionIllustration from "../../assets/illustrations/knight.png";
 import ContentList from "../../components/ContentList";
 import { useStats } from "../../hooks/useStats";
 import Medium from "../../components/Medium";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
 
     const {stats, loading} = useStats();
+    const navigate = useNavigate();
 
 
     return <Medium className={styles.HomePage}>
@@ -23,7 +25,7 @@ function Home() {
                 </h1>
 
                 <div>
-                    <button className={styles.Button}>Create Something</button>
+                    <button className={styles.Button} onClick={navigate("/editor")}>Create Something</button>
                     <button className={`${styles.Button} ${styles.Grey}`}>Learn More</button>
                 </div>
             </div>
