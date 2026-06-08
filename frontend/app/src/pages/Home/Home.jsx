@@ -25,7 +25,7 @@ function Home() {
                 </h1>
 
                 <div>
-                    <button className={styles.Button} onClick={navigate("/editor")}>Create Something</button>
+                    <button className={styles.Button} onClick={() => navigate("/editor")}>Create Something</button>
                     <button className={`${styles.Button} ${styles.Grey}`}>Learn More</button>
                 </div>
             </div>
