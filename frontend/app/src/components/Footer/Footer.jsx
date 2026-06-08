@@ -6,7 +6,7 @@ function Footer() {
         <section>
             <h2>[Development]</h2>
 
-            <a href="/api/docs">API Docs</a>
+            <a href={`${process.env.REACT_APP_API_URL}/docs`}>API Docs</a>
         </section>
 
 

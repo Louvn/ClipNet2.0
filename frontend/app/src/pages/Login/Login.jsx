@@ -11,7 +11,7 @@ function Login() {
 
     const toastNotification = useToastNotification();
 
-    const { isLoggedIn, setJwt } = useAuth();
+    const { isLoggedIn, setJwt, setUser } = useAuth();
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -44,6 +44,7 @@ function Login() {
         }
         
         setJwt(data.access_token);
+        setUser(data.user);
         toastNotification(`Welcome back, ${username}!`, notificationTypeSuccess);
         
         // using stored redirect

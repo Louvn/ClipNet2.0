@@ -17,6 +17,8 @@ class ArticleOutData(BaseModel):
     current_revision: RevisionOutData
     first_revision: RevisionOutData
     revision_count: Optional[int] = None
+    edit_permission: int
+    contributors: List[int] = None
 
 class ArticleGetData(BaseModel):
     id: Optional[int] = Field(None)

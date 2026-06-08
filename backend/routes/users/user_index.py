@@ -7,8 +7,8 @@ def user_index(user = Depends(get_current_user), db = Depends(get_db)):
     """Delivers an index of all users with their title and slugs"""
 
     index = (
-        db.query(User.username)
+        db.query(User.username, User.id)
             .all()
     )
 
-    return [{ "username": row.username} for (row) in index]
+    return [{ "username": row.username, "id": row.id} for (row) in index]

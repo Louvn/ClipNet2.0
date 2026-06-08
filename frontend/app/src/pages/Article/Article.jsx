@@ -20,6 +20,7 @@ import revisionIcon from "../../assets/icons/revision.png";
 import updatedIcon from "../../assets/icons/updated.png";
 import Medium from "../../components/Medium";
 import SimpleButton from "../../components/SimpleButton";
+import { useAuth } from "../../context/AuthContext";
 
 
 function Article() {
@@ -27,6 +28,7 @@ function Article() {
     const { slug } = useParams();
 
     const {article, loading, status} = useArticle(slug);
+    const {user} = useAuth();
     const navigate = useNavigate();
 
 
@@ -60,9 +62,14 @@ function Article() {
 
                 <hr />
 
-                <ActionButton icon={editIcon} onClick={() => navigate(`/editor/${slug}`)}>edit</ActionButton>
+                {
+                    (article.edit_permission === 1 || article.op.id === user.id || article.contributors.includes(user.id))
+                    && <ActionButton icon={editIcon} onClick={() => navigate(`/editor/${slug}`)}>edit</ActionButton>
+                }
                 <ActionButton icon={revisionsIcon}>revisions</ActionButton>
-                <ActionButton icon={permissionsIcon}>permissions</ActionButton>
+                {   article.op.id === user.id
+                    && <ActionButton icon={permissionsIcon} onClick={() => navigate(`/perm-editor/${slug}`)}>permissions</ActionButton>
+                }
 
             </section>
 

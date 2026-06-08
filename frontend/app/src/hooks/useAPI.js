@@ -10,7 +10,7 @@ export function useAPI() {
     const apiFetch = useCallback(async (url, options={}) => {
 
         const response = await fetch(
-            "/api" + url, {
+            process.env.REACT_APP_API_URL + url, {
                 headers: {
                     ...options.headers,
                     "Authorization": `Bearer ${jwt}`,

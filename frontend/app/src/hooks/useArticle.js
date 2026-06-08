@@ -31,5 +31,5 @@ export function useArticle(slug) {
 
     }, [slug, apiFetch]);
 
-    return {article, loading, error, status};
+    return {article, setArticle, loading, error, status};
 }
