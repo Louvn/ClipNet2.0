@@ -9,7 +9,6 @@ import Loader from "../../components/Loader";
 import wikitextToJsx from "../../wikitext-engine";
 
 import reportIcon from "../../assets/icons/report.png";
-import shareIcon from "../../assets/icons/share.png";
 import editIcon from "../../assets/icons/edit.png";
 import revisionsIcon from "../../assets/icons/revisions.png";
 import permissionsIcon from "../../assets/icons/permissions.png";
@@ -21,6 +20,7 @@ import Medium from "../../components/Medium";
 import SimpleButton from "../../components/SimpleButton";
 import { useAuth } from "../../context/AuthContext";
 import LikeButton from "../../components/LikeButton";
+import ShareButton from "../../components/ShareButton";
 
 
 function Article() {
@@ -57,7 +57,7 @@ function Article() {
                 <h2>Actions</h2>
 
                 <LikeButton article={article} />
-                <ActionButton icon={shareIcon}>share</ActionButton>
+                <ShareButton title={article.current_revision.title} />
                 <ActionButton icon={reportIcon}>report</ActionButton>
 
                 <hr />
