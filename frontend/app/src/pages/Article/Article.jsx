@@ -8,7 +8,6 @@ import Loader from "../../components/Loader";
 
 import wikitextToJsx from "../../wikitext-engine";
 
-import likeIcon from "../../assets/icons/like.png";
 import reportIcon from "../../assets/icons/report.png";
 import shareIcon from "../../assets/icons/share.png";
 import editIcon from "../../assets/icons/edit.png";
@@ -21,6 +20,7 @@ import updatedIcon from "../../assets/icons/updated.png";
 import Medium from "../../components/Medium";
 import SimpleButton from "../../components/SimpleButton";
 import { useAuth } from "../../context/AuthContext";
+import LikeButton from "../../components/LikeButton";
 
 
 function Article() {
@@ -56,7 +56,7 @@ function Article() {
             <section className={`${styles.SidebarSection} ${styles.Actions}`}>
                 <h2>Actions</h2>
 
-                <ActionButton icon={likeIcon}>2</ActionButton>
+                <LikeButton article={article} />
                 <ActionButton icon={shareIcon}>share</ActionButton>
                 <ActionButton icon={reportIcon}>report</ActionButton>
 

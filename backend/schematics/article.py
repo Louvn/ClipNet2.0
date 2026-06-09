@@ -19,6 +19,7 @@ class ArticleOutData(BaseModel):
     revision_count: Optional[int] = None
     edit_permission: int
     contributors: List[int] = None
+    liked_by: List[int] = None
 
 class ArticleGetData(BaseModel):
     id: Optional[int] = Field(None)

@@ -77,7 +77,7 @@ function Search() {
                 <fieldset>
                     <legend>Order by</legend>
 
-                    <select onChange={onChangeSortBySelection} value={selectedSortBy}>
+                    <select onChange={onChangeSortBySelection} value={selectedSortBy} className={styles.SortBySelect}>
                         <option value="relevance">Relevance</option>
                         <option value="newest_first">Newest first</option>
                         <option value="oldest_first">Oldest first</option>

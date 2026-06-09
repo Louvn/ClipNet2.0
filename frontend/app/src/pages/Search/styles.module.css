@@ -63,6 +63,11 @@
     opacity: 0.3;
 }
 
+.SortBySelect {
+    background: none;
+    border: none;
+}
+
 @keyframes slideInUp {
     0% {
         opacity: 0;
