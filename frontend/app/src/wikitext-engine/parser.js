@@ -37,6 +37,22 @@ function groupNodesByHeading(rootNode) {
     return { type: FORMAT.root, children: new_children };
 }
 
+function isFirstFormatOfLine(tokens, tokenId) {
+
+    for (let idx = tokenId-1;idx >= 0;idx--) {
+        if (tokens[idx].type === TOKEN.NEWLINE) {
+            break;
+        }
+        if (tokens[idx].type === TOKEN.TEXT) {
+            if (tokens[idx].value.trim() === "") continue;
+        }
+
+        return false
+    }
+
+    return true;
+}
+
 function parse(tokens) {
 
     const root =  { type: FORMAT.root, children: [] };
@@ -182,19 +198,18 @@ function parse(tokens) {
             continue;
         }
 
-        if (token.type === TOKEN.NEWLINE && tokens[idx+1]?.type === TOKEN.HASH) {
+        if (token.type === TOKEN.HASH && isFirstFormatOfLine(tokens, idx)) {
 
-            if (tokens[idx+2].type === TOKEN.HASH) {
+            if (tokens[idx+1].type === TOKEN.HASH) {
 
                 openNode(FORMAT.subheading, true);
 
-                idx += 2;
+                idx++;
                 continue;
             }
 
             openNode(FORMAT.heading, true);
 
-            idx++;
             continue;
         }
 
@@ -217,9 +232,8 @@ function parse(tokens) {
 
             if (findOpenNodeOf(FORMAT.heading)) {
                 closeNode(FORMAT.heading);
+                continue;
             }
-
-            continue;
         }
 
         if (token.type === TOKEN.NEWLINE) {

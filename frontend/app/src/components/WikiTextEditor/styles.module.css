@@ -24,4 +24,5 @@
     font-family: var(--text-font);
     flex: 1;
     margin-bottom: 64px;
+    white-space: pre-line;
 }
