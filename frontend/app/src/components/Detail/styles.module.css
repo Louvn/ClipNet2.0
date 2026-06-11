@@ -6,6 +6,7 @@
     height: 16px;
 }
 .DetailText {
-    color: #444444;
+    color: var(--secondary-text-color);
+    opacity: 0.9;
     font-size: 0.8em;
 }

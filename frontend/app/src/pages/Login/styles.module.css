@@ -4,6 +4,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: var(--bg-color);
 }
 
 .LoginForm {
@@ -40,7 +41,7 @@
     align-items: center;
 }
 .Info {
-    color: #333;
+    color: var(--secondary-text-color);
 }
 .Logo {
     display: flex;
@@ -61,7 +62,7 @@
     border-radius: 5px;
     width: 250px;
     height: 30px;
-    color: var(--bg-color);
+    color: #e4e4e4;
     font-size: 1.2em;
     font-weight: 500;
 }

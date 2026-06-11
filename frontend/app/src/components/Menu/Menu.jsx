@@ -3,6 +3,7 @@ import styles from "./styles.module.css"
 import {useState} from "react"
 import DarkOverlay from "../DarkOverlay";
 import { useAuth } from "../../context/AuthContext";
+import ThemeButton from "../ThemeButton";
 
 function Menu() {
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -15,6 +16,7 @@ function Menu() {
 
         <menu className={`${styles.Menu} ${isMenuOpen ? styles.Open : ""}`}>
             <button onClick={() => setJwt(null)}>Logout</button>
+            <ThemeButton />
         </menu>
 
         {isMenuOpen && <DarkOverlay onClick={() => setMenuOpen(false)} />}

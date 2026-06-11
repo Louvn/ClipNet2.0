@@ -30,7 +30,7 @@
 }
 
 .LogoText {
-    color: var(--bg-color);
+    color: #eee;
     text-decoration: none;
     font-size: 40px;
     font-family: "Orbitron";

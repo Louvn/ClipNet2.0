@@ -5,7 +5,7 @@
 .Wave {
     height: 20vh;
     width: 100%;
-    fill: #e4e4e4;
+    fill: rgba(0, 0, 0, .05);
     display: block;
 }
 
@@ -13,6 +13,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0 32px;
+    color: var(--text-color)
 }
 .HeroSectionIllustration {
     all: unset;
@@ -39,7 +40,7 @@
 
 .ItalicTransparent {
     font-style: italic;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: var(--text-color);
     -webkit-text-stroke-width: 0.1px;
     color: transparent;
 }
@@ -56,16 +57,16 @@
     all: unset;
     background-color: var(--accent-color);
     padding: 16px;
-    color: var(--bg-color);
+    color: #e4e4e4;
     border-radius: 8px;
     font-size: 1em;
     transition: all 0.3s ease-out;
     margin-right: 12px;
 }
 .Button.Grey {
-   background: transparent;
-   color: var(--secondary-color);
-   border: 1px solid var(--secondary-color);
+    background: transparent;
+    color: var(--secondary-text-color);
+    border: 1px solid var(--secondary-text-color);
 }
 .Button:hover {
     transform: translateY(-4px);
@@ -76,7 +77,7 @@
 }
 
 .MainSection {
-    background-color: #e4e4e4;
+    background-color: rgba(0, 0, 0, .05);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     padding: 32px;

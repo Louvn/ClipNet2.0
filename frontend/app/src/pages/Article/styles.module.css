@@ -46,7 +46,7 @@
 .SidebarSection h2 {
     font-weight: 400;
     font-size: 1.7em;
-    color: #555;
+    color: var(--secondary-text-color);
 }
 
 
@@ -59,7 +59,7 @@
 .CommentSection h2 {
     font-weight: 400;
     font-size: 1.7em;
-    color: #555;
+    color: var(--secondary-text-color);
     display: flex;
     width: 100%;
     justify-content: space-between;

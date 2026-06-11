@@ -17,11 +17,11 @@ function Home() {
 
             <div className={styles.HeroSectionLeft}>
                 <h1 className={styles.HeroSectionHeading}>
-                    It's <span className={styles.RegularColor}>{loading ? "[?]" : stats.articles}</span> Articles
+                    <span className={styles.RegularColor}>{loading ? "[?]" : stats.articles}</span> Articles
                     <br />
-                    Made by <span className={styles.ItalicTransparent}>{loading ? "[?]" : stats.users}</span> Users.
+                    made by <span className={styles.ItalicTransparent}>{loading ? "[?]" : stats.users}</span> Users.
                     <br />
-                    Go <span className={styles.Underlined}>Explore</span> it!
+                    Go <span className={styles.Underlined}>explore</span> it!
                 </h1>
 
                 <div>

@@ -13,7 +13,7 @@
 .NotFoundTitle {
     font-size: 2em;
     font-weight: 550;
-    color: var(--secondary-color);
+    color: var(--bg-color);
     color: var(--primary-color);
 }
 .NotFoundQuote {

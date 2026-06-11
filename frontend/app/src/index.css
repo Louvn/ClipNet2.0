@@ -1,10 +1,9 @@
 :root {
-    --bg-color: #eee;
     --primary-color: #30638E;
-    --secondary-color: #555;
+    --bg-color: #e4e4e4;
     --accent-color: #45739a;
     --text-color: #050315;
-    --secondary-text-color: #aaa;
+    --secondary-text-color: #555;
     --cards: snow;
     --shadows: rgba(0, 0, 0, 0.25);
     --ui-font: "Inter";
@@ -14,11 +13,19 @@
     --content-type-user-color: rgba(0, 100, 0, 0.5);
 }
 
+.dark {
+    --bg-color: #3e3e3e;
+    --text-color: #b1b1b1;
+    --secondary-text-color: #aaa;
+    --cards: #333;
+}
+
 *, *::after, *::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: var(--ui-font);
+    color: var(--text-color);
 }
 
 body {

@@ -20,7 +20,7 @@
 }
 
 .SearchbarInput::placeholder {
-    color: var(--bg-color);
+    color: #e4e4e4;
     opacity: 0.7;
     
 }
@@ -30,7 +30,7 @@
     border: none;
     outline: none;
     background: none;
-    color: var(--bg-color);
+    color: #e4e4e4;
     font-size: 0.8em;
     flex: 1;
 }
