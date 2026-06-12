@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from .like import like, remove_like
 from .create_comment import create_comment
+from .get_comments import get_comments
 from backend.schematics.comment import CommentOutData
 
 router = APIRouter(tags=["social"])
@@ -22,4 +23,10 @@ router.add_api_route(
     create_comment,
     methods=["POST"],
     response_model=CommentOutData
+)
+
+router.add_api_route(
+    "/get-comments",
+    get_comments,
+    methods=["GET"]
 )
