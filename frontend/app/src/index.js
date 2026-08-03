@@ -12,6 +12,7 @@ import { ToastNotificationContextProvider } from './context/ToastNotificationCon
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
+        <BrowserRouter>
 
         <ToastNotificationContextProvider>
         <AuthContextProvider>
@@ -19,15 +20,15 @@ root.render(
             <WikiIndexContextProvider>
             <UserIndexContextProvider>
                     
-                <BrowserRouter>
-                    <App />    
-                </BrowserRouter>
+                <App />    
                 
             </UserIndexContextProvider>
             </WikiIndexContextProvider>
             
         </AuthContextProvider>
         </ToastNotificationContextProvider>
+
+        </BrowserRouter>
 
     </React.StrictMode>
 );

@@ -22,10 +22,8 @@ function Search() {
     const [selectedSortBy, setSelectedSortBy] = useState(location.state?.sort_by || "relevance");
 
     useEffect(() => {
-        if (query !== location.state?.query) setQuery(location.state.query);
+        if (query !== location.state?.query) setQuery(location.state?.query);
     }, [location, query]);
-
-    useEffect(() => window.scrollTo(0, 0), [offset]);
 
     const { results, loading } = useSearch(query, filters, selectedSortBy, offset, resultsLength+1); // +1 to check whether there is more
 
@@ -89,6 +87,7 @@ function Search() {
 
             <main className={styles.SearchResults}>
                 <h2>Search Results:</h2>
+                
                 {!loading && results?.slice(0, 20).map(e => <SearchResult showContent data={e} query={query} key={`${e.type}-${e?.slug || e?.username}`} />)}
 
                 {loading && <Loader divHidden />}

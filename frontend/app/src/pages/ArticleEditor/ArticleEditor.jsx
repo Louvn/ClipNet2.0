@@ -43,6 +43,16 @@ function ArticleEditor() {
         navigate(isEdit ? `/wiki/${slug}` : "/");
     }
 
+    // async function used in createArticle and editArticle
+    const reactToError = async (fallbackNotification, res) => {
+        const data = await res.json();
+        const notification = typeof data.detail === "string" ? data.detail : fallbackNotification;
+
+        setPublishing(false);
+        setPopUpOpen(false);
+        toastNotification(notification);
+    }
+
     const createArticle = () => {
 
         setPublishing(true);
@@ -53,16 +63,11 @@ function ArticleEditor() {
         }
 
         apiFetch("/create-article", {method: "POST", body: JSON.stringify(data)})
-            .then(async (res) => {
+            .then(res => {
                 if (res.ok) {
                     afterPublish();
                 } else {
-                    const data = await res.json();
-                    const notification = typeof data.detail === "string" ? data.detail : "Article could not be published.";
-
-                    setPublishing(false);
-                    setPopUpOpen(false);
-                    toastNotification(notification);
+                    reactToError("Article could not be published", res);
                 }
             })
     }
@@ -79,16 +84,11 @@ function ArticleEditor() {
         };
 
         apiFetch("/edit-article", {method: "PUT", body: JSON.stringify(data)})
-            .then(async (res) => {
+            .then(res => {
                 if (res.ok) {
                     afterPublish();
                 } else {
-                    const data = await res.json();
-                    const notification = typeof data.detail === "string" ? data.detail : "Changes could not be published.";
-
-                    setPublishing(false);
-                    setPopUpOpen(false);
-                    toastNotification(notification);
+                    reactToError("Changes could not be published", res);
                 }
             })
     }

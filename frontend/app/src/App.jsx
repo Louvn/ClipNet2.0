@@ -13,6 +13,7 @@ import ArticleEditor from "./pages/ArticleEditor";
 import { useAuth } from "./context/AuthContext";
 import Search from "./pages/Search";
 import PermissionEditor from "./pages/PermissionEditor";
+import NetworkError from "./pages/NetworkError";
 
 function App() {
     
@@ -55,6 +56,7 @@ function App() {
                                 <Route path="/perm-editor/:slug" element={<PermissionEditor />} />
 
                                 <Route path="/404" element={<NotFound />} />
+                                <Route path="network-error" element={<NetworkError />} />
 
                                 <Route path="*" element={<NotFound />} />
 

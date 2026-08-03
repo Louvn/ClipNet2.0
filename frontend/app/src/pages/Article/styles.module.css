@@ -69,9 +69,31 @@
 .Comments {
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    gap: 12px;
+    padding-top: 24px;
 }
 .Comments em {
     align-self: center;
     color: var(--secondary-text-color);
+}
+
+.CommentEditor {
+    width: 70%;
+    height: 128px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px var(--shadows);
+    background-color: var(--cards);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.CommentEditor input {
+    all: unset;
+    width: 85%;
+    height: 100%;
+}
+.CommentEditor .PostButton {
+    margin-left: auto;
+    width: 64px;
 }

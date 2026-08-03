@@ -4,6 +4,7 @@
 import { FORMAT } from "./formats.js";
 import { TOKEN } from "./tokens.js";
 
+
 function groupNodesByHeading(rootNode) {
     // this function should be called at end of parsing
     // it changes the structure of headings to prepare them for rendering
@@ -53,7 +54,7 @@ function isFirstFormatOfLine(tokens, tokenId) {
     return true;
 }
 
-function parse(tokens) {
+function parse(tokens, fullMode = true) { // fullMode = false would disable headings, tables etc. and leave simple formates like bold and italic 
 
     const root =  { type: FORMAT.root, children: [] };
     let stack = [root];
@@ -71,6 +72,11 @@ function parse(tokens) {
 
         // verbatim
         if (current().verbatim) return createTextNode(token.value);
+
+        // not full mode means only these are accepted:
+        if (!fullMode && ![FORMAT.bold, FORMAT.italic, FORMAT.underscored, FORMAT.text, FORMAT.root, FORMAT.userlink, FORMAT.wikilink].includes(type)) {
+            return createTextNode(token.value);
+        }
 
         current().children.push(node);
         stack.push(node);

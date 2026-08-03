@@ -21,6 +21,12 @@ import SimpleButton from "../../components/SimpleButton";
 import { useAuth } from "../../context/AuthContext";
 import LikeButton from "../../components/LikeButton";
 import ShareButton from "../../components/ShareButton";
+import FormattingOptions from "../../components/FormattingOptions";
+import { useRef, useState } from "react";
+import { useAPI } from "../../hooks/useAPI";
+import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
+import { useComments } from "../../hooks/useComments";
+import Comment from "../../components/Comment";
 
 
 function Article() {
@@ -28,8 +34,42 @@ function Article() {
     const { slug } = useParams();
 
     const {article, loading, status} = useArticle(slug);
+    const {comments, commentsLoading, reloadComments} = useComments(article?.id);
+    const apiFetch = useAPI();
     const {user} = useAuth();
     const navigate = useNavigate();
+
+    // comments-related
+    const commentInputRef = useRef(null);
+    const [commentInput, setCommentInput] = useState("");
+    const [showCommentInput, setShowCommentInput] = useState(false);
+    const [postingComment, setPostingComment] = useState(false);
+    const toastNotification = useToastNotification();
+
+    const postComment = () => {
+        if (!commentInput || !commentInput.trim()) return;
+        setPostingComment(true);
+
+        apiFetch("/create-comment", {
+            method: "POST",
+            body: JSON.stringify({
+                article_id: article.id,
+                content: commentInput
+            })
+        })
+            .then(res => {
+                if (res.ok) {
+                    toastNotification("Comment posted.", notificationTypeSuccess)
+                    reloadComments();
+
+                } else {
+                    toastNotification("Could not post Comment.");
+                }
+
+                setPostingComment(false);
+                setCommentInput("");
+            })
+    }
 
 
     // Loading Animation
@@ -84,12 +124,28 @@ function Article() {
         <div className={styles.CommentSection}>
             <h2>
                 Comment
-                <SimpleButton>Add Comment</SimpleButton>
+                <SimpleButton onClick={() => setShowCommentInput(!showCommentInput)}>{showCommentInput ? "Close" : "Add Comment"}</SimpleButton>
             </h2>
             <hr />
 
+            {showCommentInput && <div className={styles.CommentEditor}>
+                <FormattingOptions 
+                    inputRef={commentInputRef}
+                    textState={commentInput}
+                    changeTextState={setCommentInput}
+                    />
+                
+                <input type="text" ref={commentInputRef} value={commentInput} onChange={(e) => setCommentInput(e.currentTarget.value)} placeholder="Your opinion?" />
+                <SimpleButton onClick={postComment} disabled={postingComment} className={styles.PostButton}>Post</SimpleButton>
+            </div>}
+
             <div className={styles.Comments}>
-                <em>There are no comments</em>
+
+                {!commentsLoading && comments?.length > 0 && comments?.map(e => <Comment data={e} key={e.created_at} />)}
+
+                {commentsLoading && <Loader />}
+
+                {!commentsLoading && comments?.length === 0 && <em>There are no comments</em>}
             </div>
 
         </div>
