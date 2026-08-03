@@ -1,24 +1,21 @@
-.NotFound {
+.NetworkError {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
     margin: 64px;
+    gap: 20px;
 }
-.NotFoundCode {
-    font-size: 10em;
-    color: var(--primary-color);
-    font-weight: 400;
-}
-.NotFoundTitle {
+.Title {
     font-size: 2em;
     font-weight: 550;
     color: var(--bg-color);
     color: var(--primary-color);
 }
-.NotFoundQuote {
-    margin: 20px;
-    font-size: 1.3em;
-    color: rgb(54, 47, 47);
+.Icon {
+    height: 128px;
+}
+.InfoText {
+    width: 600px;
     text-align: center;
 }

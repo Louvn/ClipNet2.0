@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAPI } from "../hooks/useAPI";
 
 export function useComments(article_id) {
@@ -10,7 +10,7 @@ export function useComments(article_id) {
 
     const apiFetch = useAPI();
 
-    const loadComments = () => {
+    const loadComments = useCallback(() => {
         if (!article_id) return;
 
         setLoading(true);
@@ -27,13 +27,13 @@ export function useComments(article_id) {
             .catch(setError)
 
             .finally(() => setLoading(false))
-    }
+    }, [apiFetch, setLoading, setStatus, setComments, article_id]);
 
     useEffect(() => {
 
         loadComments();
 
-    }, [article_id, apiFetch]);
+    }, [article_id, apiFetch, loadComments]);
 
     return {comments, reloadComments: loadComments, loading, error, status};
 }
