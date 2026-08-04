@@ -28,7 +28,7 @@ function ContentList({query, filters, sort_by, title, maxResults=3, showFullCont
 
         {loading && <Loader />}
 
-        {!loading && results?.length === 0 && <em>Nothing Found</em>}
+        {!loading && results?.length === 0 && <em className={styles.NothingFound}>Nothing Found</em>}
     </div>
 }
 

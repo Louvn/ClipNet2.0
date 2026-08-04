@@ -13,5 +13,5 @@ class UserOutData(BaseModel):
     username: str
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    total_articles: int = None
+    total_articles_contributed_to: int = None

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import wikitextToJsx from "../../wikitext-engine";
 import styles from "./styles.module.css";
+import wikitextStyles from "../../wikitext-engine/styles.module.css";
 
 function Comment({ data }) {
 
@@ -8,10 +9,10 @@ function Comment({ data }) {
 
     return <div>
         <div className={styles.CommentMetaData}>
-            <Link to="#">@{data.user.username}</Link>
+            <Link to={`/community/user/${data.user.id}`} className={wikitextStyles.UserLink}>@{data.user.username}</Link>
             <span>{data.created_at}</span>
         </div>
-        <span>{rendered}</span>
+        <span className={styles.CommentContent}>{rendered}</span>
         <hr/>
     </div>
 }

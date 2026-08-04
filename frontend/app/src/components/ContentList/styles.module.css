@@ -26,3 +26,8 @@
     font-size: 16px;
     align-self: end;
 }
+
+.NothingFound {
+    display: block;
+    text-align: center;
+}

@@ -19,7 +19,7 @@ function SearchResult({data, query, showContent=false}) {
             title = "@" + data.username;
             info = "user";
             content = "user";
-            link = `/community/user/${data.username}`;
+            link = `/community/user/${data.id}`;
             break;
     }
 

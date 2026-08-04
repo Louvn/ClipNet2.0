@@ -1,4 +1,11 @@
 .CommentMetaData {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 8px;
+}
+.CommentMetaData .TimeStamp {
+    color: var(--secondary-text-color);
+}
+.CommentContent {
+    font-size: 18px;
 }

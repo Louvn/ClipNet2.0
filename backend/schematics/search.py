@@ -8,6 +8,9 @@ class SearchFilters(BaseModel):
     # ContentType - standard are all
     content_type: List[ContentType] = Field(default_factory=lambda: [type.value for type in ContentType])
 
+    op_id: int = None
+    contributor_id: int = None
+
 class SearchQueryData(BaseModel):
     
     query: str = Field(default="") # can be empty

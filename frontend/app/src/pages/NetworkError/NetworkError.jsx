@@ -11,7 +11,7 @@ function NetworkError() {
     return <div className={styles.NetworkError}>
         <img src={icon} alt="network error" className={styles.Icon} />
         <h2 className={styles.Title}>Seems like we could not reach the ClipNet Servers.</h2>
-        <p className={styles.InfoText}>This error means your device failed to reach the ClipNet Servers. If this is not because of your Internet, the Server may be sleeping. Try Again in a few minutes. If the problem remains, please report it to the owner.</p>
+        <p className={styles.InfoText}>This error means your device failed to reach the ClipNet Servers. If this isn't caused by your Internet connection, the Server may be sleeping. Try again in a few minutes. If the problem remains, please report it to the owner.</p>
         
         <SimpleButton onClick={() => navigate(location.state?.from || "/", { state: location.state?.initialState })}>Try Again</SimpleButton>
     </div>

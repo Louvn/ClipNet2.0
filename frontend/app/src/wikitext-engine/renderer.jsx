@@ -30,7 +30,7 @@ function UserLinkNode({ username }) {
     const foundUser = userIndex.get(username);
 
     if (foundUser) {
-        return <Link className={styles.UserLink} to={`/community/user/${username}`}>@{username}</Link>;
+        return <Link className={styles.UserLink} to={`/community/user/${foundUser.id}`}>@{username}</Link>;
     }
 
     return <Link className={`${styles.UserLink} ${styles.RedLink}`} style={{ color: "red" }} to={`/404`}>@{username}</Link>;

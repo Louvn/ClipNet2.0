@@ -14,10 +14,10 @@
 }
 
 .dark {
-    --bg-color: #3e3e3e;
+    --bg-color: #333;
     --text-color: #b1b1b1;
     --secondary-text-color: #aaa;
-    --cards: #333;
+    --cards: #3e3e3e;
 }
 
 *, *::after, *::before {
