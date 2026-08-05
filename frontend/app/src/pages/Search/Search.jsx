@@ -61,7 +61,7 @@ function Search() {
                 <SimpleButton onClick={applyFilters}>{t("search.applyFilters")}</SimpleButton>
                 
                 <fieldset>
-                    <legend>Content Type</legend>
+                    <legend>{t("search.contentType")}</legend>
 
                     <label>
                         <input type="checkbox" name="article" onChange={onChangeContentTypeCheckbox} checked={selectedContentTypes.includes("article")} />

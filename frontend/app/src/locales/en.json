@@ -26,7 +26,8 @@
         "oldestFirst": "Oldest First",
         "lastUpdatedFirst": "Last Updated First",
         "nothingFoundMatchingFilters": "No results found matching your filters.",
-        "createArticle": "Do you want to create '{{query}}'?"
+        "createArticle": "Do you want to create '{{query}}'?",
+        "contentType": "Content Type"
     },
     "auth": {
         "logout": "Log out"
@@ -63,7 +64,8 @@
         "changeSummary": "Change Summary",
         "latestArticles": "Latest Articles",
         "latestChanges": "Latest Changes",
-        "revisions": "Revisions"
+        "revisions": "Revisions",
+        "revisionCounter": "Revision #{{count}}"
     },
     "user": {
         "title": "User",

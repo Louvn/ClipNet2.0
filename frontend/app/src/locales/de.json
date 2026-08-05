@@ -1,0 +1,102 @@
+{
+    "common": {
+        "more": "Mehr",
+        "createdByUser": "Erstellt von {{user}}",
+        "details": "Details",
+        "actions": "Aktionen",
+        "back": "Zurück"
+    },
+    "actions": {
+        "share": "Teilen",
+        "report": "Melden",
+        "edit": "Bearbeiten",
+        "close": "Schließen",
+        "tryAgain": "Erneut versuchen",
+        "saveChanges": "Änderungen speichern"
+    },
+    "search": {
+        "search": "Suche",
+        "results": "Suchergebnisse",
+        "nothingFound": "Es wurde nichts gefunden.",
+        "showAllResults": "Alle Ergebnisse anzeigen",
+        "applyFilters": "Filter anwenden",
+        "orderBy": "Sortieren nach",
+        "relevance": "Relevanz",
+        "newestFirst": "Neueste zuerst",
+        "oldestFirst": "Älteste zuerst",
+        "lastUpdatedFirst": "Zuletzt aktualisiert zuerst",
+        "nothingFoundMatchingFilters": "Die Suche mit den ausgewählten Filtern ergab keine Ergebnisse.",
+        "createArticle": "Möchtest du '{{query}}' erstellen?",
+        "contentType": "Inhaltstyp"
+    },
+    "auth": {
+        "logout": "Abmelden"
+    },
+    "editor": {
+        "undo": "Rückgängig",
+        "redo": "Wiederholen",
+        "heading": "Überschrift",
+        "subheading": "Unterüberschrift",
+        "bold": "Fett",
+        "italic": "Kursiv",
+        "link": "Link",
+        "mention": "Erwähnen",
+        "table": "Tabelle",
+        "image": "Bild"
+    },
+    "permissions": {
+        "title": "Berechtigungen",
+        "everyone": "Jeder",
+        "selectedOnly": "Nur Ausgewählte"
+    },
+    "comments": {
+        "title": "Kommentare",
+        "add": "Kommentar hinzufügen",
+        "post": "Senden",
+        "noComments": "Es gibt noch keine Kommentare"
+    },
+    "article": {
+        "title": "Artikel",
+        "publishing": "Artikel wird veröffentlicht...",
+        "counter": "{{chars}} Zeichen, {{words}} Wörter",
+        "publish": "Veröffentlichen",
+        "publishChanges": "Änderungen veröffentlichen",
+        "changeSummary": "Änderungszusammenfassung",
+        "latestArticles": "Neueste Artikel",
+        "latestChanges": "Zuletzt bearbeitet",
+        "revisions": "Revisionen",
+        "revisionCounter": "Revision #{{count}}"
+    },
+    "user": {
+        "title": "Nutzer",
+        "totalArticles": "Artikel ({{count}})",
+        "totalArticlesContributed": "Beiträge zu Artikeln ({{count}})"
+    },
+    "toast": {
+        "welcomeBack": "Willkommen zurück, {{user}}!",
+        "browserDoesNotSupport": "Dein Browser unterstützt diese Funktion nicht.",
+        "commentPosted": "Kommentar erfolgreich veröffentlicht.",
+        "commentCouldNotBePosted": "Kommentar konnte nicht veröffentlicht werden.",
+        "articleCouldNotBePublished": "Artikel konnte nicht veröffentlicht werden.",
+        "changesCouldNotBePublished": "Änderungen konnten nicht veröffentlicht werden.",
+        "errorWhileSavingChanges": "Fehler beim Speichern der Änderungen.",
+        "changesSaved": "Änderungen gespeichert."
+    },
+    "placeholder": {
+        "articleTitle": "Gib deinem Artikel einen Titel",
+        "articleContent": "Schreibe die Geschichte, die du erzählen möchtest...",
+        "comment": "Schreibe deinen Kommentar...",
+        "changeSummary": "Erkläre deine Änderungen..."
+    },
+    "error": {
+        "network": {
+            "alt": "Netzwerkfehler",
+            "title": "Verbindung zu den ClipNet-Servern fehlgeschlagen.",
+            "description": "Dein Gerät konnte keine Verbindung zu den Servern herstellen. Wenn das Problem nicht an deiner Internetverbindung liegt, sind die Server möglicherweise vorübergehend nicht erreichbar. Versuche es in wenigen Minuten erneut. Sollte der Fehler weiterhin bestehen, melde ihn bitte dem Besitzer."
+        },
+        "404": {
+            "title": "Seite nicht gefunden",
+            "quote": "Du bist auf einen Pfad gestoßen, den selbst die ältesten Chroniken nicht kennen."
+        }
+    }
+}

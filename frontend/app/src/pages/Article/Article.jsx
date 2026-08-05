@@ -90,7 +90,7 @@ function Article() {
             <section className={styles.SidebarSection}>
                 <h2>{t("common.details")}</h2>
 
-                <Detail text={`revision #${article.revision_count}`} icon={revisionIcon} />
+                <Detail text={t("article.revisionCounter", {count: article.revision_count})} icon={revisionIcon} />
                 <Detail text="created 4 days ago by Louvn*" icon={createdIcon} />
                 <Detail text="updated 1 hour ago by Louvn*" icon={updatedIcon} />
             </section>

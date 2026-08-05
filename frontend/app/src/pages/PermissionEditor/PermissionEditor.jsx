@@ -55,8 +55,6 @@ function PermissionEditor() {
             edit_permission: article.edit_permission
         })});
 
-        const data = await res.json();
-
         if (!res.ok) return toastNotification(t("toast.errorWhileSavingChanges"));
 
         toastNotification(t("toast.changesSaved"), notificationTypeSuccess);

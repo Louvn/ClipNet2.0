@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 function NetworkError() {
 
-    const t = useTranslation();
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
 
