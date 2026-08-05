@@ -4,10 +4,12 @@ import styles from "./styles.module.css";
 import Logo from "../../assets/logo-blue.png";
 import { useAuth } from "../../context/AuthContext";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
+import { useTranslation } from "react-i18next";
 
 function Login() {
     const location = useLocation();
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const toastNotification = useToastNotification();
 
@@ -45,7 +47,7 @@ function Login() {
         
         setJwt(data.access_token);
         setUser(data.user);
-        toastNotification(`Welcome back, ${username}!`, notificationTypeSuccess);
+        toastNotification(t("toast.welcomeBack", {user: username}), notificationTypeSuccess);
         
         // using stored redirect
         return navigate(location.state?.redirect || "/", {replace: true});

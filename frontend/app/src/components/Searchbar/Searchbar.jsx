@@ -3,9 +3,11 @@ import searchImg from "../../assets/icons/search.png";
 import deleteSearchImg from "../../assets/icons/delete-query.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Searchbar({onChange, onBlur, onFocus}) {
 
+    const {t} = useTranslation();
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
 
@@ -24,7 +26,7 @@ function Searchbar({onChange, onBlur, onFocus}) {
 
         <input 
             type="text" 
-            placeholder="Search" 
+            placeholder={t("search.search")} 
             className={styles.SearchbarInput}
             value={query}
             onChange={handleChange}

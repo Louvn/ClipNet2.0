@@ -2,7 +2,6 @@ import {Link} from "react-router-dom";
 import styles from "./styles.module.css";
 import logoImg from "../../assets/logo-white.png";
 import Menu from "../Menu";
-import Streak from "../Streak";
 import InstantSearch from "../InstantSearch";
 
 function Navbar() {
@@ -15,7 +14,6 @@ function Navbar() {
         <InstantSearch />
 
         <div className={styles.RightCorner}>
-            <Streak />
             <Menu />
         </div>
     </nav>

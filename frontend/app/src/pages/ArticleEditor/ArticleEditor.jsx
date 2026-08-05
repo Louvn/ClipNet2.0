@@ -9,9 +9,11 @@ import Loader from "../../components/Loader";
 import PopUp from "../../components/PopUp";
 import SimpleButton from "../../components/SimpleButton";
 import { useToastNotification, notificationTypeSuccess } from "../../context/ToastNotificationContext";
+import { useTranslation } from "react-i18next";
 
 function ArticleEditor() {
 
+    const {t} = useTranslation();
     const [params] = useSearchParams();
 
     const apiFetch = useAPI();
@@ -67,7 +69,7 @@ function ArticleEditor() {
                 if (res.ok) {
                     afterPublish();
                 } else {
-                    reactToError("Article could not be published", res);
+                    reactToError(t("toast.articleCouldNotBePublished"), res);
                 }
             })
     }
@@ -88,7 +90,7 @@ function ArticleEditor() {
                 if (res.ok) {
                     afterPublish();
                 } else {
-                    reactToError("Changes could not be published", res);
+                    reactToError(t("toast.changesCouldNotBePublished"), res);
                 }
             })
     }
@@ -106,7 +108,7 @@ function ArticleEditor() {
     // loading animation while publishing
     if (isPublishing) return <Medium> 
         <Loader />
-        <h2 className={styles.PublishingArticle}>Publishing Article</h2>
+        <h2 className={styles.PublishingArticle}>{t("article.publishing")}</h2>
     </Medium>;
 
     // not found
@@ -122,13 +124,13 @@ function ArticleEditor() {
                 onClick={() => navigate(-1)}  // navigate 1 back
                 className={styles.TopBarButton}
                 >
-                ← Back
+                ← {t("common.back")}
             </SimpleButton>
 
-            <span className={styles.Counters}>{content.length} characters, {content ? content.split(" ").length : 0} words</span>
+            <span className={styles.Counters}>{t("article.counter", {chars: content.length, words: content ? content.split(" ").length : 0})}</span>
 
             <SimpleButton onClick={() => setPopUpOpen(true)} className={styles.TopBarButton}>
-                Publish
+                {t("article.publish")}
             </SimpleButton>
 
         </div>
@@ -144,13 +146,13 @@ function ArticleEditor() {
 
 
         {isPopUpOpen && <PopUp className={styles.PublishPopUp} closingMethod={() => setPopUpOpen(false)}>
-            <h2 className={styles.PublishPopUpHeading}>Publish Changes</h2>
+            <h2 className={styles.PublishPopUpHeading}>{t("article.publishChanges")}</h2>
 
             <fieldset className={styles.ChangeSummaryFieldset}>
-                <legend>Change Summary - {changeSummary.length}/255</legend>
+                <legend>{t("article.changeSummary")} - {changeSummary.length}/255</legend>
 
                 <textarea 
-                    placeholder="Explain your changes" 
+                    placeholder={t("placeholder.changeSummary")} 
                     maxLength={255}
                     value={isEdit ? changeSummary : "Created This Article"}
                     onChange={(e) => setChangeSummary(e.target.value)}
@@ -159,7 +161,7 @@ function ArticleEditor() {
 
             </fieldset>
 
-            <SimpleButton onClick={publish} className={styles.PublishPopUpButton}>Publish</SimpleButton>
+            <SimpleButton onClick={publish} className={styles.PublishPopUpButton}>{t("article.publish")}</SimpleButton>
         </PopUp>}
 
     </Medium>

@@ -10,7 +10,7 @@ function ThemeButton() {
     }, [darkMode]);
 
     return <button onClick={() => setDarkMode(!darkMode)}>
-        switch to {darkMode ? "light" : "dark"} mode
+        switch to {darkMode ? "light" : "dark"} mode*
     </button>
 }
 

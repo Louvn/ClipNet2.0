@@ -27,11 +27,13 @@ import { useAPI } from "../../hooks/useAPI";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
 import { useComments } from "../../hooks/useComments";
 import Comment from "../../components/Comment";
+import { useTranslation } from "react-i18next";
 
 
 function Article() {
 
     const { slug } = useParams();
+    const {t} = useTranslation();
 
     const {article, loading, status} = useArticle(slug);
     const {comments, commentsLoading, reloadComments} = useComments(article?.id);
@@ -59,11 +61,11 @@ function Article() {
         })
             .then(res => {
                 if (res.ok) {
-                    toastNotification("Comment posted.", notificationTypeSuccess)
+                    toastNotification(t("toast.commentPosted"), notificationTypeSuccess)
                     reloadComments();
 
                 } else {
-                    toastNotification("Could not post Comment.");
+                    toastNotification(t("toast.commentCouldNotBePosted"));
                 }
 
                 setPostingComment(false);
@@ -86,29 +88,29 @@ function Article() {
         <aside className={styles.Sidebar}>
 
             <section className={styles.SidebarSection}>
-                <h2>Details</h2>
+                <h2>{t("common.details")}</h2>
 
                 <Detail text={`revision #${article.revision_count}`} icon={revisionIcon} />
-                <Detail text="created 4 days ago by Louvn" icon={createdIcon} />
-                <Detail text="updated 1 hour ago by Louvn" icon={updatedIcon} />
+                <Detail text="created 4 days ago by Louvn*" icon={createdIcon} />
+                <Detail text="updated 1 hour ago by Louvn*" icon={updatedIcon} />
             </section>
 
             <section className={`${styles.SidebarSection} ${styles.Actions}`}>
-                <h2>Actions</h2>
+                <h2>{t("common.actions")}</h2>
 
                 <LikeButton article={article} />
                 <ShareButton title={article.current_revision.title} />
-                <ActionButton icon={reportIcon}>report</ActionButton>
+                <ActionButton icon={reportIcon}>{t("actions.report")}</ActionButton>
 
                 <hr />
 
                 {
                     (article.edit_permission === 1 || article.op.id === user.id || article.contributors.includes(user.id))
-                    && <ActionButton icon={editIcon} onClick={() => navigate(`/editor/${slug}`)}>edit</ActionButton>
+                    && <ActionButton icon={editIcon} onClick={() => navigate(`/editor/${slug}`)}>{t("actions.edit")}</ActionButton>
                 }
-                <ActionButton icon={revisionsIcon}>revisions</ActionButton>
+                <ActionButton icon={revisionsIcon}>{t("article.revisions")}</ActionButton>
                 {   article.op.id === user.id
-                    && <ActionButton icon={permissionsIcon} onClick={() => navigate(`/perm-editor/${slug}`)}>permissions</ActionButton>
+                    && <ActionButton icon={permissionsIcon} onClick={() => navigate(`/perm-editor/${slug}`)}>{t("permissions.title")}</ActionButton>
                 }
 
             </section>
@@ -123,8 +125,8 @@ function Article() {
 
         <div className={styles.CommentSection}>
             <h2>
-                Comment
-                <SimpleButton onClick={() => setShowCommentInput(!showCommentInput)}>{showCommentInput ? "Close" : "Add Comment"}</SimpleButton>
+                {t("comments.title")}
+                <SimpleButton onClick={() => setShowCommentInput(!showCommentInput)}>{showCommentInput ? t("actions.close") : t("comments.add")}</SimpleButton>
             </h2>
             <hr />
 
@@ -135,8 +137,8 @@ function Article() {
                     changeTextState={setCommentInput}
                     />
                 
-                <input type="text" ref={commentInputRef} value={commentInput} onChange={(e) => setCommentInput(e.currentTarget.value)} placeholder="Your opinion?" />
-                <SimpleButton onClick={postComment} disabled={postingComment} className={styles.PostButton}>Post</SimpleButton>
+                <input type="text" ref={commentInputRef} value={commentInput} onChange={(e) => setCommentInput(e.currentTarget.value)} placeholder={t("placeholder.comment")} />
+                <SimpleButton onClick={postComment} disabled={postingComment} className={styles.PostButton}>{t("comments.post")}</SimpleButton>
             </div>}
 
             <div className={styles.Comments}>
@@ -145,7 +147,7 @@ function Article() {
 
                 {commentsLoading && <Loader />}
 
-                {!commentsLoading && comments?.length === 0 && <em>There are no comments</em>}
+                {!commentsLoading && comments?.length === 0 && <em>{t("comments.noComments")}</em>}
             </div>
 
         </div>

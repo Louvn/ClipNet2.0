@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import InstantSearchResult from "../SearchResult";
 import { useWikiIndex } from "../../context/WikiIndexContext";
 import { useUserIndex } from "../../context/UserIndexContext";
+import { useTranslation } from "react-i18next";
 
 function InstantSearch() {
 
+    const {t} = useTranslation();
     const [showInstantSearch, setShowInstantSearch] = useState(false);
 
     const [query, setQuery] = useState("");
@@ -78,7 +80,7 @@ function InstantSearch() {
                 <InstantSearchResult data={result} key={`${result.type}-${result?.slug || result?.username}`} />
             ))}
 
-            <Link to={"/search"} state={{ query: query }} className={styles.ShowAll}>Show all results</Link>
+            <Link to={"/search"} state={{ query: query }} className={styles.ShowAll}>{t("search.showAllResults")}</Link>
         </div>
 
     </div>

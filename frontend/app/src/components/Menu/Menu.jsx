@@ -4,8 +4,11 @@ import {useState} from "react"
 import DarkOverlay from "../DarkOverlay";
 import { useAuth } from "../../context/AuthContext";
 import ThemeButton from "../ThemeButton";
+import { useTranslation } from "react-i18next";
 
 function Menu() {
+
+    const {t} = useTranslation();
     const [isMenuOpen, setMenuOpen] = useState(false);
     const { setJwt } = useAuth();
 
@@ -15,7 +18,7 @@ function Menu() {
         </button>
 
         <menu className={`${styles.Menu} ${isMenuOpen ? styles.Open : ""}`}>
-            <button onClick={() => setJwt(null)}>Logout</button>
+            <button onClick={() => setJwt(null)}>{t("auth.logout")}</button>
             <ThemeButton />
         </menu>
 

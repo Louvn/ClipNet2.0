@@ -6,10 +6,13 @@ import styles from "./styles.module.css";
 import Medium from "../../components/Medium";
 import Loader from "../../components/Loader";
 import SimpleButton from "../../components/SimpleButton";
+import { useTranslation } from "react-i18next";
 
 const resultsLength = 20;
 
 function Search() {
+
+    const {t} = useTranslation();
     const location = useLocation();
 
     const [query, setQuery] = useState(location.state?.query || "");
@@ -55,38 +58,38 @@ function Search() {
         <div className={styles.SearchPageRoot}>
 
             <aside className={styles.FilterOptions}>
-                <SimpleButton onClick={applyFilters}>Apply Filters</SimpleButton>
+                <SimpleButton onClick={applyFilters}>{t("search.applyFilters")}</SimpleButton>
                 
                 <fieldset>
                     <legend>Content Type</legend>
 
                     <label>
                         <input type="checkbox" name="article" onChange={onChangeContentTypeCheckbox} checked={selectedContentTypes.includes("article")} />
-                        Article
+                        {t("article.title")}
                     </label>
 
                     <label>
                         <input type="checkbox" name="user" onChange={onChangeContentTypeCheckbox} checked={selectedContentTypes.includes("user")} />
-                        User
+                        {t("user.title")}
                     </label>
 
                 </fieldset>
 
                 <fieldset>
-                    <legend>Order by</legend>
+                    <legend>{t("search.orderBy")}</legend>
 
                     <select onChange={onChangeSortBySelection} value={selectedSortBy} className={styles.SortBySelect}>
-                        <option value="relevance">Relevance</option>
-                        <option value="newest_first">Newest first</option>
-                        <option value="oldest_first">Oldest first</option>
-                        <option value="last_updated_first">Last updated first</option>
+                        <option value="relevance">{t("search.relevance")}</option>
+                        <option value="newest_first">{t("search.newestFirst")}</option>
+                        <option value="oldest_first">{t("search.oldestFirst")}</option>
+                        <option value="last_updated_first">{t("search.lastUpdatedFirst")}</option>
                     </select>
                 </fieldset>
 
             </aside>
 
             <main className={styles.SearchResults}>
-                <h2>Search Results:</h2>
+                <h2>{t("search.results")}:</h2>
                 
                 {!loading && results?.slice(0, 20).map(e => <SearchResult showContent data={e} query={query} key={`${e.type}-${e?.slug || e?.username}`} />)}
 
@@ -94,8 +97,8 @@ function Search() {
 
                 {!loading && results.length === 0 && 
                     <em>
-                        No results found matchig your filters <br />
-                        <Link className={styles.CreateArticleLink} to={`/editor?title=${query}`}>Do you want to create '{query}'?</Link>
+                        {t("search.nothingFoundMatchingFilters")} <br />
+                        {query && <Link className={styles.CreateArticleLink} to={`/editor?title=${query}`}>{t("search.createArticle", {query: query})}</Link>}
                     </em>}
                 
                 { !loading && results && <div className={styles.Pagination}>

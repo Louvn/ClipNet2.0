@@ -6,9 +6,11 @@ import { useUserIndex } from "../../context/UserIndexContext";
 import { useState } from "react";
 import { useAPI } from "../../hooks/useAPI";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
+import { useTranslation } from "react-i18next";
 
 function PermissionEditor() {
 
+    const {t} = useTranslation();
     const {slug} = useParams();
     const {article, setArticle, loading} = useArticle(slug);
     const apiFetch = useAPI();
@@ -55,9 +57,9 @@ function PermissionEditor() {
 
         const data = await res.json();
 
-        if (!res.ok) return toastNotification(typeof data.detail === "string" ? data.detail : "Error while saving Changes");
+        if (!res.ok) return toastNotification(t("toast.errorWhileSavingChanges"));
 
-        toastNotification("Changes Saved", notificationTypeSuccess);
+        toastNotification(t("toast.changesSaved"), notificationTypeSuccess);
         navigate(`/wiki/${slug}`);
 
     }
@@ -68,8 +70,8 @@ function PermissionEditor() {
     return <Medium>
         
         <select value={article.edit_permission} onChange={e => setArticle({ ...article, edit_permission: Number(e.target.value) })}>
-            <option value={1}>everyone</option>
-            <option value={2}>contributors</option>
+            <option value={1}>{t("permissions.everyone")}</option>
+            <option value={2}>{t("permissions.selectedOnly")}</option>
         </select>
 
         <ul>
@@ -86,7 +88,7 @@ function PermissionEditor() {
         <input value={inputContributor} onChange={e => setInputContributor(e.target.value)} />
         <button onClick={() => addContributor(inputContributor)}>+</button>
 
-        <button onClick={saveChanges}>save</button>
+        <button onClick={saveChanges}>{t("actions.saveChanges")}</button>
 
     </Medium>
 }

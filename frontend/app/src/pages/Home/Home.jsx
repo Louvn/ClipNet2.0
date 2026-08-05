@@ -4,9 +4,11 @@ import ContentList from "../../components/ContentList";
 import { useStats } from "../../hooks/useStats";
 import Medium from "../../components/Medium";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Home() {
 
+    const {t} = useTranslation();
     const {stats, loading} = useStats();
     const navigate = useNavigate();
 
@@ -21,12 +23,12 @@ function Home() {
                     <br />
                     made by <span className={styles.ItalicTransparent}>{loading ? "[?]" : stats.users}</span> Users.
                     <br />
-                    Go <span className={styles.Underlined}>explore</span> it!
+                    Go <span className={styles.Underlined}>explore</span> it!*
                 </h1>
 
                 <div>
-                    <button className={styles.Button} onClick={() => navigate("/editor")}>Create Something</button>
-                    <button className={`${styles.Button} ${styles.Grey}`}>Learn More</button>
+                    <button className={styles.Button} onClick={() => navigate("/editor")}>Create Something*</button>
+                    <button className={`${styles.Button} ${styles.Grey}`}>Learn More*</button>
                 </div>
             </div>
 
@@ -44,7 +46,7 @@ function Home() {
 
             <ContentList 
                 query="" 
-                title="Latest Articles"
+                title={t("article.latestArticles")}
                 filters={{ content_type: ["article"] }}
                 sort_by="newest_first" 
                 showFullContent
@@ -52,7 +54,7 @@ function Home() {
 
             <ContentList 
                 query="" 
-                title="Latest Changes" 
+                title={t("article.latestChanges")}
                 filters={{ content_type: ["article"] }}
                 sort_by="last_updated_first" 
                 showFullContent 

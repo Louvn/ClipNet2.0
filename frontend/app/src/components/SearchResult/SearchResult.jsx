@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import renderPreview from "../../wikitext-engine/previews";
 import { highlightQuery } from "../../wikitext-engine/previews";
+import { useTranslation } from "react-i18next";
 
 function SearchResult({data, query, showContent=false}) {
 
     let title, info, content, link;
+    const {t} = useTranslation();
 
     switch (data.type) {
         case "article":
             title = data.current_revision.title;
-            info = `by ${data.op.username}`;
+            info = t("common.createdByUser", {user: data.op.username});
             content = renderPreview(data.current_revision?.content || "", query);
             link = `/wiki/${data.slug}`;
             break;

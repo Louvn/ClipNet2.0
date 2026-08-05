@@ -10,8 +10,11 @@ import linkIcon from "../../assets/icons/format_link.png";
 import mentionIcon from "../../assets/icons/format_mention.png";
 import tableIcon from "../../assets/icons/format_table.png";
 import imageIcon from "../../assets/icons/format_image.png";
+import { useTranslation } from "react-i18next";
 
 function FormattingOptions({ inputRef, textState, changeTextState }) {
+
+    const {t} = useTranslation();
 
     function insertFormat(opening, closing) {
 
@@ -44,49 +47,49 @@ function FormattingOptions({ inputRef, textState, changeTextState }) {
                 
         <section>
             <button className={styles.FormattingOption}>
-                <img src={undoIcon} alt="undo" />
+                <img src={undoIcon} alt={t("common.undo")} />
             </button>
     
             <button className={styles.FormattingOption}>
-                <img src={redoIcon} alt="redo" />
+                <img src={redoIcon} alt={t("common.redo")} />
             </button>
         </section>
     
         <section>
             <button className={styles.FormattingOption} onClick={() => insertFormat("#", "#")}>
-                <img src={headingIcon} alt="insert Heading" />
+                <img src={headingIcon} alt={t("editor.heading")} />
             </button>
     
             <button className={styles.FormattingOption} onClick={() => insertFormat("##", "##")}>
-                <img src={subheadingIcon} alt="insert Subheading" />
+                <img src={subheadingIcon} alt={t("editor.subheading")} />
             </button>
         </section>
     
         <section>
             <button className={styles.FormattingOption} onClick={() => insertFormat("**", "**")}>
-                <img src={boldIcon} alt="insert Bold" />
+                <img src={boldIcon} alt={t("editor.bold")} />
             </button>
     
             <button className={styles.FormattingOption} onClick={() => insertFormat("*", "*")}>
-                <img src={italicIcon} alt="insert Italic" />
+                <img src={italicIcon} alt={t("editor.italic")} />
             </button>
     
             <button className={styles.FormattingOption} onClick={() => insertFormat("[[", "]]")}>
-                <img src={linkIcon} alt="insert Link" />
+                <img src={linkIcon} alt={t("editor.link")} />
             </button>
     
             <button className={styles.FormattingOption} onClick={() => insertFormat("[[@", "]]")}>
-                <img src={mentionIcon} alt="insert Mention" />
+                <img src={mentionIcon} alt={t("editor.mention")} />
             </button>
         </section>
     
         <section>
             <button className={styles.FormattingOption}>
-                <img src={tableIcon} alt="insert Table" />
+                <img src={tableIcon} alt={t("editor.table")} />
             </button>
     
             <button className={styles.FormattingOption}>
-                <img src={imageIcon} alt="insert Image" />
+                <img src={imageIcon} alt={t("editor.image")} />
             </button>
         </section>
     

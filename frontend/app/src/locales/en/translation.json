@@ -1,0 +1,100 @@
+{
+    "common": {
+        "more": "More",
+        "createdByUser": "Created by {{user}}",
+        "details": "Details",
+        "actions": "Actions",
+        "back": "Back"
+    },
+    "actions": {
+        "share": "Share",
+        "report": "Report",
+        "edit": "Edit",
+        "close": "Close",
+        "tryAgain": "Try Again",
+        "saveChanges": "Save Changes"
+    },
+    "search": {
+        "search": "Search",
+        "results": "Search Results",
+        "nothingFound": "Nothing found",
+        "showAllResults": "Show all results",
+        "applyFilters": "Apply Filters",
+        "orderBy": "Order by",
+        "relevance": "Relevance",
+        "newestFirst": "Newest First",
+        "oldestFirst": "Oldest First",
+        "lastUpdatedFirst": "Last Updated First",
+        "nothingFoundMatchingFilters": "No results found matching your filters.",
+        "createArticle": "Do you want to create '{{query}}'?"
+    },
+    "auth": {
+        "logout": "Log out"
+    },
+    "editor": {
+        "undo": "Undo",
+        "redo": "Redo",
+        "heading": "Heading",
+        "subheading": "Subheading",
+        "bold": "Bold",
+        "italic": "Italic",
+        "link": "Link",
+        "mention": "Mention",
+        "table": "Table",
+        "image": "Image"
+    },
+    "permissions": {
+        "title": "Permissions",
+        "everyone": "Everyone",
+        "selectedOnly": "Selected Only"
+    },
+    "comments": {
+        "title": "Comments",
+        "add": "Add Comment",
+        "post": "Post Comment",
+        "noComments": "No comments yet"
+    },
+    "article": {
+        "title": "Article",
+        "publishing": "Publishing Article...",
+        "counter": "{{chars}} characters, {{words}} words",
+        "publish": "Publish",
+        "publishChanges": "Publish Changes",
+        "changeSummary": "Change Summary",
+        "latestArticles": "Latest Articles",
+        "latestChanges": "Latest Changes",
+        "revisions": "Revisions"
+    },
+    "user": {
+        "title": "User",
+        "totalArticles": "Articles ({{count}})",
+        "totalArticlesContributed": "Contributed To ({{count}})"
+    },
+    "toast": {
+        "welcomeBack": "Welcome back, {{user}}!",
+        "browserDoesNotSupport": "Your browser doesn't support this.",
+        "commentPosted": "Comment posted successfully.",
+        "commentCouldNotBePosted": "Comment could not be posted.",
+        "articleCouldNotBePublished": "Article could not be published.",
+        "changesCouldNotBePublished": "Changes could not be published.",
+        "errorWhileSavingChanges": "Error while saving changes.",
+        "changesSaved": "Changes saved."
+    },
+    "placeholder": {
+        "articleTitle": "Give your article a title",
+        "articleContent": "Type in the story you want to tell...",
+        "comment": "Write your comment...",
+        "changeSummary": "Explain your changes..."
+    },
+    "error": {
+        "network": {
+            "alt": "Network Error",
+            "title": "Seems like we could not reach the ClipNet Servers.",
+            "description": "This error means your device failed to reach the ClipNet Servers. If this isn't caused by your Internet connection, the Server may be sleeping. Try again in a few minutes. If the problem remains, please report it to the owner."
+        },
+        "404": {
+            "title": "Page Not Found",
+            "quote": "You have stepped onto a path even the oldest chronicles do not know."
+        }
+    }
+}
