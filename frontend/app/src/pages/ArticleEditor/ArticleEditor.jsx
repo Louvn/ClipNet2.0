@@ -10,6 +10,7 @@ import PopUp from "../../components/PopUp";
 import SimpleButton from "../../components/SimpleButton";
 import { useToastNotification, notificationTypeSuccess } from "../../context/ToastNotificationContext";
 import { useTranslation } from "react-i18next";
+import LimitedInput from "../../components/LimitedInput";
 
 function ArticleEditor() {
 
@@ -148,18 +149,14 @@ function ArticleEditor() {
         {isPopUpOpen && <PopUp className={styles.PublishPopUp} closingMethod={() => setPopUpOpen(false)}>
             <h2 className={styles.PublishPopUpHeading}>{t("article.publishChanges")}</h2>
 
-            <fieldset className={styles.ChangeSummaryFieldset}>
-                <legend>{t("article.changeSummary")} - {changeSummary.length}/255</legend>
-
-                <textarea 
-                    placeholder={t("placeholder.changeSummary")} 
-                    maxLength={255}
-                    value={isEdit ? changeSummary : "Created This Article"}
-                    onChange={(e) => setChangeSummary(e.target.value)}
-                    disabled={!isEdit} // no change_summary on first revision
-                    />
-
-            </fieldset>
+            <LimitedInput
+                name={t("article.changeSummary")}
+                placeholder={t("placeholder.changeSummary")}
+                maxLength={255}
+                value={isEdit ? changeSummary : "Created This Article"}
+                setValue={setChangeSummary}
+                disabled={!isEdit} // no change_summary on first revision
+                />
 
             <SimpleButton onClick={publish} className={styles.PublishPopUpButton}>{t("article.publish")}</SimpleButton>
         </PopUp>}

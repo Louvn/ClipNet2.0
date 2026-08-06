@@ -13,6 +13,7 @@ class UserOutData(BaseModel):
     username: str
     created_at: datetime
     bio: str | None
+    language: str
 
     total_articles: int = None
     total_articles_contributed_to: int = None

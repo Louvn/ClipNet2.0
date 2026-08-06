@@ -70,7 +70,9 @@
     "user": {
         "title": "Nutzer",
         "totalArticles": "Artikel ({{count}})",
-        "totalArticlesContributed": "Beiträge zu Artikeln ({{count}})"
+        "totalArticlesContributed": "Beiträge zu Artikeln ({{count}})",
+        "profileSettings": "Profileinstellungen",
+        "bio": "Bio"
     },
     "toast": {
         "welcomeBack": "Willkommen zurück, {{user}}!",
@@ -86,7 +88,8 @@
         "articleTitle": "Gib deinem Artikel einen Titel",
         "articleContent": "Schreibe die Geschichte, die du erzählen möchtest...",
         "comment": "Schreibe deinen Kommentar...",
-        "changeSummary": "Erkläre deine Änderungen..."
+        "changeSummary": "Erkläre deine Änderungen...",
+        "bio": "Erzähl uns etwas über dich..."
     },
     "error": {
         "network": {
