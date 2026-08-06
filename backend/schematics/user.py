@@ -12,6 +12,11 @@ class UserOutData(BaseModel):
     id: int
     username: str
     created_at: datetime
+    bio: str | None
 
     total_articles: int = None
     total_articles_contributed_to: int = None
+
+class SettingsData(BaseModel):
+    language: str = None 
+    bio: constr(max_length=255) | None = None # err

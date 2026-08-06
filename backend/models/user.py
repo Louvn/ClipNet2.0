@@ -10,7 +10,10 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(30), unique=True, index=True, nullable=False)
     password = Column(String(255), nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+    language = Column(String(10), server_default="en", nullable=False)
+    bio = Column(String(255), nullable=True)
 
     revisions = relationship("Revision", back_populates="user", foreign_keys=[Revision.user_id])
     articles = relationship("Article", back_populates="op", foreign_keys=[Article.op_id])

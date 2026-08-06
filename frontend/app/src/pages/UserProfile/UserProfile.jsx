@@ -26,7 +26,7 @@ function UserProfile() {
                 <h1>{user.username}</h1>
                 <i>User since {user.created_at}*</i>
                 <hr />
-                <p>Placeholder description because there aren't any yet.*</p>
+                <p>{user.bio}</p>
             </div>
         </div>
 
