@@ -1,0 +1,27 @@
+.SplashScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    background: linear-gradient(135deg, #e4e4e4, #30648e34);
+
+}
+.SplashScreen h1 {
+    color: var(--primary-color);
+    font-family: system-ui, sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    animation: appear 1s ease-out;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

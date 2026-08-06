@@ -48,8 +48,8 @@ function Settings() {
             placholder={t("placeholder.bio")}
             />
 
-        <select onChange={(e) => setSettings({...settings, language: e.target.value})}>
-            {languages.map(e => <option value={e.code} selected={(settings.language || "en") === e.code}>{e.name}</option>)}
+        <select value={settings.language || "en"} onChange={(e) => setSettings({...settings, language: e.target.value})}>
+            {languages.map(e => <option value={e.code} key={e.code}>{e.name}</option>)}
         </select>
 
         <SimpleButton onClick={saveSettings}>{t("actions.saveChanges")}</SimpleButton>

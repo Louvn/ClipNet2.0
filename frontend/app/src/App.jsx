@@ -16,10 +16,11 @@ import PermissionEditor from "./pages/PermissionEditor";
 import NetworkError from "./pages/NetworkError";
 import UserProfile from "./pages/UserProfile";
 import Settings from "./pages/Settings";
+import SplashScreen from "./components/SplashScreen";
 
 function App() {
     
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, userLoading } = useAuth();
 
     const ProtectedRoutes = ({children}) => {
         const location = useLocation();
@@ -31,7 +32,11 @@ function App() {
         return <Navigate to="/login" state={{ redirect: location.pathname + location.search}} />
     }
     
-    return <>
+    // wait for user data to be there
+    if (userLoading) return <SplashScreen />;
+
+    // then show the sites
+    if (!userLoading) return <>
 
         {isLoggedIn && <Navbar />}
 
