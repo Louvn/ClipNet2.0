@@ -9,6 +9,7 @@ import { useSettings } from "../../hooks/useSettings";
 import languages from "../../locales/_languages.json";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../context/AuthContext";
+import styles from "./styles.module.css";
 
 function Settings() {
 
@@ -37,23 +38,25 @@ function Settings() {
     </Medium>;
 
 
-    if (!loading) return <Medium>
-        <h1>{t("user.profileSettings")}</h1>
+    if (!loading) return <Medium className={styles.SettingsRoot}>
+        <div className={styles.Settings}>
+            <h1>{t("user.profileSettings")}</h1>
 
-        <LimitedInput
-            name={t("user.bio")}
-            value={settings.bio || ""}
-            setValue={(v) => setSettings({...settings, bio: v})}
-            maxLength={255}
-            placholder={t("placeholder.bio")}
-            />
+            <LimitedInput
+                name={t("user.bio")}
+                value={settings.bio || ""}
+                setValue={(v) => setSettings({...settings, bio: v})}
+                maxLength={255}
+                placeholder={t("placeholder.bio")}
+                className={styles.Input}
+                />
 
-        <select value={settings.language || "en"} onChange={(e) => setSettings({...settings, language: e.target.value})}>
-            {languages.map(e => <option value={e.code} key={e.code}>{e.name}</option>)}
-        </select>
+            <select value={settings.language || "en"} onChange={(e) => setSettings({...settings, language: e.target.value})}>
+                {languages.map(e => <option value={e.code} key={e.code}>{e.name}</option>)}
+            </select>
 
-        <SimpleButton onClick={saveSettings}>{t("actions.saveChanges")}</SimpleButton>
-
+            <SimpleButton onClick={saveSettings} className={styles.Save}>{t("actions.saveChanges")}</SimpleButton>
+        </div>
     </Medium>
 }
 

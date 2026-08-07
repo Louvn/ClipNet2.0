@@ -6,6 +6,6 @@
 }
 .LimitedInput {
     padding: 12px;
-    border: 1px solid #444444;
+    border: 1px solid var(--secondary-text-color);
     height: 100%;
 }

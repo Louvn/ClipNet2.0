@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
 
-function LimitedInput({ name, maxLength, placeholder, value, setValue, disabled }) {
+function LimitedInput({ name, maxLength, placeholder, value, setValue, disabled, className }) {
 
-    return <fieldset className={styles.LimitedInput}>
+    return <fieldset className={`${styles.LimitedInput} ${className ? className : ""}`}>
         <legend>{name} - {value.length}/{maxLength}</legend>
     
         <textarea 
