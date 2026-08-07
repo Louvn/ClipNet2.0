@@ -10,6 +10,7 @@ import languages from "../../locales/_languages.json";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../context/AuthContext";
 import styles from "./styles.module.css";
+import Select from "../../components/Select";
 
 function Settings() {
 
@@ -51,9 +52,9 @@ function Settings() {
                 className={styles.Input}
                 />
 
-            <select value={settings.language || "en"} onChange={(e) => setSettings({...settings, language: e.target.value})}>
+            <Select value={settings.language || "en"} onChange={(e) => setSettings({...settings, language: e.target.value})}>
                 {languages.map(e => <option value={e.code} key={e.code}>{e.name}</option>)}
-            </select>
+            </Select>
 
             <SimpleButton onClick={saveSettings} className={styles.Save}>{t("actions.saveChanges")}</SimpleButton>
         </div>

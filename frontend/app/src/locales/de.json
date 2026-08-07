@@ -4,7 +4,8 @@
         "createdByUser": "Erstellt von {{user}}",
         "details": "Details",
         "actions": "Aktionen",
-        "back": "Zurück"
+        "back": "Zurück",
+        "add": "Hinzufügen"
     },
     "actions": {
         "share": "Teilen",
@@ -47,7 +48,9 @@
     "permissions": {
         "title": "Berechtigungen",
         "everyone": "Jeder",
-        "selectedOnly": "Nur Ausgewählte"
+        "selectedOnly": "Nur Ausgewählte",
+        "label": "Wer darf diesen Artikel bearbeiten?",
+        "selectedUsers": "Ausgewählte Nutzer"
     },
     "comments": {
         "title": "Kommentare",

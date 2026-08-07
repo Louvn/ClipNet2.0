@@ -1,0 +1,77 @@
+.PermissionEditorRoot {
+    max-width: 700px;
+}
+
+.PermissionEditor {
+    background-color: var(--cards);
+    border-radius: 8px;
+    box-shadow: 0 0 4px var(--shadows);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 80vh;
+    max-height: 700px;
+    align-items: flex-start;
+}
+
+.PermissionEditor h1 {
+    font-weight: 400;
+}
+.PermissionEditor i {
+    font-size: 0.9em;
+}
+.PermissionEditor label {
+    display: flex;
+    gap: 64px;
+}
+
+.UsersUl {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.UserLi {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 4px;
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.UserLi button {
+    all: unset;
+}
+
+.AddUser {
+    display: flex;
+    gap: 4px;
+    height: 24px;
+}
+.AddUser input {
+    height: 100%;
+    width: 200px;
+    border: 1px solid var(--secondary-text-color);
+    border-radius: 4px;
+    background: none;
+    padding: 8px;
+}
+.AddUser .AddButton {
+    height: 100%;
+    color: var(--text-color);
+    border-color: var(--secondary-text-color);
+}
+
+.Save {
+    margin-top: auto;
+    margin-left: auto;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 8px;
+    border: none;
+}
+.Save:hover {
+    color: var(--primary-color);
+}

@@ -7,6 +7,9 @@ import { useState } from "react";
 import { useAPI } from "../../hooks/useAPI";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
 import { useTranslation } from "react-i18next";
+import styles from "./styles.module.css";
+import Select from "../../components/Select";
+import SimpleButton from "../../components/SimpleButton";
 
 function PermissionEditor() {
 
@@ -24,6 +27,7 @@ function PermissionEditor() {
         const user = userIndex.get(username);
 
         if (!user) return;
+        if (article.contributors.includes(user.id)) return;
 
         setArticle(
             {
@@ -65,30 +69,49 @@ function PermissionEditor() {
 
     if (loading || !userIndex) return <Loader />
 
-    return <Medium>
+    return <Medium className={styles.PermissionEditorRoot}><div className={styles.PermissionEditor}>
         
-        <select value={article.edit_permission} onChange={e => setArticle({ ...article, edit_permission: Number(e.target.value) })}>
-            <option value={1}>{t("permissions.everyone")}</option>
-            <option value={2}>{t("permissions.selectedOnly")}</option>
-        </select>
+        <div>
+            <h1>{t("permissions.title")}</h1>
+            <i>{article.current_revision.title} / {t("permissions.title")}</i>
+        </div>
 
-        <ul>
-            {
-                article.contributors.map(
-                    id => <li key={id}>
-                        {getContributor(id)}
-                        <button onClick={() => removeContributor(id)}>x</button>
-                    </li>
-                )
-            }
-        </ul>
+        <label>
+            {t("permissions.label")}
+            <Select value={article.edit_permission} onChange={e => setArticle({ ...article, edit_permission: Number(e.target.value) })}>
+                <option value={1}>{t("permissions.everyone")}</option>
+                <option value={2}>{t("permissions.selectedOnly")}</option>
+            </Select>
+        </label>
 
-        <input value={inputContributor} onChange={e => setInputContributor(e.target.value)} />
-        <button onClick={() => addContributor(inputContributor)}>+</button>
+        {article.edit_permission === 2 && <>
+        <label>
+            {t("permissions.selectedUsers")}:
+            <ul className={styles.UsersUl}>
+                {
+                    article.contributors.map(
+                        id => <li key={id} className={styles.UserLi}>
+                            {getContributor(id)}
+                            <button onClick={() => removeContributor(id)}>X</button>
+                        </li>
+                    )
+                }
+            </ul>
+        </label>
 
-        <button onClick={saveChanges}>{t("actions.saveChanges")}</button>
+        <div className={styles.AddUser}>
+            <input 
+                value={inputContributor} 
+                onChange={e => setInputContributor(e.target.value)} 
+                onKeyDown={(e) => e.key === "Enter" && addContributor(inputContributor)}
+                />
+            <SimpleButton onClick={() => addContributor(inputContributor)} className={styles.AddButton}>{t("common.add")}</SimpleButton>
+        </div>
+        </>}
 
-    </Medium>
+        <SimpleButton onClick={saveChanges} className={styles.Save}>{t("actions.saveChanges")}</SimpleButton>
+
+    </div></Medium>
 }
 
 export default PermissionEditor;

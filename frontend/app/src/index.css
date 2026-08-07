@@ -49,6 +49,10 @@ hr {
     margin: 8px 0;
 }
 
+i {
+    color: var(--secondary-text-color);
+}
+
 
 .page {
     min-height: 70vh;

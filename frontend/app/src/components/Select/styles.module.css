@@ -1,0 +1,7 @@
+.Select {
+    border-radius: 999px;
+    padding: 4px;
+    border: 1px solid var(--secondary-text-color);
+    background: none;
+    min-width: 120px;
+}
