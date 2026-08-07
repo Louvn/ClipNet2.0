@@ -6,6 +6,7 @@ import { useUser } from "../../hooks/useUser";
 import { Navigate, useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { useTranslation } from "react-i18next";
+import { formatTimestamp } from "../../utils/formatTimestamp";
 
 function UserProfile() {
 
@@ -24,7 +25,7 @@ function UserProfile() {
             <img src={placeholderIcon} alt="" className={styles.ProfilePicture} />
             <div className={styles.UserInfo}>
                 <h1>{user.username}</h1>
-                <i>User since {user.created_at}*</i>
+                <i>{t("user.joined", {time: formatTimestamp(user.created_at, t)})}</i>
                 <hr />
                 <p>{user.bio}</p>
             </div>

@@ -23,6 +23,10 @@
 .UserInfo h1 {
     font-weight: 600;
 }
+.UserInfo i {
+    color: var(--secondary-text-color);
+    font-size: 0.9em;
+}
 
 .Grid {
     display: grid;

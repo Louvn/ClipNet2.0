@@ -65,14 +65,17 @@
         "latestArticles": "Neueste Artikel",
         "latestChanges": "Zuletzt bearbeitet",
         "revisions": "Revisionen",
-        "revisionCounter": "Revision #{{count}}"
+        "revisionCounter": "Revision #{{count}}",
+        "createdByUser": "Erstellt {{time}} von {{user}}",
+        "lastEditedByUser": "Zuletzt bearbeitet {{time}} von {{user}}"
     },
     "user": {
         "title": "Nutzer",
         "totalArticles": "Artikel ({{count}})",
         "totalArticlesContributed": "Beiträge zu Artikeln ({{count}})",
         "profileSettings": "Profileinstellungen",
-        "bio": "Bio"
+        "bio": "Bio",
+        "joined": "Beigetreten {{time}}"
     },
     "toast": {
         "welcomeBack": "Willkommen zurück, {{user}}!",
@@ -90,6 +93,17 @@
         "comment": "Schreibe deinen Kommentar...",
         "changeSummary": "Erkläre deine Änderungen...",
         "bio": "Erzähl uns etwas über dich..."
+    },
+    "time": {
+        "locale": "de-DE",
+        "justNow": "gerade eben",
+        "minutesAgo_one": "vor {{count}} Minute",
+        "minutesAgo_other": "vor {{count}} Minuten",
+        "hoursAgo_one": "vor {{count}} Stunde",
+        "hoursAgo_other": "vor {{count}} Stunden",
+        "daysAgo_one": "vor {{count}} Tag",
+        "daysAgo_other": "vor {{count}} Tagen",
+        "onDate": "am {{date}}"
     },
     "error": {
         "network": {

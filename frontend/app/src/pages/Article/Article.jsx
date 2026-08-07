@@ -28,6 +28,7 @@ import { notificationTypeSuccess, useToastNotification } from "../../context/Toa
 import { useComments } from "../../hooks/useComments";
 import Comment from "../../components/Comment";
 import { useTranslation } from "react-i18next";
+import { formatTimestamp } from "../../utils/formatTimestamp";
 
 
 function Article() {
@@ -91,8 +92,14 @@ function Article() {
                 <h2>{t("common.details")}</h2>
 
                 <Detail text={t("article.revisionCounter", {count: article.revision_count})} icon={revisionIcon} />
-                <Detail text="created 4 days ago by Louvn*" icon={createdIcon} />
-                <Detail text="updated 1 hour ago by Louvn*" icon={updatedIcon} />
+                <Detail 
+                    text={t("article.createdByUser", {user: article.op.username, time: formatTimestamp(article.first_revision.created_at, t)})} 
+                    icon={createdIcon} 
+                    />
+                <Detail 
+                    text={t("article.lastEditedByUser", {user: article.current_revision.user.username, time: formatTimestamp(article.current_revision.created_at, t)})} 
+                    icon={updatedIcon} 
+                    />
             </section>
 
             <section className={`${styles.SidebarSection} ${styles.Actions}`}>
