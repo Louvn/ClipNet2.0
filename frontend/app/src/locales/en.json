@@ -1,11 +1,13 @@
-{
+{   
+    "quote": "Let your creativity flow",
     "common": {
         "more": "More",
         "createdByUser": "Created by {{user}}",
         "details": "Details",
         "actions": "Actions",
         "back": "Back",
-        "add": "Add"
+        "add": "Add",
+        "thereAre": "There are"
     },
     "actions": {
         "share": "Share",
@@ -59,7 +61,8 @@
         "noComments": "No comments yet"
     },
     "article": {
-        "title": "Article",
+        "title_one": "Article",
+        "title_other": "Articles",
         "publishing": "Publishing Article...",
         "counter": "{{chars}} characters, {{words}} words",
         "publish": "Publish",
@@ -73,7 +76,8 @@
         "lastEditedByUser": "Last edited {{time}} by {{user}}"
     },
     "user": {
-        "title": "User",
+        "title_one": "User",
+        "title_other": "Users",
         "totalArticles": "Articles ({{count}})",
         "totalArticlesContributed": "Contributed To ({{count}})",
         "profileSettings": "Profile Settings",

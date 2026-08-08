@@ -1,0 +1,34 @@
+.Stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px;
+}
+
+.StatsCard {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+
+    opacity: 0.5;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--secondary-text-color);
+    min-width: 120px;
+    box-shadow: 0 0 2px var(--shadows);
+    background-color: var(--cards);
+    border: 1px solid #ccc;
+    animation: none;
+} 
+.StatsCard span {
+    color: var(--primary-color);
+    font-size: 48px;
+    font-family: var(--text-font);
+    font-weight: 400;
+}
+.Highlighted { /* For JS */
+    opacity: 1;
+    transform: scale(1.1);
+}

@@ -1,11 +1,13 @@
-{
+{   
+    "quote": "Lass deiner Kreativität freien Lauf",
     "common": {
         "more": "Mehr",
         "createdByUser": "Erstellt von {{user}}",
         "details": "Details",
         "actions": "Aktionen",
         "back": "Zurück",
-        "add": "Hinzufügen"
+        "add": "Hinzufügen",
+        "thereAre": "Es gibt"
     },
     "actions": {
         "share": "Teilen",
@@ -60,6 +62,8 @@
     },
     "article": {
         "title": "Artikel",
+        "title_one": "Artikel",
+        "title_other": "Artikel",
         "publishing": "Artikel wird veröffentlicht...",
         "counter": "{{chars}} Zeichen, {{words}} Wörter",
         "publish": "Veröffentlichen",
@@ -74,6 +78,8 @@
     },
     "user": {
         "title": "Nutzer",
+        "title_one": "Nutzer",
+        "title_other": "Nutzer",
         "totalArticles": "Artikel ({{count}})",
         "totalArticlesContributed": "Beiträge zu Artikeln ({{count}})",
         "profileSettings": "Profileinstellungen",
