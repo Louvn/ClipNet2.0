@@ -18,7 +18,7 @@
 }
 
 .Heading {
-    font-family: cursive;
+    font-family: "Comic Sans MS", cursive;
     width: 100%;
     text-align: center;
     color: var(--primary-color);

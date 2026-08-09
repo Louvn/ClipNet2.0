@@ -67,7 +67,7 @@ function PermissionEditor() {
     }
 
 
-    if (loading || !userIndex) return <Loader />
+    if (loading || !userIndex) return <Medium><Loader /></Medium>;
 
     return <Medium className={styles.PermissionEditorRoot}><div className={styles.PermissionEditor}>
         

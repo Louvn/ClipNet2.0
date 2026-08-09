@@ -19,6 +19,12 @@
     --secondary-text-color: #aaa;
     --cards: #3e3e3e;
 }
+.dark img {
+    filter: invert(0.8); /* invert most images in dark mode */
+}
+.dark img.noInvert {
+    filter: none;
+}
 
 *, *::after, *::before {
     margin: 0;

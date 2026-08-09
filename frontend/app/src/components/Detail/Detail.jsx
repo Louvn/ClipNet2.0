@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
-function Detail({icon, text}) {
-    return <div className={styles.Detail}>
+function Detail({icon, text, link}) {
+    return <Link className={styles.Detail} to={link}>
         <img className={styles.DetailIcon} src={icon} alt="" />
         <span className={styles.DetailText}>{text}</span>
-    </div>
+    </Link>
 }
 
 export default Detail;

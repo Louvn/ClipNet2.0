@@ -1,0 +1,17 @@
+.MenuOption {
+    all: unset;
+    display: flex;
+    padding: 14px;
+    gap: 8px;
+    align-items: center;
+    height: 44px;
+    background-color: var(--cards);
+    border-bottom: 1px solid rgba(0,0,0,.4);
+    width: 100%;
+}
+.MenuOption img {
+    height: 100%;
+}
+.MenuOption span {
+    font-size: 20px;
+}

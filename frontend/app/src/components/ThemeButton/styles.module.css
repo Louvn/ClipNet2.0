@@ -1,0 +1,10 @@
+.ThemeButton {
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    opacity: 0.5;
+}
+.ThemeButton img {
+    height: 100%;
+}

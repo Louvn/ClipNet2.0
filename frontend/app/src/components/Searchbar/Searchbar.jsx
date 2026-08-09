@@ -21,7 +21,7 @@ function Searchbar({onChange, onBlur, onFocus}) {
     return <div className={styles.Searchbar}>
 
         <button className={styles.SearchbarButton}>
-            <img src={searchImg} alt="search" className={styles.SearchbarButtonImg} />
+            <img src={searchImg} alt="search" className={`${styles.SearchbarButtonImg} noInvert`} />
         </button>
 
         <input 
@@ -37,7 +37,7 @@ function Searchbar({onChange, onBlur, onFocus}) {
 
         {query.trim() && 
         <button className={styles.SearchbarButton} onClick={() => setQuery("")}>
-            <img src={deleteSearchImg} alt="cancel search" className={styles.SearchbarButtonImg} />
+            <img src={deleteSearchImg} alt="cancel search" className={`${styles.SearchbarButtonImg} noInvert`} />
         </button>
         }
 

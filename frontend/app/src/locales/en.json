@@ -84,12 +84,20 @@
         "bio": "Bio",
         "joined": "Joined {{time}}"
     },
+    "nav": {
+        "home": "Home",
+        "random": "Random",
+        "create": "Create",
+        "settings": "Settings",
+        "logout": "Log out"
+    },
     "toast": {
         "welcomeBack": "Welcome back, {{user}}!",
         "browserDoesNotSupport": "Your browser doesn't support this.",
         "commentPosted": "Comment posted successfully.",
         "commentCouldNotBePosted": "Comment could not be posted.",
         "articleCouldNotBePublished": "Article could not be published.",
+        "articlePublished": "Article published successfully.",
         "changesCouldNotBePublished": "Changes could not be published.",
         "errorWhileSavingChanges": "Error while saving changes.",
         "changesSaved": "Changes saved."

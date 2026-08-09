@@ -20,7 +20,16 @@
     transition: right 0.3s ease-in-out;
     z-index: 11;
     box-shadow: -2px 0 5px var(--shadows);
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
 }
 .Menu.Open {
     right: 0;
+}
+
+.Theme {
+    margin: 16px;
+    margin-top: auto;
+    margin-left: auto;
 }

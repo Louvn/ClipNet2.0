@@ -7,7 +7,7 @@ import InstantSearch from "../InstantSearch";
 function Navbar() {
     return <nav className={styles.Navbar}>
         <Link to="/" className={styles.Logo}>
-            <img src={logoImg} alt="" className={styles.LogoImg} />
+            <img src={logoImg} alt="" className={`${styles.LogoImg} noInvert`} />
             <h1 className={styles.LogoText}>ClipNet</h1>
         </Link>
 

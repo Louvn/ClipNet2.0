@@ -95,10 +95,12 @@ function Article() {
                 <Detail 
                     text={t("article.createdByUser", {user: article.op.username, time: formatTimestamp(article.first_revision.created_at, t)})} 
                     icon={createdIcon} 
+                    link={`/community/user/${article.op.id}`}
                     />
                 <Detail 
                     text={t("article.lastEditedByUser", {user: article.current_revision.user.username, time: formatTimestamp(article.current_revision.created_at, t)})} 
                     icon={updatedIcon} 
+                    link={`/community/user/${article.current_revision.user.id}`}
                     />
             </section>
 

@@ -42,7 +42,7 @@ function ArticleEditor() {
     
     // redirect after publishing changes
     const afterPublish = () => {
-        toastNotification("Published successfully", notificationTypeSuccess);
+        toastNotification(t("toast.articlePublished"), notificationTypeSuccess);
         navigate(isEdit ? `/wiki/${slug}` : "/");
     }
 

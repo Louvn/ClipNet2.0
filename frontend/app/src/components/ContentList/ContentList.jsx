@@ -26,11 +26,12 @@ function ContentList({query, filters, sort_by, title, maxResults=3, showFullCont
                     showContent={showFullContent}
                     />
             ))}
+
+            {loading && <Loader divHidden />}
+
+            {!loading && results?.length === 0 && <em className={styles.NothingFound}>{t("search.nothingFound")}</em>}
         </div>
 
-        {loading && <Loader />}
-
-        {!loading && results?.length === 0 && <em className={styles.NothingFound}>{t("search.nothingFound")}</em>}
     </div>
 }
 

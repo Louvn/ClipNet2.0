@@ -38,6 +38,6 @@
 }
 
 .PublishingArticle {
-    justify-self: center;
+    align-self: center;
     font-weight: 400;
 }

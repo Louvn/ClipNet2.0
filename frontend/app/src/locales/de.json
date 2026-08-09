@@ -86,12 +86,20 @@
         "bio": "Bio",
         "joined": "Beigetreten {{time}}"
     },
+    "nav": {
+        "home": "Startseite",
+        "random": "Zufällig",
+        "create": "Erstellen",
+        "settings": "Einstellungen",
+        "logout": "Abmelden"
+    },
     "toast": {
         "welcomeBack": "Willkommen zurück, {{user}}!",
         "browserDoesNotSupport": "Dein Browser unterstützt diese Funktion nicht.",
         "commentPosted": "Kommentar erfolgreich veröffentlicht.",
         "commentCouldNotBePosted": "Kommentar konnte nicht veröffentlicht werden.",
         "articleCouldNotBePublished": "Artikel konnte nicht veröffentlicht werden.",
+        "articlePublished": "Artikel erfolgreich veröffentlich",
         "changesCouldNotBePublished": "Änderungen konnten nicht veröffentlicht werden.",
         "errorWhileSavingChanges": "Fehler beim Speichern der Änderungen.",
         "changesSaved": "Änderungen gespeichert."
