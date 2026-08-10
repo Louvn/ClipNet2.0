@@ -26,3 +26,11 @@ def get_current_user(token: str = Depends(oauth2_scheme), db = Depends(get_db)):
         raise HTTPException(status_code=401, detail="User does not exist")
     
     return user
+
+
+def get_current_admin(user = Depends(get_current_user)):
+
+    if not user.is_admin:
+        raise HTTPException(status_code=403, detail="User is not an admin")
+
+    return user

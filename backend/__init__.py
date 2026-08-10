@@ -41,9 +41,14 @@ app.include_router(social_router)
 app.include_router(announcements_router)
 
 # -- Create db -- 
-from .database import Base, engine
+from .database import Base, engine, get_db
 from . import models
+from backend.utils.create_default_admin import create_default_admin
 
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(bind=engine)
+
+    db = next(get_db())
+    create_default_admin(db)
+    db.close()

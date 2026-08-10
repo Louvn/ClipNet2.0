@@ -1,5 +1,5 @@
 from ..database import Base
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 from .article import Article
@@ -14,6 +14,8 @@ class User(Base):
 
     language = Column(String(10), server_default="en", nullable=False)
     bio = Column(String(255), nullable=True)
+
+    is_admin = Column(Boolean, server_default="false", nullable=False)
 
     revisions = relationship("Revision", back_populates="user", foreign_keys=[Revision.user_id])
     articles = relationship("Article", back_populates="op", foreign_keys=[Article.op_id])
