@@ -5,6 +5,10 @@
 def rank(primary, secondary, query):
 
     rank = 0
+
+    if (not primary): primary = ""
+    if (not secondary): secondary = ""
+
     p, s = primary.lower(), secondary.lower()
 
     # full phrase => 15 points

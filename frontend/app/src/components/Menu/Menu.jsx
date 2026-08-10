@@ -44,11 +44,11 @@ function Menu() {
                     link={"/"}
                     icon={homeIcon}
                 />
-                <MenuOption
+                {wikiIndex.size !== 0 && <MenuOption
                     title={t("nav.random")}
                     onClick={randomArticle}
                     icon={randomIcon}
-                />
+                />}
                 <MenuOption
                     title={t("nav.create")}
                     link={"/editor"}

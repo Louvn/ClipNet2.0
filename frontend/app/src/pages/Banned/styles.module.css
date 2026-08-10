@@ -1,0 +1,21 @@
+.Banned {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin: 64px;
+    gap: 20px;
+}
+.Title {
+    font-size: 2em;
+    font-weight: 550;
+    color: var(--bg-color);
+    color: var(--primary-color);
+}
+.Icon {
+    height: 128px;
+}
+.InfoText {
+    width: 600px;
+    text-align: center;
+}

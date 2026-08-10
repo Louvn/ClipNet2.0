@@ -1,14 +1,16 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useCallback } from "react";
+import { useToastNotification } from "../context/ToastNotificationContext";
 
 export function useAPI() {
     // hooks are sync
     // this one gives a async function back
 
-    const { jwt, setJwt } = useAuth();
+    const { jwt, setJwt, setUser } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const toastNotification = useToastNotification();
 
     const apiFetch = useCallback(async (url, options={}) => {
         try {
@@ -23,10 +25,16 @@ export function useAPI() {
                 }
             );
 
+            const data = await response.clone().json();
             if (response.status === 401) {
-                setJwt(null);
+                setJwt(null); // log out
             }
-
+            else if (response.status === 403 && data?.detail?.code === "USER_BANNED") {
+                setUser(u => ({...u, is_banned: true}))
+            }
+            else if (!response.ok) {
+                toastNotification(data?.detail || "Unknown Error");
+            }
 
             return response;
         } catch (error) {
@@ -34,7 +42,7 @@ export function useAPI() {
 
             throw error;
         }
-    }, [jwt, setJwt, location, navigate])
+    }, [jwt, setJwt, location, navigate, toastNotification, setUser])
 
     return apiFetch;
 }

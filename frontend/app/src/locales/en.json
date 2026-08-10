@@ -62,6 +62,7 @@
         "noComments": "No comments yet"
     },
     "article": {
+        "title": "Article",
         "title_one": "Article",
         "title_other": "Articles",
         "publishing": "Publishing Article...",
@@ -77,6 +78,7 @@
         "lastEditedByUser": "Last edited {{time}} by {{user}}"
     },
     "user": {
+        "title": "User",
         "title_one": "User",
         "title_other": "Users",
         "totalArticles": "Articles ({{count}})",
@@ -130,6 +132,11 @@
         "404": {
             "title": "Page Not Found",
             "quote": "You have stepped onto a path even the oldest chronicles do not know."
+        },
+        "banned": {
+            "alt": "Access denied",
+            "title": "Your access has been suspended.",
+            "description": "You no longer have access to ClipNet. An administrator has suspended your account due to violations of the guidelines and/or inappropriate behavior. If you have any questions about this suspension, please contact an administrator."
         }
     }
 }

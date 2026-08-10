@@ -19,8 +19,8 @@ function SearchResult({data, query, showContent=false}) {
 
         case "user":
             title = "@" + data.username;
-            info = "user";
-            content = "user";
+            info = t("user.title");
+            content = data.bio ? data.bio : t("user.title");
             link = `/community/user/${data.id}`;
             break;
     }

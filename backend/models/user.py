@@ -16,6 +16,7 @@ class User(Base):
     bio = Column(String(255), nullable=True)
 
     is_admin = Column(Boolean, server_default="false", nullable=False)
+    is_banned = Column(Boolean, server_default="false", nullable=False)
 
     revisions = relationship("Revision", back_populates="user", foreign_keys=[Revision.user_id])
     articles = relationship("Article", back_populates="op", foreign_keys=[Article.op_id])

@@ -1,6 +1,7 @@
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
-import jwt, time, os
+import jwt, os
+from datetime import datetime, timezone, timedelta
 from backend.database import get_db
 from backend.models import User
 from backend.utils.hash import verify
@@ -17,7 +18,7 @@ def login(form: OAuth2PasswordRequestForm = Depends(), db = Depends(get_db)):
     if not verify(form.password, existing_user.password):
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
-    payload = {"sub": form.username, "exp": int(time.time()) + 3600}
+    payload = {"sub": form.username, "exp": datetime.now(timezone.utc) + timedelta(days=30)}
     token = jwt.encode(payload, SECRET, algorithm=ALGORITHM)
 
     return {"access_token": token, "token_type": "bearer", "user": UserOutData.model_validate(existing_user, from_attributes=True)}

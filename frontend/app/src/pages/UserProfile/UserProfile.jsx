@@ -22,7 +22,7 @@ function UserProfile() {
 
     if (!loading) return <Medium className={styles.UserProfileRoot}>
         <div className={styles.UserInfoCard}>
-            <img src={placeholderIcon} alt="" className={styles.ProfilePicture} />
+            <img src={placeholderIcon} alt="" className={`${styles.ProfilePicture} noInvert`} />
             <div className={styles.UserInfo}>
                 <h1>{user.username}</h1>
                 <i>{t("user.joined", {time: formatTimestamp(user.created_at, t)})}</i>

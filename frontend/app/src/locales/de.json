@@ -132,6 +132,11 @@
         "404": {
             "title": "Seite nicht gefunden",
             "quote": "Du bist auf einen Pfad gestoßen, den selbst die ältesten Chroniken nicht kennen."
+        },
+        "banned": {
+            "alt": "Kein Zugriff",
+            "title": "Dein Zugriff wurde gesperrt.",
+            "description": "Du hast keinen Zugriff mehr auf ClipNet. Ein Administrator hat dein Konto aufgrund von Verstößen gegen die Richtlinien und/oder unangemessenem Verhalten gesperrt. Wenn du Fragen zu dieser Sperre hast, wende dich bitte an einen Administrator."
         }
     }
 }

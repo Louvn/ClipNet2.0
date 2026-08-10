@@ -24,6 +24,9 @@ def get_current_user(token: str = Depends(oauth2_scheme), db = Depends(get_db)):
     user = db.query(User).filter(User.username == username).first()
     if user is None:
         raise HTTPException(status_code=401, detail="User does not exist")
+
+    if user.is_banned:
+        raise HTTPException(status_code=403, detail={"code": "USER_BANNED"})
     
     return user
 

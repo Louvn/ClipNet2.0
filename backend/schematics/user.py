@@ -11,6 +11,8 @@ class UserOutData(BaseModel):
     type: ContentType = ContentType.user
     id: int
     username: str
+    is_admin: bool
+    is_banned: bool
     created_at: datetime
     bio: str | None
     language: str

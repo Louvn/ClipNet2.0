@@ -48,7 +48,7 @@ export function AuthContextProvider({ children }) {
 
     }, [jwt, reloadUser]);
 
-    return <AuthContext.Provider value={{ jwt, setJwt, isLoggedIn, user, reloadUser, userLoading }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ jwt, setJwt, isLoggedIn, user, reloadUser, userLoading, setUser }}>{children}</AuthContext.Provider>
 }
 
 export function useAuth() {

@@ -4,7 +4,7 @@ from backend.database import get_db
 from backend.models import Announcement
 from backend.schematics.announcement import AnnouncementCreateData
 
-def create_announcement(data: AnnouncementCreateData, user = Depends(get_current_admin), db = Depends(get_db)): # TODO: check if admin
+def create_announcement(data: AnnouncementCreateData, user = Depends(get_current_admin), db = Depends(get_db)):
 
     announcement = Announcement(
         title = data.title,

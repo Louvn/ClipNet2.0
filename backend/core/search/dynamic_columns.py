@@ -16,7 +16,7 @@ PRIMARY_CONTENT_FOR_RANKING = {
 
 SECONDARY_CONTENT_FOR_RANKING = {
     ContentType.article: "current_revision.content", 
-    ContentType.user: "description"
+    ContentType.user: "bio"
 }
 
 CREATED_AT_COLUMN = {

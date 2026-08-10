@@ -17,19 +17,21 @@ import NetworkError from "./pages/NetworkError";
 import UserProfile from "./pages/UserProfile";
 import Settings from "./pages/Settings";
 import SplashScreen from "./components/SplashScreen";
+import Banned from "./pages/Banned";
 
 function App() {
     
-    const { isLoggedIn, userLoading } = useAuth();
+    const { isLoggedIn, userLoading, user } = useAuth();
 
     const ProtectedRoutes = ({children}) => {
         const location = useLocation();
-        if (isLoggedIn) {
+        if (isLoggedIn && !user?.is_banned) {
             return children
         }
 
         // setting redirect for use after finishing login
-        return <Navigate to="/login" state={{ redirect: location.pathname + location.search}} />
+        if (!isLoggedIn) return <Navigate to="/login" state={{ redirect: location.pathname + location.search}} />;
+        if (user?.is_banned) return <Navigate to="/banned" />;
     }
     
     // wait for user data to be there
@@ -47,6 +49,7 @@ function App() {
 
                 {/* public Routes */}
                 <Route path="/login" element={<Login />} />
+                <Route path="/banned" element={<Banned />} />
 
                 {/* private Routes */}
                 <Route
