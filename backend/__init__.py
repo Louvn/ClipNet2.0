@@ -30,6 +30,7 @@ from .routes.search import router as search_router
 from .routes.statistics import router as stats_router
 from .routes.users import router as users_router
 from .routes.social import router as social_router
+from .routes.announcements import router as announcements_router
 
 app.include_router(auth_router)
 app.include_router(articles_router)
@@ -37,6 +38,7 @@ app.include_router(search_router)
 app.include_router(stats_router)
 app.include_router(users_router)
 app.include_router(social_router)
+app.include_router(announcements_router)
 
 # -- Create db -- 
 from .database import Base, engine

@@ -20,7 +20,7 @@
     --cards: #3e3e3e;
 }
 .dark img {
-    filter: invert(0.8); /* invert most images in dark mode */
+    filter: invert(0.6); /* invert most images in dark mode */
 }
 .dark img.noInvert {
     filter: none;

@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100dvh;
-    background: linear-gradient(135deg, #e4e4e4, #30648e34);
+    background: var(--bg-color);
 
 }
 .SplashScreen h1 {

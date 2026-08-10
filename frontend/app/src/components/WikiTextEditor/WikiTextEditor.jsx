@@ -15,6 +15,7 @@ function WikiTextEditor({title, content, setContent, setTitle}) {
             placeholder={t("placeholder.articleTitle")}
             value={title} 
             onChange={(e) => setTitle(e.target.value)}
+            maxLength="50"
             className={styles.EditorTitle}
             />
 

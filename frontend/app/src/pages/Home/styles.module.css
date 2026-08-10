@@ -26,6 +26,19 @@
     font-size: 32px;
 }
 
+.AnnouncementMessage {
+    font-size: 18px;
+    color: var(--secondary-text-color);
+    padding: 8px;
+    width: 55%;
+    text-align: center;
+    align-self: center;
+}
+.LearnMore {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
 @keyframes shapeWorld {
     20% {
         border-radius: 64px;
