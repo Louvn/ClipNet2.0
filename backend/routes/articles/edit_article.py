@@ -10,9 +10,9 @@ def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_u
     "Editing an Article will create a new Revision and set it to the current_revision"
     
     # Find the article to edit
-    existing_article_with_id = db.query(Article).filter(Article.id == revision_data.article_id).first()
+    existing_article_with_id = db.query(Article).filter(Article.id == revision_data.article_id, Article.is_deleted.is_(False)).first()
     if not existing_article_with_id:
-        raise HTTPException(status_code=400, detail="There was no article with the provided ID")
+        raise HTTPException(status_code=400, detail="There is no article with the provided ID")
     if not is_user_allowed_to_edit(db, user, existing_article_with_id):
         raise HTTPException(status_code=403, detail="You are not allowed to edit this article")
     
@@ -24,7 +24,7 @@ def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_u
         raise HTTPException(status_code=400, detail="There were no changes made")
 
     
-    # Avoid name conflicts in subwikis
+    # Avoid name conflicts
     existing_article_with_title = (
         db.query(Article)
         .join(Revision, Article.current_revision)
@@ -37,7 +37,9 @@ def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_u
         .first()
     )
     if existing_article_with_title:
-        raise HTTPException(status_code=400, detail="An Article with this title already exists")
+        if existing_article_with_id.is_deleted:
+            raise HTTPException(status_code=400, detail="This article name cannot be used.")
+        raise HTTPException(status_code=400, detail="An article with this title already exists.")
     
     # Create new Revision
     new_revision = Revision(

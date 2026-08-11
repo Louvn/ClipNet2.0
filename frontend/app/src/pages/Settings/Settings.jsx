@@ -25,8 +25,8 @@ function Settings() {
         apiFetch("/change-settings", { method: "PUT", body: JSON.stringify(settings) })
             .then(res => {
                 if (res.ok) {
-                    toastNotification(t("toast.changesSaved"), notificationTypeSuccess);
                     reloadUser();
+                    toastNotification(t("toast.changesSaved"), notificationTypeSuccess);
                     navigate("/");
                 } else {
                     toastNotification(t("toast.errorWhileSavingChanges"));

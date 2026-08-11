@@ -8,9 +8,9 @@ def get_article(provided_infos = Depends(ArticleGetData), user = Depends(get_cur
     "You can get the data of an Article via slug or id of the Article"
     
     if provided_infos.id is not None:
-        article = db.query(Article).filter(Article.id == provided_infos.id).first()
+        article = db.query(Article).filter(Article.id == provided_infos.id, Article.is_deleted.is_(False)).first()
     elif provided_infos.slug is not None:
-        article = db.query(Article).filter(Article.slug == provided_infos.slug).first()
+        article = db.query(Article).filter(Article.slug == provided_infos.slug, Article.is_deleted.is_(False)).first()
     
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")

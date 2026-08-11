@@ -30,7 +30,7 @@ export function useAPI() {
                 setJwt(null); // log out
             }
             else if (response.status === 403 && data?.detail?.code === "USER_BANNED") {
-                setUser(u => ({...u, is_banned: true}))
+                setUser(u => ({...u, is_banned: true})) // is_banned = true => Banned Page
             }
             else if (!response.ok) {
                 toastNotification(data?.detail || "Unknown Error");

@@ -12,6 +12,7 @@ def wiki_index(user = Depends(get_current_user), db = Depends(get_db)):
         db.query(Revision.title, Article.slug, User.username)
             .join(Article.current_revision)
             .join(Article.op)
+            .filter(Article.is_deleted.is_(False))
             .all()
     )
 

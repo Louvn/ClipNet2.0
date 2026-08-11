@@ -12,14 +12,15 @@ def get_user(user_id, user = Depends(get_current_user), db = Depends(get_db)):
     res = UserOutData.model_validate(user, from_attributes=True)
 
     # add aditionals
-    res.total_articles = db.query(Article).filter(Article.op_id == user_id).count()
+    res.total_articles = db.query(Article).filter(Article.op_id == user_id, Article.is_deleted.is_(False)).count()
     res.total_articles_contributed_to = (
         db.query(distinct(Revision.article_id)) # distinct = every article_id only once
             .join(Article, Revision.article)
             .filter(
                 and_(
                     Article.op_id != user_id,
-                    Revision.user_id == user_id
+                    Revision.user_id == user_id,
+                    Article.is_deleted.is_(False)
                 )
             )
             .count()

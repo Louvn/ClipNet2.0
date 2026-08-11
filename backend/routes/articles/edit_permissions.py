@@ -6,7 +6,7 @@ from ...schematics.article import ArticlePermissionsData
 
 def edit_permissions(data: ArticlePermissionsData, db = Depends(get_db), user = Depends(get_current_user)):
 
-    existing_article = db.query(Article).filter(Article.id == data.id).first()
+    existing_article = db.query(Article).filter(Article.id == data.id, Article.is_deleted.is_(False)).first()
 
     if not existing_article:
         raise HTTPException(status_code=404, detail="Article not found")

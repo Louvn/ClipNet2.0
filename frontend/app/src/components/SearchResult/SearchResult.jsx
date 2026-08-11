@@ -20,8 +20,11 @@ function SearchResult({data, query, showContent=false}) {
         case "user":
             title = "@" + data.username;
             info = t("user.title");
-            content = data.bio ? data.bio : t("user.title");
+            content = data.bio ? renderPreview(data.bio, query) : t("user.title");
             link = `/community/user/${data.id}`;
+            break;
+        
+        default:
             break;
     }
 

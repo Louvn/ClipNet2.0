@@ -5,7 +5,7 @@ from backend.models import Like, Article
 
 def like(article_id: int, db = Depends(get_db), user = Depends(get_current_user)):
     
-    existing_article = db.query(Article).filter(Article.id == article_id).first()
+    existing_article = db.query(Article).filter(Article.id == article_id, Article.is_deleted.is_(False)).first()
     if not existing_article: raise HTTPException(status_code=404, detail="article not found")
 
     existing_like = db.query(Like).filter(Like.user_id == user.id, Like.article_id == article_id).first()
@@ -23,7 +23,7 @@ def like(article_id: int, db = Depends(get_db), user = Depends(get_current_user)
 
 def remove_like(article_id: int, db = Depends(get_db), user = Depends(get_current_user)):
     
-    existing_article = db.query(Article).filter(Article.id == article_id).first()
+    existing_article = db.query(Article).filter(Article.id == article_id, Article.is_deleted.is_(False)).first()
     if not existing_article: raise HTTPException(status_code=404, detail="article not found")
 
     existing_like = db.query(Like).filter(Like.user_id == user.id, Like.article_id == article_id).first()

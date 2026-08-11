@@ -1,6 +1,4 @@
 from ...models import Revision, Article
-from ...database import get_db
-from fastapi import Depends
 from sqlalchemy import or_
 from sqlalchemy.orm import selectinload, aliased
 
@@ -43,7 +41,7 @@ def search_articles(query, filters, db):
     # search db_query
     revisions = (
         db_query
-            .filter(Revision.id == Article.current_revision_id)
+            .filter(Revision.id == Article.current_revision_id, Article.is_deleted.is_(False))
             .filter(
                 or_(
                     Revision.title.ilike(f"%{query}%"),

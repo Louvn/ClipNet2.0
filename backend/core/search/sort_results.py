@@ -2,7 +2,6 @@ from .ranking import rank
 from ...schematics.sorting_criteria import SortingCriteria
 from .dynamic_columns import *
 from ...utils.deep_getattr import deep_getattr
-from datetime import datetime
 
 
 def sort_results(query, results, criteria):

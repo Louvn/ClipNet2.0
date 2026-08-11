@@ -1,5 +1,5 @@
 from ..database import Base
-from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy import Column, Integer, ForeignKey, String, Boolean
 from sqlalchemy.orm import relationship
 from .revision import Revision
 from ..schematics.permissions import EditPermission
@@ -12,6 +12,8 @@ class Article(Base):
     first_revision_id = Column(Integer, ForeignKey("revisions.id"))
     op_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     edit_permission = Column(Integer, default=EditPermission.contributors)
+
+    is_deleted = Column(Boolean, server_default="false", nullable=False)
 
     revisions = relationship("Revision", foreign_keys=[Revision.article_id], back_populates="article")
     current_revision = relationship("Revision", uselist=False, foreign_keys=[current_revision_id], post_update=True) # post_update=True avoids circular dependency errors

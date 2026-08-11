@@ -9,7 +9,7 @@ def general_statistics(db = Depends(get_db), user = Depends(get_current_user)):
 
     stats = {
         "users": db.query(User).count(),
-        "articles": db.query(Article).count()
+        "articles": db.query(Article).filter(Article.is_deleted.is_(False)).count()
     }
 
     return stats

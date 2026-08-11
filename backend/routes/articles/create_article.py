@@ -22,6 +22,8 @@ def create_article(article_data: ArticleCreateData, db = Depends(get_db), user =
         .first()
     )
     if existing_article_with_title:
+        if existing_article_with_title.is_deleted:
+            raise HTTPException(status_code=400, detail="This article name cannot be used")
         raise HTTPException(status_code=400, detail="Article does already exists")
     
     # Create first revision
