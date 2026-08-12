@@ -20,7 +20,7 @@ function WikiLinkNode({ title }) {
         return <Link className={styles.WikiLink} to={`/wiki/${foundArticle.slug}`}>{title}</Link>;
     }
 
-    return <Link className={`${styles.WikiLink} ${styles.RedLink}`} style={{ color: "red"}} to={`/editor?title=${title}`}>{title}</Link>;
+    return <Link className={`${styles.WikiLink} ${styles.RedLink}`} to={`/editor?title=${title}`}>{title}</Link>;
 }
 
 function UserLinkNode({ username }) {
@@ -33,7 +33,7 @@ function UserLinkNode({ username }) {
         return <Link className={styles.UserLink} to={`/community/user/${foundUser.id}`}>@{username}</Link>;
     }
 
-    return <Link className={`${styles.UserLink} ${styles.RedLink}`} style={{ color: "red" }} to={`/404`}>@{username}</Link>;
+    return <Link className={`${styles.UserLink} ${styles.RedLink}`} to={`/404`}>@{username}</Link>;
 }
 
 function HeadingNode({ title, children }) {

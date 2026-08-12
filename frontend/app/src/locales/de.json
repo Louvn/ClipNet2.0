@@ -12,11 +12,19 @@
     },
     "actions": {
         "share": "Teilen",
-        "report": "Melden",
         "edit": "Bearbeiten",
         "close": "Schließen",
         "tryAgain": "Erneut versuchen",
         "saveChanges": "Änderungen speichern"
+    },
+    "report": {
+        "title": "Melden",
+        "reason": "Grund",
+        "reportArticle": "Artikel melden",
+        "reportedArticle": "Artikel gemeldet",
+        "status": "Status",
+        "pending": "Offen",
+        "noViolationFound": "Kein Verstoß festgestellt"
     },
     "search": {
         "search": "Suche",
@@ -100,17 +108,19 @@
         "commentPosted": "Kommentar erfolgreich veröffentlicht.",
         "commentCouldNotBePosted": "Kommentar konnte nicht veröffentlicht werden.",
         "articleCouldNotBePublished": "Artikel konnte nicht veröffentlicht werden.",
-        "articlePublished": "Artikel erfolgreich veröffentlich",
+        "articlePublished": "Artikel erfolgreich veröffentlicht.",
         "changesCouldNotBePublished": "Änderungen konnten nicht veröffentlicht werden.",
         "errorWhileSavingChanges": "Fehler beim Speichern der Änderungen.",
-        "changesSaved": "Änderungen gespeichert."
+        "changesSaved": "Änderungen gespeichert.",
+        "reportedArticle": "Artikel wurde gemeldet."
     },
     "placeholder": {
         "articleTitle": "Gib deinem Artikel einen Titel",
         "articleContent": "Schreibe die Geschichte, die du erzählen möchtest...",
         "comment": "Schreibe deinen Kommentar...",
         "changeSummary": "Erkläre deine Änderungen...",
-        "bio": "Erzähl uns etwas über dich..."
+        "bio": "Erzähl uns etwas über dich...",
+        "reportArticleReason": "Warum möchtest du diesen Artikel melden?"
     },
     "time": {
         "locale": "de-DE",

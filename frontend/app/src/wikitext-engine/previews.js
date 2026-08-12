@@ -18,7 +18,7 @@ export function extractNormals(node) {
         return "\n";
     }
     if (node.type === FORMAT.heading) {
-        return `${node.title} ${node.children.map(extractNormals).join("")}`;
+        return `${node.title}: ${node.children.map(extractNormals).join("")}`;
     }
 
     return node.children ? node.children.map(extractNormals).join("") : "";
@@ -41,7 +41,7 @@ export function highlightQuery(txt, query) {
     return highlightedTxt;
 }
 
-export function extractSnippet(txt, query=null, context=130) {
+export function extractSnippet(txt, query=null, context=80) {
 
     const rgx = new RegExp(`(${escapeRegex(query)})`, "gi");
     const firstMatch = txt.search(rgx);

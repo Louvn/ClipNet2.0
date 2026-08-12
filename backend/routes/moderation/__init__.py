@@ -4,6 +4,7 @@ from .unban import unban
 from .report_article import report_article
 from .get_pending_reports import get_pending_reports
 from .delete_article import delete_article
+from .get_own_report import get_own_report
 from backend.schematics.user import UserOutData
 from backend.schematics.report import ReportOutData
 
@@ -35,6 +36,13 @@ router.add_api_route(
     get_pending_reports,
     methods=["GET"],
     response_model=list[ReportOutData]
+)
+
+router.add_api_route(
+    "/get-own-report",
+    get_own_report,
+    methods=["GET"],
+    response_model=ReportOutData | None
 )
 
 router.add_api_route(

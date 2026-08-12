@@ -1,0 +1,25 @@
+.ReportPopUp {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.ReportPopUpHeading {
+    color: var(--primary-color);
+    font-weight: 400;
+    font-size: 1.3em;
+}
+.ReportPopUpButton {
+    width: 160px;
+    height: 32px;
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.ExistingReportReason {
+    height: 200px;
+    padding: 12px;
+    background-color: var(--bg-color);
+}
+.ExistingReportCreated {
+    margin-top: -12px;
+}

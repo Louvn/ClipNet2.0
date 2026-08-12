@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import ToastNotification from "../components/ToastNotification";
 
 const ToastNotificationContext = createContext();
@@ -11,7 +11,7 @@ export function ToastNotificationContextProvider({ children }) {
     const [notificationType, setNotificationType] = useState(null);
     const [showNotification, setShowNotification] = useState(false);
 
-    function notify(text, type) {
+    const notify = useCallback((text, type) => {
 
         setNotification(text);
         setNotificationType(type);
@@ -19,7 +19,7 @@ export function ToastNotificationContextProvider({ children }) {
 
         setTimeout(() => setShowNotification(false), 5000);
 
-    }
+    }, []);
 
     return <ToastNotificationContext.Provider value={notify}>
         <ToastNotification text={notification} show={showNotification} type={notificationType} />

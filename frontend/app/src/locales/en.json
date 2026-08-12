@@ -12,11 +12,19 @@
     },
     "actions": {
         "share": "Share",
-        "report": "Report",
         "edit": "Edit",
         "close": "Close",
         "tryAgain": "Try Again",
         "saveChanges": "Save Changes"
+    },
+    "report": {
+        "title": "Report",
+        "reason": "Reason",
+        "reportArticle": "Report Article",
+        "reportedArticle": "Reported Article",
+        "status": "Status",
+        "pending": "Pending",
+        "noViolationFound": "No violation found"
     },
     "search": {
         "search": "Search",
@@ -103,14 +111,16 @@
         "articlePublished": "Article published successfully.",
         "changesCouldNotBePublished": "Changes could not be published.",
         "errorWhileSavingChanges": "Error while saving changes.",
-        "changesSaved": "Changes saved."
+        "changesSaved": "Changes saved.",
+        "reportedArticle": "Article has been reported."
     },
     "placeholder": {
         "articleTitle": "Give your article a title",
         "articleContent": "Type in the story you want to tell...",
         "comment": "Write your comment...",
         "changeSummary": "Explain your changes...",
-        "bio": "Tell us something about yourself..."
+        "bio": "Tell us something about yourself...",
+        "reportArticleReason": "Why do you want to report this article?"
     },
     "time": {
         "locale": "en-GB",

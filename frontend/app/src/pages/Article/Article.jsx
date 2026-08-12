@@ -8,7 +8,6 @@ import Loader from "../../components/Loader";
 
 import wikitextToJsx from "../../wikitext-engine";
 
-import reportIcon from "../../assets/icons/report.png";
 import editIcon from "../../assets/icons/edit.png";
 import revisionsIcon from "../../assets/icons/revisions.png";
 import permissionsIcon from "../../assets/icons/permissions.png";
@@ -29,6 +28,7 @@ import { useComments } from "../../hooks/useComments";
 import Comment from "../../components/Comment";
 import { useTranslation } from "react-i18next";
 import { formatTimestamp } from "../../utils/formatTimestamp";
+import ReportButton from "../../components/ReportButton";
 
 
 function Article() {
@@ -109,7 +109,7 @@ function Article() {
 
                 <LikeButton article={article} />
                 <ShareButton title={article.current_revision.title} />
-                <ActionButton icon={reportIcon}>{t("actions.report")}</ActionButton>
+                <ReportButton article={article} />
 
                 <hr />
 

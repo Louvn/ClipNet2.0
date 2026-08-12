@@ -29,11 +29,11 @@ export function useAPI() {
             if (response.status === 401) {
                 setJwt(null); // log out
             }
-            else if (response.status === 403 && data?.detail?.code === "USER_BANNED") {
+            else if (response.status === 403 && data?.detail?.code === "USER_BANNED") { // TODO: Change to data.detail
                 setUser(u => ({...u, is_banned: true})) // is_banned = true => Banned Page
             }
             else if (!response.ok) {
-                toastNotification(data?.detail || "Unknown Error");
+                toastNotification("Error") // TODO: Change to translation codes;
             }
 
             return response;
