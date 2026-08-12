@@ -14,19 +14,19 @@ def get_current_user(token: str = Depends(oauth2_scheme), db = Depends(get_db)):
         payload = jwt.decode(token, SECRET, algorithms=[ALGORITHM])
         username = payload.get("sub")
     except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Expired token")
+        raise HTTPException(status_code=401, detail="EXPIRED_TOKEN")
     except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
+        raise HTTPException(status_code=401, detail="INVALID_TOKEN")
     
     if username is None:
-        raise HTTPException(status_code=401, detail="Token payload invalid")
+        raise HTTPException(status_code=401, detail="TOKEN_PAYLOAD_INVALID")
     
     user = db.query(User).filter(User.username == username).first()
     if user is None:
-        raise HTTPException(status_code=401, detail="User does not exist")
+        raise HTTPException(status_code=401, detail="USER_DOES_NOT_EXIST")
 
     if user.is_banned:
-        raise HTTPException(status_code=403, detail={"code": "USER_BANNED"})
+        raise HTTPException(status_code=403, detail="USER_BANNED")
     
     return user
 
@@ -34,6 +34,6 @@ def get_current_user(token: str = Depends(oauth2_scheme), db = Depends(get_db)):
 def get_current_admin(user = Depends(get_current_user)):
 
     if not user.is_admin:
-        raise HTTPException(status_code=403, detail="User is not an admin")
+        raise HTTPException(status_code=403, detail="USER_NOT_ADMIN")
 
     return user

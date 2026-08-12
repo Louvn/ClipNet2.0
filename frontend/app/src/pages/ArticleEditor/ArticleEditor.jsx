@@ -48,12 +48,9 @@ function ArticleEditor() {
 
     // async function used in createArticle and editArticle
     const reactToError = async (fallbackNotification, res) => {
-        const data = await res.json();
-        const notification = typeof data.detail === "string" ? data.detail : fallbackNotification;
 
         setPublishing(false);
         setPopUpOpen(false);
-        toastNotification(notification);
     }
 
     const createArticle = () => {

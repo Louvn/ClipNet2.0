@@ -13,7 +13,7 @@ def get_article(provided_infos = Depends(ArticleGetData), user = Depends(get_cur
         article = db.query(Article).filter(Article.slug == provided_infos.slug, Article.is_deleted.is_(False)).first()
     
     if not article:
-        raise HTTPException(status_code=404, detail="Article not found")
+        raise HTTPException(status_code=404, detail="ARTICLE_NOT_FOUND")
     
 
     article_data = ArticleOutData.model_validate(article, from_attributes=True)

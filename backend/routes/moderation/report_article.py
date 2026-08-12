@@ -9,7 +9,7 @@ def report_article(data: ReportArticleData, user = Depends(get_current_user), db
     existing_article = db.query(Article).filter(Article.id == data.article_id, Article.is_deleted.is_(False)).first()
     
     if not existing_article:
-        raise HTTPException(404, "Article not found.")
+        raise HTTPException(404, "ARTICLE_NOT_FOUND")
 
     existing_report = db.query(Report).filter(Report.article_id == data.article_id, Report.user_id == user.id).first()
 

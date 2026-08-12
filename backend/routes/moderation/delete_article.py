@@ -8,7 +8,7 @@ def delete_article(article_id: int, user = Depends(get_current_admin), db = Depe
     existing_article = db.query(Article).filter(Article.id == article_id, Article.is_deleted.is_(False)).first()
 
     if not existing_article:
-        raise HTTPException(404, "Article not found")
+        raise HTTPException(404, "ARTICLE_NOT_FOUND")
 
     existing_article.is_deleted = True
 

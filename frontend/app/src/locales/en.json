@@ -147,6 +147,18 @@
             "alt": "Access denied",
             "title": "Your access has been suspended.",
             "description": "You no longer have access to ClipNet. An administrator has suspended your account due to violations of the guidelines and/or inappropriate behavior. If you have any questions about this suspension, please contact an administrator."
+        },
+        "code": {
+            "EXPIRED_TOKEN": "Your session has expired. Please log in again.",
+            "INVALID_TOKEN": "Invalid authentication.",
+            "TOKEN_PAYLOAD_INVALID": "Invalid authentication.",
+            "USER_DOES_NOT_EXIST": "The logged-in user could not be found.",
+            "NOT_ALLOWED": "You are not authorized to perform this action.",
+            "ARTICLE_NAME_CANNOT_BE_USED": "This article name cannot be used.",
+            "ARTICLE_ALREADY_EXISTS": "This article already exists.",
+            "NO_CHANGES_MADE": "No changes were made.",
+            "USER_ALREADY_EXISTS": "A user with this name already exists.",
+            "ALREADY_REPORTED_ARTICLE": "You have already reported this article."
         }
     }
 }

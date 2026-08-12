@@ -13,7 +13,7 @@ ALGORITHM = os.getenv("JWT_ALGORITHM")
 def login(form: OAuth2PasswordRequestForm = Depends(), db = Depends(get_db)):
     existing_user = db.query(User).filter(User.username == form.username).first()
     if not existing_user:
-        raise HTTPException(status_code=401, detail="Invalid username or password")
+        raise HTTPException(status_code=401, detail="Invalid username or password") # not translated in frontend
     
     if not verify(form.password, existing_user.password):
         raise HTTPException(status_code=401, detail="Invalid username or password")

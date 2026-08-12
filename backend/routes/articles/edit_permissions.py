@@ -9,9 +9,9 @@ def edit_permissions(data: ArticlePermissionsData, db = Depends(get_db), user = 
     existing_article = db.query(Article).filter(Article.id == data.id, Article.is_deleted.is_(False)).first()
 
     if not existing_article:
-        raise HTTPException(status_code=404, detail="Article not found")
+        raise HTTPException(status_code=404, detail="ARTICLE_NOT_FOUND")
     if not user.id == existing_article.op_id:
-        raise HTTPException(status_code=403, detail="You are not the owner")
+        raise HTTPException(status_code=403, detail="NOT_ALLOWED")
     
     # set edit permission
     existing_article.edit_permission = data.edit_permission

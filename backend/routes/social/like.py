@@ -6,10 +6,10 @@ from backend.models import Like, Article
 def like(article_id: int, db = Depends(get_db), user = Depends(get_current_user)):
     
     existing_article = db.query(Article).filter(Article.id == article_id, Article.is_deleted.is_(False)).first()
-    if not existing_article: raise HTTPException(status_code=404, detail="article not found")
+    if not existing_article: raise HTTPException(status_code=404, detail="ARTICLE_NOT_FOUND")
 
     existing_like = db.query(Like).filter(Like.user_id == user.id, Like.article_id == article_id).first()
-    if existing_like: raise HTTPException(status_code=400, detail="already liked this article")
+    if existing_like: raise HTTPException(status_code=400, detail="ALREADY_LIKED_ARTICLE")
 
     like = Like(
         user_id=user.id,
@@ -24,10 +24,10 @@ def like(article_id: int, db = Depends(get_db), user = Depends(get_current_user)
 def remove_like(article_id: int, db = Depends(get_db), user = Depends(get_current_user)):
     
     existing_article = db.query(Article).filter(Article.id == article_id, Article.is_deleted.is_(False)).first()
-    if not existing_article: raise HTTPException(status_code=404, detail="article not found")
+    if not existing_article: raise HTTPException(status_code=404, detail="ARTICLE_NOT_FOUND")
 
     existing_like = db.query(Like).filter(Like.user_id == user.id, Like.article_id == article_id).first()
-    if not existing_like: raise HTTPException(status_code=404, detail="no like for this article found")
+    if not existing_like: raise HTTPException(status_code=404, detail="ARTICLE_NOT_LIKED")
 
     db.delete(existing_like)
     db.commit()

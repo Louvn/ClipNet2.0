@@ -147,6 +147,18 @@
             "alt": "Kein Zugriff",
             "title": "Dein Zugriff wurde gesperrt.",
             "description": "Du hast keinen Zugriff mehr auf ClipNet. Ein Administrator hat dein Konto aufgrund von Verstößen gegen die Richtlinien und/oder unangemessenem Verhalten gesperrt. Wenn du Fragen zu dieser Sperre hast, wende dich bitte an einen Administrator."
+        },
+        "code": {
+            "EXPIRED_TOKEN": "Deine Sitzung ist abgelaufen. Bitte melde dich erneut an.",
+            "INVALID_TOKEN": "Ungültige Authentifizierung.",
+            "TOKEN_PAYLOAD_INVALID": "Ungültige Authentifizierung.",
+            "USER_DOES_NOT_EXIST": "Der eingeloggte Nutzer konnte nicht gefunden werden.",
+            "NOT_ALLOWED": "Du bist zu dieser Aktion nicht berechtigt.",
+            "ARTICLE_NAME_CANNOT_BE_USED": "Dieser Artikelname kann nicht verwendet werden.",
+            "ARTICLE_ALREADY_EXISTS": "Dieser Artikel existiert bereits.",
+            "NO_CHANGES_MADE": "Es wurden keine Änderungen vorgenommen.",
+            "USER_ALREADY_EXISTS": "Ein Nutzer mit diesem Namen existiert bereits.",
+            "ALREADY_REPORTED_ARTICLE": "Du hast diesen Artikel bereits gemeldet."
         }
     }
 }

@@ -7,7 +7,7 @@ from backend.utils.hash import hash
 def register(user_data: UserCreateData, db = Depends(get_db)):
     existing_user = db.query(User).filter(User.username == user_data.username).first()
     if existing_user:
-        raise HTTPException(status_code=400, detail="Username already exists")
+        raise HTTPException(status_code=400, detail="USER_ALREADY_EXISTS")
 
     new_user = User(
         username=user_data.username,

@@ -8,10 +8,10 @@ def unban(user_id: int, user = Depends(get_current_admin), db = Depends(get_db))
     existing_user = db.query(User).filter(User.id == user_id).first()
 
     if not existing_user:
-        raise HTTPException(404, "User not found")
+        raise HTTPException(404, "USER_NOT_FOUND")
 
     if not existing_user.is_banned:
-        raise HTTPException(status_code=400, detail="User is already unbanned")
+        raise HTTPException(status_code=400, detail="USER_ALREADY_UNBANNED")
 
     existing_user.is_banned = False
 
