@@ -1,5 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import i18n from "../i18n";
+import { notificationTypeSuccess, useToastNotification } from "./ToastNotificationContext";
+import { useTranslation } from "react-i18next";
 
 const AuthContext = createContext();
 
@@ -9,6 +11,8 @@ export function AuthContextProvider({ children }) {
     const [user, setUser] = useState(null);
     const [userLoading, setUserLoading] = useState(false); // for all sites to wait until user is there
     const isLoggedIn = !!jwt;
+    const toastNotification = useToastNotification();
+    const {t} = useTranslation();
 
     // to reload user with settings after changing them
     const reloadUser = useCallback(async () => {
@@ -34,19 +38,31 @@ export function AuthContextProvider({ children }) {
 
         setUser(data);
         setUserLoading(false);
+
+        return data;
     }, [jwt])
 
 
     useEffect(() => {
-        if (jwt) {
-            localStorage.setItem("jwt", jwt);
-        } else {
-            localStorage.removeItem("jwt");
+
+        const handle = async () => {
+            if (jwt) {
+                localStorage.setItem("jwt", jwt);
+            } else {
+                localStorage.removeItem("jwt");
+            }
+
+            if (!jwt) return;
+
+            const user = await reloadUser(); // load user from jwt
+            // welcome message on new login (username doesn't exist in the case of a banned user)
+            if (user.username) toastNotification(t("toast.welcomeBack", {user: user.username}), notificationTypeSuccess);
         }
 
-        if (jwt) reloadUser(); // load user from jwt
+        handle();
 
-    }, [jwt, reloadUser]);
+    }, [jwt, reloadUser, toastNotification]); // t not as dependency to avoid infinite loop
+
 
     return <AuthContext.Provider value={{ jwt, setJwt, isLoggedIn, user, reloadUser, userLoading, setUser }}>{children}</AuthContext.Provider>
 }

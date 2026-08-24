@@ -22,4 +22,4 @@ class UserOutData(BaseModel):
 
 class SettingsData(BaseModel):
     language: str = None 
-    bio: constr(max_length=255) | None = None # err
+    bio: constr(max_length=255) | None = None

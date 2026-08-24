@@ -112,7 +112,8 @@
         "changesCouldNotBePublished": "Changes could not be published.",
         "errorWhileSavingChanges": "Error while saving changes.",
         "changesSaved": "Changes saved.",
-        "reportedArticle": "Article has been reported."
+        "reportedArticle": "Article has been reported.",
+        "missingTitleOrContent": "Title or content is missing."
     },
     "placeholder": {
         "articleTitle": "Give your article a title",

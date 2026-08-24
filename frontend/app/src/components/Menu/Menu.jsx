@@ -58,7 +58,7 @@ function Menu() {
 
             <section>
                 <MenuOption
-                    title={user ? user?.username : "???"}
+                    title={user?.username || "???"}
                     link={`/community/user/${user?.id}`}
                     icon={userIcon}
                 />

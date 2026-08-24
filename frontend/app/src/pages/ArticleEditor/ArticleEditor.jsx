@@ -94,7 +94,13 @@ function ArticleEditor() {
     }
 
     // pick correct method
-    const publish = (isEdit ? editArticle : createArticle);
+    const publish = () => {
+
+        if (title.length < 1 || content.length < 1) return toastNotification(t("toast.missingTitleOrContent"));
+
+        const publishingFunc = (isEdit ? editArticle : createArticle)
+        publishingFunc();
+    };
 
 
 

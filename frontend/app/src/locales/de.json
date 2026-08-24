@@ -112,7 +112,8 @@
         "changesCouldNotBePublished": "Änderungen konnten nicht veröffentlicht werden.",
         "errorWhileSavingChanges": "Fehler beim Speichern der Änderungen.",
         "changesSaved": "Änderungen gespeichert.",
-        "reportedArticle": "Artikel wurde gemeldet."
+        "reportedArticle": "Artikel wurde gemeldet.",
+        "missingTitleOrContent": "Titel oder Inhalt fehlt."
     },
     "placeholder": {
         "articleTitle": "Gib deinem Artikel einen Titel",

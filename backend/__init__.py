@@ -32,6 +32,7 @@ from .routes.users import router as users_router
 from .routes.social import router as social_router
 from .routes.announcements import router as announcements_router
 from .routes.moderation import router as moderation_router
+from .routes.images import router as images_router
 
 app.include_router(auth_router)
 app.include_router(articles_router)
@@ -41,6 +42,7 @@ app.include_router(users_router)
 app.include_router(social_router)
 app.include_router(announcements_router)
 app.include_router(moderation_router)
+app.include_router(images_router)
 
 # -- Create db -- 
 from .database import Base, engine, get_db
