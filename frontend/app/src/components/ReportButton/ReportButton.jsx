@@ -1,6 +1,7 @@
 import ActionButton from "../ActionButton";
 import styles from "./styles.module.css";
 import reportIcon from "../../assets/icons/report.png";
+import deleteIcon from "../../assets/icons/delete.png";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import PopUp from "../PopUp/PopUp";
@@ -11,6 +12,7 @@ import { useAPI } from "../../hooks/useAPI";
 import { useOwnReport } from "../../hooks/useOwnReport";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
 import { formatTimestamp } from "../../utils/formatTimestamp";
+import { useAuth } from "../../context/AuthContext";
 
 function ReportButton({ article }) {
 
@@ -22,6 +24,8 @@ function ReportButton({ article }) {
     const [reason, setReason] = useState("");
     const apiFetch = useAPI();
     const toastNotification = useToastNotification();
+    const {user} = useAuth();
+    const isOp = (user.id === article.op.id);
 
     const postReport = async () => {
 
@@ -41,19 +45,20 @@ function ReportButton({ article }) {
         setReport(data); // updated ownReport
         setPosting(false);
 
-        toastNotification(t("toast.reportedArticle"), notificationTypeSuccess);
+        toastNotification(t(isOp ? "toast.deletionProposed" : "toast.reportedArticle"), notificationTypeSuccess);
     }
 
     return <>
         <ActionButton
-            icon={reportIcon}
+            icon={isOp ? deleteIcon : reportIcon}
             onClick={() => setPopUpOpen(true)}
-        >{t("report.title")}</ActionButton>
+        >{t(isOp ? "report.delete.title" : "report.title")}</ActionButton>
 
         {popUpOpen && <PopUp closingMethod={() => setPopUpOpen(false)} className={styles.ReportPopUp}>
             
             {!loading && !posting && !report && <>
-            <h2 className={styles.ReportPopUpHeading}>{t("report.reportArticle")}</h2>
+            <h2 className={styles.ReportPopUpHeading}>{t(isOp ? "report.delete.proposeDeletion" : "report.reportArticle")}</h2>
+            {isOp && <i className={styles.ExistingReportCreated}>{t("report.delete.explanation")}</i>}
 
             <LimitedInput
                 name={t("report.reason")}
@@ -63,13 +68,13 @@ function ReportButton({ article }) {
                 setValue={setReason}
                 />
 
-            <SimpleButton onClick={postReport} className={styles.ReportPopUpButton}>{t("report.title")}</SimpleButton>
+            <SimpleButton onClick={postReport} className={styles.ReportPopUpButton}>{t(isOp ? "report.delete.title" : "report.title")}</SimpleButton>
             </>}
 
             {(loading || posting) && <Loader divHidden />}
 
             {!loading && !posting && report && <>
-            <h2 className={styles.ReportPopUpHeading}>{t("report.reportedArticle")}</h2>
+            <h2 className={styles.ReportPopUpHeading}>{t(isOp ? "report.delete.proposedDeletion" : "report.reportedArticle")}</h2>
             <i className={styles.ExistingReportCreated}>{formatTimestamp(report.created_at, t)}</i>
 
             <fieldset className={styles.ExistingReportReason}>
@@ -79,7 +84,7 @@ function ReportButton({ article }) {
             
             <span>
                 <strong>{t("report.status")}: </strong>
-                {report.pending ? t("report.pending") : t("report.noViolationFound")}
+                {report.pending ? t("report.pending") : t(isOp ? "report.delete.denied" : "report.noViolationFound")}
             </span>
 
             </>}

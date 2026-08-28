@@ -1,0 +1,192 @@
+{
+    "quote": "Deja fluir tu creatividad",
+
+    "common": {
+        "more": "Más",
+        "createdByUser": "Creado por {{user}}",
+        "details": "Detalles",
+        "actions": "Acciones",
+        "back": "Volver",
+        "add": "Añadir",
+        "thereAre": "Hay",
+        "learnMore": "Más información"
+    },
+
+    "actions": {
+        "share": "Compartir",
+        "edit": "Editar",
+        "close": "Cerrar",
+        "tryAgain": "Intentar de nuevo",
+        "saveChanges": "Guardar cambios"
+    },
+
+    "report": {
+        "title": "Denunciar",
+        "reason": "Motivo",
+        "reportArticle": "Denunciar artículo",
+        "reportedArticle": "Artículo denunciado",
+        "status": "Estado",
+        "pending": "Pendiente",
+        "noViolationFound": "No se ha detectado ninguna infracción",
+        "delete": {
+            "title": "Eliminar",
+            "proposeDeletion": "Solicitar eliminación",
+            "proposedDeletion": "Eliminación solicitada",
+            "denied": "Eliminación rechazada",
+            "explanation": "Tu artículo se eliminará de los directorios públicos. Seguirá siendo accesible para los administradores en el archivo."
+        }
+    },
+
+    "search": {
+        "search": "Buscar",
+        "results": "Resultados de búsqueda",
+        "nothingFound": "No se ha encontrado nada.",
+        "showAllResults": "Mostrar todos los resultados",
+        "applyFilters": "Aplicar filtros",
+        "orderBy": "Ordenar por",
+        "relevance": "Relevancia",
+        "newestFirst": "Más recientes primero",
+        "oldestFirst": "Más antiguos primero",
+        "lastUpdatedFirst": "Última actualización primero",
+        "nothingFoundMatchingFilters": "La búsqueda con los filtros seleccionados no ha producido ningún resultado.",
+        "createArticle": "¿Quieres crear '{{query}}'?",
+        "contentType": "Tipo de contenido"
+    },
+
+    "auth": {
+        "logout": "Cerrar sesión"
+    },
+
+    "editor": {
+        "undo": "Deshacer",
+        "redo": "Rehacer",
+        "heading": "Encabezado",
+        "subheading": "Subencabezado",
+        "bold": "Negrita",
+        "italic": "Cursiva",
+        "link": "Enlace",
+        "mention": "Mencionar",
+        "table": "Tabla",
+        "image": "Imagen"
+    },
+
+    "permissions": {
+        "title": "Permisos",
+        "everyone": "Todos",
+        "selectedOnly": "Solo seleccionados",
+        "label": "¿Quién puede editar este artículo?",
+        "selectedUsers": "Usuarios seleccionados"
+    },
+
+    "comments": {
+        "title": "Comentarios",
+        "add": "Añadir comentario",
+        "post": "Enviar",
+        "noComments": "Todavía no hay comentarios"
+    },
+
+    "article": {
+        "title": "Artículo",
+        "title_one": "Artículo",
+        "title_other": "Artículos",
+        "publishing": "Publicando artículo...",
+        "counter": "{{chars}} caracteres, {{words}} palabras",
+        "publish": "Publicar",
+        "publishChanges": "Publicar cambios",
+        "changeSummary": "Resumen de cambios",
+        "latestArticles": "Últimos artículos",
+        "latestChanges": "Editados recientemente",
+        "revisions": "Revisiones",
+        "revisionCounter": "Revisión #{{count}}",
+        "createdByUser": "Creado {{time}} por {{user}}",
+        "lastEditedByUser": "Editado por última vez {{time}} por {{user}}"
+    },
+
+    "user": {
+        "title": "Usuario",
+        "title_one": "Usuario",
+        "title_other": "Usuarios",
+        "totalArticles": "Artículos ({{count}})",
+        "totalArticlesContributed": "Contribuciones a artículos ({{count}})",
+        "profileSettings": "Configuración del perfil",
+        "bio": "Biografía",
+        "joined": "Se unió {{time}}"
+    },
+
+    "nav": {
+        "home": "Inicio",
+        "random": "Aleatorio",
+        "create": "Crear",
+        "settings": "Configuración",
+        "logout": "Cerrar sesión"
+    },
+
+    "toast": {
+        "welcomeBack": "¡Bienvenido de nuevo, {{user}}!",
+        "browserDoesNotSupport": "Tu navegador no admite esta función.",
+        "commentPosted": "Comentario publicado correctamente.",
+        "commentCouldNotBePosted": "No se ha podido publicar el comentario.",
+        "articleCouldNotBePublished": "No se ha podido publicar el artículo.",
+        "articlePublished": "Artículo publicado correctamente.",
+        "changesCouldNotBePublished": "No se han podido publicar los cambios.",
+        "errorWhileSavingChanges": "Error al guardar los cambios.",
+        "changesSaved": "Cambios guardados.",
+        "reportedArticle": "Artículo denunciado.",
+        "missingTitleOrContent": "Falta el título o el contenido.",
+        "deletionProposed": "Eliminación solicitada."
+    },
+
+    "placeholder": {
+        "articleTitle": "Ponle un título a tu artículo",
+        "articleContent": "Escribe la historia que quieres contar...",
+        "comment": "Escribe tu comentario...",
+        "changeSummary": "Explica tus cambios...",
+        "bio": "Cuéntanos algo sobre ti...",
+        "reportArticleReason": "¿Por qué quieres denunciar este artículo?",
+        "deleteArticleReason": "¿Por qué quieres eliminar este artículo?"
+    },
+
+    "time": {
+        "locale": "es-ES",
+        "justNow": "justo ahora",
+        "minutesAgo_one": "hace {{count}} minuto",
+        "minutesAgo_other": "hace {{count}} minutos",
+        "hoursAgo_one": "hace {{count}} hora",
+        "hoursAgo_other": "hace {{count}} horas",
+        "daysAgo_one": "hace {{count}} día",
+        "daysAgo_other": "hace {{count}} días",
+        "onDate": "el {{date}}"
+    },
+
+    "error": {
+        "network": {
+            "alt": "Error de red",
+            "title": "No se ha podido conectar con los servidores de ClipNet.",
+            "description": "Tu dispositivo no ha podido conectarse con los servidores. Si el problema no se debe a tu conexión a Internet, es posible que los servidores no estén disponibles temporalmente. Inténtalo de nuevo en unos minutos. Si el error persiste, informa al propietario."
+        },
+
+        "404": {
+            "title": "Página no encontrada",
+            "quote": "Has llegado a un camino que ni siquiera conocen las crónicas más antiguas."
+        },
+
+        "banned": {
+            "alt": "Acceso denegado",
+            "title": "Tu acceso ha sido bloqueado.",
+            "description": "Ya no tienes acceso a ClipNet. Un administrador ha bloqueado tu cuenta debido a infracciones de las normas y/o comportamiento inapropiado. Si tienes preguntas sobre este bloqueo, ponte en contacto con un administrador."
+        },
+
+        "code": {
+            "EXPIRED_TOKEN": "Tu sesión ha caducado. Vuelve a iniciar sesión.",
+            "INVALID_TOKEN": "Autenticación no válida.",
+            "TOKEN_PAYLOAD_INVALID": "Autenticación no válida.",
+            "USER_DOES_NOT_EXIST": "No se ha podido encontrar al usuario que ha iniciado sesión.",
+            "NOT_ALLOWED": "No tienes permiso para realizar esta acción.",
+            "ARTICLE_NAME_CANNOT_BE_USED": "No se puede utilizar este nombre de artículo.",
+            "ARTICLE_ALREADY_EXISTS": "Este artículo ya existe.",
+            "NO_CHANGES_MADE": "No se han realizado cambios.",
+            "USER_ALREADY_EXISTS": "Ya existe un usuario con este nombre.",
+            "ALREADY_REPORTED_ARTICLE": "Ya has denunciado este artículo."
+        }
+    }
+}

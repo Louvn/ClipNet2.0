@@ -26,6 +26,7 @@
     line-height: 26px;
     padding: 8px 0;
     font-family: var(--text-font);
+    white-space: pre-wrap;
 }
 
 .Sidebar {

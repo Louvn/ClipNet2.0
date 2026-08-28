@@ -14,7 +14,7 @@ def report_article(data: ReportArticleData, user = Depends(get_current_user), db
     existing_report = db.query(Report).filter(Report.article_id == data.article_id, Report.user_id == user.id).first()
 
     if existing_report:
-        raise HTTPException(400, "User already reported this article.")
+        raise HTTPException(400, "ALREADY_REPORTED_THIS_ARTICLE")
 
 
     report = Report(

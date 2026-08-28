@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import i18n from "./i18n";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -20,6 +21,9 @@ import SplashScreen from "./components/SplashScreen";
 import Banned from "./pages/Banned";
 
 function App() {
+
+    // language
+    document.documentElement.lang = i18n.language;
     
     const { isLoggedIn, userLoading, user } = useAuth();
 

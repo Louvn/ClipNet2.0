@@ -1,0 +1,192 @@
+{
+    "quote": "Laat je creativiteit de vrije loop",
+
+    "common": {
+        "more": "Meer",
+        "createdByUser": "Gemaakt door {{user}}",
+        "details": "Details",
+        "actions": "Acties",
+        "back": "Terug",
+        "add": "Toevoegen",
+        "thereAre": "Er zijn",
+        "learnMore": "Meer informatie"
+    },
+
+    "actions": {
+        "share": "Delen",
+        "edit": "Bewerken",
+        "close": "Sluiten",
+        "tryAgain": "Opnieuw proberen",
+        "saveChanges": "Wijzigingen opslaan"
+    },
+
+    "report": {
+        "title": "Melden",
+        "reason": "Reden",
+        "reportArticle": "Artikel melden",
+        "reportedArticle": "Artikel gemeld",
+        "status": "Status",
+        "pending": "In behandeling",
+        "noViolationFound": "Geen overtreding vastgesteld",
+        "delete": {
+            "title": "Verwijderen",
+            "proposeDeletion": "Verwijdering aanvragen",
+            "proposedDeletion": "Verwijdering aangevraagd",
+            "denied": "Verwijdering afgewezen",
+            "explanation": "Je artikel wordt uit de openbare overzichten verwijderd. Het blijft voor beheerders in het archief beschikbaar."
+        }
+    },
+
+    "search": {
+        "search": "Zoeken",
+        "results": "Zoekresultaten",
+        "nothingFound": "Er is niets gevonden.",
+        "showAllResults": "Alle resultaten weergeven",
+        "applyFilters": "Filters toepassen",
+        "orderBy": "Sorteren op",
+        "relevance": "Relevantie",
+        "newestFirst": "Nieuwste eerst",
+        "oldestFirst": "Oudste eerst",
+        "lastUpdatedFirst": "Laatst bijgewerkt eerst",
+        "nothingFoundMatchingFilters": "De zoekopdracht met de geselecteerde filters heeft geen resultaten opgeleverd.",
+        "createArticle": "Wil je '{{query}}' aanmaken?",
+        "contentType": "Inhoudstype"
+    },
+
+    "auth": {
+        "logout": "Uitloggen"
+    },
+
+    "editor": {
+        "undo": "Ongedaan maken",
+        "redo": "Opnieuw uitvoeren",
+        "heading": "Kop",
+        "subheading": "Subkop",
+        "bold": "Vet",
+        "italic": "Cursief",
+        "link": "Link",
+        "mention": "Vermelden",
+        "table": "Tabel",
+        "image": "Afbeelding"
+    },
+
+    "permissions": {
+        "title": "Machtigingen",
+        "everyone": "Iedereen",
+        "selectedOnly": "Alleen geselecteerden",
+        "label": "Wie mag dit artikel bewerken?",
+        "selectedUsers": "Geselecteerde gebruikers"
+    },
+
+    "comments": {
+        "title": "Reacties",
+        "add": "Reactie toevoegen",
+        "post": "Versturen",
+        "noComments": "Er zijn nog geen reacties"
+    },
+
+    "article": {
+        "title": "Artikel",
+        "title_one": "Artikel",
+        "title_other": "Artikelen",
+        "publishing": "Artikel wordt gepubliceerd...",
+        "counter": "{{chars}} tekens, {{words}} woorden",
+        "publish": "Publiceren",
+        "publishChanges": "Wijzigingen publiceren",
+        "changeSummary": "Samenvatting van de wijzigingen",
+        "latestArticles": "Nieuwste artikelen",
+        "latestChanges": "Laatst bewerkt",
+        "revisions": "Versies",
+        "revisionCounter": "Versie #{{count}}",
+        "createdByUser": "Aangemaakt {{time}} door {{user}}",
+        "lastEditedByUser": "Laatst bewerkt {{time}} door {{user}}"
+    },
+
+    "user": {
+        "title": "Gebruiker",
+        "title_one": "Gebruiker",
+        "title_other": "Gebruikers",
+        "totalArticles": "Artikelen ({{count}})",
+        "totalArticlesContributed": "Bijdragen aan artikelen ({{count}})",
+        "profileSettings": "Profielinstellingen",
+        "bio": "Biografie",
+        "joined": "Lid sinds {{time}}"
+    },
+
+    "nav": {
+        "home": "Startpagina",
+        "random": "Willekeurig",
+        "create": "Aanmaken",
+        "settings": "Instellingen",
+        "logout": "Uitloggen"
+    },
+
+    "toast": {
+        "welcomeBack": "Welkom terug, {{user}}!",
+        "browserDoesNotSupport": "Je browser ondersteunt deze functie niet.",
+        "commentPosted": "Reactie succesvol geplaatst.",
+        "commentCouldNotBePosted": "De reactie kon niet worden geplaatst.",
+        "articleCouldNotBePublished": "Het artikel kon niet worden gepubliceerd.",
+        "articlePublished": "Artikel succesvol gepubliceerd.",
+        "changesCouldNotBePublished": "De wijzigingen konden niet worden gepubliceerd.",
+        "errorWhileSavingChanges": "Er is een fout opgetreden bij het opslaan van de wijzigingen.",
+        "changesSaved": "Wijzigingen opgeslagen.",
+        "reportedArticle": "Artikel gemeld.",
+        "missingTitleOrContent": "Titel of inhoud ontbreekt.",
+        "deletionProposed": "Verwijdering aangevraagd."
+    },
+
+    "placeholder": {
+        "articleTitle": "Geef je artikel een titel",
+        "articleContent": "Schrijf het verhaal dat je wilt vertellen...",
+        "comment": "Schrijf je reactie...",
+        "changeSummary": "Leg je wijzigingen uit...",
+        "bio": "Vertel iets over jezelf...",
+        "reportArticleReason": "Waarom wil je dit artikel melden?",
+        "deleteArticleReason": "Waarom wil je dit artikel verwijderen?"
+    },
+
+    "time": {
+        "locale": "nl-NL",
+        "justNow": "zojuist",
+        "minutesAgo_one": "{{count}} minuut geleden",
+        "minutesAgo_other": "{{count}} minuten geleden",
+        "hoursAgo_one": "{{count}} uur geleden",
+        "hoursAgo_other": "{{count}} uur geleden",
+        "daysAgo_one": "{{count}} dag geleden",
+        "daysAgo_other": "{{count}} dagen geleden",
+        "onDate": "op {{date}}"
+    },
+
+    "error": {
+        "network": {
+            "alt": "Netwerkfout",
+            "title": "Kan geen verbinding maken met de ClipNet-servers.",
+            "description": "Je apparaat kon geen verbinding maken met de servers. Als het probleem niet aan je internetverbinding ligt, zijn de servers mogelijk tijdelijk niet beschikbaar. Probeer het over een paar minuten opnieuw. Als het probleem blijft bestaan, meld het dan aan de eigenaar."
+        },
+
+        "404": {
+            "title": "Pagina niet gevonden",
+            "quote": "Je bent op een pad terechtgekomen dat zelfs de oudste kronieken niet kennen."
+        },
+
+        "banned": {
+            "alt": "Geen toegang",
+            "title": "Je toegang is geblokkeerd.",
+            "description": "Je hebt geen toegang meer tot ClipNet. Een beheerder heeft je account geblokkeerd vanwege overtredingen van de regels en/of ongepast gedrag. Als je vragen hebt over deze blokkering, neem dan contact op met een beheerder."
+        },
+
+        "code": {
+            "EXPIRED_TOKEN": "Je sessie is verlopen. Log opnieuw in.",
+            "INVALID_TOKEN": "Ongeldige authenticatie.",
+            "TOKEN_PAYLOAD_INVALID": "Ongeldige authenticatie.",
+            "USER_DOES_NOT_EXIST": "De ingelogde gebruiker kon niet worden gevonden.",
+            "NOT_ALLOWED": "Je bent niet gemachtigd om deze actie uit te voeren.",
+            "ARTICLE_NAME_CANNOT_BE_USED": "Deze artikelnaam kan niet worden gebruikt.",
+            "ARTICLE_ALREADY_EXISTS": "Dit artikel bestaat al.",
+            "NO_CHANGES_MADE": "Er zijn geen wijzigingen aangebracht.",
+            "USER_ALREADY_EXISTS": "Er bestaat al een gebruiker met deze naam.",
+            "ALREADY_REPORTED_ARTICLE": "Je hebt dit artikel al gemeld."
+        }
+    }
+}

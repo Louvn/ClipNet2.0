@@ -1,0 +1,192 @@
+{
+    "quote": "尽情发挥你的创造力",
+
+    "common": {
+        "more": "更多",
+        "createdByUser": "由 {{user}} 创建",
+        "details": "详情",
+        "actions": "操作",
+        "back": "返回",
+        "add": "添加",
+        "thereAre": "共有",
+        "learnMore": "了解更多"
+    },
+
+    "actions": {
+        "share": "分享",
+        "edit": "编辑",
+        "close": "关闭",
+        "tryAgain": "重试",
+        "saveChanges": "保存更改"
+    },
+
+    "report": {
+        "title": "举报",
+        "reason": "原因",
+        "reportArticle": "举报文章",
+        "reportedArticle": "文章已举报",
+        "status": "状态",
+        "pending": "待处理",
+        "noViolationFound": "未发现违规行为",
+        "delete": {
+            "title": "删除",
+            "proposeDeletion": "申请删除",
+            "proposedDeletion": "已申请删除",
+            "denied": "删除申请被拒绝",
+            "explanation": "你的文章将从公开目录中移除。管理员仍可在存档中找到该文章。"
+        }
+    },
+
+    "search": {
+        "search": "搜索",
+        "results": "搜索结果",
+        "nothingFound": "未找到任何结果。",
+        "showAllResults": "显示所有结果",
+        "applyFilters": "应用筛选条件",
+        "orderBy": "排序方式",
+        "relevance": "相关性",
+        "newestFirst": "最新优先",
+        "oldestFirst": "最早优先",
+        "lastUpdatedFirst": "最近更新优先",
+        "nothingFoundMatchingFilters": "使用所选筛选条件搜索没有找到任何结果。",
+        "createArticle": "你想创建“{{query}}”吗？",
+        "contentType": "内容类型"
+    },
+
+    "auth": {
+        "logout": "退出登录"
+    },
+
+    "editor": {
+        "undo": "撤销",
+        "redo": "重做",
+        "heading": "标题",
+        "subheading": "副标题",
+        "bold": "粗体",
+        "italic": "斜体",
+        "link": "链接",
+        "mention": "提及",
+        "table": "表格",
+        "image": "图片"
+    },
+
+    "permissions": {
+        "title": "权限",
+        "everyone": "所有人",
+        "selectedOnly": "仅选定用户",
+        "label": "谁可以编辑这篇文章？",
+        "selectedUsers": "选定的用户"
+    },
+
+    "comments": {
+        "title": "评论",
+        "add": "添加评论",
+        "post": "发送",
+        "noComments": "还没有评论"
+    },
+
+    "article": {
+        "title": "文章",
+        "title_one": "文章",
+        "title_other": "文章",
+        "publishing": "正在发布文章...",
+        "counter": "{{chars}} 个字符，{{words}} 个词",
+        "publish": "发布",
+        "publishChanges": "发布更改",
+        "changeSummary": "更改摘要",
+        "latestArticles": "最新文章",
+        "latestChanges": "最近编辑",
+        "revisions": "修订版本",
+        "revisionCounter": "修订版本 #{{count}}",
+        "createdByUser": "由 {{user}} 于 {{time}} 创建",
+        "lastEditedByUser": "由 {{user}} 于 {{time}} 最后编辑"
+    },
+
+    "user": {
+        "title": "用户",
+        "title_one": "用户",
+        "title_other": "用户",
+        "totalArticles": "文章（{{count}}）",
+        "totalArticlesContributed": "参与编辑的文章（{{count}}）",
+        "profileSettings": "个人资料设置",
+        "bio": "个人简介",
+        "joined": "加入于 {{time}}"
+    },
+
+    "nav": {
+        "home": "首页",
+        "random": "随机",
+        "create": "创建",
+        "settings": "设置",
+        "logout": "退出登录"
+    },
+
+    "toast": {
+        "welcomeBack": "欢迎回来，{{user}}！",
+        "browserDoesNotSupport": "你的浏览器不支持此功能。",
+        "commentPosted": "评论发布成功。",
+        "commentCouldNotBePosted": "无法发布评论。",
+        "articleCouldNotBePublished": "无法发布文章。",
+        "articlePublished": "文章发布成功。",
+        "changesCouldNotBePublished": "无法发布更改。",
+        "errorWhileSavingChanges": "保存更改时出错。",
+        "changesSaved": "更改已保存。",
+        "reportedArticle": "文章已举报。",
+        "missingTitleOrContent": "缺少标题或内容。",
+        "deletionProposed": "已申请删除。"
+    },
+
+    "placeholder": {
+        "articleTitle": "为你的文章添加标题",
+        "articleContent": "写下你想讲述的故事...",
+        "comment": "写下你的评论...",
+        "changeSummary": "说明你的更改...",
+        "bio": "介绍一下你自己...",
+        "reportArticleReason": "为什么要举报这篇文章？",
+        "deleteArticleReason": "为什么要删除这篇文章？"
+    },
+
+    "time": {
+        "locale": "zh-CN",
+        "justNow": "刚刚",
+        "minutesAgo_one": "{{count}} 分钟前",
+        "minutesAgo_other": "{{count}} 分钟前",
+        "hoursAgo_one": "{{count}} 小时前",
+        "hoursAgo_other": "{{count}} 小时前",
+        "daysAgo_one": "{{count}} 天前",
+        "daysAgo_other": "{{count}} 天前",
+        "onDate": "{{date}}"
+    },
+
+    "error": {
+        "network": {
+            "alt": "网络错误",
+            "title": "无法连接到 ClipNet 服务器。",
+            "description": "你的设备无法连接到服务器。如果问题并非由你的网络连接导致，服务器可能暂时无法访问。请几分钟后重试。如果问题仍然存在，请向所有者报告。"
+        },
+
+        "404": {
+            "title": "页面未找到",
+            "quote": "你来到了一个连最古老的编年史都不曾记载的道路。"
+        },
+
+        "banned": {
+            "alt": "无权访问",
+            "title": "你的访问权限已被封禁。",
+            "description": "你已无法访问 ClipNet。管理员因你违反规则和/或行为不当而封禁了你的账户。如果你对该封禁有任何疑问，请联系管理员。"
+        },
+
+        "code": {
+            "EXPIRED_TOKEN": "你的会话已过期。请重新登录。",
+            "INVALID_TOKEN": "身份验证无效。",
+            "TOKEN_PAYLOAD_INVALID": "身份验证无效。",
+            "USER_DOES_NOT_EXIST": "找不到当前登录的用户。",
+            "NOT_ALLOWED": "你无权执行此操作。",
+            "ARTICLE_NAME_CANNOT_BE_USED": "无法使用此文章名称。",
+            "ARTICLE_ALREADY_EXISTS": "这篇文章已经存在。",
+            "NO_CHANGES_MADE": "未进行任何更改。",
+            "USER_ALREADY_EXISTS": "已存在使用此名称的用户。",
+            "ALREADY_REPORTED_ARTICLE": "你已经举报过这篇文章。"
+        }
+    }
+}

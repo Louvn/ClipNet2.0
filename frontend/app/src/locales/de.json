@@ -1,5 +1,6 @@
 {   
     "quote": "Lass deiner Kreativität freien Lauf",
+
     "common": {
         "more": "Mehr",
         "createdByUser": "Erstellt von {{user}}",
@@ -10,6 +11,7 @@
         "thereAre": "Es gibt",
         "learnMore": "Mehr erfahren"
     },
+
     "actions": {
         "share": "Teilen",
         "edit": "Bearbeiten",
@@ -17,6 +19,7 @@
         "tryAgain": "Erneut versuchen",
         "saveChanges": "Änderungen speichern"
     },
+
     "report": {
         "title": "Melden",
         "reason": "Grund",
@@ -24,8 +27,16 @@
         "reportedArticle": "Artikel gemeldet",
         "status": "Status",
         "pending": "Offen",
-        "noViolationFound": "Kein Verstoß festgestellt"
+        "noViolationFound": "Kein Verstoß festgestellt",
+        "delete": {
+            "title": "Löschen",
+            "proposeDeletion": "Löschung beantragen",
+            "proposedDeletion": "Löschung beantragt",
+            "denied": "Löschung abgelehnt",
+            "explanation": "Dein Artikel wird aus den öffentlichen Verzeichnissen entfernt. Im Archiv ist er für Administratoren weiterhin auffindbar."
+        }
     },
+
     "search": {
         "search": "Suche",
         "results": "Suchergebnisse",
@@ -41,9 +52,11 @@
         "createArticle": "Möchtest du '{{query}}' erstellen?",
         "contentType": "Inhaltstyp"
     },
+
     "auth": {
         "logout": "Abmelden"
     },
+
     "editor": {
         "undo": "Rückgängig",
         "redo": "Wiederholen",
@@ -56,6 +69,7 @@
         "table": "Tabelle",
         "image": "Bild"
     },
+
     "permissions": {
         "title": "Berechtigungen",
         "everyone": "Jeder",
@@ -63,12 +77,14 @@
         "label": "Wer darf diesen Artikel bearbeiten?",
         "selectedUsers": "Ausgewählte Nutzer"
     },
+
     "comments": {
         "title": "Kommentare",
         "add": "Kommentar hinzufügen",
         "post": "Senden",
         "noComments": "Es gibt noch keine Kommentare"
     },
+
     "article": {
         "title": "Artikel",
         "title_one": "Artikel",
@@ -85,6 +101,7 @@
         "createdByUser": "Erstellt {{time}} von {{user}}",
         "lastEditedByUser": "Zuletzt bearbeitet {{time}} von {{user}}"
     },
+
     "user": {
         "title": "Nutzer",
         "title_one": "Nutzer",
@@ -95,6 +112,7 @@
         "bio": "Bio",
         "joined": "Beigetreten {{time}}"
     },
+
     "nav": {
         "home": "Startseite",
         "random": "Zufällig",
@@ -102,6 +120,7 @@
         "settings": "Einstellungen",
         "logout": "Abmelden"
     },
+
     "toast": {
         "welcomeBack": "Willkommen zurück, {{user}}!",
         "browserDoesNotSupport": "Dein Browser unterstützt diese Funktion nicht.",
@@ -113,16 +132,20 @@
         "errorWhileSavingChanges": "Fehler beim Speichern der Änderungen.",
         "changesSaved": "Änderungen gespeichert.",
         "reportedArticle": "Artikel wurde gemeldet.",
-        "missingTitleOrContent": "Titel oder Inhalt fehlt."
+        "missingTitleOrContent": "Titel oder Inhalt fehlt.",
+        "deletionProposed": "Löschung beantragt."
     },
+
     "placeholder": {
         "articleTitle": "Gib deinem Artikel einen Titel",
         "articleContent": "Schreibe die Geschichte, die du erzählen möchtest...",
         "comment": "Schreibe deinen Kommentar...",
         "changeSummary": "Erkläre deine Änderungen...",
         "bio": "Erzähl uns etwas über dich...",
-        "reportArticleReason": "Warum möchtest du diesen Artikel melden?"
+        "reportArticleReason": "Warum möchtest du diesen Artikel melden?",
+        "deleteArticleReason": "Warum möchtest du diesen Artikel löschen?"
     },
+
     "time": {
         "locale": "de-DE",
         "justNow": "gerade eben",
@@ -134,21 +157,25 @@
         "daysAgo_other": "vor {{count}} Tagen",
         "onDate": "am {{date}}"
     },
+
     "error": {
         "network": {
             "alt": "Netzwerkfehler",
             "title": "Verbindung zu den ClipNet-Servern fehlgeschlagen.",
             "description": "Dein Gerät konnte keine Verbindung zu den Servern herstellen. Wenn das Problem nicht an deiner Internetverbindung liegt, sind die Server möglicherweise vorübergehend nicht erreichbar. Versuche es in wenigen Minuten erneut. Sollte der Fehler weiterhin bestehen, melde ihn bitte dem Besitzer."
         },
+
         "404": {
             "title": "Seite nicht gefunden",
             "quote": "Du bist auf einen Pfad gestoßen, den selbst die ältesten Chroniken nicht kennen."
         },
+
         "banned": {
             "alt": "Kein Zugriff",
             "title": "Dein Zugriff wurde gesperrt.",
             "description": "Du hast keinen Zugriff mehr auf ClipNet. Ein Administrator hat dein Konto aufgrund von Verstößen gegen die Richtlinien und/oder unangemessenem Verhalten gesperrt. Wenn du Fragen zu dieser Sperre hast, wende dich bitte an einen Administrator."
         },
+        
         "code": {
             "EXPIRED_TOKEN": "Deine Sitzung ist abgelaufen. Bitte melde dich erneut an.",
             "INVALID_TOKEN": "Ungültige Authentifizierung.",
