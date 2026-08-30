@@ -37,6 +37,13 @@
     margin-top: 32px;
 }
 
+.Image {
+    width: 50%;
+    float: left;
+    margin-bottom: 8px;
+    margin-right: 12px;
+}
+
 
 .Mark {
     background-color: color-mix(in srgb, var(--primary-color) 40%, transparent);

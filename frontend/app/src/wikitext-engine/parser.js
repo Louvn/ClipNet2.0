@@ -181,6 +181,20 @@ function parse(tokens, fullMode = true) { // fullMode = false would disable head
 
                 continue;
             }
+            if (tokens[idx+2]?.type === TOKEN.IMAGE) {
+
+                openNode(FORMAT.image, true);
+                idx += 2;
+
+                continue;
+            }
+            if (tokens[idx+2]?.type === TOKEN.URL) {
+
+                openNode(FORMAT.url, true);
+                idx += 2;
+
+                continue;
+            }
             
 
             openNode(FORMAT.wikilink, true);
@@ -194,10 +208,19 @@ function parse(tokens, fullMode = true) { // fullMode = false would disable head
 
             if (findOpenNodeOf(FORMAT.wikilink)) {
                 closeNode(FORMAT.wikilink);
+
             } else if (findOpenNodeOf(FORMAT.userlink)) {
                 closeNode(FORMAT.userlink);
+
+            } else if (findOpenNodeOf(FORMAT.url)) {
+                closeNode(FORMAT.url);
+
+            } else if (findOpenNodeOf(FORMAT.image)) {
+                closeNode(FORMAT.image);
+
             } else {
                 createTextNode(token.value + tokens[idx+1]?.value);
+                
             }
 
             idx++;

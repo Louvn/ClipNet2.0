@@ -10,6 +10,8 @@ export const FORMAT = {
     userlink: "userlink",
     heading: "heading",
     subheading: "subheading",
-    newline: "newline"
-    // TODO: table, later image
+    newline: "newline",
+    image: "image",
+    url: "url"
+    // TODO: table
 }

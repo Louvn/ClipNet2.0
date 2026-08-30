@@ -3,8 +3,9 @@ from backend.database import get_db
 from backend.schematics.user import UserCreateData
 from backend.models import User
 from backend.utils.hash import hash
+from backend.core.security.jwt_helpers import get_current_admin
 
-def register(user_data: UserCreateData, db = Depends(get_db)):
+def register(user_data: UserCreateData, db = Depends(get_db), user = Depends(get_current_admin)):
     existing_user = db.query(User).filter(User.username == user_data.username).first()
     if existing_user:
         raise HTTPException(status_code=400, detail="USER_ALREADY_EXISTS")

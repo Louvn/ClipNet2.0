@@ -8,6 +8,7 @@ import { useWikiIndex } from "../context/WikiIndexContext.jsx";
 import { useUserIndex } from "../context/UserIndexContext.jsx";
 import styles from "./styles.module.css";
 import arrowImg from "../assets/icons/arrow.png";
+import { useImageIndex } from "../context/ImageIndexContext.jsx";
 
 function WikiLinkNode({ title }) {
 
@@ -51,6 +52,22 @@ function SubheadingNode({ children }) {
     return <h3 className={styles.Subheading}>{children}</h3>;
 }
 
+function Image({ id }) {
+
+    const imageIndex = useImageIndex();
+    const img = imageIndex.get(id);
+
+    if (!img) return null;
+
+    return <img className={styles.Image} src={img.url} alt={img.description} />;
+}
+
+function Url({ href }) {
+    if (window.location.origin === new URL(href, window.location.href).origin) return <Link to={href} className={styles.WikiLink}>{href}</Link>;
+
+    return <a className={styles.WikiLink} href={href}>{href}</a>;
+}
+
 function render(node) {
 
     const renderedChildren = node.children?.map(
@@ -79,6 +96,12 @@ function render(node) {
 
         case FORMAT.userlink:
             return <UserLinkNode username={node.children[0]?.value} />;
+        
+        case FORMAT.image:
+            return <Image id={Number(node.children[0]?.value)} />;
+
+        case FORMAT.url:
+            return <Url href={node.children[0]?.value} />;
 
         case FORMAT.heading:
             return <HeadingNode title={node.title}>{renderedChildren}</HeadingNode>;

@@ -1,14 +1,14 @@
-// This file contains a context used to cache all users
+// This file contains a context used to cache all images connected with their urls
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAPI } from "../hooks/useAPI";
 import { useAuth } from "./AuthContext";
 
-const UserIndexContext = createContext();
+const ImageIndexContext = createContext();
 
-export function UserIndexContextProvider({ children }) {
+export function ImageIndexContextProvider({ children }) {
 
-    const [userIndex, setUserIndex] = useState(new Map());
+    const [imageIndex, setImageIndex] = useState(new Map());
     const apiFetch = useAPI();
     const { isLoggedIn } = useAuth();
 
@@ -21,26 +21,26 @@ export function UserIndexContextProvider({ children }) {
 
             if (!isLoggedIn) return;
 
-            const res = await apiFetch("/user-index", { method: "GET" });
+            const res = await apiFetch("/image-index", { method: "GET" });
             const index = await res.json();
 
             if (!res.ok) return;
 
             const indexMap = new Map(); // Map is faster than array
 
-            index.forEach((u) => {
-                indexMap.set(u.username, u);
+            index.forEach((i) => {
+                indexMap.set(i.id, i);
             })
 
-            setUserIndex(indexMap);
+            setImageIndex(indexMap);
         }
 
         loadIndex();
     }, [apiFetch, isLoggedIn]);
 
-    return <UserIndexContext.Provider value={userIndex}>{children}</UserIndexContext.Provider>;
+    return <ImageIndexContext.Provider value={imageIndex}>{children}</ImageIndexContext.Provider>;
 }
 
-export function useUserIndex() {
-    return useContext(UserIndexContext);
+export function useImageIndex() {
+    return useContext(ImageIndexContext);
 }

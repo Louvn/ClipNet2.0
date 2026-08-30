@@ -25,6 +25,9 @@ def create_article(article_data: ArticleCreateData, db = Depends(get_db), user =
         if existing_article_with_title.is_deleted:
             raise HTTPException(status_code=400, detail="ARTICLE_NAME_CANNOT_BE_USED")
         raise HTTPException(status_code=400, detail="ARTICLE_ALREADY_EXISTS")
+
+    if article_data.title.startswith(("#", "@", "image:", "url:")):
+        raise HTTPException(status_code=400, detail="ARTICLE_NAME_CANNOT_BE_USED")
     
     # Create first revision
     new_revision = Revision(

@@ -43,6 +43,8 @@ function tokenize(text) {
         if (match("]", TOKEN.CLOSING_BRACKET)) continue;
         if (match("@", TOKEN.AT)) continue;
         if (match("\\", TOKEN.BACKSLASH)) continue;
+        if (match("image:", TOKEN.IMAGE)) continue;
+        if (match("url:", TOKEN.URL)) continue;
 
 
         // add current idx to currentText

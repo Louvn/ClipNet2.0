@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
 import { WikiIndexContextProvider } from './context/WikiIndexContext';
 import { UserIndexContextProvider } from './context/UserIndexContext';
+import { ImageIndexContextProvider } from "./context/ImageIndexContext.jsx";
 import { ToastNotificationContextProvider } from './context/ToastNotificationContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,9 +21,11 @@ root.render(
 
             <WikiIndexContextProvider>
             <UserIndexContextProvider>
+            <ImageIndexContextProvider>
                     
                 <App />    
                 
+            </ImageIndexContextProvider>
             </UserIndexContextProvider>
             </WikiIndexContextProvider>
             
