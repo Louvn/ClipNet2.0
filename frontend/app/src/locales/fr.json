@@ -67,7 +67,8 @@
         "link": "Lien",
         "mention": "Mentionner",
         "table": "Tableau",
-        "image": "Image"
+        "image": "Image",
+        "preview": "Aperçu"
     },
 
     "permissions": {

@@ -21,3 +21,12 @@
 .FormattingOption img {
     height: 24px;
 }
+
+.PreviewButton {
+    color: #444444;
+    margin-left: auto;
+}
+.PreviewButton:hover {
+    background-color: rgba(0,0,0,.05);
+    box-shadow: none;
+}

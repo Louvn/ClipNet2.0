@@ -11,8 +11,9 @@ import mentionIcon from "../../assets/icons/format_mention.png";
 import tableIcon from "../../assets/icons/format_table.png";
 import imageIcon from "../../assets/icons/format_image.png";
 import { useTranslation } from "react-i18next";
+import SimpleButton from "../SimpleButton";
 
-function FormattingOptions({ inputRef, textState, changeTextState }) {
+function FormattingOptions({ inputRef, textState, changeTextState, previewButton = null }) {
 
     const {t} = useTranslation();
 
@@ -92,6 +93,8 @@ function FormattingOptions({ inputRef, textState, changeTextState }) {
                 <img src={imageIcon} alt={t("editor.image")} />
             </button>
         </section>
+
+        {previewButton && <SimpleButton onClick={previewButton} className={styles.PreviewButton}>{t("editor.preview")}</SimpleButton>}
     
     </div>
 

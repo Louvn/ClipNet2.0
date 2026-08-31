@@ -67,7 +67,8 @@
         "link": "Link",
         "mention": "Vermelden",
         "table": "Tabel",
-        "image": "Afbeelding"
+        "image": "Afbeelding",
+        "preview": "Voorbeeld"
     },
 
     "permissions": {

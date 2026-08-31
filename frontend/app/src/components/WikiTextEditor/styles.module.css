@@ -26,3 +26,8 @@
     margin-bottom: 64px;
     white-space: pre-line;
 }
+
+.Preview {
+    padding: 52px;
+    overflow-y: scroll;
+}

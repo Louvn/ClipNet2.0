@@ -67,7 +67,8 @@
         "link": "链接",
         "mention": "提及",
         "table": "表格",
-        "image": "图片"
+        "image": "图片",
+        "preview": "预览"
     },
 
     "permissions": {
