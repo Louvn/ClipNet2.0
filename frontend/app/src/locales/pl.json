@@ -86,6 +86,13 @@
         "noComments": "Nie ma jeszcze żadnych komentarzy"
     },
 
+    "image": { 
+        "upload": "Prześlij obraz", 
+        "uploadImage": "Prześlij obraz", 
+        "description": "Opis", 
+        "use": "Użyj obrazu" 
+    },
+
     "article": {
         "title": "Artykuł",
         "title_one": "Artykuł",
@@ -134,7 +141,9 @@
         "changesSaved": "Zmiany zostały zapisane.",
         "reportedArticle": "Artykuł został zgłoszony.",
         "missingTitleOrContent": "Brakuje tytułu lub treści.",
-        "deletionProposed": "Zgłoszono prośbę o usunięcie."
+        "deletionProposed": "Zgłoszono prośbę o usunięcie.",
+        "ErrorWhileUploadingFile": "Błąd podczas przesyłania pliku.", 
+        "uploadedFile": "Plik został pomyślnie przesłany."
     },
 
     "placeholder": {
@@ -144,7 +153,8 @@
         "changeSummary": "Wyjaśnij swoje zmiany...",
         "bio": "Opowiedz nam coś o sobie...",
         "reportArticleReason": "Dlaczego chcesz zgłosić ten artykuł?",
-        "deleteArticleReason": "Dlaczego chcesz usunąć ten artykuł?"
+        "deleteArticleReason": "Dlaczego chcesz usunąć ten artykuł?",
+        "describeImage": "Opisz obraz"
     },
 
     "time": {

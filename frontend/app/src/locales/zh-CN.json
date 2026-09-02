@@ -86,6 +86,13 @@
         "noComments": "还没有评论"
     },
 
+    "image": { 
+        "upload": "上传图片", 
+        "uploadImage": "上传图片", 
+        "description": "描述", 
+        "use": "使用图片" 
+    },
+
     "article": {
         "title": "文章",
         "title_one": "文章",
@@ -134,7 +141,9 @@
         "changesSaved": "更改已保存。",
         "reportedArticle": "文章已举报。",
         "missingTitleOrContent": "缺少标题或内容。",
-        "deletionProposed": "已申请删除。"
+        "deletionProposed": "已申请删除。",
+        "ErrorWhileUploadingFile": "上传文件时出错。", 
+        "uploadedFile": "文件上传成功。"
     },
 
     "placeholder": {
@@ -144,7 +153,8 @@
         "changeSummary": "说明你的更改...",
         "bio": "介绍一下你自己...",
         "reportArticleReason": "为什么要举报这篇文章？",
-        "deleteArticleReason": "为什么要删除这篇文章？"
+        "deleteArticleReason": "为什么要删除这篇文章？",
+        "describeImage": "描述图片"
     },
 
     "time": {

@@ -23,10 +23,20 @@
 }
 
 .PreviewButton {
-    color: #444444;
+    color: var(--secondary-text-color);
     margin-left: auto;
 }
 .PreviewButton:hover {
     background-color: rgba(0,0,0,.05);
     box-shadow: none;
+}
+
+.ImagePopUp.ImagePopUp {
+    width: 95%;
+    height: 80%;
+    max-width: 900px;
+    max-height: 800px;
+    padding: 0;
+    overflow: hidden;
+    z-index: 6;
 }

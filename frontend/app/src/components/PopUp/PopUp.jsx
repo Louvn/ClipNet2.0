@@ -3,7 +3,7 @@ import DarkOverlay from "../DarkOverlay";
 
 function PopUp({children, className, closingMethod}) {
     return <>
-        <div className={`${className || ""} ${styles.PopUp}`}>
+        <div className={`${styles.PopUp} ${className || ""}`}>
             {children}
         </div>
 

@@ -59,7 +59,7 @@ function Image({ id }) {
 
     if (!img) return null;
 
-    return <img className={styles.Image} src={img.url} alt={img.description} />;
+    return <img className={`${styles.Image} noInvert`} src={img.url} alt={img.description} />;
 }
 
 function Url({ href }) {

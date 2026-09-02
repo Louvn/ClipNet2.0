@@ -21,13 +21,17 @@ export function useAPI() {
                     headers: {
                         ...options.headers,
                         "Authorization": `Bearer ${jwt}`,
-                        "Content-Type": "application/json"
+                        ...(options?.body instanceof FormData 
+                            ? {}
+                            : { "Content-Type": "application/json" }
+                        )
                     },
                     ...options
                 }
             );
 
             const data = await response.clone().json();
+
             if (response.status === 401) {
                 toastNotification(typeof data?.detail === "string" ? t(`error.code.${data.detail}`): "Unknown Error");
                 setJwt(null); // log out

@@ -1,4 +1,4 @@
-from fastapi import Depends, UploadFile, Form
+from fastapi import Depends, UploadFile, File, Form
 from backend.core.security.jwt_helpers import get_current_user
 from backend.database import get_db
 from backend.utils.images import checkFile, uploadFile
@@ -6,8 +6,8 @@ from backend.models import Image
 
 async def upload_image(
         # multipart/form-data doesn't work normally with pydantic
-        file: UploadFile,
-        description: str | None = Form(None),
+        file: UploadFile = File(...),
+        description: str = Form(...),
 
         user = Depends(get_current_user), 
         db = Depends(get_db),

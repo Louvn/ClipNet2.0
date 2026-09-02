@@ -86,6 +86,13 @@
         "noComments": "Es gibt noch keine Kommentare"
     },
 
+    "image": { 
+        "upload": "Bild hochladen", 
+        "uploadImage": "Bild hochladen", 
+        "description": "Beschreibung", 
+        "use": "Bild verwenden" 
+    },
+
     "article": {
         "title": "Artikel",
         "title_one": "Artikel",
@@ -134,7 +141,9 @@
         "changesSaved": "Änderungen gespeichert.",
         "reportedArticle": "Artikel wurde gemeldet.",
         "missingTitleOrContent": "Titel oder Inhalt fehlt.",
-        "deletionProposed": "Löschung beantragt."
+        "deletionProposed": "Löschung beantragt.",
+        "ErrorWhileUploadingFile": "Fehler beim Hochladen der Datei.", 
+        "uploadedFile": "Datei erfolgreich hochgeladen."
     },
 
     "placeholder": {
@@ -144,7 +153,8 @@
         "changeSummary": "Erkläre deine Änderungen...",
         "bio": "Erzähl uns etwas über dich...",
         "reportArticleReason": "Warum möchtest du diesen Artikel melden?",
-        "deleteArticleReason": "Warum möchtest du diesen Artikel löschen?"
+        "deleteArticleReason": "Warum möchtest du diesen Artikel löschen?",
+        "describeImage": "Beschreibe das Bild"
     },
 
     "time": {

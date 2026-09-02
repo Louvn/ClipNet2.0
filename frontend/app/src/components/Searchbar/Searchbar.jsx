@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-function Searchbar({onChange, onBlur, onFocus}) {
+function Searchbar({className, onChange, onBlur, onFocus}) {
 
     const {t} = useTranslation();
     const [query, setQuery] = useState("");
@@ -15,10 +15,10 @@ function Searchbar({onChange, onBlur, onFocus}) {
 
         setQuery(e.target.value);
 
-        onChange(e);
+        if (onChange) onChange(e);
     }
 
-    return <div className={styles.Searchbar}>
+    return <div className={`${className || ""} ${styles.Searchbar}`}>
 
         <button className={styles.SearchbarButton}>
             <img src={searchImg} alt="search" className={`${styles.SearchbarButtonImg} noInvert`} />

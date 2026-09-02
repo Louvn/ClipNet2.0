@@ -12,14 +12,19 @@ import tableIcon from "../../assets/icons/format_table.png";
 import imageIcon from "../../assets/icons/format_image.png";
 import { useTranslation } from "react-i18next";
 import SimpleButton from "../SimpleButton";
+import { useState } from "react";
+import PopUp from "../PopUp";
+import ImageLibrary from "../ImageLibrary";
 
 function FormattingOptions({ inputRef, textState, changeTextState, previewButton = null }) {
 
     const {t} = useTranslation();
+    const [imagePopUpOpen, setImagePopUpOpen] = useState(false);
 
     function insertFormat(opening, closing) {
 
         const inputField = inputRef.current;
+        if (!inputField) return;
 
         const selecStart = inputField.selectionStart;
         const selecEnd = inputField.selectionEnd;
@@ -42,6 +47,11 @@ function FormattingOptions({ inputRef, textState, changeTextState, previewButton
             inputField.selectionStart = selecStart + opening.length;
             inputField.selectionEnd = selecEnd + opening.length;
         }, 0); // will be executed after the current running code is done
+    }
+
+    function insertImage(id) {
+        setImagePopUpOpen(false);
+        insertFormat(`[[image:${id}`, "]]");
     }
 
     return <div className={styles.Formatting}>
@@ -89,12 +99,16 @@ function FormattingOptions({ inputRef, textState, changeTextState, previewButton
                 <img src={tableIcon} alt={t("editor.table")} />
             </button>
     
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={() => setImagePopUpOpen(true)}>
                 <img src={imageIcon} alt={t("editor.image")} />
             </button>
         </section>
 
         {previewButton && <SimpleButton onClick={previewButton} className={styles.PreviewButton}>{t("editor.preview")}</SimpleButton>}
+
+        {imagePopUpOpen && <PopUp className={styles.ImagePopUp} closingMethod={() => setImagePopUpOpen(false)}>
+            <ImageLibrary onUseImage={insertImage} onClose={() => setImagePopUpOpen(false)} />
+        </PopUp>}
     
     </div>
 
