@@ -10,7 +10,7 @@ import styles from "./styles.module.css";
 import arrowImg from "../assets/icons/arrow.png";
 import { useImageIndex } from "../context/ImageIndexContext.jsx";
 
-function WikiLinkNode({ title }) {
+function WikiLinkNode({ title, visibleTitle }) {
 
     const wikiIndex = useWikiIndex();
 
@@ -18,10 +18,10 @@ function WikiLinkNode({ title }) {
     const foundArticle = wikiIndex.get(title);
 
     if (foundArticle) {
-        return <Link className={styles.WikiLink} to={`/wiki/${foundArticle.slug}`}>{title}</Link>;
+        return <Link className={styles.WikiLink} to={`/wiki/${foundArticle.slug}`}>{visibleTitle || title}</Link>;
     }
 
-    return <Link className={`${styles.WikiLink} ${styles.RedLink}`} to={`/editor?title=${title}`}>{title}</Link>;
+    return <Link className={`${styles.WikiLink} ${styles.RedLink}`} to={`/editor?title=${title}`}>{visibleTitle || title}</Link>;
 }
 
 function UserLinkNode({ username }) {
@@ -52,20 +52,29 @@ function SubheadingNode({ children }) {
     return <h3 className={styles.Subheading}>{children}</h3>;
 }
 
-function Image({ id }) {
+function Image({ id, pipeArgs }) {
 
     const imageIndex = useImageIndex();
     const img = imageIndex.get(id);
 
+    let width = "50%";
+    let additionalClass = styles.Left;
+
     if (!img) return null;
 
-    return <img className={`${styles.Image} noInvert`} src={img.url} alt={img.description} />;
+    pipeArgs?.forEach(arg => {
+        if (arg.endsWith("%")) width = `${parseInt(arg, 10)}%`;
+        if (arg === "left") additionalClass = styles.Left;
+        if (arg === "right") additionalClass = styles.Right;
+    });
+
+    return <img style={{ width: width }} className={`${additionalClass} ${styles.Image} noInvert`} src={img.url} alt={img.description} />;
 }
 
-function Url({ href }) {
+function Url({ href, visibleText }) {
     if (window.location.origin === new URL(href, window.location.href).origin) return <Link to={href} className={styles.WikiLink}>{href}</Link>;
 
-    return <a className={styles.WikiLink} href={href}>{href}</a>;
+    return <a className={styles.WikiLink} href={href}>{visibleText || href}</a>;
 }
 
 function render(node) {
@@ -92,16 +101,16 @@ function render(node) {
             return <u>{renderedChildren}</u>;
 
         case FORMAT.wikilink:
-            return <WikiLinkNode title={node.children[0]?.value} />;
+            return <WikiLinkNode title={node.children[0]?.value.trim()} visibleTitle={node.pipeArgs?.[0]}/>;
 
         case FORMAT.userlink:
             return <UserLinkNode username={node.children[0]?.value} />;
         
         case FORMAT.image:
-            return <Image id={Number(node.children[0]?.value)} />;
+            return <Image id={Number(node.children[0]?.value)} pipeArgs={node.pipeArgs} />;
 
         case FORMAT.url:
-            return <Url href={node.children[0]?.value} />;
+            return <Url href={node.children[0]?.value} visibleText={node.pipeArgs?.[0]}/>;
 
         case FORMAT.heading:
             return <HeadingNode title={node.title}>{renderedChildren}</HeadingNode>;

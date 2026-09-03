@@ -42,6 +42,7 @@ function tokenize(text) {
         if (match("[", TOKEN.OPENING_BRACKET)) continue;
         if (match("]", TOKEN.CLOSING_BRACKET)) continue;
         if (match("@", TOKEN.AT)) continue;
+        if (match("|", TOKEN.PIPE)) continue;
         if (match("\\", TOKEN.BACKSLASH)) continue;
         if (match("image:", TOKEN.IMAGE)) continue;
         if (match("url:", TOKEN.URL)) continue;

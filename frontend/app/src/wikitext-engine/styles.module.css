@@ -39,9 +39,15 @@
 
 .Image {
     width: 50%;
-    float: left;
     margin-bottom: 8px;
+}
+.Image.Left {
+    float: left;
     margin-right: 12px;
+}
+.Image.Right {
+    float: right;
+    margin-left: 12px;
 }
 
 

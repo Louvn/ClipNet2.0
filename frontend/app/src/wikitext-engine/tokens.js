@@ -11,5 +11,6 @@ export const TOKEN = {
     CLOSING_BRACKET: "CLOSING_BRACKET",
     BACKSLASH: "BACKSLASH",
     IMAGE: "IMAGE",
-    URL: "URL"
+    URL: "URL",
+    PIPE: "PIPE"
 }

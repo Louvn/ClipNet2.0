@@ -48,13 +48,13 @@ function isFirstFormatOfLine(tokens, tokenId) {
             if (tokens[idx].value.trim() === "") continue;
         }
 
-        return false
+        return false;
     }
 
     return true;
 }
 
-function parse(tokens, fullMode = true) { // fullMode = false would disable headings, tables etc. and leave simple formates like bold and italic 
+function parse(tokens, fullMode = true) { // fullMode = false would disable headings, tables etc. and leave simple formats like bold and italic 
 
     const root =  { type: FORMAT.root, children: [] };
     let stack = [root];
@@ -65,16 +65,23 @@ function parse(tokens, fullMode = true) { // fullMode = false would disable head
     const current = () => stack[stack.length - 1];
     const findOpenNodeOf = (type) => stack.filter(e => e.type === type)[0];
 
-    // opening a node
-    const openNode = (type, verbatim=false) => {
+    const createPipeArg = (arg) => {
 
-        const node = { type: type, children: [], verbatim: verbatim };
+        if (current().pipeArgsAllowed <= (current().pipeArgs?.length || 0)) return;
+        if (!current().pipeArgs) current().pipeArgs = [];
+        current().pipeArgs.push(arg.trim());
+    }
+
+    // opening a node
+    const openNode = (type, verbatim=false, pipeArgsAllowed=0) => {
+
+        const node = { type: type, children: [], verbatim: verbatim, pipeArgsAllowed: pipeArgsAllowed };
 
         // verbatim
         if (current().verbatim) return createTextNode(token.value);
 
         // not full mode means only these are accepted:
-        if (!fullMode && ![FORMAT.bold, FORMAT.italic, FORMAT.underscored, FORMAT.text, FORMAT.root, FORMAT.userlink, FORMAT.wikilink].includes(type)) {
+        if (!fullMode && ![FORMAT.bold, FORMAT.italic, FORMAT.underscored, FORMAT.text, FORMAT.root, FORMAT.userlink, FORMAT.wikilink, FORMAT.url].includes(type)) {
             return createTextNode(token.value);
         }
 
@@ -183,21 +190,21 @@ function parse(tokens, fullMode = true) { // fullMode = false would disable head
             }
             if (tokens[idx+2]?.type === TOKEN.IMAGE) {
 
-                openNode(FORMAT.image, true);
+                openNode(FORMAT.image, true, 2);
                 idx += 2;
 
                 continue;
             }
             if (tokens[idx+2]?.type === TOKEN.URL) {
 
-                openNode(FORMAT.url, true);
+                openNode(FORMAT.url, true, 1);
                 idx += 2;
 
                 continue;
             }
             
 
-            openNode(FORMAT.wikilink, true);
+            openNode(FORMAT.wikilink, true, 1);
             idx++;
 
             continue;
@@ -229,7 +236,7 @@ function parse(tokens, fullMode = true) { // fullMode = false would disable head
 
         if (token.type === TOKEN.HASH && isFirstFormatOfLine(tokens, idx)) {
 
-            if (tokens[idx+1].type === TOKEN.HASH) {
+            if (tokens[idx+1]?.type === TOKEN.HASH) {
 
                 openNode(FORMAT.subheading, true);
 
@@ -276,6 +283,14 @@ function parse(tokens, fullMode = true) { // fullMode = false would disable head
 
             openNode(FORMAT.newline);
             closeNode(FORMAT.newline);
+            continue;
+        }
+
+        if (token.type === TOKEN.PIPE && tokens[idx+1]?.type === TOKEN.TEXT) {
+            
+            createPipeArg(tokens[idx+1].value);
+            idx++;
+
             continue;
         }
 
