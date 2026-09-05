@@ -8,7 +8,8 @@
         "actions": "操作",
         "back": "返回",
         "add": "添加",
-        "thereAre": "共有",
+        "thereAre_one": "有",
+        "thereAre_other": "共有",
         "learnMore": "了解更多"
     },
 
@@ -86,7 +87,9 @@
         "noComments": "还没有评论"
     },
 
-    "image": { 
+    "image": {
+        "title_one": "图片",
+        "title_other": "图片",
         "upload": "上传图片", 
         "uploadImage": "上传图片", 
         "description": "描述", 
@@ -197,7 +200,12 @@
             "ARTICLE_ALREADY_EXISTS": "这篇文章已经存在。",
             "NO_CHANGES_MADE": "未进行任何更改。",
             "USER_ALREADY_EXISTS": "已存在使用此名称的用户。",
-            "ALREADY_REPORTED_ARTICLE": "你已经举报过这篇文章。"
+            "ALREADY_REPORTED_ARTICLE": "你已经举报过这篇文章。",
+            "NO_FILE": "未选择文件",
+            "INVALID_FILE_TYPE": "无效的文件类型",
+            "FILE_TO_LARGE": "文件过大",
+            "IMAGE_ALREADY_EXISTS": "图片已存在",
+            "INVALID_IMAGE": "无效的图片"
         }
     }
 }

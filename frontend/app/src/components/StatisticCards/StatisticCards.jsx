@@ -28,16 +28,16 @@ function StatisticCards() {
             className={`${styles.StatsCard} ${highlighted === 0 ? styles.Highlighted : ""}`} 
             to="/search" state={{query: "", filters: {content_type: ["article"]}}}
             >
-            {t("common.thereAre")}
+            {t("common.thereAre", {count: stats.articles})}
             <span>{stats.articles}</span>
-            {t("article.title", {count: stats.users})}
+            {t("article.title", {count: stats.articles})}
         </Link>
 
         <Link 
             className={`${styles.StatsCard} ${highlighted === 1 ? styles.Highlighted : ""}`} 
             to="/search" state={{query: "", filters: {content_type: ["user"]}}}
             >
-            {t("common.thereAre")}
+            {t("common.thereAre", {count: stats.users})}
             <span>{stats.users}</span> 
             {t("user.title", {count: stats.users})}
         </Link>
@@ -45,9 +45,9 @@ function StatisticCards() {
         <Link 
             className={`${styles.StatsCard} ${highlighted === 2 ? styles.Highlighted : ""}`}
             >
-            {t("common.thereAre")}
-            <span>???</span>
-            ???
+            {t("common.thereAre", {count: stats.images})}
+            <span>{stats.images}</span>
+            {t("image.title", {count: stats.images})}
         </Link>
 </div>
 }

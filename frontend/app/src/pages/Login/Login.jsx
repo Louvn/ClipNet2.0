@@ -8,7 +8,7 @@ function Login() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const { isLoggedIn, setJwt } = useAuth();
+    const { isLoggedIn, setJwt, rememberUser, setRememberUser } = useAuth();
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -82,7 +82,7 @@ function Login() {
             {errorMessage && <span className={styles.ErrorMessage}>{errorMessage}</span>}
 
             <label className={styles.RememberMe}>
-                <input type="checkbox" name="remember-me" value="false" className={styles.RememberMeInput} defaultChecked/>
+                <input type="checkbox" name="remember-me" checked={rememberUser} onChange={() => setRememberUser(!rememberUser)} className={styles.RememberMeInput}/>
                 remember me
             </label>
 

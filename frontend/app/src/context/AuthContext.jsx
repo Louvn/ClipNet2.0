@@ -10,6 +10,8 @@ export function AuthContextProvider({ children }) {
     const [jwt, setJwt] = useState(localStorage.getItem("jwt"));
     const [user, setUser] = useState(null);
     const [userLoading, setUserLoading] = useState(false); // for all sites to wait until user is there
+    const [rememberUser, setRememberUser] = useState(true);
+
     const isLoggedIn = !!jwt;
     const toastNotification = useToastNotification();
     const {t} = useTranslation();
@@ -46,7 +48,9 @@ export function AuthContextProvider({ children }) {
     useEffect(() => {
 
         const handle = async () => {
-            if (jwt) {
+
+
+            if (jwt && rememberUser) {
                 localStorage.setItem("jwt", jwt);
             } else {
                 localStorage.removeItem("jwt");
@@ -61,10 +65,10 @@ export function AuthContextProvider({ children }) {
 
         handle();
 
-    }, [jwt, reloadUser, toastNotification]); // t not as dependency to avoid infinite loop
+    }, [jwt, rememberUser, reloadUser, toastNotification]); // t not as dependency to avoid infinite loop
 
 
-    return <AuthContext.Provider value={{ jwt, setJwt, isLoggedIn, user, reloadUser, userLoading, setUser }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ jwt, setJwt, isLoggedIn, user, reloadUser, userLoading, setUser, rememberUser, setRememberUser }}>{children}</AuthContext.Provider>
 }
 
 export function useAuth() {

@@ -8,7 +8,8 @@
         "actions": "Actions",
         "back": "Back",
         "add": "Add",
-        "thereAre": "There are",
+        "thereAre_one": "There is",
+        "thereAre_other": "There are",
         "learnMore": "Learn More"
     },
 
@@ -87,6 +88,8 @@
     },
 
     "image": { 
+        "title_one": "Image",
+        "title_other": "Images",
         "upload": "Upload image", 
         "uploadImage": "Upload image", 
         "description": "Description", 
@@ -197,7 +200,12 @@
             "ARTICLE_ALREADY_EXISTS": "This article already exists.",
             "NO_CHANGES_MADE": "No changes were made.",
             "USER_ALREADY_EXISTS": "A user with this name already exists.",
-            "ALREADY_REPORTED_ARTICLE": "You have already reported this article."
+            "ALREADY_REPORTED_ARTICLE": "You have already reported this article.",
+            "NO_FILE": "No file selected",
+            "INVALID_FILE_TYPE": "Invalid file type",
+            "FILE_TO_LARGE": "File too large",
+            "IMAGE_ALREADY_EXISTS": "Image already exists",
+            "INVALID_IMAGE": "Invalid image"
         }
     }
 }

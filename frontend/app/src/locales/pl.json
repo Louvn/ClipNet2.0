@@ -8,7 +8,8 @@
         "actions": "Akcje",
         "back": "Wstecz",
         "add": "Dodaj",
-        "thereAre": "Jest",
+        "thereAre_one": "Jest",
+        "thereAre_other": "Jest",
         "learnMore": "Dowiedz się więcej"
     },
 
@@ -86,7 +87,9 @@
         "noComments": "Nie ma jeszcze żadnych komentarzy"
     },
 
-    "image": { 
+    "image": {
+        "title_one": "Obraz",
+        "title_other": "Obrazy",
         "upload": "Prześlij obraz", 
         "uploadImage": "Prześlij obraz", 
         "description": "Opis", 
@@ -200,7 +203,12 @@
             "ARTICLE_ALREADY_EXISTS": "Ten artykuł już istnieje.",
             "NO_CHANGES_MADE": "Nie wprowadzono żadnych zmian.",
             "USER_ALREADY_EXISTS": "Użytkownik o tej nazwie już istnieje.",
-            "ALREADY_REPORTED_ARTICLE": "Ten artykuł został już przez Ciebie zgłoszony."
+            "ALREADY_REPORTED_ARTICLE": "Ten artykuł został już przez Ciebie zgłoszony.",
+            "NO_FILE": "Nie wybrano pliku",
+            "INVALID_FILE_TYPE": "Nieprawidłowy typ pliku",
+            "FILE_TO_LARGE": "Plik jest za duży",
+            "IMAGE_ALREADY_EXISTS": "Obraz już istnieje",
+            "INVALID_IMAGE": "Nieprawidłowy obraz"
         }
     }
 }

@@ -8,7 +8,8 @@
         "actions": "Acciones",
         "back": "Volver",
         "add": "Añadir",
-        "thereAre": "Hay",
+        "thereAre_one": "Hay",
+        "thereAre_other": "Hay",
         "learnMore": "Más información"
     },
 
@@ -87,6 +88,8 @@
     },
 
     "image": { 
+        "title_one": "Imagen",
+        "title_other": "Imágenes",
         "upload": "Afbeelding uploaden", 
         "uploadImage": "Afbeelding uploaden", 
         "description": "Beschrijving", 
@@ -197,7 +200,12 @@
             "ARTICLE_ALREADY_EXISTS": "Este artículo ya existe.",
             "NO_CHANGES_MADE": "No se han realizado cambios.",
             "USER_ALREADY_EXISTS": "Ya existe un usuario con este nombre.",
-            "ALREADY_REPORTED_ARTICLE": "Ya has denunciado este artículo."
+            "ALREADY_REPORTED_ARTICLE": "Ya has denunciado este artículo.",
+            "NO_FILE": "Ningún archivo seleccionado",
+            "INVALID_FILE_TYPE": "Tipo de archivo no válido",
+            "FILE_TO_LARGE": "Archivo demasiado grande",
+            "IMAGE_ALREADY_EXISTS": "La imagen ya existe",
+            "INVALID_IMAGE": "Imagen no válida"
         }
     }
 }
