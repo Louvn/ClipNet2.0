@@ -2,6 +2,7 @@
 
 export const FORMAT = {
     root: "root",
+    paragraph: "paragraph",
     text: "text",
     bold: "bold",
     italic: "italic",

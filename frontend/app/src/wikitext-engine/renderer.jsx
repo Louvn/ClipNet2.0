@@ -39,17 +39,26 @@ function UserLinkNode({ username }) {
 
 function HeadingNode({ title, children }) {
 
+    const renderedTitle = title.map(
+        (child, idx) => <React.Fragment key={idx}>{render(child)}</React.Fragment>
+    ) || [];
+
     return <details className={styles.Section}>
         <summary className={styles.Heading}>
             <img src={arrowImg} alt="" />
-            {title}
+            {renderedTitle}
             </summary>
         {children}
     </details>;
 }
 
-function SubheadingNode({ children }) {
-    return <h3 className={styles.Subheading}>{children}</h3>;
+function SubheadingNode({ title }) {
+
+    const renderedTitle = title.map(
+        (child, idx) => <React.Fragment key={idx}>{render(child)}</React.Fragment>
+    ) || [];
+
+    return <h3 className={styles.Subheading}>{renderedTitle}</h3>;
 }
 
 function Image({ id, pipeArgs }) {
@@ -87,6 +96,8 @@ function render(node) {
 
         case FORMAT.root:
             return <>{renderedChildren}</>;
+        case FORMAT.paragraph:
+            return <>{renderedChildren}</>;
 
         case FORMAT.text:
             return node.value;
@@ -116,7 +127,7 @@ function render(node) {
             return <HeadingNode title={node.title}>{renderedChildren}</HeadingNode>;
 
         case FORMAT.subheading:
-            return <SubheadingNode>{renderedChildren}</SubheadingNode>;
+            return <SubheadingNode title={node.title}></SubheadingNode>;
         
         case FORMAT.newline:
             return <br />;
