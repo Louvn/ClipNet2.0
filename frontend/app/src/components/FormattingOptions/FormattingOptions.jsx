@@ -95,7 +95,7 @@ function FormattingOptions({ inputRef, textState, changeTextState, previewButton
         </section>
     
         <section>
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={() => insertFormat("[table]\n! title", " || title\n| text || text\n| text || text\n[/table]")}>
                 <img src={tableIcon} alt={t("editor.table")} />
             </button>
     

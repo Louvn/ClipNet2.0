@@ -5,15 +5,22 @@ function handleSubheading({ token, tokens, idx, parseInline }) {
 
     if (token.type === TOKEN.HASH && tokens[idx+1].type === TOKEN.HASH) {
 
-        const findNextDoubleHash = (startIdx) => {
+        const findTitleEnd = (startIdx) => {
 
             let hashIdx = startIdx + 1;
-            while (hashIdx < tokens.length && !(tokens[hashIdx].type === TOKEN.HASH && tokens[hashIdx+1].type === TOKEN.HASH)) hashIdx++;
+            while (
+                hashIdx < tokens.length 
+                && !(
+                    tokens[hashIdx].type === TOKEN.HASH 
+                    && tokens[hashIdx+1]?.type === TOKEN.HASH
+                ) && tokens[hashIdx].type !== TOKEN.NEWLINE
+            
+            ) hashIdx++;
             
             return hashIdx;
         }
 
-        const titleEnd = findNextDoubleHash(idx+1);
+        const titleEnd = findTitleEnd(idx+1);
         const titleTokens = tokens.slice(idx+2, titleEnd);
 
         return {

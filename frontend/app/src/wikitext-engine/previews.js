@@ -18,7 +18,10 @@ export function extractNormals(node) {
         return "\n";
     }
     if (node.type === FORMAT.heading) {
-        return `${node.title}: ${node.children.map(extractNormals).join("")}`;
+        return `${node.title.map(extractNormals).join("")}: ${node.children.map(extractNormals).join("")}`;
+    }
+    if (node.type === FORMAT.image || node.type === FORMAT.table) {
+        return "";
     }
 
     return node.children ? node.children.map(extractNormals).join("") : "";

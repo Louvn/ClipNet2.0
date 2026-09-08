@@ -61,7 +61,7 @@ function SubheadingNode({ title }) {
     return <h3 className={styles.Subheading}>{renderedTitle}</h3>;
 }
 
-function Image({ id, pipeArgs }) {
+function ImageNode({ id, pipeArgs }) {
 
     const imageIndex = useImageIndex();
     const img = imageIndex.get(id);
@@ -80,10 +80,26 @@ function Image({ id, pipeArgs }) {
     return <img style={{ width: width }} className={`${additionalClass} ${styles.Image} noInvert`} src={img.url} alt={img.description} />;
 }
 
-function Url({ href, visibleText }) {
+function UrlNode({ href, visibleText }) {
     if (window.location.origin === new URL(href, window.location.href).origin) return <Link to={href} className={styles.WikiLink}>{href}</Link>;
 
     return <a className={styles.WikiLink} href={href}>{visibleText || href}</a>;
+}
+
+function TableNode({ children }) {
+
+    const tHead = children.filter(e => e.type === FORMAT.tableHeaderCell);
+    const tBody = children.filter(e => e.type !== FORMAT.tableHeaderCell);
+
+    return <table>
+        <thead>
+            {tHead.map((child, idx) => <React.Fragment key={idx}>{render(child)}</React.Fragment>)}
+        </thead>
+
+        <tbody>
+            {tBody.map((child, idx) => <React.Fragment key={idx}>{render(child)}</React.Fragment>)}
+        </tbody>
+    </table>
 }
 
 function render(node) {
@@ -118,10 +134,10 @@ function render(node) {
             return <UserLinkNode username={node.children[0]?.value} />;
         
         case FORMAT.image:
-            return <Image id={Number(node.children[0]?.value)} pipeArgs={node.pipeArgs} />;
+            return <ImageNode id={Number(node.children[0]?.value)} pipeArgs={node.pipeArgs} />;
 
         case FORMAT.url:
-            return <Url href={node.children[0]?.value} visibleText={node.pipeArgs?.[0]}/>;
+            return <UrlNode href={node.children[0]?.value} visibleText={node.pipeArgs?.[0]}/>;
 
         case FORMAT.heading:
             return <HeadingNode title={node.title}>{renderedChildren}</HeadingNode>;
@@ -131,6 +147,19 @@ function render(node) {
         
         case FORMAT.newline:
             return <br />;
+
+
+        case FORMAT.table:
+            return <TableNode children={node.children} />;
+        
+        case FORMAT.tableRow:
+            return <tr>{renderedChildren}</tr>
+
+        case FORMAT.tableCell:
+            return <td>{renderedChildren}</td>;
+
+        case FORMAT.tableHeaderCell:
+            return <th>{renderedChildren}</th>;
 
 
         default:

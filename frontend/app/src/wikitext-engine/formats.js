@@ -13,6 +13,9 @@ export const FORMAT = {
     subheading: "subheading",
     newline: "newline",
     image: "image",
-    url: "url"
-    // TODO: table
+    url: "url",
+    table: "table",
+    tableCell: "tableCell",
+    tableRow: "tableRow",
+    tableHeaderCell: "tableHeaderCell"
 }

@@ -44,6 +44,8 @@ function tokenize(text) {
         if (match("@", TOKEN.AT)) continue;
         if (match("|", TOKEN.PIPE)) continue;
         if (match("\\", TOKEN.BACKSLASH)) continue;
+        if (match("/", TOKEN.SLASH)) continue;
+        if (match("!", TOKEN.EXCLAMATION_MARK)) continue;
         if (match("image:", TOKEN.IMAGE)) continue;
         if (match("url:", TOKEN.URL)) continue;
 

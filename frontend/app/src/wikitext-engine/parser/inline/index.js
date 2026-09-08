@@ -26,16 +26,26 @@ function parseInline(tokens, fullMode = true) {
     }
 
     // opening a node
-    const openNode = (type, verbatim=false, pipeArgsAllowed=0) => {
+    const openNode = (type, parseRange, verbatim=false, pipeArgsAllowed=0) => { // parseRange = how many tokens got parsed? Important for verbatim and !fullMode
+
+        const createAsTextNodes = () => {
+            let value = "";
+
+            for (let rangeIdx = 0; rangeIdx < parseRange; rangeIdx++) {
+                value = value + tokens[rangeIdx]?.value;
+            }
+
+            return createTextNode(value);
+        }
 
         const node = { type: type, children: [], verbatim: verbatim, pipeArgsAllowed: pipeArgsAllowed };
 
         // verbatim
-        if (current().verbatim) return createTextNode(token.value);
+        if (current().verbatim) return createAsTextNodes(token.value);
 
         // not full mode means only these are accepted:
         if (!fullMode && ![FORMAT.bold, FORMAT.italic, FORMAT.underscored, FORMAT.text, FORMAT.root, FORMAT.userlink, FORMAT.wikilink, FORMAT.url].includes(type)) {
-            return createTextNode(token.value);
+            return createAsTextNodes();
         }
 
         current().children.push(node);

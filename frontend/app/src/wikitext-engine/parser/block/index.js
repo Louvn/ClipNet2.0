@@ -2,10 +2,12 @@ import parseInline from "../inline";
 import handleHeading from "./handlers/handleHeading";
 import handleParagraph from "./handlers/handleParagraph";
 import handleSubheading from "./handlers/handleSubheading";
+import handleTable from "./handlers/handleTable";
 
 const REGISTERED_HANDLERS = [
     handleSubheading,
     handleHeading,
+    handleTable,
 
     // fallback
     handleParagraph
@@ -37,7 +39,8 @@ function parseBlocks(tokens, fullMode) {
             tokens: tokens,
             idx: idx,
             REGISTERED_HANDLERS: REGISTERED_HANDLERS,
-            parseInline: (tokens) => parseInline(tokens, fullMode)
+            parseInline: (tokens) => parseInline(tokens, fullMode),
+            parseBlocks: (tokens) => parseBlocks(tokens, fullMode)
         }
 
         for (const handler of REGISTERED_HANDLERS) {

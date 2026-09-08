@@ -7,23 +7,23 @@ function handleLinks({ token, tokens, idx, openNode, closeNode, findOpenNodeOf, 
     
         if (tokens[idx+2]?.type === TOKEN.AT) {
     
-            openNode(FORMAT.userlink, true);
+            openNode(FORMAT.userlink, 3, true);
             return 3;
         }
         
         if (tokens[idx+2]?.type === TOKEN.IMAGE) {
     
-            openNode(FORMAT.image, true, 2);
+            openNode(FORMAT.image, 3, true, 2);
             return 3;
         }
         
         if (tokens[idx+2]?.type === TOKEN.URL) {
     
-            openNode(FORMAT.url, true, 1);
+            openNode(FORMAT.url, 3, true, 1);
             return 3;
         }
                 
-        openNode(FORMAT.wikilink, true, 1);
+        openNode(FORMAT.wikilink, 2, true, 1);
         return 2;
     }
     
