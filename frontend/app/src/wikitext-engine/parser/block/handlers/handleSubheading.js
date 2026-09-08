@@ -24,7 +24,7 @@ function handleSubheading({ token, tokens, idx, parseInline }) {
         const titleTokens = tokens.slice(idx+2, titleEnd);
 
         return {
-            nextIdx: titleEnd+2,
+            nextIdx: tokens[titleEnd].type === TOKEN.NEWLINE ? titleEnd+1 : titleEnd+2,
             block: {
                 type: FORMAT.subheading,
                 title: parseInline(titleTokens, false)

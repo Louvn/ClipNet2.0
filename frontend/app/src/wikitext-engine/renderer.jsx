@@ -88,16 +88,9 @@ function UrlNode({ href, visibleText }) {
 
 function TableNode({ children }) {
 
-    const tHead = children.filter(e => e.type === FORMAT.tableHeaderCell);
-    const tBody = children.filter(e => e.type !== FORMAT.tableHeaderCell);
-
-    return <table>
-        <thead>
-            {tHead.map((child, idx) => <React.Fragment key={idx}>{render(child)}</React.Fragment>)}
-        </thead>
-
+    return <table className={styles.Table}>
         <tbody>
-            {tBody.map((child, idx) => <React.Fragment key={idx}>{render(child)}</React.Fragment>)}
+            {children}
         </tbody>
     </table>
 }
@@ -150,7 +143,7 @@ function render(node) {
 
 
         case FORMAT.table:
-            return <TableNode children={node.children} />;
+            return <TableNode>{renderedChildren}</TableNode>;
         
         case FORMAT.tableRow:
             return <tr>{renderedChildren}</tr>

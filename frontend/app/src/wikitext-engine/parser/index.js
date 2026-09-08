@@ -9,8 +9,6 @@ function parse(tokens, fullMode = true) {
         children: blocks
     }
 
-    console.log(JSON.stringify(ast));
-
     return ast;
 }
 

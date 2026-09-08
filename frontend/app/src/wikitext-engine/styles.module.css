@@ -34,7 +34,7 @@
 .Subheading {
     font-size: 1.3em;
     display: block;
-    margin-top: 32px;
+    margin-bottom: 20px;
 }
 
 .Image {
@@ -48,6 +48,23 @@
 .Image.Right {
     float: right;
     margin-left: 12px;
+}
+
+.Table {
+    overflow: hidden;
+    overflow-x: scroll;
+
+    border-collapse: collapse;
+}
+.Table th, .Table td {
+    border: 1px solid var(--secondary-text-color);
+    padding: 8px;
+}
+.Table tr {
+    background: none;
+}
+.Table tr:nth-child(odd) {
+    background-color: var(--bg-color);
 }
 
 
