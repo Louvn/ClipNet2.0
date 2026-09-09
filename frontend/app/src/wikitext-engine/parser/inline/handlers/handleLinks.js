@@ -13,7 +13,7 @@ function handleLinks({ token, tokens, idx, openNode, closeNode, findOpenNodeOf, 
         
         if (tokens[idx+2]?.type === TOKEN.IMAGE) {
     
-            openNode(FORMAT.image, 3, true, 2);
+            openNode(FORMAT.image, 3, true, 3);
             return 3;
         }
         

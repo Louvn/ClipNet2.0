@@ -6,6 +6,9 @@ def is_user_allowed_to_edit(db, user, article):
 
     if article.op_id == user.id:
         return True
+
+    if user.is_admin:
+        return True
     
     if article.edit_permission == EditPermission.everyone:
         return True

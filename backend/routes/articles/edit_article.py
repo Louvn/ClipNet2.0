@@ -13,6 +13,7 @@ def edit_article(revision_data: RevisionCreateData, user = Depends(get_current_u
     existing_article_with_id = db.query(Article).filter(Article.id == revision_data.article_id, Article.is_deleted.is_(False)).first()
     if not existing_article_with_id:
         raise HTTPException(status_code=404, detail="ARTICLE_NOT_FOUND")
+    
     if not is_user_allowed_to_edit(db, user, existing_article_with_id):
         raise HTTPException(status_code=403, detail="NOT_ALLOWED")
     

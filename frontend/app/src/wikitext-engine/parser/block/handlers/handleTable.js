@@ -52,12 +52,12 @@ function handleTable({ token, tokens, idx, parseInline }) {
 
                 cellType = FORMAT.tableCell;
 
-                if (tokens[currentIdx+1].type === TOKEN.EXCLAMATION_MARK) {
+                if (tokens[currentIdx+1]?.type === TOKEN.EXCLAMATION_MARK) {
 
                     cellType = FORMAT.tableHeaderCell;
                     currentIdx++; // because currentIdx+1 above
 
-                } else if (tokens[currentIdx+1].type === TOKEN.PIPE) {
+                } else if (tokens[currentIdx+1]?.type === TOKEN.PIPE) {
 
                     currentIdx++;
                 }
@@ -67,7 +67,7 @@ function handleTable({ token, tokens, idx, parseInline }) {
             }
 
             // next cell
-            if (currentToken.type === TOKEN.PIPE && tokens[currentIdx+1].type === TOKEN.PIPE) {
+            if (currentToken.type === TOKEN.PIPE && tokens[currentIdx+1]?.type === TOKEN.PIPE) {
                 row.push({ type: cellType, children: parseInline(cell)});
                 cell = [];
 

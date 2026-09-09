@@ -66,18 +66,23 @@ function ImageNode({ id, pipeArgs }) {
     const imageIndex = useImageIndex();
     const img = imageIndex.get(id);
 
-    let width = "50%";
+    let width = "40%";
     let additionalClass = styles.Left;
+    let boxDescription = null;
 
     if (!img) return null;
 
     pipeArgs?.forEach(arg => {
-        if (arg.endsWith("%")) width = `${parseInt(arg, 10)}%`;
-        if (arg === "left") additionalClass = styles.Left;
-        if (arg === "right") additionalClass = styles.Right;
+        if (arg.endsWith("%")) { width = `${parseInt(arg, 10)}%` }
+        else if (arg === "left") { additionalClass = styles.Left }
+        else if (arg === "right") { additionalClass = styles.Right }
+        else { boxDescription = arg }
     });
 
-    return <img style={{ width: width }} className={`${additionalClass} ${styles.Image} noInvert`} src={img.url} alt={img.description} />;
+    return <div style={{ width: width }} className={`${styles.ImageBox} ${additionalClass}`}>
+        <img src={img.url} alt={img.description} className="noInvert" />
+        {boxDescription && <p>{boxDescription}</p>}
+    </div>;
 }
 
 function UrlNode({ href, visibleText }) {

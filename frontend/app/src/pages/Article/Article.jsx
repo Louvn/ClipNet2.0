@@ -114,11 +114,11 @@ function Article() {
                 <hr />
 
                 {
-                    (article.edit_permission === 1 || article.op.id === user.id || article.contributors.includes(user.id))
+                    (article.edit_permission === 1 || article.op.id === user.id || article.contributors.includes(user.id) || user.is_admin)
                     && <ActionButton icon={editIcon} onClick={() => navigate(`/editor/${slug}`)}>{t("actions.edit")}</ActionButton>
                 }
                 <ActionButton icon={revisionsIcon}>{t("article.revisions")}</ActionButton>
-                {   article.op.id === user.id
+                {   (article.op.id === user.id || user.is_admin)
                     && <ActionButton icon={permissionsIcon} onClick={() => navigate(`/perm-editor/${slug}`)}>{t("permissions.title")}</ActionButton>
                 }
 

@@ -10,7 +10,7 @@ def edit_permissions(data: ArticlePermissionsData, db = Depends(get_db), user = 
 
     if not existing_article:
         raise HTTPException(status_code=404, detail="ARTICLE_NOT_FOUND")
-    if not user.id == existing_article.op_id:
+    if not user.id == existing_article.op_id and not user.is_admin:
         raise HTTPException(status_code=403, detail="NOT_ALLOWED")
     
     # set edit permission

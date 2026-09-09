@@ -85,7 +85,7 @@ function ImageLibrary({ onUseImage, onClose }) {
             </div>
 
             {inspecting && <button className={styles.AddButton} onClick={() => setInspecting(null)}>
-                <img src={addImageIcon} alt={t("image.upload")} className="noInvert"/>
+                <img src={addImageIcon} alt={t("image.upload")} loading="lazy" className="noInvert"/>
             </button>}
 
         </div>

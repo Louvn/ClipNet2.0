@@ -13,6 +13,7 @@
 }
 .ImageLibraryNav {
     position: sticky;
+    top: 0;
     height: 52px;
     background-color: var(--library-color);
     overflow: hidden;

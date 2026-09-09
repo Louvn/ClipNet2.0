@@ -7,6 +7,7 @@ import { Navigate, useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { useTranslation } from "react-i18next";
 import { formatTimestamp } from "../../utils/formatTimestamp";
+import wikitextToJsx from "../../wikitext-engine";
 
 function UserProfile() {
 
@@ -27,7 +28,7 @@ function UserProfile() {
                 <h1>{user.username}</h1>
                 <i>{t("user.joined", {time: formatTimestamp(user.created_at, t)})}</i>
                 <hr />
-                <p>{user.bio}</p>
+                <p>{wikitextToJsx(user.bio, false)}</p>
             </div>
         </div>
 
