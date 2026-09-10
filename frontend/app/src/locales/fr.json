@@ -113,6 +113,13 @@
         "lastEditedByUser": "Dernière modification {{time}} par {{user}}"
     },
 
+    "draft": {
+        "draftFound": "Brouillon trouvé",
+        "info": "Un brouillon enregistré automatiquement a été trouvé. Voulez-vous l’utiliser ?",
+        "use": "Utiliser",
+        "overwrite": "Écraser"
+    },
+
     "user": {
         "title": "Utilisateur",
         "title_one": "Utilisateur",

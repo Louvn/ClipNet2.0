@@ -113,6 +113,13 @@
         "lastEditedByUser": "Laatst bewerkt {{time}} door {{user}}"
     },
 
+    "draft": {
+        "draftFound": "Concept gevonden",
+        "info": "Er is een automatisch opgeslagen concept gevonden. Wil je dit gebruiken?",
+        "use": "Gebruiken",
+        "overwrite": "Overschrijven"
+    },
+
     "user": {
         "title": "Gebruiker",
         "title_one": "Gebruiker",

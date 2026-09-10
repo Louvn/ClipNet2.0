@@ -113,6 +113,13 @@
         "lastEditedByUser": "由 {{user}} 于 {{time}} 最后编辑"
     },
 
+    "draft": {
+        "draftFound": "发现草稿",
+        "info": "发现了一个自动保存的草稿。你想使用它吗？",
+        "use": "使用",
+        "overwrite": "覆盖"
+    },
+
     "user": {
         "title": "用户",
         "title_one": "用户",

@@ -113,6 +113,13 @@
         "lastEditedByUser": "Last edited {{time}} by {{user}}"
     },
 
+    "draft": {
+        "draftFound": "Draft found",
+        "info": "An automatically saved draft was found. Would you like to use it?",
+        "use": "Use",
+        "overwrite": "Overwrite"
+    },
+
     "user": {
         "title": "User",
         "title_one": "User",

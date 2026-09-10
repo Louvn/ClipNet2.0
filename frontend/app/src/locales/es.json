@@ -113,6 +113,13 @@
         "lastEditedByUser": "Editado por última vez {{time}} por {{user}}"
     },
 
+    "draft": {
+        "draftFound": "Borrador encontrado",
+        "info": "Se ha encontrado un borrador guardado automáticamente. ¿Quieres utilizarlo?",
+        "use": "Usar",
+        "overwrite": "Sobrescribir"
+    },
+
     "user": {
         "title": "Usuario",
         "title_one": "Usuario",

@@ -25,12 +25,12 @@ function ArticleEditor() {
     const {article, loading, status} = useArticle(slug);
     const isEdit = !!slug;
 
-    const existingDraft = JSON.parse(localStorage.getItem("draft"));
-
+    const [useExistingDraft, setUseExistingDraft] = useState(null);
+    const [isDraftPopUpOpen, setDraftPopUpOpen] = useState(false);
 
     // states changed by the Editor
-    const [content, setContent] = useState(existingDraft?.content || "");
-    const [title, setTitle] = useState(existingDraft?.title || "");
+    const [content, setContent] = useState("");
+    const [title, setTitle] = useState("");
     const [changeSummary, setChangeSummary] = useState("");
     const [isPopUpOpen, setPopUpOpen] = useState(false);
     const [isPublishing, setPublishing] = useState(false);
@@ -38,22 +38,39 @@ function ArticleEditor() {
     // set them after loading complete (in case of creating new they will be: "")
     useEffect(() => {
 
-        setContent(article?.current_revision?.content || ((!params.get("title") && existingDraft?.content) || ""));
-        setTitle(article?.current_revision?.title || (params.get("title") || (existingDraft?.title || "")));
+        const draft = JSON.parse(localStorage.getItem(`draft${article?.id || ""}`));
+
+        if ((!loading || !slug) && !params.get("title") && draft?.content) {
+            
+            if (useExistingDraft === null) setDraftPopUpOpen(true);
+            
+            if (useExistingDraft) {
+                setTitle(draft.title);
+                setContent(draft.content);
+                return;
+            }
+        }
+
+        setContent(article?.current_revision?.content || "");
+        setTitle(article?.current_revision?.title || (params.get("title") || ""));
         
-    }, [article, params]);
+    }, [article, loading, params, useExistingDraft, slug]);
 
 
 
     // auto saving draft
     useEffect(() => {
-        if (content.length > 255) localStorage.setItem("draft", JSON.stringify({ title: title, content: content}));
-    }, [title, content]);
+        if (content?.length > 0 && article?.current_revision.content !== content) {
+            localStorage.setItem(`draft${article ? article.id : ""}`, JSON.stringify({ title: title, content: content}));
+        }
+    }, [title, content, article]);
     
     // redirect after publishing changes
     const afterPublish = () => {
         toastNotification(t("toast.articlePublished"), notificationTypeSuccess);
         navigate(isEdit ? `/wiki/${slug}` : "/");
+        
+        localStorage.removeItem(`draft${article.id || ""}`);
     }
 
     // async function used in createArticle and editArticle
@@ -160,7 +177,7 @@ function ArticleEditor() {
 
 
         {isPopUpOpen && <PopUp className={styles.PublishPopUp} closingMethod={() => setPopUpOpen(false)}>
-            <h2 className={styles.PublishPopUpHeading}>{t("article.publishChanges")}</h2>
+            <h2 className={styles.PopUpHeading}>{t("article.publishChanges")}</h2>
 
             <LimitedInput
                 name={t("article.changeSummary")}
@@ -172,6 +189,16 @@ function ArticleEditor() {
                 />
 
             <SimpleButton onClick={publish} className={styles.PublishPopUpButton}>{t("article.publish")}</SimpleButton>
+        </PopUp>}
+
+        {isDraftPopUpOpen && <PopUp closingMethod={() => setDraftPopUpOpen(false)} className={styles.DraftPopUp}>
+            <h2 className={styles.PopUpHeading}>{t("draft.draftFound")}</h2>
+            <p>{t("draft.info")}</p>
+
+            <div className={styles.DraftPopUpButtons}>
+                <SimpleButton onClick={() => {setUseExistingDraft(true); setDraftPopUpOpen(false)}} className={styles.DraftPopUpButton}>{t("draft.use")}</SimpleButton>
+                <SimpleButton onClick={() => setDraftPopUpOpen(false)} className={styles.DraftPopUpButtonRed}>{t("draft.overwrite")}</SimpleButton>
+            </div>
         </PopUp>}
 
     </Medium>

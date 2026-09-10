@@ -113,6 +113,13 @@
         "lastEditedByUser": "Zuletzt bearbeitet {{time}} von {{user}}"
     },
 
+    "draft": {
+        "draftFound": "Entwurf gefunden",
+        "info": "Es wurde ein automatisch gespeicherter Entwurf gefunden. Möchtest du ihn verwenden?",
+        "use": "Verwenden",
+        "overwrite": "Überschreiben"
+    },
+
     "user": {
         "title": "Nutzer",
         "title_one": "Nutzer",
