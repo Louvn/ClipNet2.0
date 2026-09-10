@@ -25,9 +25,12 @@ function ArticleEditor() {
     const {article, loading, status} = useArticle(slug);
     const isEdit = !!slug;
 
+    const existingDraft = JSON.parse(localStorage.getItem("draft"));
+
+
     // states changed by the Editor
-    const [content, setContent] = useState("");
-    const [title, setTitle] = useState("");
+    const [content, setContent] = useState(existingDraft?.content || "");
+    const [title, setTitle] = useState(existingDraft?.title || "");
     const [changeSummary, setChangeSummary] = useState("");
     const [isPopUpOpen, setPopUpOpen] = useState(false);
     const [isPublishing, setPublishing] = useState(false);
@@ -35,10 +38,17 @@ function ArticleEditor() {
     // set them after loading complete (in case of creating new they will be: "")
     useEffect(() => {
 
-        setContent(article?.current_revision?.content || "");
-        setTitle(article?.current_revision?.title || (params.get("title") || ""));
+        setContent(article?.current_revision?.content || ((!params.get("title") && existingDraft?.content) || ""));
+        setTitle(article?.current_revision?.title || (params.get("title") || (existingDraft?.title || "")));
         
     }, [article, params]);
+
+
+
+    // auto saving draft
+    useEffect(() => {
+        if (content.length > 255) localStorage.setItem("draft", JSON.stringify({ title: title, content: content}));
+    }, [title, content]);
     
     // redirect after publishing changes
     const afterPublish = () => {

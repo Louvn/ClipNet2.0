@@ -4,6 +4,8 @@ import tokenize from "./lexer";
 
 function wikitextToJsx(wikitext, fullMode = true) {
 
+    if (!wikitext) return;
+
     return render(
         parse(
             tokenize(

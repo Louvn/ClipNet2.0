@@ -80,8 +80,8 @@ function ImageNode({ id, pipeArgs }) {
     });
 
     return <div style={{ width: width }} className={`${styles.ImageBox} ${additionalClass}`}>
-        <img src={img.url} alt={img.description} className="noInvert" />
-        {boxDescription && <p>{boxDescription}</p>}
+        <img src={img.url} alt="" className="noInvert" />
+        <p>{boxDescription || img.description}</p>
     </div>;
 }
 
