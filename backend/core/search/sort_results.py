@@ -3,6 +3,13 @@ from ...schematics.sorting_criteria import SortingCriteria
 from .dynamic_columns import *
 from ...utils.deep_getattr import deep_getattr
 
+def get_likes(r):
+    column = deep_getattr(r, LIKED_BY_COLUMN[r.type])
+
+    if not column:
+        return 0
+    return len(column)
+
 
 def sort_results(query, results, criteria):
 
@@ -48,6 +55,15 @@ def sort_results(query, results, criteria):
             sorted_results = sorted(
                 results,
                 key=lambda r: deep_getattr(r, LAST_UPDATED_AT_COLUMN[r.type]),
+                reverse=True
+            )
+
+        case SortingCriteria.most_liked_first:
+
+            # sort by number of likes (most likes first)
+            sorted_results = sorted(
+                results,
+                key=lambda r: get_likes(r),
                 reverse=True
             )
     

@@ -19,3 +19,5 @@ class Article(Base):
     current_revision = relationship("Revision", uselist=False, foreign_keys=[current_revision_id], post_update=True) # post_update=True avoids circular dependency errors
     first_revision = relationship("Revision", uselist=False, foreign_keys=[first_revision_id], post_update=True)
     op = relationship("User", foreign_keys=[op_id], back_populates="articles")
+    liked_by = relationship("Like")
+    contributors = relationship("Contributor")

@@ -19,12 +19,4 @@ def get_article(provided_infos = Depends(ArticleGetData), user = Depends(get_cur
     article_data = ArticleOutData.model_validate(article, from_attributes=True)
     article_data.revision_count = len(article.revisions)
 
-    # get contributors
-    contributors = db.query(Contributor).filter(Contributor.article_id == article.id).all()
-    article_data.contributors = [c.user_id for c in contributors]
-
-    # get likes 
-    liked_by = db.query(Like).filter(Like.article_id == article.id).all()
-    article_data.liked_by = [l.user_id for l in liked_by]
-
     return article_data

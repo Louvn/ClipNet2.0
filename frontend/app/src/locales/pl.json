@@ -49,6 +49,7 @@
         "newestFirst": "Najnowsze najpierw",
         "oldestFirst": "Najstarsze najpierw",
         "lastUpdatedFirst": "Ostatnio zaktualizowane najpierw",
+        "mostLikedFirst": "Najbardziej lubiane",
         "nothingFoundMatchingFilters": "Wyszukiwanie z wybranymi filtrami nie przyniosło żadnych wyników.",
         "createArticle": "Czy chcesz utworzyć „{{query}}”?",
         "contentType": "Typ treści"

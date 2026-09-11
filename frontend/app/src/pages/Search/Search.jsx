@@ -44,6 +44,7 @@ function Search() {
 
     const onChangeSortBySelection = (c) => {
         setSelectedSortBy(c.target.value);
+        setOffset(0);
     }
 
     // apply filters (adding them to the state the search has as dependency)
@@ -51,6 +52,7 @@ function Search() {
         setFilters({
             "content_type": selectedContentTypes
         });
+        setOffset(0);
     }
 
 
@@ -83,6 +85,7 @@ function Search() {
                         <option value="newest_first">{t("search.newestFirst")}</option>
                         <option value="oldest_first">{t("search.oldestFirst")}</option>
                         <option value="last_updated_first">{t("search.lastUpdatedFirst")}</option>
+                        <option value="most_liked_first">{t("search.mostLikedFirst")}</option>
                     </select>
                 </fieldset>
 

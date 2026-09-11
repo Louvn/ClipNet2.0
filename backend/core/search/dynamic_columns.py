@@ -28,3 +28,8 @@ LAST_UPDATED_AT_COLUMN = {
     ContentType.article: "current_revision.created_at",
     ContentType.user: "created_at"
 }
+
+LIKED_BY_COLUMN = {
+    ContentType.article: "liked_by",
+    ContentType.user: None
+}

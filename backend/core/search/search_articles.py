@@ -14,7 +14,9 @@ def search_articles(query, filters, db):
                 selectinload(Revision.article).selectinload(Article.current_revision),
                 selectinload(Revision.article).selectinload(Article.first_revision),
                 selectinload(Revision.article).selectinload(Article.op),
-                selectinload(Revision.user)
+                selectinload(Revision.article).selectinload(Article.liked_by),
+                selectinload(Revision.article).selectinload(Article.contributors),
+                selectinload(Revision.user),
             )
             .join(Revision.article)
     )

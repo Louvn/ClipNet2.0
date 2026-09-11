@@ -49,6 +49,7 @@
         "newestFirst": "最新优先",
         "oldestFirst": "最早优先",
         "lastUpdatedFirst": "最近更新优先",
+        "mostLikedFirst": "获赞最多",
         "nothingFoundMatchingFilters": "使用所选筛选条件搜索没有找到任何结果。",
         "createArticle": "你想创建“{{query}}”吗？",
         "contentType": "内容类型"

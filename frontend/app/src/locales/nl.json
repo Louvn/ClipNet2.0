@@ -49,6 +49,7 @@
         "newestFirst": "Nieuwste eerst",
         "oldestFirst": "Oudste eerst",
         "lastUpdatedFirst": "Laatst bijgewerkt eerst",
+        "mostLikedFirst": "Meest gelikete",
         "nothingFoundMatchingFilters": "De zoekopdracht met de geselecteerde filters heeft geen resultaten opgeleverd.",
         "createArticle": "Wil je '{{query}}' aanmaken?",
         "contentType": "Inhoudstype"

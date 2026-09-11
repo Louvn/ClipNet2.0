@@ -67,10 +67,10 @@ function ArticleEditor() {
     
     // redirect after publishing changes
     const afterPublish = () => {
+        localStorage.removeItem(`draft${article?.id || ""}`);
+
         toastNotification(t("toast.articlePublished"), notificationTypeSuccess);
         navigate(isEdit ? `/wiki/${slug}` : "/");
-        
-        localStorage.removeItem(`draft${article.id || ""}`);
     }
 
     // async function used in createArticle and editArticle

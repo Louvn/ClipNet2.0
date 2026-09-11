@@ -5,3 +5,4 @@ class SortingCriteria(str, Enum):
     newest_first = "newest_first"
     oldest_first = "oldest_first"
     last_updated_first = "last_updated_first"
+    most_liked_first = "most_liked_first"

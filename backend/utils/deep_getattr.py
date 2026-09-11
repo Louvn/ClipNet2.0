@@ -3,6 +3,8 @@
 # This is helpful when using core/search/dynamic_columns.py
 
 def deep_getattr(obj, attr_name):
+
+    if not attr_name: return
     
     current_object = obj
 
