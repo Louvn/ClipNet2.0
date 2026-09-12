@@ -86,7 +86,7 @@ function ImageNode({ id, pipeArgs }) {
 }
 
 function UrlNode({ href, visibleText }) {
-    if (window.location.origin === new URL(href, window.location.href).origin) return <Link to={href} className={styles.WikiLink}>{href}</Link>;
+    if (window.location.origin === new URL(href, window.location.href).origin) return <Link to={href} className={styles.WikiLink}>{visibleText || href}</Link>;
 
     return <a className={styles.WikiLink} href={href}>{visibleText || href}</a>;
 }
