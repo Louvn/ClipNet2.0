@@ -16,7 +16,7 @@ import { useState } from "react";
 import PopUp from "../PopUp";
 import ImageLibrary from "../ImageLibrary";
 
-function FormattingOptions({ inputRef, textState, changeTextState, previewButton = null }) {
+function FormattingOptions({ inputRef, textState, changeTextState, previewButton = null, fullMode = true }) {
 
     const {t} = useTranslation();
     const [imagePopUpOpen, setImagePopUpOpen] = useState(false);
@@ -54,19 +54,28 @@ function FormattingOptions({ inputRef, textState, changeTextState, previewButton
         insertFormat(`[[image:${id}`, "]]");
     }
 
+    function undo() {
+        inputRef.current.focus();
+        document.execCommand("undo");
+    }
+    function redo() {
+        inputRef.current.focus();
+        document.execCommand("redo");
+    }
+
     return <div className={styles.Formatting}>
                 
         <section>
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={undo}>
                 <img src={undoIcon} alt={t("common.undo")} />
             </button>
     
-            <button className={styles.FormattingOption}>
+            <button className={styles.FormattingOption} onClick={redo}>
                 <img src={redoIcon} alt={t("common.redo")} />
             </button>
         </section>
     
-        <section>
+        {fullMode && <section>
             <button className={styles.FormattingOption} onClick={() => insertFormat("#", "#")}>
                 <img src={headingIcon} alt={t("editor.heading")} />
             </button>
@@ -74,7 +83,7 @@ function FormattingOptions({ inputRef, textState, changeTextState, previewButton
             <button className={styles.FormattingOption} onClick={() => insertFormat("##", "##")}>
                 <img src={subheadingIcon} alt={t("editor.subheading")} />
             </button>
-        </section>
+        </section>}
     
         <section>
             <button className={styles.FormattingOption} onClick={() => insertFormat("**", "**")}>
@@ -94,7 +103,7 @@ function FormattingOptions({ inputRef, textState, changeTextState, previewButton
             </button>
         </section>
     
-        <section>
+        {fullMode && <section>
             <button className={styles.FormattingOption} onClick={() => insertFormat("[table]\n! title", " || title\n| text || text\n| text || text\n[/table]")}>
                 <img src={tableIcon} alt={t("editor.table")} />
             </button>
@@ -102,7 +111,7 @@ function FormattingOptions({ inputRef, textState, changeTextState, previewButton
             <button className={styles.FormattingOption} onClick={() => setImagePopUpOpen(true)}>
                 <img src={imageIcon} alt={t("editor.image")} />
             </button>
-        </section>
+        </section>}
 
         {previewButton && <SimpleButton onClick={previewButton} className={styles.PreviewButton}>{t("editor.preview")}</SimpleButton>}
 

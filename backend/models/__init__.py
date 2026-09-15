@@ -7,3 +7,4 @@ from .comment import Comment
 from .announcement import Announcement
 from .report import Report
 from .image import Image
+from .analytics import Analytics

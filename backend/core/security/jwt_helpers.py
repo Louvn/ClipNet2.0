@@ -10,24 +10,30 @@ ALGORITHM = os.getenv("JWT_ALGORITHM")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login")
 
 def get_current_user(token: str = Depends(oauth2_scheme), db = Depends(get_db)):
+
     try:
         payload = jwt.decode(token, SECRET, algorithms=[ALGORITHM])
         username = payload.get("sub")
+
     except jwt.ExpiredSignatureError:
         raise HTTPException(status_code=401, detail="EXPIRED_TOKEN")
+    
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=401, detail="INVALID_TOKEN")
+    
     
     if username is None:
         raise HTTPException(status_code=401, detail="TOKEN_PAYLOAD_INVALID")
     
+    
     user = db.query(User).filter(User.username == username).first()
+
     if user is None:
         raise HTTPException(status_code=401, detail="USER_DOES_NOT_EXIST")
 
     if user.is_banned:
         raise HTTPException(status_code=403, detail="USER_BANNED")
-    
+
     return user
 
 

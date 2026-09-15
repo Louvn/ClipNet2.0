@@ -144,6 +144,7 @@ function Article() {
                     inputRef={commentInputRef}
                     textState={commentInput}
                     changeTextState={setCommentInput}
+                    fullMode={false}
                     />
                 
                 <input type="text" ref={commentInputRef} value={commentInput} onChange={(e) => setCommentInput(e.currentTarget.value)} placeholder={t("placeholder.comment")} />
