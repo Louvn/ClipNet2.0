@@ -4,6 +4,7 @@ from .edit_article import edit_article
 from .get_article import get_article
 from .wiki_index import wiki_index
 from .edit_permissions import edit_permissions
+from .get_inspiration import get_inspiration
 from backend.schematics.article import ArticleOutData
 from backend.schematics.revision import RevisionOutData
 
@@ -39,4 +40,10 @@ router.add_api_route(
     "/edit-permissions",
     edit_permissions,
     methods=["PUT"]
+)
+
+router.add_api_route(
+    "/get-inspiration",
+    get_inspiration,
+    methods=["GET"]
 )

@@ -5,6 +5,7 @@ from .report_article import report_article
 from .get_pending_reports import get_pending_reports
 from .delete_article import delete_article
 from .get_own_report import get_own_report
+from .create_inspiration import create_inspiration
 from backend.schematics.user import UserOutData
 from backend.schematics.report import ReportOutData
 
@@ -49,4 +50,10 @@ router.add_api_route(
     "/delete-article",
     delete_article,
     methods=["DELETE"]
+)
+
+router.add_api_route(
+    "/create-inspiration",
+    create_inspiration,
+    methods=["POST"]
 )

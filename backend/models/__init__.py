@@ -8,3 +8,4 @@ from .announcement import Announcement
 from .report import Report
 from .image import Image
 from .analytics import Analytics
+from .inspiration import Inspiration

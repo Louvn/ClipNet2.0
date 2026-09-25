@@ -61,7 +61,7 @@ function ImageLibrary({ onUseImage, onClose }) {
         setPreviewUrl(URL.createObjectURL(file));
     }
 
-    useEffect(() => setImages(Array.from(imageIndex.values())), [setImages, imageIndex]);
+    useEffect(() => setImages(Array.from(imageIndex.values()).sort(() => Math.random() - 0.5)), [setImages, imageIndex]);
 
     
     return <div className={styles.ImageLibraryRoot}>
