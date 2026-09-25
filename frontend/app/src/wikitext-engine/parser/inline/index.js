@@ -7,9 +7,9 @@ import handleLinks from "./handlers/handleLinks.js";
 import { TOKEN } from "../../tokens.js";
 
 
-function parseInline(tokens, fullMode = true) {
+function parseInline(tokens, verbatim = false, fullMode = true) {
 
-    const root = { type: FORMAT.root, children: []};
+    const root = { type: FORMAT.root, verbatim: verbatim, children: []};
     let stack = [root];
 
     let escaped = false;

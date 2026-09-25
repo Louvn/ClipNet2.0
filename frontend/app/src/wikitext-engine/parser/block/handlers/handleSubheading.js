@@ -3,7 +3,7 @@ import { FORMAT } from "../../../formats.js";
 
 function handleSubheading({ token, tokens, idx, parseInline }) {
 
-    if (token.type === TOKEN.HASH && tokens[idx+1].type === TOKEN.HASH) {
+    if (token.type === TOKEN.HASH && tokens[idx+1]?.type === TOKEN.HASH) {
 
         const findTitleEnd = (startIdx) => {
 
@@ -27,7 +27,7 @@ function handleSubheading({ token, tokens, idx, parseInline }) {
             nextIdx: tokens[titleEnd].type === TOKEN.NEWLINE ? titleEnd+1 : titleEnd+2,
             block: {
                 type: FORMAT.subheading,
-                title: parseInline(titleTokens, false)
+                title: parseInline(titleTokens, true)
             }
         }
 

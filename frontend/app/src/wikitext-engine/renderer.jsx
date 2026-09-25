@@ -159,6 +159,9 @@ function render(node) {
         case FORMAT.tableHeaderCell:
             return <th>{renderedChildren}</th>;
 
+        case FORMAT.inlineCode:
+            return <code className={styles.InlineCode}>{renderedChildren}</code>;
+
 
         default:
             return null;

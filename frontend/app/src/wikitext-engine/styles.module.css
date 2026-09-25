@@ -84,6 +84,13 @@
     background-color: var(--bg-color);
 }
 
+.InlineCode {
+    background-color: var(--bg-color);
+    padding: 2px;
+    border-radius: 4px;
+    color: var(--secondary-text-color);
+}
+
 
 .Mark {
     background-color: color-mix(in srgb, var(--primary-color) 40%, transparent);

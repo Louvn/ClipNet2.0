@@ -8,7 +8,7 @@ function parse(tokens, fullMode = true) {
         type: FORMAT.root,
         children: blocks
     }
-
+    
     return ast;
 }
 

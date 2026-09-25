@@ -1,24 +1,9 @@
 import { TOKEN } from "../../../tokens.js";
 import { FORMAT } from "../../../formats.js";
 
-function handleHeading({ token, tokens, idx, parseInline, parseBlocks }) {
-
+function handleHeading({ token, tokens, idx, parseInline }) {
+    
     if (token.type === TOKEN.HASH) {
-
-        const findBlockEnd = (startIdx) => {
-
-            let hashIdx = startIdx + 1;
-            while (
-                hashIdx < tokens.length 
-                && !(
-                    // ignore double hashes
-                    tokens[hashIdx].type === TOKEN.HASH
-                    && tokens[hashIdx-1]?.type !== TOKEN.HASH
-                    && tokens[hashIdx+1]?.type !== TOKEN.HASH
-                )) hashIdx++;
-            
-            return hashIdx;
-        }
 
         const findTitleEnd = (startIdx) => {
 
@@ -34,16 +19,13 @@ function handleHeading({ token, tokens, idx, parseInline, parseBlocks }) {
 
         const titleEnd = findTitleEnd(idx);
         const titleTokens = tokens.slice(idx+1, titleEnd);
-        
-        const blockEnd = findBlockEnd(titleEnd);
-        const blockTokens = tokens.slice(titleEnd+1, blockEnd);
 
         return {
-            nextIdx: blockEnd,
+            nextIdx: titleEnd+1,
             block: {
                 type: FORMAT.heading,
-                title: parseInline(titleTokens, false),
-                children: parseBlocks(blockTokens, true)
+                title: parseInline(titleTokens, true),
+                children: [] // children added in main loop
             }
         }
 

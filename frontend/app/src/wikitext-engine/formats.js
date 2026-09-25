@@ -17,5 +17,6 @@ export const FORMAT = {
     table: "table",
     tableCell: "tableCell",
     tableRow: "tableRow",
-    tableHeaderCell: "tableHeaderCell"
+    tableHeaderCell: "tableHeaderCell",
+    inlineCode: "inlineCode"
 }
