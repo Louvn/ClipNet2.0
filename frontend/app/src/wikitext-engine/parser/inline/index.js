@@ -136,7 +136,7 @@ function parseInline(tokens, verbatim = false, fullMode = true) {
 
 
 
-        if (token.type === TOKEN.PIPE && tokens[idx+1]?.type === TOKEN.TEXT) {
+        if (token.type === TOKEN.PIPE && tokens[idx+1]?.type === TOKEN.TEXT && current().pipeArgsAllowed > 0) {
             
             createPipeArg(tokens[idx+1].value);
             idx++;

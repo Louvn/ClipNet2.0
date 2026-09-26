@@ -25,7 +25,10 @@ function Search() {
     const [selectedSortBy, setSelectedSortBy] = useState(location.state?.sort_by || "relevance");
 
     useEffect(() => {
-        if (query !== location.state?.query) setQuery(location.state?.query);
+        if (query !== location.state?.query) {
+            setQuery(location.state?.query);
+            setOffset(0);
+        }
     }, [location, query]);
 
     const { results, loading } = useSearch(query, filters, selectedSortBy, offset, resultsLength+1); // +1 to check whether there is more

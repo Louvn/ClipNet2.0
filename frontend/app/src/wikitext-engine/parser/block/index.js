@@ -44,8 +44,11 @@ function parseBlocks(tokens, fullMode) {
             idx = nextIdx-1;
 
             // add to blocks/current heading
-            if (blocks[blocks.length-1]?.type === FORMAT.heading) blocks[blocks.length-1].children.push(handlerRes.block) 
-            else blocks.push(handlerRes.block);
+            if (blocks[blocks.length-1]?.type === FORMAT.heading && handlerRes.block.type !== FORMAT.heading) {
+                
+                blocks[blocks.length-1].children.push(handlerRes.block);
+
+            } else blocks.push(handlerRes.block);
 
             return true;
         }
