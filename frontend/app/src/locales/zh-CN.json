@@ -142,6 +142,12 @@
         "logout": "退出登录"
     },
 
+    "footer": {
+        "community": "社区",
+        "rules": "规则",
+        "about": "关于"
+    },
+
     "toast": {
         "welcomeBack": "欢迎回来，{{user}}！",
         "browserDoesNotSupport": "你的浏览器不支持此功能。",

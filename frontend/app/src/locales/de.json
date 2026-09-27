@@ -142,6 +142,12 @@
         "logout": "Abmelden"
     },
 
+    "footer": {
+        "community": "Community",
+        "rules": "Richtlinien",
+        "about": "Über"
+    },
+
     "toast": {
         "welcomeBack": "Willkommen zurück, {{user}}!",
         "browserDoesNotSupport": "Dein Browser unterstützt diese Funktion nicht.",

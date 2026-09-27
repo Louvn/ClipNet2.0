@@ -39,7 +39,7 @@ export function useAPI() {
             else if (response.status === 403 && data?.detail === "USER_BANNED") {
                 setUser(u => ({...u, is_banned: true})) // is_banned = true => Banned Page
             }
-            else if (!response.ok) {
+            else if (!response.ok && data?.detail !== "ARTICLE_NOT_FOUND") {
                 toastNotification(typeof data?.detail === "string" ? t(`error.code.${data.detail}`): "Unknown Error")
             }
 

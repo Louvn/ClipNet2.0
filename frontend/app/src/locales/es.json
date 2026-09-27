@@ -142,6 +142,12 @@
         "logout": "Cerrar sesión"
     },
 
+    "footer": {
+        "community": "Comunidad",
+        "rules": "Reglas",
+        "about": "Acerca de"
+    },
+
     "toast": {
         "welcomeBack": "¡Bienvenido de nuevo, {{user}}!",
         "browserDoesNotSupport": "Tu navegador no admite esta función.",
