@@ -108,6 +108,8 @@
         "changeSummary": "更改摘要",
         "latestArticles": "最新文章",
         "latestChanges": "最近编辑",
+        "mostLiked": "最受喜爱的文章",
+        "yourMostLiked": "你最受喜爱的文章",
         "revisions": "修订版本",
         "revisionCounter": "修订版本 #{{count}}",
         "createdByUser": "由 {{user}} 于 {{time}} 创建",

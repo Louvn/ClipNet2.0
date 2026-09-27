@@ -16,6 +16,7 @@ function Search() {
     const location = useLocation();
 
     const [query, setQuery] = useState(location.state?.query || "");
+    const [title, setTitle] = useState(location.state?.title || t("search.results"));
     const [filters, setFilters] = useState(location.state?.filters || {});
     const [offset, setOffset] = useState(0);
 
@@ -48,6 +49,7 @@ function Search() {
     const onChangeSortBySelection = (c) => {
         setSelectedSortBy(c.target.value);
         setOffset(0);
+        setTitle(t("search.results"));
     }
 
     // apply filters (adding them to the state the search has as dependency)
@@ -56,6 +58,7 @@ function Search() {
             "content_type": selectedContentTypes
         });
         setOffset(0);
+        setTitle(t("search.results"));
     }
 
 
@@ -95,7 +98,7 @@ function Search() {
             </aside>
 
             <main className={styles.SearchResults}>
-                <h2>{t("search.results")}:</h2>
+                <h2>{title}:</h2>
                 
                 {!loading && results?.slice(0, 20).map(e => <SearchResult showContent data={e} query={query} key={`${e.type}-${e?.slug || e?.username}`} />)}
 

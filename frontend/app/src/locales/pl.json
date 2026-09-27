@@ -108,6 +108,8 @@
         "changeSummary": "Podsumowanie zmian",
         "latestArticles": "Najnowsze artykuły",
         "latestChanges": "Ostatnio edytowane",
+        "mostLiked": "Najbardziej lubiane artykuły",
+        "yourMostLiked": "Twoje najbardziej lubiane artykuły",
         "revisions": "Wersje",
         "revisionCounter": "Wersja nr {{count}}",
         "createdByUser": "Utworzono {{time}} przez {{user}}",

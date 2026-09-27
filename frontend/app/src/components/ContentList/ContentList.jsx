@@ -13,7 +13,7 @@ function ContentList({query, filters, sort_by, title, maxResults=3, showFullCont
     return <div className={styles.ListCard}>
         <h2 className={styles.Title}>
             {title}
-            <Link className={styles.SearchLink} to={"/search"} state={{ filters: filters, sort_by: sort_by, query: query}}>{t("common.more")}</Link>
+            <Link className={styles.SearchLink} to={"/search"} state={{ filters: filters, sort_by: sort_by, query: query, title: title}}>{t("common.more")}</Link>
         </h2>
         <hr />
 

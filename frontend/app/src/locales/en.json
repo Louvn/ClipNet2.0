@@ -108,6 +108,8 @@
         "changeSummary": "Change Summary",
         "latestArticles": "Latest Articles",
         "latestChanges": "Latest Changes",
+        "mostLiked": "Most Liked Articles",
+        "yourMostLiked": "Your Most Liked Articles",
         "revisions": "Revisions",
         "revisionCounter": "Revision #{{count}}",
         "createdByUser": "Created {{time}} by {{user}}",

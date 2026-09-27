@@ -6,10 +6,12 @@ import StatisticCards from "../../components/StatisticCards/StatisticCards";
 import { useAnnouncements } from "../../hooks/useAnnouncements";
 import { Link } from "react-router-dom";
 import { useImageIndex } from "../../context/ImageIndexContext";
+import { useAuth } from "../../context/AuthContext";
 
 function Home() {
 
     const {t} = useTranslation();
+    const {user} = useAuth();
     const {announcements, loading} = useAnnouncements();
     let announcement = !loading ? announcements[Math.floor(Math.random() * announcements.length)] : null;
 
@@ -53,6 +55,22 @@ function Home() {
                 title={t("article.latestChanges")}
                 filters={{ content_type: ["article"] }}
                 sort_by="last_updated_first" 
+                showFullContent 
+                />
+            
+            <ContentList 
+                query="" 
+                title={t("article.mostLiked")}
+                filters={{ content_type: ["article"] }}
+                sort_by="most_liked_first" 
+                showFullContent 
+                />
+
+            <ContentList 
+                query="" 
+                title={t("article.yourMostLiked")}
+                filters={{ content_type: ["article"], op_id: user?.id }}
+                sort_by="most_liked_first" 
                 showFullContent 
                 />
 

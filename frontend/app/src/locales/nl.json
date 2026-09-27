@@ -108,6 +108,8 @@
         "changeSummary": "Samenvatting van de wijzigingen",
         "latestArticles": "Nieuwste artikelen",
         "latestChanges": "Laatst bewerkt",
+        "mostLiked": "Populairste artikelen",
+        "yourMostLiked": "Jouw populairste artikelen",
         "revisions": "Versies",
         "revisionCounter": "Versie #{{count}}",
         "createdByUser": "Aangemaakt {{time}} door {{user}}",
