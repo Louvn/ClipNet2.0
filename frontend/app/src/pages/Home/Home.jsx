@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import StatisticCards from "../../components/StatisticCards/StatisticCards";
 import { useAnnouncements } from "../../hooks/useAnnouncements";
 import { Link } from "react-router-dom";
+import { useImageIndex } from "../../context/ImageIndexContext";
 
 function Home() {
 
@@ -12,7 +13,20 @@ function Home() {
     const {announcements, loading} = useAnnouncements();
     let announcement = !loading ? announcements[Math.floor(Math.random() * announcements.length)] : null;
 
-    return <Medium className={styles.HomePage}>
+    // daily background image
+    const imageIndex = useImageIndex();
+    const images = [...imageIndex.values()].filter(i => i.hero_eligible === true);
+
+    const day = Math.floor(Date.now() / 86400000);
+    const random = Math.sin(day * 12345.6789) * 10000;
+    const index = Math.floor((random - Math.floor(random)) * images.length);
+    const heroImage = images.length > 0 ? images[index] : null;
+
+
+    return <Medium 
+        className={`${styles.HomePage} ${heroImage && styles.ImageShown}`}
+        style={{ backgroundImage: heroImage ? `linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)), url(${heroImage?.url})` : undefined}}
+    >
         
         <StatisticCards />
 

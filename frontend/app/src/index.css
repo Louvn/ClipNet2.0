@@ -1,6 +1,7 @@
 :root {
     --primary-color: #30638E;
     --bg-color: #e4e4e4;
+    --darker-bg-color: #d4d4d4;
     --accent-color: #45739a;
     --text-color: #050315;
     --secondary-text-color: #555;
@@ -15,6 +16,7 @@
 
 .dark {
     --bg-color: #333;
+    --darker-bg-color: #222;
     --text-color: #b1b1b1;
     --secondary-text-color: #aaa;
     --cards: #3e3e3e;

@@ -7,8 +7,8 @@ def image_index(user = Depends(get_current_user), db = Depends(get_db)):
     """Delivers an index of all images with their id, url and description"""
 
     index = (
-        db.query(Image.id, Image.url, Image.description)
+        db.query(Image.id, Image.url, Image.description, Image.hero_eligible)
             .all()
     )
 
-    return [{ "id": row.id, "url": row.url, "description": row.description } for (row) in index]
+    return [{ "id": row.id, "url": row.url, "description": row.description, "hero_eligible": row.hero_eligible } for (row) in index]

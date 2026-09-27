@@ -1,16 +1,37 @@
-.HomePage {
-    padding: 0 !important;
+.HomePage.HomePage {
+    padding: 0;
+    padding-top: 32px;
+    margin-top: 0;
+}
+.HomePage.ImageShown {
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.HomePage.ImageShown .Heading {
+    filter: brightness(2);
+}
+.HomePage.ImageShown .AnnouncementMessage {
+    color: #fff;
+}
+.HomePage.ImageShown .LearnMore {
+    filter: brightness(2);
+}
+.HomePage.ImageShown .Wave {
+    fill: var(--darker-bg-color);
+}
+.HomePage.ImageShown .MainSection {
+    background-color: var(--darker-bg-color);
 }
 
 .Wave {
     height: 20vh;
     width: 100%;
-    fill: rgba(0, 0, 0, .05);
+    fill: rgba(0,0,0,.1);
     display: block;
 }
 
 .MainSection {
-    background-color: rgba(0, 0, 0, .05);
+    background-color: rgba(0,0,0,.1);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     padding: 32px;

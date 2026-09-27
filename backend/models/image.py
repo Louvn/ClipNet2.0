@@ -1,5 +1,5 @@
 from backend.database import Base
-from sqlalchemy import Column, Integer, ForeignKey, DateTime, String
+from sqlalchemy import Column, Integer, ForeignKey, DateTime, String, Boolean
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
@@ -14,5 +14,7 @@ class Image(Base):
     storage_key = Column(String, nullable=False)
     file_hash = Column(String, nullable=False)
     description = Column(String(255), nullable=True)
+
+    hero_eligible = Column(Boolean, nullable=False, server_default="false")
 
     user = relationship("User", foreign_keys=[user_id])
