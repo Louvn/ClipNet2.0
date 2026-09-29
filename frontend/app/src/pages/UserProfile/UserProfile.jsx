@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import placeholderIcon from "../../assets/logo-white.png";
 import Medium from "../../components/Medium";
 import ContentList from "../../components/ContentList";
-import { useUser } from "../../hooks/useUser";
+import { useUser } from "../../hooks/api/useUser";
 import { Navigate, useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { useTranslation } from "react-i18next";

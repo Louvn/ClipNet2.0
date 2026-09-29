@@ -1,10 +1,10 @@
 import Medium from "../../components/Medium/Medium";
 import { useNavigate, useParams } from "react-router-dom";
-import { useArticle } from "../../hooks/useArticle";
+import { useArticle } from "../../hooks/api/useArticle";
 import Loader from "../../components/Loader";
 import { useUserIndex } from "../../context/UserIndexContext";
 import { useState } from "react";
-import { useAPI } from "../../hooks/useAPI";
+import { useAPI } from "../../hooks/api/useAPI";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
 import { useTranslation } from "react-i18next";
 import styles from "./styles.module.css";

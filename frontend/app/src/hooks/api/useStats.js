@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useAPI } from "../hooks/useAPI";
+import { useAPI } from "./useAPI";
 
-export function useSettings() {
+export function useStats() {
     
     const [loading, setLoading] = useState(true);
-    const [settings, setSettings] = useState(null);
+    const [stats, setStats] = useState(null);
     const [error, setError] = useState(null);
 
     const apiFetch = useAPI();
@@ -12,11 +12,11 @@ export function useSettings() {
     useEffect(() => {
 
         apiFetch(
-            "/get-settings", 
+            "/stats/general", 
             { method: "GET" }
         )
             .then(res => res.json())
-            .then(data => setSettings(data))
+            .then(data => setStats(data))
 
             .catch(setError)
 
@@ -24,5 +24,5 @@ export function useSettings() {
 
     }, [apiFetch]);
 
-    return {settings, setSettings, loading, error};
+    return {stats, loading, error};
 }

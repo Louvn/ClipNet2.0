@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
-import { useStats } from "../../hooks/useStats";
+import { useStats } from "../../hooks/api/useStats";
 import { useEffect, useState } from "react";
 import Loader from "../Loader";
 
@@ -44,6 +44,7 @@ function StatisticCards() {
 
         <Link 
             className={`${styles.StatsCard} ${highlighted === 2 ? styles.Highlighted : ""}`}
+            to="/images"
             >
             {t("common.thereAre", {count: stats.images})}
             <span>{stats.images}</span>

@@ -13,6 +13,7 @@ function Footer() {
             <span>© 2025-2026 Louvn</span>
             <Link to="/wiki/about">{t("footer.about")}</Link>
             <a href={`${process.env.REACT_APP_API_URL}/docs`}>API</a>
+            <Link to="/images">{t("image.title_other")}</Link>
         </section>
 
         <section>

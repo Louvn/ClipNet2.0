@@ -15,7 +15,7 @@
 .Footer section {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
 }
 .Footer a:hover {
     text-decoration: underline;

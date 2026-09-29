@@ -3,7 +3,7 @@ import ContentList from "../../components/ContentList";
 import Medium from "../../components/Medium";
 import { useTranslation } from "react-i18next";
 import StatisticCards from "../../components/StatisticCards/StatisticCards";
-import { useAnnouncements } from "../../hooks/useAnnouncements";
+import { useAnnouncements } from "../../hooks/api/useAnnouncements";
 import { Link } from "react-router-dom";
 import { useImageIndex } from "../../context/ImageIndexContext";
 import { useAuth } from "../../context/AuthContext";

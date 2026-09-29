@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import addImageIcon from "../../assets/icons/add_image.png";
 import closeIcon from "../../assets/icons/close.png";
-import { useAPI } from "../../hooks/useAPI";
+import { useAPI } from "../../hooks/api/useAPI";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
 import LimitedInput from "../LimitedInput";
 import Loader from "../Loader";
 import SimpleButton from "../SimpleButton";
 
-function ImageLibrary({ onUseImage, onClose }) {
+function ImageLibrary({ onUseImage, onClose, className }) {
 
     const {t} = useTranslation();
     const imageIndex = useImageIndex();
@@ -64,7 +64,7 @@ function ImageLibrary({ onUseImage, onClose }) {
     useEffect(() => setImages(Array.from(imageIndex.values())), [setImages, imageIndex]);
 
     
-    return <div className={styles.ImageLibraryRoot}>
+    return <div className={`${styles.ImageLibraryRoot} ${className || ""}`}>
 
         <div className={styles.ImageLibraryExplorer}>
 
@@ -105,7 +105,7 @@ function ImageLibrary({ onUseImage, onClose }) {
                     <em>{inspecting.description}</em>
                 </div>
 
-                <SimpleButton onClick={() => onUseImage(inspecting.id)}>{t("image.use")}</SimpleButton>
+                {onUseImage && <SimpleButton onClick={() => onUseImage(inspecting.id)}>{t("image.use")}</SimpleButton>}
             </>}
 
             {!inspecting && !uploading && <form onSubmit={uploadImg} className={styles.Uploader}>

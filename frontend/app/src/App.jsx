@@ -19,6 +19,7 @@ import UserProfile from "./pages/UserProfile";
 import Settings from "./pages/Settings";
 import SplashScreen from "./components/SplashScreen";
 import Banned from "./pages/Banned";
+import ImageLibraryPage from "./pages/ImageLibraryPage";
 
 function App() {
 
@@ -70,6 +71,7 @@ function App() {
                                 <Route path="/perm-editor/:slug" element={<PermissionEditor />} />
                                 <Route path="/community/user/:id" element={<UserProfile />} />
                                 <Route path="/settings" element={<Settings />} />
+                                <Route path="/images" element={<ImageLibraryPage />} />
 
                                 <Route path="/404" element={<NotFound />} />
                                 <Route path="network-error" element={<NetworkError />} />

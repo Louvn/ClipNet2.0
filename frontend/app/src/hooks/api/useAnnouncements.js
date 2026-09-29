@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useAPI } from "../hooks/useAPI";
+import { useAPI } from "./useAPI";
 
-export function useOwnReport(article_id) {
+export function useAnnouncements() {
     
     const [loading, setLoading] = useState(true);
-    const [report, setReport] = useState(null);
+    const [announcements, setAnnouncements] = useState(null);
     const [error, setError] = useState(null);
 
     const apiFetch = useAPI();
@@ -12,17 +12,17 @@ export function useOwnReport(article_id) {
     useEffect(() => {
 
         apiFetch(
-            `/get-own-report?${new URLSearchParams({article_id: article_id})}`,
+            "/get-announcements", 
             { method: "GET" }
         )
             .then(res => res.json())
-            .then(data => setReport(data))
+            .then(data => setAnnouncements(data))
 
             .catch(setError)
 
             .finally(() => setLoading(false))
 
-    }, [apiFetch, article_id]);
+    }, [apiFetch]);
 
-    return {report, setReport, loading, error};
+    return {announcements, setAnnouncements, loading, error};
 }

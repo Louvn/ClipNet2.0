@@ -1,9 +1,9 @@
 import { Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import styles from "./styles.module.css";
-import { useArticle } from "../../hooks/useArticle";
+import { useArticle } from "../../hooks/api/useArticle";
 import { useEffect, useState } from "react";
 import WikiTextEditor from "../../components/WikiTextEditor";
-import { useAPI } from "../../hooks/useAPI";
+import { useAPI } from "../../hooks/api/useAPI";
 import Medium from "../../components/Medium";
 import Loader from "../../components/Loader";
 import PopUp from "../../components/PopUp";
@@ -11,6 +11,7 @@ import SimpleButton from "../../components/SimpleButton";
 import { useToastNotification, notificationTypeSuccess } from "../../context/ToastNotificationContext";
 import { useTranslation } from "react-i18next";
 import LimitedInput from "../../components/LimitedInput";
+import useUndoRedo from "../../hooks/useUndoRedo";
 
 function ArticleEditor() {
 
@@ -29,7 +30,7 @@ function ArticleEditor() {
     const [isDraftPopUpOpen, setDraftPopUpOpen] = useState(false);
 
     // states changed by the Editor
-    const [content, setContent] = useState("");
+    const {value: content, setValue: setContent, undo, redo} = useUndoRedo("");
     const [title, setTitle] = useState("");
     const [changeSummary, setChangeSummary] = useState("");
     const [isPopUpOpen, setPopUpOpen] = useState(false);
@@ -173,6 +174,8 @@ function ArticleEditor() {
             title={title}
             setContent={setContent}
             setTitle={setTitle}
+            undo={undo}
+            redo={redo}
             />
 
 
@@ -197,7 +200,7 @@ function ArticleEditor() {
 
             <div className={styles.DraftPopUpButtons}>
                 <SimpleButton onClick={() => {setUseExistingDraft(true); setDraftPopUpOpen(false)}} className={styles.DraftPopUpButton}>{t("draft.use")}</SimpleButton>
-                <SimpleButton onClick={() => setDraftPopUpOpen(false)} className={styles.DraftPopUpButtonRed}>{t("draft.overwrite")}</SimpleButton>
+                <SimpleButton onClick={() => {setUseExistingDraft(false); setDraftPopUpOpen(false)}} className={styles.DraftPopUpButtonRed}>{t("draft.overwrite")}</SimpleButton>
             </div>
         </PopUp>}
 

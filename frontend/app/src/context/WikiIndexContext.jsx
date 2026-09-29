@@ -1,7 +1,7 @@
 // This file contains a context used to cache all article titles connected with their slugs
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { useAPI } from "../hooks/useAPI";
+import { useAPI } from "../hooks/api/useAPI";
 import { useAuth } from "./AuthContext";
 
 const WikiIndexContext = createContext();

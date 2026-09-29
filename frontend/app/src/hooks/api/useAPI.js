@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { useCallback } from "react";
-import { useToastNotification } from "../context/ToastNotificationContext";
+import { useToastNotification } from "../../context/ToastNotificationContext";
 import { useTranslation } from "react-i18next";
 
 export function useAPI() {

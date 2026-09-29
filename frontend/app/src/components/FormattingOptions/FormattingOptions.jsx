@@ -16,7 +16,7 @@ import { useState } from "react";
 import PopUp from "../PopUp";
 import ImageLibrary from "../ImageLibrary";
 
-function FormattingOptions({ inputRef, textState, changeTextState, previewButton = null, fullMode = true }) {
+function FormattingOptions({ inputRef, textState, changeTextState, undo = null, redo = null, previewButton = null, fullMode = true }) {
 
     const {t} = useTranslation();
     const [imagePopUpOpen, setImagePopUpOpen] = useState(false);
@@ -53,26 +53,18 @@ function FormattingOptions({ inputRef, textState, changeTextState, previewButton
         setImagePopUpOpen(false);
         insertFormat(`[[image:${id}`, "]]");
     }
-
-    function undo() {
-        inputRef.current.focus();
-        document.execCommand("undo");
-    }
-    function redo() {
-        inputRef.current.focus();
-        document.execCommand("redo");
-    }
+    
 
     return <div className={styles.Formatting}>
                 
         <section>
-            <button className={styles.FormattingOption} onClick={undo}>
+            {undo && <button className={styles.FormattingOption} onClick={undo}>
                 <img src={undoIcon} alt={t("common.undo")} />
-            </button>
+            </button>}
     
-            <button className={styles.FormattingOption} onClick={redo}>
+            {redo && <button className={styles.FormattingOption} onClick={redo}>
                 <img src={redoIcon} alt={t("common.redo")} />
-            </button>
+            </button>}
         </section>
     
         {fullMode && <section>

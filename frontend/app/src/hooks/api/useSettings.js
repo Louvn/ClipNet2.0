@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useAPI } from "../hooks/useAPI";
+import { useAPI } from "./useAPI";
 
-export function useAnnouncements() {
+export function useSettings() {
     
     const [loading, setLoading] = useState(true);
-    const [announcements, setAnnouncements] = useState(null);
+    const [settings, setSettings] = useState(null);
     const [error, setError] = useState(null);
 
     const apiFetch = useAPI();
@@ -12,11 +12,11 @@ export function useAnnouncements() {
     useEffect(() => {
 
         apiFetch(
-            "/get-announcements", 
+            "/get-settings", 
             { method: "GET" }
         )
             .then(res => res.json())
-            .then(data => setAnnouncements(data))
+            .then(data => setSettings(data))
 
             .catch(setError)
 
@@ -24,5 +24,5 @@ export function useAnnouncements() {
 
     }, [apiFetch]);
 
-    return {announcements, setAnnouncements, loading, error};
+    return {settings, setSettings, loading, error};
 }

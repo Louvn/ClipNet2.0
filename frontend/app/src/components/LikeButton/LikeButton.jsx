@@ -3,7 +3,7 @@ import likeIcon from "../../assets/icons/like.png";
 import styles from "./styles.module.css";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { useAPI } from "../../hooks/useAPI";
+import { useAPI } from "../../hooks/api/useAPI";
 
 function LikeButton({ article }) {
 

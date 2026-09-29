@@ -1,6 +1,6 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
-import { useArticle } from "../../hooks/useArticle";
+import { useArticle } from "../../hooks/api/useArticle";
 
 import ActionButton from "../../components/ActionButton";
 import Detail from "../../components/Detail";
@@ -22,9 +22,9 @@ import LikeButton from "../../components/LikeButton";
 import ShareButton from "../../components/ShareButton";
 import FormattingOptions from "../../components/FormattingOptions";
 import { useRef, useState } from "react";
-import { useAPI } from "../../hooks/useAPI";
+import { useAPI } from "../../hooks/api/useAPI";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
-import { useComments } from "../../hooks/useComments";
+import { useComments } from "../../hooks/api/useComments";
 import Comment from "../../components/Comment";
 import { useTranslation } from "react-i18next";
 import { formatTimestamp } from "../../utils/formatTimestamp";

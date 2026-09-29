@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAPI } from "../hooks/useAPI";
+import { useAPI } from "./useAPI";
 
 export function useArticle(slug) {
 

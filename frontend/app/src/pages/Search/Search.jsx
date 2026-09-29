@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useSearch } from "../../hooks/useSearch";
+import { useSearch } from "../../hooks/api/useSearch";
 import { useEffect, useState } from "react";
 import SearchResult from "../../components/SearchResult";
 import styles from "./styles.module.css";

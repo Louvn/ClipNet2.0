@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import wikitextToJsx from "../../wikitext-engine";
 
-function WikiTextEditor({title, content, setContent, setTitle}) {
+function WikiTextEditor({title, content, setContent, setTitle, undo, redo}) {
     
     const {t} = useTranslation();
     const textareaRef = useRef(null);
@@ -28,6 +28,8 @@ function WikiTextEditor({title, content, setContent, setTitle}) {
             textState={content}
             changeTextState={setContent}
             previewButton={() => setPreview(!isPreview)}
+            undo={undo}
+            redo={redo}
             />
 
         {!isPreview && <textarea 

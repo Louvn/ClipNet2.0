@@ -1,4 +1,4 @@
-import { useSearch } from "../../hooks/useSearch";
+import { useSearch } from "../../hooks/api/useSearch";
 import styles from "./styles.module.css";
 import SearchResult from "../SearchResult";
 import Loader from "../Loader";
