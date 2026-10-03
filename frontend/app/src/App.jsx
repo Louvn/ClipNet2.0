@@ -20,6 +20,8 @@ import Settings from "./pages/Settings";
 import SplashScreen from "./components/SplashScreen";
 import Banned from "./pages/Banned";
 import ImageLibraryPage from "./pages/ImageLibraryPage";
+import ArticleHistory from "./pages/ArticleHistory";
+import Revision from "./pages/Revision";
 
 function App() {
 
@@ -64,17 +66,22 @@ function App() {
                             <Routes>
 
                                 <Route path="/" element={<Home />} />
+
                                 <Route path="/wiki/:slug" element={<Article />} />
-                                <Route path="/editor/:slug" element={<ArticleEditor />} />
+                                <Route path="/wiki/:slug/edit" element={<ArticleEditor />} />
+                                <Route path="/wiki/:slug/perms" element={<PermissionEditor />} />
+                                <Route path="/wiki/:slug/history" element={<ArticleHistory />} />
+                                <Route path="/wiki/:slug/rev/:id" element={<Revision />} />
+
                                 <Route path="/editor" element={<ArticleEditor />} />
                                 <Route path="/search" element={<Search />} />
-                                <Route path="/perm-editor/:slug" element={<PermissionEditor />} />
+                                
                                 <Route path="/community/user/:id" element={<UserProfile />} />
                                 <Route path="/settings" element={<Settings />} />
                                 <Route path="/images" element={<ImageLibraryPage />} />
 
                                 <Route path="/404" element={<NotFound />} />
-                                <Route path="network-error" element={<NetworkError />} />
+                                <Route path="/network-error" element={<NetworkError />} />
 
                                 <Route path="*" element={<NotFound />} />
 

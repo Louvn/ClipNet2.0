@@ -115,11 +115,11 @@ function Article() {
 
                 {
                     (article.edit_permission === 1 || article.op.id === user.id || article.contributors.includes(user.id) || user.is_admin)
-                    && <ActionButton icon={editIcon} onClick={() => navigate(`/editor/${slug}`)}>{t("actions.edit")}</ActionButton>
+                    && <ActionButton icon={editIcon} onClick={() => navigate(`/wiki/${slug}/edit`)}>{t("actions.edit")}</ActionButton>
                 }
-                <ActionButton icon={revisionsIcon}>{t("article.revisions")}</ActionButton>
+                <ActionButton icon={revisionsIcon} onClick={() => navigate(`/wiki/${slug}/history`)}>{t("article.revisions")}</ActionButton>
                 {   (article.op.id === user.id || user.is_admin)
-                    && <ActionButton icon={permissionsIcon} onClick={() => navigate(`/perm-editor/${slug}`)}>{t("permissions.title")}</ActionButton>
+                    && <ActionButton icon={permissionsIcon} onClick={() => navigate(`/wiki/${slug}/perms`)}>{t("permissions.title")}</ActionButton>
                 }
 
             </section>
