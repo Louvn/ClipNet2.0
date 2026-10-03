@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { cache, useEffect, useState } from "react"
 import { useAPI } from "./useAPI";
+import { useCache } from "../../context/CacheContext";
 
 export function useSearch(query, filters, sort_by, offset, length) {
 
@@ -7,26 +8,38 @@ export function useSearch(query, filters, sort_by, offset, length) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     
+    const {getCachedItem, cacheItem} = useCache();
     const apiFetch = useAPI();
 
     useEffect(() => {
 
-        setLoading(true);
-
         const body = {
-            query: query,
-            filters: filters,
-            sort_by: sort_by,
-            offset: offset,
-            length: length
+            query,
+            filters,
+            sort_by,
+            offset,
+            length
         };
+        const urlParams = new URLSearchParams(body);
+
+        // cached?
+        const cached = getCachedItem("search", urlParams);
+        if (cached) {
+            setLoading(false);
+            return setResults(cached);
+        }
+
+        setLoading(true);
 
         apiFetch(
             "/search",
             { method: "POST", body: JSON.stringify(body) }
         )
             .then(res => res.json())
-            .then(data => setResults(data))
+            .then(data => {
+                setResults(data);
+                cacheItem("search", urlParams, data);
+            })
 
             .catch(setError)
 

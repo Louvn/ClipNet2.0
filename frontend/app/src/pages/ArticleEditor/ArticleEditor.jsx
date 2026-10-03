@@ -12,6 +12,7 @@ import { useToastNotification, notificationTypeSuccess } from "../../context/Toa
 import { useTranslation } from "react-i18next";
 import LimitedInput from "../../components/LimitedInput";
 import useUndoRedo from "../../hooks/useUndoRedo";
+import { useCache } from "../../context/CacheContext";
 
 function ArticleEditor() {
 
@@ -20,6 +21,7 @@ function ArticleEditor() {
 
     const apiFetch = useAPI();
     const toastNotification  = useToastNotification();
+    const {cacheItem, clearCache} = useCache();
 
     const navigate = useNavigate();
     const {slug} = useParams();
@@ -67,11 +69,15 @@ function ArticleEditor() {
     }, [title, content, article]);
     
     // redirect after publishing changes
-    const afterPublish = () => {
+    const afterPublish = async (res) => {
+        const data = await res.json();
+
         localStorage.removeItem(`draft${article?.id || ""}`);
+        cacheItem("articles", data.slug, data);
+        clearCache("search");
 
         toastNotification(t("toast.articlePublished"), notificationTypeSuccess);
-        navigate(isEdit ? `/wiki/${slug}` : "/");
+        navigate(`/wiki/${data.slug}`);
     }
 
     // async function used in createArticle and editArticle
@@ -93,7 +99,8 @@ function ArticleEditor() {
         apiFetch("/create-article", {method: "POST", body: JSON.stringify(data)})
             .then(res => {
                 if (res.ok) {
-                    afterPublish();
+                    clearCache("stats");
+                    afterPublish(res);
                 } else {
                     reactToError(t("toast.articleCouldNotBePublished"), res);
                 }
@@ -114,7 +121,7 @@ function ArticleEditor() {
         apiFetch("/edit-article", {method: "PUT", body: JSON.stringify(data)})
             .then(res => {
                 if (res.ok) {
-                    afterPublish();
+                    afterPublish(res);
                 } else {
                     reactToError(t("toast.changesCouldNotBePublished"), res);
                 }

@@ -10,6 +10,7 @@ import { WikiIndexContextProvider } from './context/WikiIndexContext';
 import { UserIndexContextProvider } from './context/UserIndexContext';
 import { ImageIndexContextProvider } from "./context/ImageIndexContext.jsx";
 import { ToastNotificationContextProvider } from './context/ToastNotificationContext';
+import { CacheContextProvider } from './context/CacheContext.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,8 +23,12 @@ root.render(
             <WikiIndexContextProvider>
             <UserIndexContextProvider>
             <ImageIndexContextProvider>
+
+                <CacheContextProvider>
                     
-                <App />    
+                    <App />
+                       
+                </CacheContextProvider> 
                 
             </ImageIndexContextProvider>
             </UserIndexContextProvider>
