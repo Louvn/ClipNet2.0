@@ -19,7 +19,6 @@ function useUndoRedo(initValue, delay = 500) {
             setHistory(prev => [...prev.slice(0, index+1), newValue]);
             setIndex(prev => prev + 1);
             setTempValue(null);
-            console.log("end of buff", newValue)
         }, delay);
 
     }, [index, delay, history]);

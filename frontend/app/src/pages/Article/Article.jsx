@@ -84,7 +84,7 @@ function Article() {
 
 
     // Article Page 
-    if (article) return <Medium className={styles.ArticlePageRoot}>
+    if (article && status !== 404) return <Medium className={styles.ArticlePageRoot}>
 
         <aside className={styles.Sidebar}>
 

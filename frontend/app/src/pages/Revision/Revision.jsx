@@ -10,17 +10,43 @@ import SimpleButton from "../../components/SimpleButton";
 import Detail from "../../components/Detail";
 import { formatTimestamp } from "../../utils/formatTimestamp";
 import createdIcon from "../../assets/icons/created.png"
-import rollbackIcon from "../../assets/icons/revisions.png"
+import restoreIcon from "../../assets/icons/revisions.png"
 import changesIcon from "../../assets/icons/updated.png";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import PopUp from "../../components/PopUp";
+import { useAPI } from "../../hooks/api/useAPI";
+import { useToastNotification, notificationTypeSuccess } from "../../context/ToastNotificationContext";
+import { useCache } from "../../context/CacheContext";
 
 function Revision() {
 
     // article slug and revision id
-    const {id} = useParams();
+    const {id, slug} = useParams();
     const navigate = useNavigate();
     const {revision, loading, status} = useRevision(id);
     const {t} = useTranslation();
+    const apiFetch = useAPI();
+    const toast = useToastNotification();
+    const {cacheItem} = useCache();
+
+    const [rollbackPopUpOpen, setRollbackPopUpOpen] = useState(false);
+
+    const rollbackToRevision = async () => {
+
+        const params = new URLSearchParams({ revision_id: id });
+        const res = await apiFetch(`/restore-revision?${params}`, { method: "PUT"});
+
+        if (!res.ok) {
+            return;
+        }
+
+        cacheItem("articles", slug, null);
+
+        toast(t("toast.revisionRestored"), notificationTypeSuccess);
+        return navigate(`/wiki/${slug}`);
+    }
+
 
     if (loading) return <Medium>
         <Loader />
@@ -52,7 +78,7 @@ function Revision() {
             <section className={`${styles.SidebarSection} ${styles.Actions}`}>
                 <h2>{t("common.actions")}</h2>
 
-                <ActionButton icon={rollbackIcon}>{t("revision.rollback")}</ActionButton>
+                <ActionButton icon={restoreIcon} onClick={() => setRollbackPopUpOpen(true)}>{t("revision.restore")}</ActionButton>
             </section>
 
         </aside>
@@ -65,6 +91,17 @@ function Revision() {
                 {wikitextToJsx(revision.content)}
             </div>
         </main>
+
+        {rollbackPopUpOpen && <PopUp closingMethod={() => setRollbackPopUpOpen(false)} className={specialStyles.PopUp}>
+            
+            <h2>{t("revision.restore")}</h2>
+
+            <div className={specialStyles.PopUpButtons}>
+                <SimpleButton onClick={() => {rollbackToRevision(); setRollbackPopUpOpen(false)}} className={specialStyles.PopUpButton}>{t("common.yes")}</SimpleButton>
+                <SimpleButton onClick={() => setRollbackPopUpOpen(false)} className={specialStyles.PopUpButtonRed}>{t("common.no")}</SimpleButton>
+            </div>
+
+        </PopUp>}
 
     </Medium>
 }

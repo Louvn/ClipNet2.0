@@ -23,6 +23,9 @@ export function extractNormals(node) {
     if (node.type === FORMAT.image || node.type === FORMAT.table) {
         return "";
     }
+    if ([FORMAT.wikilink, FORMAT.url].includes(node.type) && node.pipeArgs?.length > 0) {
+        return node.pipeArgs[0];
+    }
 
     return node.children ? node.children.map(extractNormals).join("") : "";
 }
@@ -44,16 +47,18 @@ export function highlightQuery(txt, query) {
     return highlightedTxt;
 }
 
-export function extractSnippet(txt, query=null, context=80) {
+export function extractSnippet(txt, query=null, context=120) {
 
     const rgx = new RegExp(`(${escapeRegex(query)})`, "gi");
     const firstMatch = txt.search(rgx);
 
-    // if there is no match return this
-    if (firstMatch === -1 || !query) return txt.slice(0, context * 2) + (txt.length > context*2 ? "..." : "");
+    let start = 0;
+    let end = context * 2;
 
-    let start = Math.max(0, firstMatch - context);
-    let end = Math.min(txt.length, firstMatch + context);
+    if (firstMatch !== -1) {
+        start = Math.max(0, firstMatch - context);
+        end = Math.min(txt.length, firstMatch + context);
+    }
 
     // adjust start and end to avoid cutting of words
     while (start > 0 && txt[start] !== " ") start--;
@@ -64,10 +69,10 @@ export function extractSnippet(txt, query=null, context=80) {
 
     // add "..."
     if (start > 0) {
-        snippet = "..." + snippet;
+        snippet = "... " + snippet;
     }
     if (end < txt.length) {
-        snippet = snippet + "...";
+        snippet = snippet + " ...";
     }
 
     return snippet;

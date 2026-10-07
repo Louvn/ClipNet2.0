@@ -10,6 +10,9 @@ def restore_revision(revision_id: int, db = Depends(get_db), user = Depends(get_
     if not old_revision or old_revision.article.is_deleted:
         raise HTTPException(404, "REVISION_NOT_FOUND")
 
+    if old_revision.article.current_revision_id == revision_id:
+        raise HTTPException(401, "CANNOT_RESTORE_CURRENT_REVISION")
+
     new_revision = Revision(
         title = old_revision.title,
         content = old_revision.content,

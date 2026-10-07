@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import LimitedInput from "../../components/LimitedInput";
 import useUndoRedo from "../../hooks/useUndoRedo";
 import { useCache } from "../../context/CacheContext";
+import i18n from "../../i18n";
 
 function ArticleEditor() {
 
@@ -73,11 +74,11 @@ function ArticleEditor() {
         const data = await res.json();
 
         localStorage.removeItem(`draft${article?.id || ""}`);
-        cacheItem("articles", data.slug, data);
+        cacheItem("articles", slug, isEdit ? null : data);
         clearCache("search");
 
         toastNotification(t("toast.articlePublished"), notificationTypeSuccess);
-        navigate(`/wiki/${data.slug}`);
+        navigate(`/wiki/${slug}`);
     }
 
     // async function used in createArticle and editArticle
@@ -166,7 +167,7 @@ function ArticleEditor() {
                 ← {t("common.back")}
             </SimpleButton>
 
-            <span className={styles.Counters}>{t("article.counter", {chars: content.length, words: content ? content.split(" ").length : 0})}</span>
+            <span className={styles.Counters}>{t("article.counter", {chars: content.length.toLocaleString(i18n.language), words: content ? content.split(" ").length.toLocaleString(i18n.language) : 0})}</span>
 
             <SimpleButton onClick={() => setPopUpOpen(true)} className={styles.TopBarButton}>
                 {t("article.publish")}
