@@ -1,11 +1,11 @@
-import { useSearch } from "../../hooks/api/useSearch";
+import { useSearch } from "hooks/api/useSearch";
 import styles from "./styles.module.css";
 import SearchResult from "../SearchResult";
-import Loader from "../Loader";
+import Loader from "components/Loader";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-function ContentList({query, filters, sort_by, title, maxResults=3, showFullContent=false}) {
+function SearchResultsCard({query, filters, sort_by, title, maxResults=3, showFullContent=false}) {
 
     const {t} = useTranslation();
     const { results, loading } = useSearch(query, filters, sort_by, 0, maxResults);
@@ -35,4 +35,4 @@ function ContentList({query, filters, sort_by, title, maxResults=3, showFullCont
     </div>
 }
 
-export default ContentList;
+export default SearchResultsCard;

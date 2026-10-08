@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useSearch } from "../../hooks/api/useSearch";
 import { useEffect, useState } from "react";
-import SearchResult from "../../components/SearchResult";
+import SearchResult from "../../features/search/components/SearchResult";
 import styles from "./styles.module.css";
 import Medium from "../../components/Medium";
 import Loader from "../../components/Loader";

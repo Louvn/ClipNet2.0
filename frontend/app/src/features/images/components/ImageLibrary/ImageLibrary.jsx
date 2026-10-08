@@ -1,22 +1,22 @@
 import styles from "./styles.module.css";
-import Searchbar from "../Searchbar";
-import { useImageIndex } from "../../context/ImageIndexContext";
+import Searchbar from "features/search/components/Searchbar";
+import { useImageIndex } from "context/ImageIndexContext";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import addImageIcon from "../../assets/icons/add_image.png";
-import closeIcon from "../../assets/icons/close.png";
-import { useAPI } from "../../hooks/api/useAPI";
-import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
-import LimitedInput from "../LimitedInput";
-import Loader from "../Loader";
-import SimpleButton from "../SimpleButton";
+import addImageIcon from "assets/icons/add_image.png";
+import closeIcon from "assets/icons/close.png";
+import { useAPI } from "hooks/api/useAPI";
+import { notificationTypeSuccess, useToastNotification } from "context/ToastNotificationContext";
+import LimitedInput from "components/LimitedInput";
+import Loader from "components/Loader";
+import SimpleButton from "components/SimpleButton";
 
 function ImageLibrary({ onUseImage, onClose, className }) {
 
     const {t} = useTranslation();
     const imageIndex = useImageIndex();
     const apiFetch = useAPI();
-    const toastNotification = useToastNotification();
+    const toast = useToastNotification();
 
     const [images, setImages] = useState(null);
     const [inspecting, setInspecting] = useState(null);
@@ -32,13 +32,13 @@ function ImageLibrary({ onUseImage, onClose, className }) {
 
         const res = await apiFetch("/upload-image", { method: "POST", body: formData});
 
-        if (!res.ok) return toastNotification(t("toast.ErrorWhileUploadingFile"));
+        if (!res.ok) return toast(t("toast.ErrorWhileUploadingFile"));
 
         const data = await res.json();
         imageIndex.set(data.id, data); // add to local library
         setInspecting(data);
 
-        toastNotification(t("toast.uploadedFile"), notificationTypeSuccess);
+        toast(t("toast.uploadedFile"), notificationTypeSuccess);
         setUploading(false);
     }
 

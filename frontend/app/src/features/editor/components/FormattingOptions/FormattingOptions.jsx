@@ -1,20 +1,20 @@
 import styles from "./styles.module.css";
 
-import headingIcon from "../../assets/icons/format_heading.png";
-import subheadingIcon from "../../assets/icons/format_subheading.png";
-import undoIcon from "../../assets/icons/undo.png";
-import redoIcon from "../../assets/icons/redo.png";
-import boldIcon from "../../assets/icons/format_bold.png";
-import italicIcon from "../../assets/icons/format_italic.png";
-import linkIcon from "../../assets/icons/format_link.png";
-import mentionIcon from "../../assets/icons/format_mention.png";
-import tableIcon from "../../assets/icons/format_table.png";
-import imageIcon from "../../assets/icons/format_image.png";
+import headingIcon from "assets/icons/format_heading.png";
+import subheadingIcon from "assets/icons/format_subheading.png";
+import undoIcon from "assets/icons/undo.png";
+import redoIcon from "assets/icons/redo.png";
+import boldIcon from "assets/icons/format_bold.png";
+import italicIcon from "assets/icons/format_italic.png";
+import linkIcon from "assets/icons/format_link.png";
+import mentionIcon from "assets/icons/format_mention.png";
+import tableIcon from "assets/icons/format_table.png";
+import imageIcon from "assets/icons/format_image.png";
 import { useTranslation } from "react-i18next";
-import SimpleButton from "../SimpleButton";
+import SimpleButton from "components/SimpleButton";
 import { useState } from "react";
-import PopUp from "../PopUp";
-import ImageLibrary from "../ImageLibrary";
+import PopUp from "components/PopUp";
+import ImageLibrary from "features/images/components/ImageLibrary";
 
 function FormattingOptions({ inputRef, textState, changeTextState, undo = null, redo = null, previewButton = null, fullMode = true }) {
 

@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import placeholderIcon from "../../assets/logo-white.png";
 import Medium from "../../components/Medium";
-import ContentList from "../../components/ContentList";
+import SearchResultsCard from "../../features/search/components/SearchResultsCard";
 import { useUser } from "../../hooks/api/useUser";
 import { Navigate, useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
@@ -33,14 +33,14 @@ function UserProfile() {
         </div>
 
         <div className={styles.Grid}>
-            <ContentList
+            <SearchResultsCard
                 query=""
                 title={t("user.totalArticles", {count: user.total_articles})}
                 filters={{ content_type: ["article"], op_id: user.id }}
                 sort_by="last_updated_first" 
                 showFullContent
                 />
-            <ContentList
+            <SearchResultsCard
                 query=""
                 title={t("user.totalArticlesContributed", {count: user.total_articles_contributed_to})}
                 filters={{ content_type: ["article"], contributor_id: user.id }}

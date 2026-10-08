@@ -1,17 +1,17 @@
-import ActionButton from "../ActionButton";
-import shareIcon from "../../assets/icons/share.png";
+import ActionButton from "components/ActionButton";
+import shareIcon from "assets/icons/share.png";
 import { useLocation } from "react-router-dom";
-import { useToastNotification } from "../../context/ToastNotificationContext";
+import { useToastNotification } from "context/ToastNotificationContext";
 import { useTranslation } from "react-i18next";
 
 function ShareButton({ title }) {
 
     const {t} = useTranslation();
     const location = useLocation();
-    const toastNotification = useToastNotification();
+    const toast = useToastNotification();
 
     const share = () => {
-        if (!navigator.share) return toastNotification(t("toast.browserDoesNotSupport"));
+        if (!navigator.share) return toast(t("toast.browserDoesNotSupport"));
 
         navigator.share({
             title: `${document.title}: ${title}`,

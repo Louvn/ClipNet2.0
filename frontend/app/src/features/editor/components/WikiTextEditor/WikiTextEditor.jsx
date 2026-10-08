@@ -1,9 +1,9 @@
 import styles from "./styles.module.css";
-import articleStyles from "../../pages/Article/styles.module.css";
+import articleStyles from "pages/Article/styles.module.css";
 import FormattingOptions from "../FormattingOptions";
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import wikitextToJsx from "../../wikitext-engine";
+import wikitextToJsx from "wikitext-engine";
 
 function WikiTextEditor({title, content, setContent, setTitle, undo, redo}) {
     

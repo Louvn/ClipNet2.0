@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import ImageLibrary from "../../components/ImageLibrary";
+import ImageLibrary from "../../features/images/components/ImageLibrary";
 import Medium from "../../components/Medium";
 import styles from "./styles.module.css";
 

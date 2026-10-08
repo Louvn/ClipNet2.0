@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import renderPreview from "../../wikitext-engine/previews";
-import { highlightQuery } from "../../wikitext-engine/previews";
+import renderPreview from "wikitext-engine/previews";
+import { highlightQuery } from "wikitext-engine/previews";
 import { useTranslation } from "react-i18next";
 
 function SearchResult({data, query, showContent=false}) {

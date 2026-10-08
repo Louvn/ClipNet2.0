@@ -3,8 +3,8 @@ import Searchbar from "../Searchbar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import InstantSearchResult from "../SearchResult";
-import { useWikiIndex } from "../../context/WikiIndexContext";
-import { useUserIndex } from "../../context/UserIndexContext";
+import { useWikiIndex } from "context/WikiIndexContext";
+import { useUserIndex } from "context/UserIndexContext";
 import { useTranslation } from "react-i18next";
 
 function InstantSearch() {

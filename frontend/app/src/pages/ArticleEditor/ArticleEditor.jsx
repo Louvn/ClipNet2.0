@@ -2,7 +2,7 @@ import { Navigate, useNavigate, useParams, useSearchParams } from "react-router-
 import styles from "./styles.module.css";
 import { useArticle } from "../../hooks/api/useArticle";
 import { useEffect, useState } from "react";
-import WikiTextEditor from "../../components/WikiTextEditor";
+import WikiTextEditor from "../../features/editor/components/WikiTextEditor";
 import { useAPI } from "../../hooks/api/useAPI";
 import Medium from "../../components/Medium";
 import Loader from "../../components/Loader";
@@ -11,7 +11,7 @@ import SimpleButton from "../../components/SimpleButton";
 import { useToastNotification, notificationTypeSuccess } from "../../context/ToastNotificationContext";
 import { useTranslation } from "react-i18next";
 import LimitedInput from "../../components/LimitedInput";
-import useUndoRedo from "../../hooks/useUndoRedo";
+import useUndoRedo from "../../features/editor/features/editor/hooks/useUndoRedo";
 import { useCache } from "../../context/CacheContext";
 import i18n from "../../i18n";
 
@@ -21,7 +21,7 @@ function ArticleEditor() {
     const [params] = useSearchParams();
 
     const apiFetch = useAPI();
-    const toastNotification  = useToastNotification();
+    const toast  = useToastNotification();
     const {cacheItem, clearCache} = useCache();
 
     const navigate = useNavigate();
@@ -77,7 +77,7 @@ function ArticleEditor() {
         cacheItem("articles", slug, isEdit ? null : data);
         clearCache("search");
 
-        toastNotification(t("toast.articlePublished"), notificationTypeSuccess);
+        toast(t("toast.articlePublished"), notificationTypeSuccess);
         navigate(`/wiki/${slug}`);
     }
 
@@ -132,7 +132,7 @@ function ArticleEditor() {
     // pick correct method
     const publish = () => {
 
-        if (title.length < 1 || content.length < 1) return toastNotification(t("toast.missingTitleOrContent"));
+        if (title.length < 1 || content.length < 1) return toast(t("toast.missingTitleOrContent"));
 
         const publishingFunc = (isEdit ? editArticle : createArticle)
         publishingFunc();

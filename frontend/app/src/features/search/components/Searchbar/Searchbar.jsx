@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
-import searchImg from "../../assets/icons/search.png";
-import deleteSearchImg from "../../assets/icons/delete-query.png";
+import searchImg from "assets/icons/search.png";
+import deleteSearchImg from "assets/icons/delete-query.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";

@@ -17,7 +17,7 @@ function Settings() {
     const {t} = useTranslation();
     const {settings, loading, setSettings} = useSettings();
     const apiFetch = useAPI();
-    const toastNotification = useToastNotification();
+    const toast = useToastNotification();
     const navigate = useNavigate();
     const {reloadUser} = useAuth();
 
@@ -26,10 +26,10 @@ function Settings() {
             .then(res => {
                 if (res.ok) {
                     reloadUser();
-                    toastNotification(t("toast.changesSaved"), notificationTypeSuccess);
+                    toast(t("toast.changesSaved"), notificationTypeSuccess);
                     navigate("/");
                 } else {
-                    toastNotification(t("toast.errorWhileSavingChanges"));
+                    toast(t("toast.errorWhileSavingChanges"));
                 }
             })
     }

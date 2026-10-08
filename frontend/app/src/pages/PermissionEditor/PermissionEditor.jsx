@@ -17,7 +17,7 @@ function PermissionEditor() {
     const {slug} = useParams();
     const {article, setArticle, loading} = useArticle(slug);
     const apiFetch = useAPI();
-    const toastNotification = useToastNotification();
+    const toast = useToastNotification();
     const navigate = useNavigate();
 
     const userIndex = useUserIndex();
@@ -59,9 +59,9 @@ function PermissionEditor() {
             edit_permission: article.edit_permission
         })});
 
-        if (!res.ok) return toastNotification(t("toast.errorWhileSavingChanges"));
+        if (!res.ok) return toast(t("toast.errorWhileSavingChanges"));
 
-        toastNotification(t("toast.changesSaved"), notificationTypeSuccess);
+        toast(t("toast.changesSaved"), notificationTypeSuccess);
         navigate(`/wiki/${slug}`);
 
     }

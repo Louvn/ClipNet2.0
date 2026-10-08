@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import ContentList from "../../components/ContentList";
+import SearchResultsCard from "../../features/search/components/SearchResultsCard";
 import Medium from "../../components/Medium";
 import { useTranslation } from "react-i18next";
 import StatisticCards from "../../components/StatisticCards/StatisticCards";
@@ -42,7 +42,7 @@ function Home() {
 
         <div className={styles.MainSection} >
 
-            <ContentList 
+            <SearchResultsCard 
                 query="" 
                 title={t("article.latestArticles")}
                 filters={{ content_type: ["article"] }}
@@ -50,7 +50,7 @@ function Home() {
                 showFullContent
                 />
 
-            <ContentList 
+            <SearchResultsCard 
                 query="" 
                 title={t("article.latestChanges")}
                 filters={{ content_type: ["article"] }}
@@ -58,7 +58,7 @@ function Home() {
                 showFullContent 
                 />
             
-            <ContentList 
+            <SearchResultsCard 
                 query="" 
                 title={t("article.mostLiked")}
                 filters={{ content_type: ["article"] }}
@@ -66,7 +66,7 @@ function Home() {
                 showFullContent 
                 />
 
-            <ContentList 
+            <SearchResultsCard 
                 query="" 
                 title={t("article.yourMostLiked")}
                 filters={{ content_type: ["article"], op_id: user?.id }}

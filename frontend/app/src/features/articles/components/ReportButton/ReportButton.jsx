@@ -1,18 +1,18 @@
-import ActionButton from "../ActionButton";
+import ActionButton from "components/ActionButton";
 import styles from "./styles.module.css";
-import reportIcon from "../../assets/icons/report.png";
-import deleteIcon from "../../assets/icons/delete.png";
+import reportIcon from "assets/icons/report.png";
+import deleteIcon from "assets/icons/delete.png";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import PopUp from "../PopUp/PopUp";
-import LimitedInput from "../LimitedInput";
-import SimpleButton from "../SimpleButton";
-import Loader from "../Loader";
-import { useAPI } from "../../hooks/api/useAPI";
-import { useOwnReport } from "../../hooks/api/useOwnReport";
-import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
-import { formatTimestamp } from "../../utils/formatTimestamp";
-import { useAuth } from "../../context/AuthContext";
+import PopUp from "components/PopUp/PopUp";
+import LimitedInput from "components/LimitedInput";
+import SimpleButton from "components/SimpleButton";
+import Loader from "components/Loader";
+import { useAPI } from "hooks/api/useAPI";
+import { useOwnReport } from "hooks/api/useOwnReport";
+import { notificationTypeSuccess, useToastNotification } from "context/ToastNotificationContext";
+import { formatTimestamp } from "utils/formatTimestamp";
+import { useAuth } from "context/AuthContext";
 
 function ReportButton({ article }) {
 
@@ -23,7 +23,7 @@ function ReportButton({ article }) {
     const [popUpOpen, setPopUpOpen] = useState(false);
     const [reason, setReason] = useState("");
     const apiFetch = useAPI();
-    const toastNotification = useToastNotification();
+    const toast = useToastNotification();
     const {user} = useAuth();
     const isOp = (user.id === article.op.id);
 
@@ -45,7 +45,7 @@ function ReportButton({ article }) {
         setReport(data); // updated ownReport
         setPosting(false);
 
-        toastNotification(t(isOp ? "toast.deletionProposed" : "toast.reportedArticle"), notificationTypeSuccess);
+        toast(t(isOp ? "toast.deletionProposed" : "toast.reportedArticle"), notificationTypeSuccess);
     }
 
     return <>

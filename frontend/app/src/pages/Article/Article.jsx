@@ -18,9 +18,9 @@ import updatedIcon from "../../assets/icons/updated.png";
 import Medium from "../../components/Medium";
 import SimpleButton from "../../components/SimpleButton";
 import { useAuth } from "../../context/AuthContext";
-import LikeButton from "../../components/LikeButton";
-import ShareButton from "../../components/ShareButton";
-import FormattingOptions from "../../components/FormattingOptions";
+import LikeButton from "../../features/articles/components/LikeButton";
+import ShareButton from "../../features/articles/components/ShareButton";
+import FormattingOptions from "../../features/editor/components/FormattingOptions";
 import { useRef, useState } from "react";
 import { useAPI } from "../../hooks/api/useAPI";
 import { notificationTypeSuccess, useToastNotification } from "../../context/ToastNotificationContext";
@@ -28,7 +28,7 @@ import { useComments } from "../../hooks/api/useComments";
 import Comment from "../../components/Comment";
 import { useTranslation } from "react-i18next";
 import { formatTimestamp } from "../../utils/formatTimestamp";
-import ReportButton from "../../components/ReportButton";
+import ReportButton from "../../features/articles/components/ReportButton";
 
 
 function Article() {
@@ -47,7 +47,7 @@ function Article() {
     const [commentInput, setCommentInput] = useState("");
     const [showCommentInput, setShowCommentInput] = useState(false);
     const [postingComment, setPostingComment] = useState(false);
-    const toastNotification = useToastNotification();
+    const toast = useToastNotification();
 
     const postComment = () => {
         if (!commentInput || !commentInput.trim()) return;
@@ -62,11 +62,11 @@ function Article() {
         })
             .then(res => {
                 if (res.ok) {
-                    toastNotification(t("toast.commentPosted"), notificationTypeSuccess)
+                    toast(t("toast.commentPosted"), notificationTypeSuccess)
                     reloadComments();
 
                 } else {
-                    toastNotification(t("toast.commentCouldNotBePosted"));
+                    toast(t("toast.commentCouldNotBePosted"));
                 }
 
                 setPostingComment(false);

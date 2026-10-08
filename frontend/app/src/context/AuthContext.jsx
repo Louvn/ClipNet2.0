@@ -13,7 +13,7 @@ export function AuthContextProvider({ children }) {
     const [rememberUser, setRememberUser] = useState(true);
 
     const isLoggedIn = !!jwt;
-    const toastNotification = useToastNotification();
+    const toast = useToastNotification();
     const {t} = useTranslation();
 
     // to reload user with settings after changing them
@@ -60,12 +60,12 @@ export function AuthContextProvider({ children }) {
 
             const user = await reloadUser(); // load user from jwt
             // welcome message on new login (username doesn't exist in the case of a banned user)
-            if (user.username) toastNotification(t("toast.welcomeBack", {user: user.username}), notificationTypeSuccess);
+            if (user.username) toast(t("toast.welcomeBack", {user: user.username}), notificationTypeSuccess);
         }
 
         handle();
 
-    }, [jwt, rememberUser, reloadUser, toastNotification]); // t not as dependency to avoid infinite loop
+    }, [jwt, rememberUser, reloadUser, toast]); // t not as dependency to avoid infinite loop
 
 
     return <AuthContext.Provider value={{ jwt, setJwt, isLoggedIn, user, reloadUser, userLoading, setUser, rememberUser, setRememberUser }}>{children}</AuthContext.Provider>

@@ -1,9 +1,9 @@
-import ActionButton from "../ActionButton";
-import likeIcon from "../../assets/icons/like.png";
+import ActionButton from "components/ActionButton";
+import likeIcon from "assets/icons/like.png";
 import styles from "./styles.module.css";
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { useAPI } from "../../hooks/api/useAPI";
+import { useAuth } from "context/AuthContext";
+import { useAPI } from "hooks/api/useAPI";
 
 function LikeButton({ article }) {
 

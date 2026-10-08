@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import styles from "./styles.module.css";
 import logoImg from "../../assets/logo-white.png";
 import Menu from "../Menu";
-import InstantSearch from "../InstantSearch";
+import InstantSearch from "../../features/search/components/InstantSearch";
 
 function Navbar() {
     return <nav className={styles.Navbar}>
